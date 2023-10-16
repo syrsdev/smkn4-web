@@ -17,6 +17,7 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+        @include('sweetalert::alert')
         @inertia
     </body>
 </html>
