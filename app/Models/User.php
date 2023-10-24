@@ -42,4 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $guarded = [];
+
+    protected $primaryKey = 'id';
+
+    protected $table = 'users';
+
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'id_penulis');
+    }
+
+    public function prestasi()
+    {
+        return $this->hasMany(Prestasi::class, 'id_penulis');
+    }
 }
