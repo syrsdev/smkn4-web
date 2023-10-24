@@ -21,4 +21,9 @@ class Pendidik extends Model
     {
         return $this->hasMany(Mapel::class, 'id_mapel');
     }
+
+    public function sambutan()
+    {
+        return $this->belongsTo(Sambutan::class, 'id_kepsek');
+    }
 }
