@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('icon')->nullable();
             $table->string('color')->nullable();
             $table->timestamps();
