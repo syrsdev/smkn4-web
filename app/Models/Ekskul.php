@@ -11,7 +11,7 @@ class Eskul extends Model
 
     protected $guarded = [];
 
-    protected $table = 'eskul';
+    protected $table = 'ekskul';
 
     protected $primaryKey = 'id';
 
