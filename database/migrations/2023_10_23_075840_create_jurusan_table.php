@@ -39,7 +39,7 @@ return new class extends Migration
                 ->unique();
             $table->string('nama');
             $table->text('deskripsi');
-            $table->text('gambar')
+            $table->string('gambar')
                 ->nullable()
                 ->default('no-image-169.png');
             $table->unsignedBigInteger('id_program');

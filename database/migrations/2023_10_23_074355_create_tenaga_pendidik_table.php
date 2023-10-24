@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nama');
             $table->enum('bagian', ['pendidik', 'pegawai']);
             $table->enum('sub_bagian', ['guru', 'staff']);
-            $table->text('gambar')
+            $table->string('gambar')
                 ->nullable()
                 ->default('no-image-34.png');
             $table->unsignedBigInteger('id_mapel')

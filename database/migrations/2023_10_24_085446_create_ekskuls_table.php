@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('link_sosmed')
                 ->nullable();
-            $table->text('gambar')
+            $table->string('gambar')
                 ->nullable()
                 ->default('no-image-11.png');
             $table->timestamps();

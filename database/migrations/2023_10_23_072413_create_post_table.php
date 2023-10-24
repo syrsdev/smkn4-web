@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('judul');
             $table->enum('kategori', ['agenda', 'artikel', 'berita', 'event']);
             $table->text('konten');
-            $table->text('gambar')
+            $table->string('gambar')
                 ->nullable()
                 ->default('no-image-43.png');
             $table->enum('status', ['0', '1'])
@@ -42,7 +42,7 @@ return new class extends Migration
             $table->text('konten');
             $table->string('pemenang')
                 ->nullable();
-            $table->text('gambar')
+            $table->string('gambar')
                 ->nullable()
                 ->default('no-image-43.png');
             $table->enum('status', ['0', '1'])
