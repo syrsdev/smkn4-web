@@ -26,4 +26,9 @@ class KonsentrasiKeahlian extends Model
     {
         return $this->belongsTo(ProgramKeahlian::class, 'id_program');
     }
+
+    public function galeri()
+    {
+        return $this->hasMany(Galeri::class, 'id_konsentrasi');
+    }
 }
