@@ -15,10 +15,10 @@ class Mapel extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = 'nama';
+    protected $fillable = ['slug', 'nama'];
 
     public function pendidik()
     {
-        return $this->belongsTo(Pendidik::class, 'id_mapel');
+        return $this->hasMany(Pendidik::class, 'id_mapel');
     }
 }
