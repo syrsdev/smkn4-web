@@ -11,7 +11,7 @@ class KonsentrasiKeahlian extends Model
 
     protected $guarded = [];
 
-    protected $table = 'post';
+    protected $table = 'konsentrasi_keahlian';
 
     protected $primaryKey = 'id';
 
