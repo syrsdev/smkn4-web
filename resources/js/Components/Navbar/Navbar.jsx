@@ -20,7 +20,7 @@ export default function Navbar() {
                 </>
             ) : (
                 <>
-                    <ul className="items-center hidden gap-6 xl:flex">
+                    <ul className="items-center hidden gap-6 font-semibold xl:flex">
                         <li className="duration-150 hover:pb-2 hover-link">
                             <a href="">BERANDA</a>
                         </li>

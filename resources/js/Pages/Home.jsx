@@ -5,9 +5,9 @@ import React from "react";
 function Home() {
     return (
         <div>
-            <Navbar></Navbar>
+            <Navbar />
             <div className="pt-[100px]"></div>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 }
