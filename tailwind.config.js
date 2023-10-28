@@ -24,6 +24,7 @@ export default {
                 primary: "#1A274D",
                 secondary: "#233154",
                 tertiary: "#FFD600",
+                navbar: "#F2F7FF",
             },
         },
     },
