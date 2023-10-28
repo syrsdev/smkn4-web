@@ -1,14 +1,17 @@
-import Footer from "@/Components/Footer/Footer";
-import Navbar from "@/Components/Navbar/Navbar";
 import React from "react";
+import LandingLayout from "@/Layouts/LandingLayout";
+import Container from "@/Components/Container/Container";
 
 function Home() {
     return (
-        <div>
-            <Navbar />
-            <div className="pt-[100px]"></div>
-            <Footer />
-        </div>
+        <LandingLayout>
+            <Container>
+                <h1>Selamt Datang</h1>
+            </Container>
+            <Container backgroundColor={"bg-primary"}>
+                <h2>smkn 4</h2>
+            </Container>
+        </LandingLayout>
     );
 }
 
