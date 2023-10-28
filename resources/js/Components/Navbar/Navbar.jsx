@@ -4,8 +4,8 @@ import { IoChevronDown } from "react-icons/io5";
 
 export default function Navbar() {
     return (
-        <nav className="flex sticky top-0 items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
-            <div className="w-full xl:w-fit">
+        <nav className="flex sticky z-50 top-0 items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
+            <div className="w-full lg:w-fit">
                 <img
                     src="/images/smkn4.svg"
                     alt="Logo Smkn 4"
@@ -13,9 +13,9 @@ export default function Navbar() {
                 />
             </div>
             <div className="flex justify-end w-full">
-                {window.screen.width <= 1024 ? (
+                {window.screen.width < 1024 ? (
                     <>
-                        <label className="burger xl:hidden" htmlFor="burger">
+                        <label className="burger lg:hidden" htmlFor="burger">
                             <input type="checkbox" id="burger" />
                             <span></span>
                             <span></span>
@@ -24,11 +24,11 @@ export default function Navbar() {
                     </>
                 ) : (
                     <>
-                        <ul className="items-center hidden gap-6 font-semibold xl:flex">
-                            <li className="duration-150 hover:pb-2 hover-link">
+                        <ul className="items-center hidden gap-6 font-semibold lg:flex">
+                            <li className="duration-150 hover:pb-2 hover-link before:bg-tertiary">
                                 <Link href="#">BERANDA</Link>
                             </li>
-                            <li className="duration-150 hover:pb-2 hover-link rotate-hover">
+                            <li className="duration-150 hover:pb-2 hover-link rotate-hover before:bg-tertiary">
                                 <Link
                                     href="#"
                                     className="flex items-center gap-2"
@@ -37,10 +37,10 @@ export default function Navbar() {
                                     <IoChevronDown className="duration-150 rotate" />
                                 </Link>
                             </li>
-                            <li className="duration-150 hover:pb-2 hover-link">
+                            <li className="duration-150 hover:pb-2 hover-link before:bg-tertiary">
                                 <Link href="#">PROGRAM KEAHLIAN</Link>
                             </li>
-                            <li className="duration-150 hover:pb-2 hover-link rotate-hover">
+                            <li className="duration-150 hover:pb-2 hover-link rotate-hover before:bg-tertiary">
                                 <Link
                                     href="#"
                                     className="flex items-center gap-2"
@@ -49,7 +49,7 @@ export default function Navbar() {
                                     <IoChevronDown className="duration-150 rotate" />
                                 </Link>
                             </li>
-                            <li className="duration-150 hover:pb-2 hover-link">
+                            <li className="duration-150 hover:pb-2 hover-link before:bg-tertiary">
                                 <Link href="#">PROFIL ALUMNI</Link>
                             </li>
                         </ul>

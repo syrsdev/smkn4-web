@@ -1,10 +1,10 @@
 import React from "react";
 
-function Container({ children, backgroundColor }) {
+function Container({ children, background }) {
     return (
         <div
-            className={`px-[40px] md:px-[65px] xl:px-[100px] ${
-                backgroundColor ? `${backgroundColor}` : ""
+            className={`px-[40px] md:px-[65px] xl:px-[100px]  ${
+                background ? `${background}` : ""
             }`}
         >
             {children}

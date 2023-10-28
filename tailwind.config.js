@@ -26,6 +26,9 @@ export default {
                 tertiary: "#FFD600",
                 navbar: "#F2F7FF",
             },
+            boxShadowColor: {
+                primary: "#FFD600",
+            },
         },
     },
 
