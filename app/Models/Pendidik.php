@@ -19,11 +19,11 @@ class Pendidik extends Model
 
     public function mapel()
     {
-        return $this->hasMany(Mapel::class, 'id_mapel');
+        return $this->belongsTo(Mapel::class, 'id_mapel');
     }
 
     public function sambutan()
     {
-        return $this->belongsTo(Sambutan::class, 'id_kepsek');
+        return $this->hasOne(Sambutan::class, 'id_kepsek');
     }
 }

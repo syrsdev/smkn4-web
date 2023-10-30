@@ -50,6 +50,19 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('galeri_konsentrasi', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_konsentrasi');
+            $table->string('gambar');
+            $table->string('keterangan');
+            $table->foreign('id_konsentrasi')
+                ->references('id')
+                ->on('konsentrasi_keahlian')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**

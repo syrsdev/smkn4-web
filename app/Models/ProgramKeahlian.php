@@ -11,7 +11,7 @@ class ProgramKeahlian extends Model
 
     protected $guarded = [];
 
-    protected $table = 'post';
+    protected $table = 'program_keahlian';
 
     protected $primaryKey = 'id';
 

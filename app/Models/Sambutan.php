@@ -19,6 +19,6 @@ class Sambutan extends Model
 
     public function kepsek()
     {
-        return $this->hasOne(Pendidik::class, 'id_kepsek');
+        return $this->belongsTo(Pendidik::class, 'id_kepsek');
     }
 }
