@@ -17,32 +17,24 @@ class SocialMediaSeeder extends Seeder
             [
                 'name' => 'Facebook',
                 'url' => null,
-                'icon' => 'fab fa-facebook',
+                'status' => 0,
             ], [
                 'name' => 'Instagram',
                 'url' => 'https://www.instagram.com',
-                'icon' => 'fab fa-instagram',
+                'status' => 1,
             ], [
                 'name' => 'Twitter',
                 'url' => null,
-                'icon' => 'fab fa-twitter',
+                'status' => 0,
             ], [
                 'name' => 'Youtube',
                 'url' => 'https://www.youtube.com',
-                'icon' => 'fab fa-youtube',
-            ], [
-                'name' => 'LinkedIn',
-                'url' => null,
-                'icon' => 'fab fa-linkedin',
+                'status' => 1,
             ], [
                 'name' => 'WhatsApp',
                 'url' => null,
-                'icon' => 'fab fa-whatsapp',
-            ], [
-                'name' => 'Telegram',
-                'url' => null,
-                'icon' => 'fab fa-telegram',
-            ]
+                'status' => 0,
+            ],
         ]);
     }
 }

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->enum('status', ['0', '1'])
+            $table->boolean('status')
                 ->nullable()
-                ->default('0');
+                ->default(0);
             $table->timestamps();
         });
     }
