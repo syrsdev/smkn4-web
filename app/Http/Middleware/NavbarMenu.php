@@ -8,6 +8,7 @@ use App\Models\Sekolah;
 use App\Models\SubDomain;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,6 +47,7 @@ class NavbarMenu
         $subDomain = SubDomain::where('status', '1')->latest()->get();
 
         Inertia::share(['sekolah' => $sekolah, 'navMenu' => $navMenu, 'subDomain' => $subDomain]);
+        View::share(['sekolah' => $sekolah]);
 
         return $next($request);
     }
