@@ -10,17 +10,17 @@ function Footer() {
                     <img
                         src="/images/smkn4.svg"
                         alt="logo smkn 4"
-                        className="object-contain w-5/6 xl:w-9/12"
+                        className="object-contain w-5/6 md:w-2/3 lg:w-9/12"
                     />
                     <p className="w-9/12 text-xl">
                         Jl. Veteran No. 1 A Babakan, Tangerang Kota Tangerang -
                         Banten
                     </p>
                 </div>
-                <div className="flex flex-col w-full gap-5 xl:w-2/6">
+                <div className="flex flex-col w-full gap-5 lg:w-2/6">
                     <h4 className="font-bold xl:text-[24px] mt-5">MENU</h4>
                 </div>
-                <div className="flex flex-col w-full gap-5 xl:items-center xl:w-2/6">
+                <div className="flex flex-col w-full gap-5 xl:items-center lg:w-2/6">
                     <h4 className="font-bold xl:text-[24px] mt-5">
                         SOCIAL MEDIA
                     </h4>
