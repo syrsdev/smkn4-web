@@ -21,9 +21,17 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::insert([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+            [
+                'name' => 'Super Admin',
+                'email' => 'admin@example.com',
+                'password' => bcrypt('password'),
+                'level' => 'admin'
+            ], [
+                'name' => 'Operator',
+                'email' => 'operator@example.com',
+                'password' => bcrypt('password'),
+                'level' => 'operator'
+            ]
         ]);
 
         $this->call([
