@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SekolahSeeder::class,
-            SubDomainSeeder::class,
+            SubNavbarSeeder::class,
             HeroSectionSeeder::class,
             TenagaPendidikSeeder::class,
             SambutanSeeder::class,

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Post;
 use App\Models\Prestasi;
 use App\Models\Sekolah;
-use App\Models\SubDomain;
+use App\Models\SubNavbar;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -44,9 +44,9 @@ class NavbarMenu
             ],
         ];
 
-        $subDomain = SubDomain::where('status', '1')->latest()->get();
+        $subNavbar = SubNavbar::where('status', '1')->latest()->get();
 
-        Inertia::share(['sekolah' => $sekolah, 'navMenu' => $navMenu, 'subDomain' => $subDomain]);
+        Inertia::share(['sekolah' => $sekolah, 'navMenu' => $navMenu, 'subNavbar' => $subNavbar]);
         View::share(['sekolah' => $sekolah]);
 
         return $next($request);

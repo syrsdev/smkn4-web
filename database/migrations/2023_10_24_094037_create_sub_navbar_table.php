@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_domain', function (Blueprint $table) {
+        Schema::create('sub_navbar', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('url');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_domain');
+        Schema::dropIfExists('sub_navbar');
     }
 };
