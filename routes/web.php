@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
+    Route::resource('/dashboard/post', PostController::class);
+
     Route::get('/dashboard/post/kategori/agenda', [IndexPostController::class, 'agenda'])
         ->name('agenda.index');
 
