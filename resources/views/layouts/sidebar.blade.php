@@ -22,16 +22,16 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="{{ $subActive === 'Agenda' ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Agenda</a>
+                        <a class="nav-link" href="{{ route('agenda.index') }}">Agenda</a>
                     </li>
                     <li class="{{ $subActive === 'Artikel' ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Artikel</a>
+                        <a class="nav-link" href="{{ route('artikel.index') }}">Artikel</a>
                     </li>
                     <li class="{{ $subActive === 'Berita' ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Berita</a>
+                        <a class="nav-link" href="{{ route('berita.index') }}">Berita</a>
                     </li>
                     <li class="{{ $subActive === 'Event' ? 'active' : '' }}">
-                        <a class="nav-link" href="#">Event</a>
+                        <a class="nav-link" href="{{ route('event.index') }}">Event</a>
                     </li>
                 </ul>
             </li>
