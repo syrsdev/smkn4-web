@@ -61,7 +61,7 @@
                             <td>Seberapa pentingnya pendidikan moral</td>
                             <td>Achmad Marzukie</td>
                             <td>2018-04-10</td>
-                            <td><div class="badge badge-danger">Privasi</div></td>
+                            <td><div class="badge badge-danger">Pending</div></td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
                           <tr>
@@ -71,7 +71,7 @@
                             <td>Backup database</td>
                             <td>Serizawa Purnama</td>
                             <td>2018-01-29</td>
-                            <td><div class="badge badge-warning">Dalam pengerjaan</div></td>
+                            <td><div class="badge badge-warning">Draft</div></td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
                         </tbody>
