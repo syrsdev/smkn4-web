@@ -16,7 +16,7 @@ class HeroSectionSeeder extends Seeder
         HeroSection::insert([
             ['key' => 'welcome', 'value' => 'SELAMAT DATANG DI WEBSITE'],
             ['key' => 'deskripsi', 'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo doloremque culpa odio eveniet obcaecati dolorum consectetur ad consequatur praesentium mollitia repudiandae, labore nulla alias ipsa porro modi rerum? Dolor, vero?'],
-            ['key'=> 'hero_image', 'value'=> 'hero_image.jpg'],
+            ['key' => 'hero_image', 'value' => 'hero.png'],
         ]);
     }
 }

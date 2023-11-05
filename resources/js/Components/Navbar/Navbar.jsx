@@ -3,14 +3,14 @@ import React from "react";
 import { IoChevronDown } from "react-icons/io5";
 import SubNavbar from "./SubNavbar";
 
-export default function Navbar({ subnav }) {
+export default function Navbar({ subnav, logo }) {
     return (
         <>
             <nav className="sticky top-0 z-50">
                 <div className="flex items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
                     <div className="w-full lg:w-fit">
                         <img
-                            src="/images/smkn4.svg"
+                            src={`/images/${logo}`}
                             alt="Logo Smkn 4"
                             className="object-contain py-5"
                         />
