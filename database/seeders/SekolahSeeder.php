@@ -15,7 +15,7 @@ class SekolahSeeder extends Seeder
     {
         Sekolah::insert([
             ['key' => 'nama_sekolah', 'value' => 'SMKN 4 KOTA TANGERANG'],
-            ['key' => 'logo_sekolah', 'value' => 'smkn-4-tangerang.png'],
+            ['key' => 'logo_sekolah', 'value' => 'smkn4.svg'],
             ['key' => 'favicon', 'value' => 'favicon.png'],
             ['key' => 'alamat_sekolah', 'value' => 'Jl. Veteran No. 1A Babakan, Tangerang, Kota Tangerang - Banten'],
             ['key' => 'link_alamat', 'value' => 'SMKN 4 TANGERANG'],
