@@ -17,7 +17,7 @@ function Home(props) {
             subnav={props.subNavbar}
         >
             <Container
-                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] bg-fixed bg-center bg-[url('images/${hero_image}')] bg-no-repeat relative`}
+                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] bg-fixed bg-center bg-[url('images/hero.png')] bg-no-repeat relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
                 <div className="w-full md:w-10/12 lg:w-1/2">
