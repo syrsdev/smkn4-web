@@ -22,6 +22,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 2',
@@ -30,6 +31,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 3',
@@ -38,6 +40,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 4',
@@ -46,6 +49,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 5',
@@ -54,6 +58,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 6',
@@ -62,6 +67,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 7',
@@ -70,6 +76,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
         ]);
 
@@ -82,6 +89,7 @@ class PostSeeder extends Seeder
                 'pemenang' => 'Yasser Aziz Alfalah',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Membuat Aplikasi Flutter',
@@ -91,6 +99,7 @@ class PostSeeder extends Seeder
                 'pemenang' => 'Surya Nata Ardhana',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Web Design Se-Provinsi Banten',
@@ -100,6 +109,7 @@ class PostSeeder extends Seeder
                 'pemenang' => 'Arnold Darmawan',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
             [
                 'judul' => 'Back-End with Laravel',
@@ -109,6 +119,7 @@ class PostSeeder extends Seeder
                 'pemenang' => 'Muhamad Citra Hidayat',
                 'status' => '1',
                 'id_penulis' => 1,
+                'created_at' => now(),
             ],
         ]);
     }

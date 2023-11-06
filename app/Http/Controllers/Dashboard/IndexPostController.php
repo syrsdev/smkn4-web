@@ -14,12 +14,14 @@ class IndexPostController extends Controller
             ->latest()
             ->get();
 
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Agenda?');
+
         return view('dashboard.post.agenda.index')
             ->with([
-                'agenda' => $agenda,
+                'title' => 'Data Agenda',
                 'active' => 'Post',
                 'subActive' => 'Agenda',
-                'title' => 'Data Agenda',
+                'agenda' => $agenda,
             ]);
     }
 
@@ -30,12 +32,14 @@ class IndexPostController extends Controller
             ->latest()
             ->get();
 
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Artikel?');
+
         return view('dashboard.post.artikel.index')
-            ->with([
-                'artikel' => $artikel,
+        ->with([
+                'title' => 'Data Artikel',
                 'active' => 'Post',
                 'subActive' => 'Artikel',
-                'title' => 'Data Artikel',
+                'artikel' => $artikel,
             ]);
     }
 
@@ -46,12 +50,14 @@ class IndexPostController extends Controller
             ->latest()
             ->get();
 
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Berita?');
+
         return view('dashboard.post.berita.index')
             ->with([
-                'berita' => $berita,
+                'title' => 'Data Berita',
                 'active' => 'Post',
                 'subActive' => 'Berita',
-                'title' => 'Data Berita',
+                'berita' => $berita,
             ]);
     }
 
@@ -62,12 +68,14 @@ class IndexPostController extends Controller
             ->latest()
             ->get();
 
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Event?');
+
         return view('dashboard.post.event.index')
             ->with([
-                'event' => $event,
+                'title' => 'Data Event',
                 'active' => 'Post',
                 'subActive' => 'Event',
-                'title' => 'Data Event',
+                'event' => $event,
             ]);
     }
 }
