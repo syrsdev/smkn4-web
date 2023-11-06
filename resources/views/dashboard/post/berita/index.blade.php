@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
-    <link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
@@ -18,12 +18,13 @@
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Berita</h4>
-                    <div class="d-flex">
+                    <!-- Search Bar -->
+                    <!-- <div class="d-flex">
                         <input type="text" class="form-control w-40" placeholder="Pencarian..." aria-label="Pencarian...">
                         <button class="btn btn-primary" type="button" id="button-search">
                             <i class='fas fa-search'></i>
                         </button>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -60,7 +61,7 @@
                             <td>Seberapa pentingnya pendidikan moral</td>
                             <td>Achmad Marzukie</td>
                             <td>2018-04-10</td>
-                            <td><div class="badge badge-danger">Privasi</div></td>
+                            <td><div class="badge badge-danger">Pending</div></td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
                           <tr>
@@ -70,7 +71,7 @@
                             <td>Backup database</td>
                             <td>Serizawa Purnama</td>
                             <td>2018-01-29</td>
-                            <td><div class="badge badge-warning">Dalam pengerjaan</div></td>
+                            <td><div class="badge badge-warning">Draft</div></td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
                         </tbody>
@@ -86,11 +87,11 @@
 @endsection
 
 @section('script')
-    <script src="assets/modules/datatables/datatables.min.js"></script>
-    <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-    <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/modules/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js')}}"></script>
+    <script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js')}}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="assets/js/page/modules-datatables.js"></script>
+    <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
 @endsection
