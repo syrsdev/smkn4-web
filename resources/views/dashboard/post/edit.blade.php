@@ -53,7 +53,7 @@
 									<div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
 										<div class="col-sm-12 col-md-7">
-											<img src="{{ $post->gambar !== 'no-image-43.png' ? asset('storage/'.$kategori.$post->gambar) : asset('images/default/no-image-43.png') }}" alt="{{ $post->judul }}" style="width: 250px">
+											<img src="{{ $post->gambar !== 'no-image-43.png' ? asset('storage/'.$kategori.'/'.$post->gambar) : asset('images/default/'.$post->gambar) }}" alt="{{ $post->judul }}" style="width: 250px">
 										</div>
 									</div>
 									<div class="form-group row mb-4">
