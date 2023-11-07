@@ -23,23 +23,27 @@ use Inertia\Inertia;
 Route::get('/', [LandingPageController::class, 'index'])
     ->name('home');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])
+            ->name('dashboard');
 
-    Route::resource('/dashboard/post', PostController::class);
+        Route::resource('/post', PostController::class);
 
-    Route::get('/dashboard/post/kategori/agenda', [IndexPostController::class, 'agenda'])
-        ->name('agenda.index');
-
-    Route::get('/dashboard/post/kategori/artikel', [IndexPostController::class, 'artikel'])
-        ->name('artikel.index');
-
-    Route::get('/dashboard/post/kategori/berita', [IndexPostController::class, 'berita'])
-        ->name('berita.index');
-
-    Route::get('/dashboard/post/kategori/event', [IndexPostController::class, 'event'])
-        ->name('event.index');
+        Route::prefix('post')->group(function () {
+            Route::get('/kategori/agenda', [IndexPostController::class, 'agenda'])
+                ->name('agenda.index');
+        
+            Route::get('/kategori/artikel', [IndexPostController::class, 'artikel'])
+                ->name('artikel.index');
+        
+            Route::get('/kategori/berita', [IndexPostController::class, 'berita'])
+                ->name('berita.index');
+        
+            Route::get('/kategori/event', [IndexPostController::class, 'event'])
+                ->name('event.index');
+        });
+    });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
