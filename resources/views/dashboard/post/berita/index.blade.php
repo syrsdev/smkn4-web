@@ -46,6 +46,7 @@
 												<th>Penulis</th>
 												<th>Tanggal</th>
 												<th>Status</th>
+												<th>Publish</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -57,11 +58,15 @@
 													<td>{{ $item->penulis->name }}</td>
 													<td>{{ $item->created_at->diffForHumans() }}</td>
 													<td>
-														@if ($item->status === 0)
-															<div class="badge badge-warning">Draft</div>
-														@elseif ($item->status === 1)                                                       
-															<div class="badge badge-success">Published</div>
-														@endif
+														<div class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
+                                                            {{ $item->status === 1 ? 'Published' : 'Draft' }}
+                                                        </div>
+													</td>
+													<td>
+														<label class="custom-switch mt-1">
+                                                            <input type="checkbox" class="custom-switch-input" data-slug="{{ $item->slug }}" {{ $item->status === 1 ? 'checked' : '' }}>
+                                                            <span class="custom-switch-indicator"></span>
+                                                        </label>
 													</td>
 													<td>
 														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Berita">
@@ -96,4 +101,34 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
+
+	<script>
+        $(document).ready(function() {
+            $('.custom-switch-input').change(function() {
+                let slug = $(this).data('slug');
+                let status = $(this).prop('checked') === true ? 1 : 0;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/dashboard/post/' + slug + '/status',
+                    data: {
+                        'status': status,
+                    },
+                    success: function(response) {
+                        if (response.status === '1') {
+                            badge = `
+                                <div class="badge badge-success badge-${response.slug}">Published</div>
+                            `;
+                        } else if (response.status === '0') {
+                            badge = `
+                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
+                            `;
+                        }
+
+                        $(`.badge-${response.slug}`).replaceWith(badge);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

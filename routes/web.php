@@ -31,6 +31,9 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
         Route::resource('/post', PostController::class);
 
         Route::prefix('post')->group(function () {
+            Route::get('/{post}/status', [PostController::class, 'update_status'])
+                ->name('post.status');
+
             Route::get('/kategori/agenda', [IndexPostController::class, 'agenda'])
                 ->name('agenda.index');
         

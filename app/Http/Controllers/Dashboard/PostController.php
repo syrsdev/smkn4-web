@@ -225,4 +225,11 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function update_status(Request $request, Post $post)
+    {
+        $post->update(['status' => $request->status]);
+
+        return response()->json(['slug' => $post->slug, 'status' => $request->status]);
+    }
 }
