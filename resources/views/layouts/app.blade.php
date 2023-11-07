@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>{{ $title }} as {{ ucfirst(Auth::user()->level) }} | {{ $sekolah['nama_sekolah'] }}</title>
+    <title>{{ $title }} as {{ ucfirst(Auth::user()->level) }} | Website {{ $sekolah['nama_sekolah'] }}</title>
 
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/x-icon">
@@ -35,8 +35,10 @@
     <!-- /END GA -->
 </head>
 <body>
+    @include('sweetalert::alert')
+
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
+        <div class="main-wrapper">
             @include('layouts.navbar')
 
             @include('layouts.sidebar')
