@@ -42,11 +42,9 @@ class PostController extends Controller
             ->with([
                 'post' => $post,
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => null,
                 'title' => 'Data Post',
             ]);
-
-        // return response()->json(['data' => $post]);
     }
 
     /**
@@ -58,7 +56,7 @@ class PostController extends Controller
             ->with([
                 'title' => 'Tambah Post',
                 'active' => 'Post',
-                'subActive' => ''
+                'subActive' => null,
             ]);
     }
 
@@ -109,12 +107,10 @@ class PostController extends Controller
             toast(ucfirst($kategori) . ' berhasil dibuat!', 'success');
 
             return redirect()->route($kategori . '.index');
-            // return response()->json(['data' => $post]);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal dibuat.', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Post gagal dibuat']);                
         }
     }
 
@@ -123,31 +119,24 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->with('penulis');
-
         $kategori = $post->kategori;
 
         $otherPost = Post::with('penulis')
             ->where('kategori', $kategori)
+            ->where('slug', '!=', $post->slug)
             ->latest()
             ->limit(3)
             ->get();
 
-        $otherPost = $otherPost->filter(function ($item) use ($post) {
-            return $item->slug !== $post->slug;
-        });
-
         return view('dashboard.post.detail')
             ->with([
-                'title' => 'Detail Post',
+                'title' => 'Detail ' . ucfirst($kategori),
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => ucfirst($kategori),
                 'post' => $post,
                 'kategori' => $kategori,
                 'otherPost' => $otherPost,
             ]);
-
-        // return response()->json(['data' => $post]);
     }
 
     /**
@@ -159,7 +148,7 @@ class PostController extends Controller
             ->with([
                 'title' => 'Edit Post',
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => ucfirst($post->kategori),
                 'post' => $post,
                 'kategori' => $post->kategori,
             ]);
@@ -214,7 +203,6 @@ class PostController extends Controller
             toast(ucfirst($kategori) . ' berhasil diedit!', 'success');
 
             return redirect()->route($kategori . '.index');
-            // return response()->json(['post' => $post]);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal diedit!', 'warning');
 
@@ -236,6 +224,12 @@ class PostController extends Controller
         toast(ucfirst($post->kategori) . ' berhasil dihapus.', 'success');
 
         return redirect()->back();
-        // return response()->json(['massage' => 'Post berhasil dihapus']);
+    }
+
+    public function update_status(Request $request, Post $post)
+    {
+        $post->update(['status' => $request->status]);
+
+        return response()->json(['slug' => $post->slug, 'status' => $request->status]);
     }
 }
