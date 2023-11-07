@@ -119,31 +119,24 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->with('penulis');
-
         $kategori = $post->kategori;
 
         $otherPost = Post::with('penulis')
             ->where('kategori', $kategori)
+            ->where('slug', '!=', $post->slug)
             ->latest()
             ->limit(3)
             ->get();
 
-        $otherPost = $otherPost->filter(function ($item) use ($post) {
-            return $item->slug !== $post->slug;
-        });
-
         return view('dashboard.post.detail')
             ->with([
-                'title' => 'Detail Post',
+                'title' => 'Detail ' . ucfirst($kategori),
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => ucfirst($kategori),
                 'post' => $post,
                 'kategori' => $kategori,
                 'otherPost' => $otherPost,
             ]);
-
-        // return response()->json(['data' => $post]);
     }
 
     /**
