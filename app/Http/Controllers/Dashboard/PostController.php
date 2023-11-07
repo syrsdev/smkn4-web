@@ -42,11 +42,9 @@ class PostController extends Controller
             ->with([
                 'post' => $post,
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => null,
                 'title' => 'Data Post',
             ]);
-
-        // return response()->json(['data' => $post]);
     }
 
     /**
@@ -58,7 +56,7 @@ class PostController extends Controller
             ->with([
                 'title' => 'Tambah Post',
                 'active' => 'Post',
-                'subActive' => ''
+                'subActive' => null,
             ]);
     }
 
@@ -109,12 +107,10 @@ class PostController extends Controller
             toast(ucfirst($kategori) . ' berhasil dibuat!', 'success');
 
             return redirect()->route($kategori . '.index');
-            // return response()->json(['data' => $post]);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal dibuat.', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Post gagal dibuat']);                
         }
     }
 
@@ -159,7 +155,7 @@ class PostController extends Controller
             ->with([
                 'title' => 'Edit Post',
                 'active' => 'Post',
-                'subActive' => '',
+                'subActive' => ucfirst($post->kategori),
                 'post' => $post,
                 'kategori' => $post->kategori,
             ]);
@@ -214,7 +210,6 @@ class PostController extends Controller
             toast(ucfirst($kategori) . ' berhasil diedit!', 'success');
 
             return redirect()->route($kategori . '.index');
-            // return response()->json(['post' => $post]);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal diedit!', 'warning');
 
@@ -236,6 +231,5 @@ class PostController extends Controller
         toast(ucfirst($post->kategori) . ' berhasil dihapus.', 'success');
 
         return redirect()->back();
-        // return response()->json(['massage' => 'Post berhasil dihapus']);
     }
 }

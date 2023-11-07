@@ -25,10 +25,8 @@
 					<div class="breadcrumb-item active">
 						<a href="{{ route('dashboard') }}">Dashboard</a>
 					</div>
-					<div class="breadcrumb-item">
-						<a href="{{ route('post.index') }}"></a>
-					</div>
-					<div class="breadcrumb-item">
+					<div class="breadcrumb-item">Post</div>
+					<div class="breadcrumb-item active">
 						<a href="{{ route($kategori.'.index') }}">{{ ucfirst($kategori) }}</a>
 					</div>
 					<div class="breadcrumb-item">Edit {{ ucfirst($kategori) }}</div>
