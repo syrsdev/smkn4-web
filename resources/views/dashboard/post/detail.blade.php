@@ -70,12 +70,12 @@
                                             </div>
                                         </div>
                                         <div class="ticket-description">
+                                            <div class="gallery mb-3">
+                                                <img src="{{ $post->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $post->gambar) : url('images/default/' . $post->gambar) }}" alt="{{ $post->judul }}" style="width: 400px;">
+                                            </div>
+
                                             {!! $post->konten !!}
 
-                                            <h5>Thumbnail {{ ucfirst($kategori) }}</h5>
-                                            <div class="gallery mt-3">
-                                                <div class="gallery-item" data-image="{{ $post->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $post->gambar) : url('images/default/' . $post->gambar) }}" data-title="{{ $post->judul }}"></div>
-                                            </div>
                                             <div class="ticket-divider"></div>
                                             <div class="ticket-form">
                                                 <div class="form-group text-right">
