@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('home') }}">SMKN 4 Tangerang</a>
+            <a href="{{ route('home') }}">{{ $sekolah['nama_sekolah'] }}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('home') }}">04</a>
@@ -111,22 +111,22 @@
                     </a>
                 </li> --}}
                 <li class="menu-header">Website</li>
-                <li class="dropdown {{ $active === 'Sub-domain' ? 'active' : '' }}">
+                <li class="dropdown {{ $active === 'Identitas' ? 'active' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-school"></i>
+                        <span>Identitas Sekolah</span>
+                    </a>
+                </li>
+                <li class="dropdown {{ $active === 'SubNavbar' ? 'active' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fas fa-project-diagram"></i>
-                        <span>Sub Domain</span>
+                        <span>Sub Navbar</span>
                     </a>
                 </li>
                 <li class="dropdown {{ $active === 'Hero' ? 'active' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fas fa-lightbulb"></i>
                         <span>Hero Content</span>
-                    </a>
-                </li>
-                <li class="dropdown {{ $active === 'Identitas' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Identitas Sekolah</span>
                     </a>
                 </li>
                 <li class="menu-header">Users</li>
