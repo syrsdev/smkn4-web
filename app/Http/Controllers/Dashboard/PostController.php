@@ -232,4 +232,27 @@ class PostController extends Controller
 
         return response()->json(['slug' => $post->slug, 'status' => $request->status]);
     }
+
+    public function upload_image(Request $request)
+    {
+        try {
+            if ($request->hasFile('file')) {
+                $request->validate([
+                    'file' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                ]);
+    
+                $file = $request->file('file');
+                $gambar = 'post-konten-' . uniqid() . '.' . $file->extension();
+                $file->move(public_path('storage/post-konten'), $gambar);
+
+                $url = '/storage/post-konten/' . $gambar;
+    
+                return response()->json(['location' => $url]);
+            }
+        } catch (\Exception $e) {
+            $errorMessage = 'Terjadi kesalahan: ' . $e->getMessage();
+
+            return redirect()->back()->with('error', $errorMessage);
+        }
+    }
 }
