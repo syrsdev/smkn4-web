@@ -15,6 +15,9 @@ export default {
             fontFamily: {
                 sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
+            borderColor: {
+                primary: "#1A274D",
+            },
             textColor: {
                 primary: "#394867",
                 secondary: "#ffffff",

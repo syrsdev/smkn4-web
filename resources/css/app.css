@@ -10,7 +10,7 @@
 .hover-link::before {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 0;
     width: 100%;
     height: 2px;
@@ -40,7 +40,6 @@
     position: absolute;
     height: 4px;
     width: 100%;
-    background: white;
     border-radius: 9px;
     opacity: 1;
     left: 0;

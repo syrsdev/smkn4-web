@@ -9,7 +9,6 @@ function Home(props) {
     let namaSekolah = props.sekolah.nama_sekolah;
     let welcome = props.heroSection.welcome;
     let deskripsi = props.heroSection.deskripsi;
-    let hero_image = props.heroSection.hero_image;
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -25,7 +24,11 @@ function Home(props) {
                         <span className="text-base font-normal xl:text-3xl">
                             {welcome}
                         </span>{" "}
-                        <ReactTypingEffect text={[namaSekolah]} />
+                        <ReactTypingEffect
+                            text={[namaSekolah]}
+                            typingDelay={1000}
+                            eraseDelay={2000}
+                        />
                     </h1>
 
                     <p className="relative z-20 my-5 md:my-7">{deskripsi}</p>
