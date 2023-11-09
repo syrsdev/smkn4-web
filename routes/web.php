@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\IndexPostController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ use Inertia\Inertia;
 
 Route::get('/', [LandingPageController::class, 'index'])
     ->name('home');
+
+Route::get('/post/{post}', [PostPageController::class, 'index'])
+    ->name('post');
 
 Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
     Route::prefix('dashboard')->group(function () {
