@@ -15,15 +15,11 @@ use Jenssegers\Agent\Agent;
 
 class LandingPageController extends Controller
 {
-    protected $heroSection, $sekolah;
+    protected $heroSection;
 
     public function __construct()
     {
         $this->heroSection = HeroSection::all()
-            ->pluck('value', 'key')
-            ->toArray();
-
-        $this->sekolah = Sekolah::all()
             ->pluck('value', 'key')
             ->toArray();
     }
@@ -92,7 +88,6 @@ class LandingPageController extends Controller
                 'kategoriPrestasi' => $kategoriPrestasi,
                 'tenagaPendidik' => $pendidik,
                 'ekskul' => $ekskul,
-                'sekolah' => $this->sekolah,
             ]);
     }
 }
