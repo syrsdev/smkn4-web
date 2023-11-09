@@ -30,7 +30,7 @@ class PostSeeder extends Seeder
                 'kategori' => 'berita',
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
-                'id_penulis' => 1,
+                'id_penulis' => 2,
                 'created_at' => now(),
             ],
             [
@@ -39,7 +39,7 @@ class PostSeeder extends Seeder
                 'kategori' => 'berita',
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
-                'id_penulis' => 1,
+                'id_penulis' => 2,
                 'created_at' => now(),
             ],
             [
@@ -57,7 +57,7 @@ class PostSeeder extends Seeder
                 'kategori' => 'agenda',
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
-                'id_penulis' => 1,
+                'id_penulis' => 2,
                 'created_at' => now(),
             ],
             [
@@ -66,7 +66,7 @@ class PostSeeder extends Seeder
                 'kategori' => 'artikel',
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
-                'id_penulis' => 1,
+                'id_penulis' => 2,
                 'created_at' => now(),
             ],
             [
