@@ -15,7 +15,7 @@ class KonsentrasiKeahlian extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['slug', 'nama', 'deskripsi', 'id_program'];
+    protected $fillable = ['slug', 'nama', 'deskripsi', 'icon', 'gambar', 'id_program'];
 
     public function getRouteKeyName()
     {
