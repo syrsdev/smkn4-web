@@ -24,6 +24,6 @@ class Prestasi extends Model
 
     public function penulis()
     {
-        return $this->belongsToUser(User::class, 'id_penulis');
+        return $this->belongsTo(User::class, 'id_penulis');
     }
 }
