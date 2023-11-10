@@ -39,6 +39,9 @@ return new class extends Migration
                 ->unique();
             $table->string('nama');
             $table->text('deskripsi');
+            $table->string('icon')
+                ->nullable()
+                ->default('icon-jurusan.png');
             $table->string('gambar')
                 ->nullable()
                 ->default('no-image-169.png');
