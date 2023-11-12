@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/prestasi', PrestasiController::class);
+
+Route::apiResource('/ekskul', PrestasiController::class);

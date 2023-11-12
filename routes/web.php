@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\EkskulController;
 use App\Http\Controllers\Dashboard\IndexPostController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +52,12 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
         
             Route::get('/kategori/event', [IndexPostController::class, 'event'])
                 ->name('event.index');
+        });
+
+        Route::prefix('kesiswaan')->group(function () {
+            Route::resource('/prestasi', PrestasiController::class);
+
+            Route::resource('/ekskul', EkskulController::class);
         });
     });
 
