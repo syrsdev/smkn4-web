@@ -59,7 +59,8 @@ class LandingPageController extends Controller
             ->latest()
             ->get();
 
-        $ekskul = Ekskul::get();
+        $ekskul = Ekskul::orderBy('nama', 'asc')
+            ->get();
 
         $agent = new Agent();
 

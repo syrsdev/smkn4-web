@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\EkskulController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/prestasi', PrestasiController::class);
+
+Route::apiResource('/ekskul', EkskulController::class);
