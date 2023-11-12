@@ -177,7 +177,7 @@ class PrestasiController extends Controller
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
 
-            if ($prestasi->gambar !== 'no-image.jpg') {
+            if ($prestasi->gambar !== 'no-image-43.png') {
                 File::delete(public_path('storage/prestasi/' . $prestasi->gambar));
             }
 
@@ -206,7 +206,7 @@ class PrestasiController extends Controller
      */
     public function destroy(Prestasi $prestasi)
     {
-        if ($prestasi->gambar !== 'no-image.jpg') {
+        if ($prestasi->gambar !== 'no-image-43.png') {
             File::delete(public_path('storage/prestasi/' . $prestasi->gambar));
         }
 
