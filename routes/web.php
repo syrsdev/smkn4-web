@@ -25,7 +25,10 @@ Route::get('/', [LandingPageController::class, 'index'])
     ->name('home');
 
 Route::get('/post/{kategori}', [PostPageController::class, 'index'])
-    ->name('post');
+    ->name('landing.post.index');
+
+Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
+    ->name('landing.post.show');
 
 Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
     Route::prefix('dashboard')->group(function () {

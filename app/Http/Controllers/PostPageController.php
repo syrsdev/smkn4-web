@@ -46,4 +46,35 @@ class PostPageController extends Controller
             'allPost' => $allPost,
         ]);
     }
+
+    public function show(Request $request, $kategori, Post $post)
+    {
+        $search = $request->input('search');
+
+        if (strlen($search)) {
+            $allPost = Post::with('penulis')
+                ->where('slug', '!=', $post->slug)
+                ->where(function ($query) use ($search) {
+                    $query->orWhere('judul', 'like', "%$search%")
+                        ->orWhere('created_at', 'like', "%$search%")
+                        ->orWhereHas('penulis', function ($query) use ($search) {
+                            $query->where('name', 'like', "%$search%");
+                        });
+                })
+                ->orderBy('created_at', 'desc')
+                ->get();
+        } else {
+            $allPost = Post::with('penulis')
+                ->where('slug', '!=', $post->slug)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+
+        dd($post, $allPost);
+
+        return Inertia::render('Post')->with([
+            'post' => $post,
+            'allPost' => $allPost,
+        ]);
+    }
 }
