@@ -70,8 +70,6 @@ class PostPageController extends Controller
                 ->get();
         }
 
-        dd($post, $allPost);
-
         return Inertia::render('Post')->with([
             'post' => $post,
             'allPost' => $allPost,
