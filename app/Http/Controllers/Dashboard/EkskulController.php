@@ -104,6 +104,7 @@ class EkskulController extends Controller
             'title' => 'Edit Ekstrakurikuler',
             'active' => 'Kesiswaan',
             'subActive' => 'Ekstrakurikuler',
+            'ekskul' => $ekskul,
         ]);
     }
 
