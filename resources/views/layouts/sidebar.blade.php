@@ -44,7 +44,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="{{ $subActive === 'Prestasi' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="{{ route('prestasi.index') }}">Prestasi</a>
                         </li>
                     </ul>
                 </li>
@@ -97,10 +97,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="{{ $subActive === 'Prestasi' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="{{ route('prestasi.index') }}">Prestasi</a>
                         </li>
                         <li class="{{ $subActive === 'Ekstrakurikuler' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Ekstrakurikuler</a>
+                            <a class="nav-link" href="{{ route('ekskul.index') }}">Ekstrakurikuler</a>
                         </li>
                     </ul>
                 </li>
