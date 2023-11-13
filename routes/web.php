@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\EkskulController;
 use App\Http\Controllers\Dashboard\IndexPostController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
+use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\ProfileController;
@@ -62,6 +63,8 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
 
             Route::resource('/ekskul', EkskulController::class);
         });
+
+        Route::resource('/guru', TenagaPendidikController::class);
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
