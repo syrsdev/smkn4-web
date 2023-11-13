@@ -24,8 +24,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])
     ->name('home');
 
-Route::get('/post/{post}', [PostPageController::class, 'index'])
-    ->name('post');
+Route::get('/post/{kategori}', [PostPageController::class, 'index'])
+    ->name('landing.post.index');
+
+Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
+    ->name('landing.post.show');
 
 Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
     Route::prefix('dashboard')->group(function () {
