@@ -8,16 +8,18 @@ use Inertia\Inertia;
 
 class PostPageController extends Controller
 {
-    public function index(Request $request, Post $post)
+    public function index(Request $request, $kategori)
     {
         $search = $request->input('search');
-        $kategori = $request->input('kategori');
-        $order = $request->input('order');
 
         if (strlen($search)) {
-            $posts = Post::with('penulis')
+            $recentPost = Post::with('penulis')
                 ->where('kategori', $kategori)
-                ->where('slug', '!=', $post->slug)
+                ->latest()
+                ->first();
+
+            $allPost = Post::with('penulis')
+                ->where('slug', '!=', $recentPost->slug)
                 ->where(function ($query) use ($search) {
                     $query->orWhere('judul', 'like', "%$search%")
                         ->orWhere('created_at', 'like', "%$search%")
@@ -25,18 +27,23 @@ class PostPageController extends Controller
                             $query->where('name', 'like', "%$search%");
                         });
                 })
-                ->orderBy('created_at', $order)
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $posts = Post::with('penulis')
-                ->where('slug', '!=', $post->slug)
+            $recentPost = Post::with('penulis')
+                ->where('kategori', $kategori)
+                ->latest()
+                ->first();
+
+            $allPost = Post::with('penulis')
+                ->where('slug', '!=', $recentPost->slug)
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
 
         return Inertia::render('Post')->with([
-            'post' => $post,
-            'posts' => $posts,
+            'recentPost' => $recentPost,
+            'allPost' => $allPost,
         ]);
     }
 }
