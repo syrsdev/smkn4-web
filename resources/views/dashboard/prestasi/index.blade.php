@@ -118,7 +118,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/dashboard/post/' + slug + '/status',
+                    url: '/dashboard/prestasi/' + slug + '/status',
                     data: {
                         'status': status,
                     },

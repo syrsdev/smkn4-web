@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="tickets">
                                     <div class="ticket-items" id="ticket-items">
-                                        @foreach ($prestasi as $item)
+                                        @foreach ($other as $item)
                                             <a href="{{ route('prestasi.show', $item->slug) }}">
                                                 <div class="ticket-item">
                                                     <div class="ticket-title">
@@ -75,8 +75,8 @@
                                             <div class="ticket-divider"></div>
                                             <div class="ticket-form">
                                                 <div class="form-group text-right">
-                                                    <a href="{{ route('prestasi.edit', $post->slug) }}" class="btn btn-primary">
-                                                        Edit {{ ucfirst($kategori) }}
+                                                    <a href="{{ route('prestasi.edit', $prestasi->slug) }}" class="btn btn-primary">
+                                                        Edit Prestasi
                                                     </a>
                                                 </div>
                                             </div>

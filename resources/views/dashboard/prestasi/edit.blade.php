@@ -43,10 +43,16 @@
                                 <h4>{{ $title }}</h4>
                             </div>
 							<div class="card-body">
-								<form action="{{ route('prestasi.update', $prestasi->slug) }}" method="prestasi" enctype="multipart/form-data">
+								<form action="{{ route('prestasi.update', $prestasi->slug) }}" method="post" enctype="multipart/form-data">
 									@csrf
 									@method('PUT')
 									<input type="hidden" name="id_penulis" value="{{ $prestasi->id_penulis }}">
+                                    <div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
+										<div class="col-sm-12 col-md-7">
+											<img src="{{ $prestasi->gambar !== 'no-image-43.png' ? asset('storage/'.$kategori.'/'.$prestasi->gambar) : asset('images/default/'.$prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 250px">
+										</div>
+									</div>
 									<div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
 										<div class="col-sm-12 col-md-7">
@@ -70,6 +76,13 @@
 											<textarea class="form-control" name="konten">{{ $prestasi->konten }}</textarea>
 										</div>
 									</div>
+                                    <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pemenang</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <input type="text" class="form-control" name="pemenang"
+                                                value="{{ $prestasi->pemenang }}" required>
+                                        </div>
+                                    </div>
 									<div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar Baru (Opsional)</label>
 										<div class="col-sm-12 col-md-7">
