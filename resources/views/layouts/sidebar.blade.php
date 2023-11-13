@@ -100,7 +100,7 @@
                             <a class="nav-link" href="#">Prestasi</a>
                         </li>
                         <li class="{{ $subActive === 'Ekstrakurikuler' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Ekstrakurikuler</a>
+                            <a class="nav-link" href="">Ekstrakurikuler</a>
                         </li>
                     </ul>
                 </li>
