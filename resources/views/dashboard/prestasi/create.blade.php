@@ -46,13 +46,11 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="judul"
-                                                value="{{ Session::get('judul') }}" required autofocus>
+                                            <input type="text" class="form-control" name="judul" value="{{ Session::get('judul') }}" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label
-                                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" name="kategori">
                                                 <option disabled selected>Kategori</option>
@@ -72,8 +70,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pemenang</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="pemenang"
-                                                value="{{ Session::get('pemenang') }}" required>
+                                            <input type="text" class="form-control" name="pemenang" value="{{ Session::get('pemenang') }}" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">

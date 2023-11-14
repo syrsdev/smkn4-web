@@ -61,6 +61,9 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
         Route::prefix('kesiswaan')->group(function () {
             Route::resource('/prestasi', PrestasiController::class);
 
+            Route::get('/prestasi/{prestasi}/status', [PrestasiController::class, 'update_status'])
+                ->name('prestasi.status');
+
             Route::resource('/ekskul', EkskulController::class);
         });
 

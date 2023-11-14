@@ -19,7 +19,7 @@ class PrestasiController extends Controller
             ->latest()
             ->get();
 
-        confirmDelete('Hapus Prestasi?', 'Yakin ingin hapus Prestasi?');
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Prestasi?');
 
         return view('dashboard.prestasi.index')->with([
             'title' => 'Data Prestasi',
@@ -27,8 +27,6 @@ class PrestasiController extends Controller
             'subActive' => 'Prestasi',
             'prestasi' => $prestasi,
         ]);
-
-        // return response()->json(['prestasi' => $prestasi]);
     }
 
     /**
@@ -38,7 +36,7 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.create')
             ->with([
-                'title' => 'Tambah Prestasi Baru', 
+                'title' => 'Tambah Prestasi', 
                 'active' => 'Kesiswaan', 
                 'subActive' => 'Prestasi'
             ]);
@@ -93,12 +91,10 @@ class PrestasiController extends Controller
             toast('Prestasi berhasil dibuat!', 'success');
 
             return redirect()->route('prestasi.index');
-            // return response()->json(['prestasi' => $prestasi]);
         } catch (\Exception $e) {
             toast('Prestasi gagal dibuat.', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Prestasi gagal dibuat']);
         }
     }
 
@@ -107,12 +103,9 @@ class PrestasiController extends Controller
      */
     public function show(Prestasi $prestasi)
     {
-        $prestasi->with('penulis')
-            ->first();
-
         $other = Prestasi::with('penulis')
-            ->latest()
             ->where('slug', '!=', $prestasi->slug)
+            ->latest()
             ->limit(3)
             ->get();
 
@@ -124,8 +117,6 @@ class PrestasiController extends Controller
                 'prestasi' => $prestasi,
                 'other' => $other,
             ]);
-
-        // return response()->json(['prestasi' => $prestasi, 'other' => $other]);
     }
 
     /**
@@ -192,12 +183,10 @@ class PrestasiController extends Controller
             toast('Prestasi berhasil diedit!', 'success');
 
             return redirect()->route('prestasi.index');
-            // return response()->json(['prestasi' => $prestasi]);
         } catch (\Exception $e) {
-            toast('Prestasi gagal diedit!', 'warning');
+            toast('Prestasi gagal diedit.', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Prestasi gagal diedit']);
         }
     }
 
@@ -215,7 +204,6 @@ class PrestasiController extends Controller
         toast('Prestasi berhasil dihapus.', 'success');
 
         return redirect()->back();
-        // return response()->json(['message' => 'Prestasi berhasil dihapus']);
     }
 
     public function update_status(Request $request, Prestasi $prestasi)
@@ -223,28 +211,5 @@ class PrestasiController extends Controller
         $prestasi->update(['status' => $request->status]);
 
         return response()->json(['slug' => $prestasi->slug, 'status' => $request->status]);
-    }
-
-    public function upload_image(Request $request)
-    {
-        try {
-            if ($request->hasFile('file')) {
-                $request->validate([
-                    'file' => ['nullable', 'file', 'image', 'mimes:png,jpg']
-                ]);
-    
-                $file = $request->file('file');
-                $gambar = 'prestasi-konten-' . uniqid() . '.' . $file->extension();
-                $file->move(public_path('storage/prestasi-konten'), $gambar);
-
-                $url = '/storage/prestasi-konten/' . $gambar;
-    
-                return response()->json(['location' => $url]);
-            }
-        } catch (\Exception $e) {
-            $errorMessage = 'Terjadi kesalahan: ' . $e->getMessage();
-
-            return redirect()->back()->with('error', $errorMessage);
-        }
     }
 }
