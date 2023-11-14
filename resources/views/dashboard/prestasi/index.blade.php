@@ -2,8 +2,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
 @endsection
 
@@ -33,7 +32,7 @@
                                 <div class="card-header-action">
                                     <a href="{{ route('prestasi.create') }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-plus"></i>
-                                        Tambah Data
+                                        Tambah Prestasi
                                     </a>
                                 </div>
                             </div>
@@ -70,21 +69,14 @@
                                                         </label>
 													</td>
                                                     <td>
-                                                        <a href="{{ route('prestasi.show', $item->slug) }}"
-                                                            class="btn btn-sm btn-secondary" data-toggle="tooltip"
-                                                            data-placement="top" title="Lihat Prestasi">
+                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Prestasi">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.edit', $item->slug) }}"
-                                                            class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit Prestasi">
+                                                        <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Prestasi">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}"
-                                                            class="btn btn-sm btn-danger" data-confirm-delete="true"
-                                                            data-toggle="tooltip" data-placement="top" title="Hapus Prestasi">
-                                                            <i class="fas fa-trash"
-                                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Prestasi">
+                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -118,7 +110,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/dashboard/prestasi/' + slug + '/status',
+                    url: '/dashboard/kesiswaan/prestasi/' + slug + '/status',
                     data: {
                         'status': status,
                     },
