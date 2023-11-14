@@ -2,8 +2,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
 @endsection
 
@@ -57,18 +56,15 @@
                                                         <img src="{{ $item->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
-                                                    <td><a href="{{ $item->link_sosmed }}" target="_blank">{{ $item->link_sosmed }}</a></td>
                                                     <td>
-                                                        <a href="{{ route('ekskul.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit Ekstrakurikuler">
+                                                        <a href="{{ $item->link_sosmed }}" target="_blank">{{ $item->link_sosmed }}</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('ekskul.edit', $item->id) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Ekstrakurikuler">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('ekskul.destroy', $item->id) }}"
-                                                            class="btn btn-sm btn-danger" data-confirm-delete="true"
-                                                            data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler">
-                                                            <i class="fas fa-trash"
-                                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                        <a href="{{ route('ekskul.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler">
+                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -93,34 +89,4 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
-                let slug = $(this).data('slug');
-                let status = $(this).prop('checked') === true ? 1 : 0;
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/dashboard/post/' + slug + '/status',
-                    data: {
-                        'status': status,
-                    },
-                    success: function(response) {
-                        if (response.status === '1') {
-                            badge = `
-                                <div class="badge badge-success badge-${response.slug}">Published</div>
-                            `;
-                        } else if (response.status === '0') {
-                            badge = `
-                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
-                            `;
-                        }
-
-                        $(`.badge-${response.slug}`).replaceWith(badge);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
