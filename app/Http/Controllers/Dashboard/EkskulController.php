@@ -34,7 +34,7 @@ class EkskulController extends Controller
     public function create()
     {
         return view('dashboard.ekskul.create')->with([
-            'title' => 'Tambah Ekstrakurikuler Baru',
+            'title' => 'Tambah Ekstrakurikuler',
             'active' => 'Kesiswaan',
             'subActive' => 'Ekstrakurikuler',
         ]);

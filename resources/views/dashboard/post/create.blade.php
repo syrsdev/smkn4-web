@@ -20,17 +20,17 @@
                         <i class="fas fa-arrow-left"></i>
                     </div>
                 </div>
-                <h1>Tambah Post Baru</h1>
+                <h1>{{ $title }} Baru</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Post</div>
-                    <div class="breadcrumb-item">Tambah Post</div>
+                    <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Tambah Post Baru</h2>
+                <h2 class="section-title">{{ $title }} Baru</h2>
                 <p class="section-lead">
                     On this page you can create a new post and fill in all fields.
                 </p>

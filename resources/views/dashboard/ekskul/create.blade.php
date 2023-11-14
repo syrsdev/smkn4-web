@@ -13,7 +13,7 @@
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
-                <h1> {{ $title }}</h1>
+                <h1>{{ $title }} Baru</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -22,11 +22,11 @@
                     <div class="breadcrumb-item">
                         <a href="{{ route('ekskul.index') }}">Ekstrakurikuler</a>
                     </div>
-                    <div class="breadcrumb-item">Tambah Ekstrakurikuler</div>
+                    <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title"> {{ $title }}</h2>
+                <h2 class="section-title">{{ $title }} Baru</h2>
                 <p class="section-lead">
                     On this page you can create a new Ekskul and fill in all fields.
                 </p>

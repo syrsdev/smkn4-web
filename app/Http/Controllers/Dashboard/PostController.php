@@ -242,10 +242,10 @@ class PostController extends Controller
                 ]);
     
                 $file = $request->file('file');
-                $gambar = 'post-konten-' . uniqid() . '.' . $file->extension();
-                $file->move(public_path('storage/post-konten'), $gambar);
+                $gambar = 'image-' . uniqid() . '.' . $file->extension();
+                $file->move(public_path('storage/image-content'), $gambar);
 
-                $url = '/storage/post-konten/' . $gambar;
+                $url = '/storage/image-content/' . $gambar;
     
                 return response()->json(['location' => $url]);
             }
