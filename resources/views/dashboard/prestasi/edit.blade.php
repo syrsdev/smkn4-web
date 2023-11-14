@@ -50,7 +50,7 @@
                                     <div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
 										<div class="col-sm-12 col-md-7">
-											<img src="{{ $prestasi->gambar !== 'no-image-43.png' ? asset('storage/'.$kategori.'/'.$prestasi->gambar) : asset('images/default/'.$prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 250px">
+											<img src="{{ $prestasi->gambar !== 'no-image-43.png' ? asset('storage/prestasi/'.$prestasi->gambar) : asset('images/default/'.$prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 250px">
 										</div>
 									</div>
 									<div class="form-group row mb-4">
@@ -63,10 +63,10 @@
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
 										<div class="col-sm-12 col-md-7">
 											<select class="form-control selectric" name="kategori">
-												<option value="kota">Tingkat Kota</option>
-												<option value="provinsi">Tingkat Provinsi</option>
-												<option value="nasional">Tingkat Nasional</option>
-												<option value="internasional">Tingkat Internasional</option>
+												<option value="kota" {{ $prestasi->kategori === 'kota' ? 'selected' : '' }}>Tingkat Kota</option>
+												<option value="provinsi" {{ $prestasi->kategori === 'provinsi' ? 'selected' : '' }}>Tingkat Provinsi</option>
+												<option value="nasional" {{ $prestasi->kategori === 'nasional' ? 'selected' : '' }}>Tingkat Nasional</option>
+												<option value="internasional" {{ $prestasi->kategori === 'internasional' ? 'selected' : '' }}>Tingkat Internasional</option>
 											</select>
 										</div>
 									</div>
@@ -79,8 +79,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pemenang</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="pemenang"
-                                                value="{{ $prestasi->pemenang }}" required>
+                                            <input type="text" class="form-control" name="pemenang" value="{{ $prestasi->pemenang }}" required>
                                         </div>
                                     </div>
 									<div class="form-group row mb-4">
@@ -88,7 +87,7 @@
 										<div class="col-sm-12 col-md-7">
 											<div id="image-preview" class="image-preview">
 												<label for="image-upload" id="image-label">Pilih File</label>
-												<input type="file" class="form-control image-preview-filepond" name="gambar" id="image-upload" value="{{ $prestasi->gambar }}" />
+												<input type="file" class="form-control image-preview-filepond" name="gambar" id="image-upload">
 											</div>
 										</div>
 									</div>
@@ -123,6 +122,6 @@
     <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>
     
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/js/page/features-prestasi-create.js') }}"></script>
+    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <script src="{{ asset('assets/js/page/modules-tinymce.js') }}"></script>
 @endsection

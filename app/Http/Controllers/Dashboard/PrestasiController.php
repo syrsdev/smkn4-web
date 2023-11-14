@@ -38,7 +38,7 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.create')
             ->with([
-                'title' => 'Tambah Prestasi Baru', 
+                'title' => 'Tambah Prestasi', 
                 'active' => 'Kesiswaan', 
                 'subActive' => 'Prestasi'
             ]);

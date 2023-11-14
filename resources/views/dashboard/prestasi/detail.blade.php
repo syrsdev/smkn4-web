@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/chocolat/dist/css/chocolat.css') }}">
 @endsection
 
 @section('content')
@@ -67,7 +66,7 @@
                                         </div>
                                         <div class="ticket-description">
                                             <div class="gallery mb-3">
-                                                <img src="{{ $prestasi->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $prestasi->gambar) : url('images/default/' . $prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 400px;">
+                                                <img src="{{ $prestasi->gambar !== 'no-image-43.png' ? url('storage/prestasi/' . $prestasi->gambar) : url('images/default/' . $prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 400px;">
                                             </div>
 
                                             {!! $prestasi->konten !!}
@@ -93,6 +92,4 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/modules/summernote/summernote-bs4.js') }}"></script>
-    <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 @endsection
