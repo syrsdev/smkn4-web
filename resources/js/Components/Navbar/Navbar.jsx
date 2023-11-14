@@ -8,28 +8,10 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function Navbar({ subnav, logo }) {
     const [sidebar, setSidebar] = useState(false);
-    const [hoverDropdown, setHoverDropdown] = useState(0);
-    const [hoverDropdown2, setHoverDropdown2] = useState(0);
-    const [hoverDropdown3, setHoverDropdown3] = useState(0);
+    const [hoverDropdown, setHoverDropdown] = useState(false);
+    const [hoverDropdown2, setHoverDropdown2] = useState(false);
+    const [hoverDropdown3, setHoverDropdown3] = useState(false);
 
-    const handleDropdownIn = () => {
-        setHoverDropdown(1);
-    };
-    const handleDropdownOut = () => {
-        setHoverDropdown(0);
-    };
-    const handleDropdownIn2 = () => {
-        setHoverDropdown2(1);
-    };
-    const handleDropdownOut2 = () => {
-        setHoverDropdown2(0);
-    };
-    const handleDropdownIn3 = () => {
-        setHoverDropdown3(1);
-    };
-    const handleDropdownOut3 = () => {
-        setHoverDropdown3(0);
-    };
     return (
         <>
             <nav className="sticky top-0 z-50">
@@ -84,8 +66,12 @@ export default function Navbar({ subnav, logo }) {
                                     </li>
                                     <li
                                         className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
-                                        onMouseEnter={handleDropdownIn}
-                                        onMouseLeave={handleDropdownOut}
+                                        onMouseEnter={() => {
+                                            setHoverDropdown(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown(false);
+                                        }}
                                     >
                                         <Link
                                             href="#"
@@ -108,8 +94,12 @@ export default function Navbar({ subnav, logo }) {
                                     </li>
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
-                                        onMouseEnter={handleDropdownIn2}
-                                        onMouseLeave={handleDropdownOut2}
+                                        onMouseEnter={() => {
+                                            setHoverDropdown2(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown2(false);
+                                        }}
                                     >
                                         <Link
                                             href="#"
@@ -131,8 +121,12 @@ export default function Navbar({ subnav, logo }) {
                                     </li>
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
-                                        onMouseEnter={handleDropdownIn3}
-                                        onMouseLeave={handleDropdownOut3}
+                                        onMouseEnter={() => {
+                                            setHoverDropdown3(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown3(false);
+                                        }}
                                     >
                                         <Link
                                             href="#"
