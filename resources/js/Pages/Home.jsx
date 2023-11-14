@@ -5,7 +5,6 @@ import ButtonPrimary from "@/Components/ButtonPrimary/Button";
 import { FaAngleRight } from "react-icons/fa6";
 import ReactTypingEffect from "react-typing-effect";
 function Home(props) {
-    console.log(props);
     let namaSekolah = props.sekolah.nama_sekolah;
     let welcome = props.heroSection.welcome;
     let deskripsi = props.heroSection.deskripsi;

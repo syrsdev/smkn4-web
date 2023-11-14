@@ -10,7 +10,7 @@ export default function Navbar({ subnav, logo }) {
     const [sidebar, setSidebar] = useState(false);
     const [hoverDropdown, setHoverDropdown] = useState(0);
     const [hoverDropdown2, setHoverDropdown2] = useState(0);
-    console.log(sidebar);
+    const [hoverDropdown3, setHoverDropdown3] = useState(0);
 
     const handleDropdownIn = () => {
         setHoverDropdown(1);
@@ -23,6 +23,12 @@ export default function Navbar({ subnav, logo }) {
     };
     const handleDropdownOut2 = () => {
         setHoverDropdown2(0);
+    };
+    const handleDropdownIn3 = () => {
+        setHoverDropdown3(1);
+    };
+    const handleDropdownOut3 = () => {
+        setHoverDropdown3(0);
     };
     return (
         <>
@@ -120,13 +126,27 @@ export default function Navbar({ subnav, logo }) {
                                                 BERITA TERKINI
                                             </DropLink>
                                             <DropLink href="#">EVENT</DropLink>
+                                            <DropLink href="#">AGENDA</DropLink>
+                                        </Dropdown>
+                                    </li>
+                                    <li
+                                        className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
+                                        onMouseEnter={handleDropdownIn3}
+                                        onMouseLeave={handleDropdownOut3}
+                                    >
+                                        <Link
+                                            href="#"
+                                            className="flex items-center gap-2"
+                                        >
+                                            KESISWAAN{" "}
+                                            <IoChevronDown className="duration-150 rotate" />
+                                        </Link>
+                                        <Dropdown shown={hoverDropdown3}>
                                             <DropLink href="#">
                                                 PRESTASI
                                             </DropLink>
+                                            <DropLink href="#">EKSKUL</DropLink>
                                         </Dropdown>
-                                    </li>
-                                    <li className="duration-150 hover-link before:bg-tertiary">
-                                        <Link href="#">PROFIL ALUMNI</Link>
                                     </li>
                                 </ul>
                             </>
