@@ -14,13 +14,13 @@
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
-                <h1>Tambah Post Baru</h1>
+                <h1>{{ $title }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Guru dan Staff</div>
-                    <div class="breadcrumb-item">Tambah Pendidik</div>
+                    <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
             <div class="section-body">
@@ -32,23 +32,21 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Tulis Post</h4>
+                                <h4>Tulis Tenaga Pendidik</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama
-                                            Pendidik</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pendidik</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama"
-                                                value="{{ Session::get('nama') }}" autofocus>
+                                            <input type="text" class="form-control" name="nama" value="{{ Session::get('nama') }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" name="bagian">
+                                            <select class="form-control selectric" id="bagian" name="bagian" onchange="updateSelectOptions()">
                                                 <option disabled selected>Bagian</option>
                                                 <option value="pendidik">Tenaga Pendidik</option>
                                                 <option value="pegawai">Tenaga Kepegawaian</option>
@@ -56,22 +54,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub
-                                            Bagian</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" name="sub_bagian">
+                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" onchange="updateSelectOptions()">
                                                 <option disabled selected>Sub Bagian</option>
                                                 <option value="guru">Guru</option>
                                                 <option value="staff">Staff</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata
-                                            Pelajaran</label>
+                                    <div class="form-group row mb-4" id="form_mapel">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <select class="form-control select2" name="mapel">
-                                                <option value="{{ null }}" selected>Mata Pelajaran</option>
+                                            <select class="form-control select2" id="mapel" name="mapel">
+                                                <option value="null" disabled selected>Mata Pelajaran</option>
                                                 @foreach ($mapel as $item)
                                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                                 @endforeach
@@ -109,8 +105,6 @@
     <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    {{-- <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script> --}}
-
     <script>
         "use strict";
     
@@ -124,5 +118,25 @@
             no_label: false,
             success_callback: null
         });
+    </script>
+
+    <script>
+        function updateSelectOptions() {
+            let bagian = document.getElementById("bagian");
+            let subBagian = document.getElementById("sub_bagian");
+            let formMapel = document.getElementById("form_mapel");
+            let mapel = document.getElementById("mapel");
+
+            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+                formMapel.style.display = "flex";
+            } else if (bagian.value === "pegawai" && subBagian.value === "staff") {
+                mapel.value = null;
+                formMapel.style.display = "none";
+            } else {
+                formMapel.style.display = "flex";
+            }
+        }
+
+        updateSelectOptions();
     </script>
 @endsection

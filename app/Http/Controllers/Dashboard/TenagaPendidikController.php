@@ -63,7 +63,7 @@ class TenagaPendidikController extends Controller
         ]);
 
         $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)));
+        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)), '-');
 
         $guru = [
             'slug' => $slug,
@@ -101,7 +101,7 @@ class TenagaPendidikController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pendidik $pendidik)
+    public function show(Pendidik $guru)
     {
         //
     }
@@ -109,12 +109,10 @@ class TenagaPendidikController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pendidik $pendidik)
+    public function edit(Pendidik $guru)
     {
         $mapel = Mapel::orderBy('nama', 'asc')
             ->get();
-
-        dd($pendidik);
 
         return view('dashboard.pendidik.edit')
             ->with([
@@ -122,23 +120,27 @@ class TenagaPendidikController extends Controller
                 'active' => 'Guru',
                 'subActive' => null,
                 'mapel' => $mapel,
-                'guru' => $pendidik,
+                'guru' => $guru,
             ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pendidik $pendidik)
+    public function update(Request $request, Pendidik $guru)
     {
         $request->validate([
             'nama'=> 'required',
             'bagian' => 'required',
             'sub_bagian' => 'required',
-            'id_mapel' => 'required',
+            'id_mapel' => 'nullable',
         ]);
 
-        $guru = [
+        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
+        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)), '-');
+
+        $updateGuru = [
+            'slug' => $slug,
             'nama' => $request->input('nama'),
             'bagian' => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
@@ -153,21 +155,21 @@ class TenagaPendidikController extends Controller
             $file = $request->file('gambar');
             $gambar = $request->input('nama') . '.' . $file->extension();
 
-            if ($pendidik->gambar !== 'no-image-34.png') {
-                File::delete(public_path('storage/pendidik/' . $pendidik->gambar));
+            if ($guru->gambar !== 'no-image-34.png') {
+                File::delete(public_path('storage/pendidik/' . $guru->gambar));
             }
 
             $file->move(public_path('storage/pendidik'), $gambar);
 
-            $guru['gambar'] = $gambar;
+            $updateGuru['gambar'] = $gambar;
         }
 
         try {
-            $pendidik->update($guru);
+            $guru->update($updateGuru);
 
             toast('Tenaga Pendidik berhasil diedit!', 'success');
 
-            return redirect()->route('ekskul.index');
+            return redirect()->route('guru.index');
         } catch (\Exception) {
             toast('Tenaga Pendidik gagal diedit.', 'warning');
 
@@ -178,13 +180,13 @@ class TenagaPendidikController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pendidik $pendidik)
+    public function destroy(Pendidik $guru)
     {
-        if ($pendidik->gambar !== 'no-image-34.png') {
-            File::delete(public_path('storage/pendidik/' . $pendidik->gambar));
+        if ($guru->gambar !== 'no-image-34.png') {
+            File::delete(public_path('storage/pendidik/' . $guru->gambar));
         }
 
-        $pendidik->delete();
+        $guru->delete();
 
         toast('Tenaga Pendidik berhasil dihapus.', 'success');
         

@@ -2,8 +2,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
 @endsection
 
@@ -67,21 +66,14 @@
                                                     </td>
                                                     <td>{{ ucfirst($item->sub_bagian) }}</td>
                                                     <td>
-                                                        @if ($item->mapel !== null)
-                                                            {{ $item->mapel->nama }}
-                                                        @endif
+                                                        {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('guru.edit', $item->slug) }}"
-                                                            class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit Guru">
+                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Guru">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}"
-                                                            class="btn btn-sm btn-danger" data-confirm-delete="true"
-                                                            data-toggle="tooltip" data-placement="top" title="Hapus Guru">
-                                                            <i class="fas fa-trash"
-                                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Guru">
+                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -106,34 +98,4 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
-                let slug = $(this).data('slug');
-                let status = $(this).prop('checked') === true ? 1 : 0;
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/dashboard/post/' + slug + '/status',
-                    data: {
-                        'status': status,
-                    },
-                    success: function(response) {
-                        if (response.status === '1') {
-                            badge = `
-                                <div class="badge badge-success badge-${response.slug}">Published</div>
-                            `;
-                        } else if (response.status === '0') {
-                            badge = `
-                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
-                            `;
-                        }
-
-                        $(`.badge-${response.slug}`).replaceWith(badge);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection

@@ -21,7 +21,8 @@ return new class extends Migration
 
         Schema::create('tenaga_pendidik', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')
+                ->unique();
             $table->string('nama');
             $table->enum('bagian', ['pendidik', 'pegawai']);
             $table->enum('sub_bagian', ['guru', 'staff']);
