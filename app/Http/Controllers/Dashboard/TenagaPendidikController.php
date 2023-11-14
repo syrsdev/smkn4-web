@@ -19,6 +19,8 @@ class TenagaPendidikController extends Controller
         $guru = Pendidik::with('mapel')
             ->orderBy('nama', 'asc')
             ->get();
+            
+        confirmDelete('Hapus Tenaga Pendidik?', 'Yakin ingin hapus Tenaga Pendidik?');
 
         return view('dashboard.pendidik.index')
             ->with([
@@ -57,10 +59,14 @@ class TenagaPendidikController extends Controller
             'nama'=> 'required',
             'bagian' => 'required',
             'sub_bagian' => 'required',
-            'id_mapel' => 'required',
+            'id_mapel' => 'nullable',
         ]);
 
+        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
+        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)));
+
         $guru = [
+            'slug' => $slug,
             'nama' => $request->input('nama'),
             'bagian' => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
@@ -82,11 +88,11 @@ class TenagaPendidikController extends Controller
         try {
             Pendidik::create($guru);
 
-            toast('Ekstrakurikuler berhasil dibuat!', 'success');
+            toast('Tenaga Pendidik berhasil dibuat!', 'success');
 
-            return redirect()->route('ekskul.index');
+            return redirect()->route('guru.index');
         } catch (\Exception) {
-            toast('Ekstrakurikuler gagal dibuat.', 'warning');
+            toast('Tenaga Pendidik gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -105,12 +111,14 @@ class TenagaPendidikController extends Controller
      */
     public function edit(Pendidik $pendidik)
     {
-        $mapel = Mapel::orderBy('nama','asc')
+        $mapel = Mapel::orderBy('nama', 'asc')
             ->get();
 
-        return view('dashboard.pendidik.create')
+        dd($pendidik);
+
+        return view('dashboard.pendidik.edit')
             ->with([
-                'title' => 'Tambah Data Pendidik',
+                'title' => 'Edit Data Pendidik',
                 'active' => 'Guru',
                 'subActive' => null,
                 'mapel' => $mapel,
@@ -157,11 +165,11 @@ class TenagaPendidikController extends Controller
         try {
             $pendidik->update($guru);
 
-            toast('Ekstrakurikuler berhasil diedit!', 'success');
+            toast('Tenaga Pendidik berhasil diedit!', 'success');
 
             return redirect()->route('ekskul.index');
         } catch (\Exception) {
-            toast('Ekstrakurikuler gagal diedit.', 'warning');
+            toast('Tenaga Pendidik gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -176,7 +184,9 @@ class TenagaPendidikController extends Controller
             File::delete(public_path('storage/pendidik/' . $pendidik->gambar));
         }
 
-        toast('Ekstrakurikuler berhasil dihapus.', 'success');
+        $pendidik->delete();
+
+        toast('Tenaga Pendidik berhasil dihapus.', 'success');
         
         return redirect()->back();
     }

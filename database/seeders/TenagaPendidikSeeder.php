@@ -25,30 +25,35 @@ class TenagaPendidikSeeder extends Seeder
 
         Pendidik::insert([
             [
-                'nama' => 'Hj. Endah Resmiati, S.Pd. M.Si.',
+                'slug' => 'endah-resmiati-s-pd-m-si',
+                'nama' => 'Endah Resmiati, S.Pd. M.Si.',
                 'bagian' => 'pegawai',
                 'sub_bagian' => 'guru',
                 'id_mapel' => null,
             ],
             [
+                'slug' => 'anas-chaerudin-maulana-s-kom',
                 'nama' => 'Anas Chaerudin Maulana, S.Kom',
                 'bagian' => 'pendidik',
                 'sub_bagian' => 'guru',
                 'id_mapel' => 1,
             ],
             [
+                'slug' => 'rina-nurmaladewi-s-pd',
                 'nama' => 'Rina Nurmaladewi, S.Pd.',
                 'bagian' => 'pendidik',
                 'sub_bagian' => 'guru',
                 'id_mapel' => 3,
             ],
             [
+                'slug' => 'latifah-s-pd',
                 'nama' => 'Latifah, S.Pd.',
                 'bagian' => 'pendidik',
                 'sub_bagian' => 'guru',
                 'id_mapel' => 2,
             ],
             [
+                'slug' => 'komariah-s-kom',
                 'nama' => 'Komariah, S.Kom.',
                 'bagian' => 'pendidik',
                 'sub_bagian' => 'guru',

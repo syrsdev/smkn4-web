@@ -68,7 +68,7 @@
                     </ul>
                 </li>
                 <li class="dropdown {{ $active === 'Guru' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('guru.index') }}" class="nav-link">
                         <i class="fas fa-users-cog"></i>
                         <span>Guru dan Staff</span>
                     </a>
