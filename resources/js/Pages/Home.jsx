@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LandingLayout from "@/Layouts/LandingLayout";
 import Container from "@/Components/Container/Container";
 import ButtonPrimary from "@/Components/ButtonPrimary/Button";
 import { FaAngleRight } from "react-icons/fa6";
 import ReactTypingEffect from "react-typing-effect";
+import MadingLayout from "@/Layouts/MadingLayout";
 function Home(props) {
     console.log(props);
-    let namaSekolah = props.sekolah.nama_sekolah;
-    let welcome = props.heroSection.welcome;
-    let deskripsi = props.heroSection.deskripsi;
+    const [namaSekolah, setNamaSekolah] = useState("");
+    const [welcome, setWelcome] = useState("");
+    const [deskripsi, setDeskripsi] = useState("");
+
+    useEffect(() => {
+        const { nama_sekolah } = props.sekolah;
+        const { welcome, deskripsi } = props.heroSection;
+
+        setNamaSekolah(nama_sekolah);
+        setWelcome(welcome);
+        setDeskripsi(deskripsi);
+    }, [
+        props.sekolah.nama_sekolah,
+        props.heroSection.welcome,
+        props.heroSection.deskripsi,
+    ]);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -31,14 +45,41 @@ function Home(props) {
                         />
                     </h1>
 
-                    <p className="relative z-20 my-5 md:my-7">{deskripsi}</p>
+                    <p className="relative z-20 mt-3 mb-5 md:mt-5 md:mb-7">
+                        {deskripsi}
+                    </p>
                     <ButtonPrimary>
                         Lihat Jurusan <FaAngleRight />
                     </ButtonPrimary>
                 </div>
             </Container>
-            <Container>
-                <h2>smkn 4</h2>
+            <Container classname="my-10">
+                <MadingLayout>
+                    <h2 className="text-primary text-[18px] md:text-[24px] font-bold mb-4 lg:hidden block text-center md:text-left">
+                        {props.sambutan.judul}
+                    </h2>
+                    <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
+                        <div className="flex flex-col items-center md:items-start lg:w-7/12">
+                            <img
+                                src="/images/default/no-image-34.png"
+                                alt="foto kepala sekolah"
+                                className="object-contain"
+                            />
+                            <div className="flex flex-col mt-8 text-primary whitespace-nowrap">
+                                <p className="font-bold text-[16px] lg:text-[18px] border-b-2 border-primary">
+                                    {props.sambutan.kepsek.nama}
+                                </p>
+                                <p>Plt. Kepala Sekolah</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col text-center md:text-left">
+                            <h2 className="text-primary text-[18px] md:text-[24px] font-bold mb-4 hidden lg:block">
+                                {props.sambutan.judul}
+                            </h2>
+                            <p>{props.sambutan.konten}</p>
+                        </div>
+                    </div>
+                </MadingLayout>
             </Container>
         </LandingLayout>
     );

@@ -8,22 +8,10 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function Navbar({ subnav, logo }) {
     const [sidebar, setSidebar] = useState(false);
-    const [hoverDropdown, setHoverDropdown] = useState(0);
-    const [hoverDropdown2, setHoverDropdown2] = useState(0);
-    console.log(sidebar);
+    const [hoverDropdown, setHoverDropdown] = useState(false);
+    const [hoverDropdown2, setHoverDropdown2] = useState(false);
+    const [hoverDropdown3, setHoverDropdown3] = useState(false);
 
-    const handleDropdownIn = () => {
-        setHoverDropdown(1);
-    };
-    const handleDropdownOut = () => {
-        setHoverDropdown(0);
-    };
-    const handleDropdownIn2 = () => {
-        setHoverDropdown2(1);
-    };
-    const handleDropdownOut2 = () => {
-        setHoverDropdown2(0);
-    };
     return (
         <>
             <nav className="sticky top-0 z-50">
@@ -78,8 +66,12 @@ export default function Navbar({ subnav, logo }) {
                                     </li>
                                     <li
                                         className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
-                                        onMouseEnter={handleDropdownIn}
-                                        onMouseLeave={handleDropdownOut}
+                                        onMouseEnter={() => {
+                                            setHoverDropdown(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown(false);
+                                        }}
                                     >
                                         <Link
                                             href="#"
@@ -102,8 +94,12 @@ export default function Navbar({ subnav, logo }) {
                                     </li>
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
-                                        onMouseEnter={handleDropdownIn2}
-                                        onMouseLeave={handleDropdownOut2}
+                                        onMouseEnter={() => {
+                                            setHoverDropdown2(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown2(false);
+                                        }}
                                     >
                                         <Link
                                             href="#"
@@ -120,13 +116,31 @@ export default function Navbar({ subnav, logo }) {
                                                 BERITA TERKINI
                                             </DropLink>
                                             <DropLink href="#">EVENT</DropLink>
+                                            <DropLink href="#">AGENDA</DropLink>
+                                        </Dropdown>
+                                    </li>
+                                    <li
+                                        className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
+                                        onMouseEnter={() => {
+                                            setHoverDropdown3(true);
+                                        }}
+                                        onMouseLeave={() => {
+                                            setHoverDropdown3(false);
+                                        }}
+                                    >
+                                        <Link
+                                            href="#"
+                                            className="flex items-center gap-2"
+                                        >
+                                            KESISWAAN{" "}
+                                            <IoChevronDown className="duration-150 rotate" />
+                                        </Link>
+                                        <Dropdown shown={hoverDropdown3}>
                                             <DropLink href="#">
                                                 PRESTASI
                                             </DropLink>
+                                            <DropLink href="#">EKSKUL</DropLink>
                                         </Dropdown>
-                                    </li>
-                                    <li className="duration-150 hover-link before:bg-tertiary">
-                                        <Link href="#">PROFIL ALUMNI</Link>
                                     </li>
                                 </ul>
                             </>
