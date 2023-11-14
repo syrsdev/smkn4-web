@@ -18,7 +18,7 @@ class EkskulController extends Controller
         $ekskul = Ekskul::orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Ekstrakurikuler?', 'Yakin ingin hapus Ekstrakurikuler?');
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Ekstrakurikuler?');
 
         return view('dashboard.ekskul.index')->with([
             'title' => 'Data Ekstrakurikuler',
@@ -26,8 +26,6 @@ class EkskulController extends Controller
             'subActive' => 'Ekstrakurikuler',
             'ekskul' => $ekskul,
         ]);
-
-        // return response()->json(['ekskul' => $ekskul]);
     }
 
     /**
@@ -78,12 +76,10 @@ class EkskulController extends Controller
             toast('Ekstrakurikuler berhasil dibuat!', 'success');
 
             return redirect()->route('ekskul.index');
-            // return response()->json(['ekskul' => $ekskul]);
         } catch (\Exception $e) {
             toast('Ekstrakurikuler gagal dibuat.', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Ekstrakurikuler gagal dibuat']);
         }
     }
 
@@ -146,12 +142,10 @@ class EkskulController extends Controller
             toast('Ekstrakurikuler berhasil diedit!', 'success');
 
             return redirect()->route('ekskul.index');
-            // return response()->json(['ekskul' => $ekskul]);
         } catch (\Exception $e) {
             toast('Ekstrakurikuler gagal diedit!', 'warning');
 
             return redirect()->back();
-            // return response()->json(['message' => 'Ekstrakurikuler gagal diedit']);
         }
     }
 
@@ -169,6 +163,5 @@ class EkskulController extends Controller
         toast('Ekstrakurikuler berhasil dihapus.', 'success');
 
         return redirect()->back();
-        // return response()->json(['message' => 'Ekstrakurikuler berhasil dihapus']);
     }
 }

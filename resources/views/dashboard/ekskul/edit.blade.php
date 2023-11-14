@@ -37,49 +37,40 @@
                                 <h4>{{ $title }}</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('ekskul.update', $ekskul->id) }}" method="post"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('ekskul.update', $ekskul->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <img src="{{ $ekskul->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $ekskul->gambar) : asset('images/default/' . $ekskul->gambar) }}"
-                                                alt="{{ $ekskul->nama }}" style="width: 250px">
+                                            <img src="{{ $ekskul->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $ekskul->gambar) : asset('images/default/' . $ekskul->gambar) }}" alt="{{ $ekskul->nama }}" style="width: 250px">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama
-                                            Ekstrakurikuler</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ekstrakurikuler</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama"
-                                                value="{{ $ekskul->nama }}">
+                                            <input type="text" class="form-control" name="nama" value="{{ $ekskul->nama }}">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link
-                                            Sosmed</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link Sosmed</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="link_sosmed"
-                                                value="{{ $ekskul->link_sosmed }}">
+                                            <input type="text" class="form-control" name="link_sosmed" value="{{ $ekskul->link_sosmed }}">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar Baru
-                                            (Opsional)</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar Baru (Opsional)</label>
                                         <div class="col-sm-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
-                                                <input type="file" class="form-control image-preview-filepond"
-                                                    name="gambar" id="image-upload" />
+                                                <input type="file" class="form-control image-preview-filepond" name="gambar" id="image-upload">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                         <div class="col-sm-12 col-md-7">
-                                            <button type="submit" class="btn btn-primary">Edit
-                                                Data</button>
+                                            <button type="submit" class="btn btn-primary">Edit Data</button>
                                         </div>
                                     </div>
                                 </form>

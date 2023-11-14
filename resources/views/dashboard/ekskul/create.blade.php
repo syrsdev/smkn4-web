@@ -19,7 +19,10 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Kesiswaan</div>
-                    <div class="breadcrumb-item">Tambah Ekskul</div>
+                    <div class="breadcrumb-item">
+                        <a href="{{ route('ekskul.index') }}">Ekstrakurikuler</a>
+                    </div>
+                    <div class="breadcrumb-item">Tambah Ekstrakurikuler</div>
                 </div>
             </div>
             <div class="section-body">
@@ -37,24 +40,19 @@
                                 <form action="{{ route('ekskul.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama
-                                            Ekstrakurikuler</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ekstrakurikuler</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama"
-                                                value="{{ Session::get('nama') }}" autofocus>
+                                            <input type="text" class="form-control" name="nama" value="{{ Session::get('nama') }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link
-                                            Sosmed</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link Sosmed</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="link_sosmed"
-                                                value="{{ Session::get('link_sosmed') }}" autofocus>
+                                            <input type="text" class="form-control" name="link_sosmed" value="{{ Session::get('link_sosmed') }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Logo
-                                            Ekstrakurikuler</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Logo Ekstrakurikuler</label>
                                         <div class="col-sm-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
