@@ -33,11 +33,14 @@ class LandingPageController extends Controller
             ->where(['kategori' => 'berita', 'status' => '1'])
             ->latest();
 
-        $agenda = Post::with('penulis')
-            ->where(['kategori' => 'agenda', 'status' => '1'])
-            ->latest()
-            ->limit(4)
-            ->get();
+        $mading = [
+            'list' => Post::with('penulis')
+                ->where(['kategori' => 'agenda', 'status' => '1'])
+                ->latest()
+                ->limit(4)
+                ->get(),
+            'title' =>  'AGENDA SEKOLAH',
+        ];
 
         $konsentrasi = KonsentrasiKeahlian::get();
 
@@ -83,7 +86,7 @@ class LandingPageController extends Controller
                 'heroSection' => $this->heroSection,
                 'sambutan' => $sambutan,
                 'berita' => $berita,
-                'agenda' => $agenda,
+                'mading' => $mading,
                 'konsentrasi' => $konsentrasi,
                 'prestasi' => $prestasi,
                 'kategoriPrestasi' => $kategoriPrestasi,

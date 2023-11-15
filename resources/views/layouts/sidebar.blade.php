@@ -56,13 +56,13 @@
                         <span>Profil Sekolah</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="{{ $subActive === 'Sejarah' ? 'active' : '' }}">
+                        <li class="{{ $subActive === 'Sejarah' ? 'active' : '' }} mb-2">
                             <a class="nav-link" href="#">Sejarah Sekolah</a>
                         </li>
-                        <li class="{{ $subActive === 'Visi-Misi' ? 'active' : '' }}">
+                        <li class="{{ $subActive === 'Visi-Misi' ? 'active' : '' }} mb-3">
                             <a class="nav-link" href="#">Visi & Misi Sekolah</a>
                         </li>
-                        <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }}">
+                        <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }} mt-2">
                             <a class="nav-link" href="#">Sambutan Kepala Sekolah</a>
                         </li>
                     </ul>
@@ -126,7 +126,7 @@
                 <li class="dropdown {{ $active === 'Hero' ? 'active' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fas fa-lightbulb"></i>
-                        <span>Hero Content</span>
+                        <span>Hero Konten</span>
                     </a>
                 </li>
                 <li class="menu-header">Users</li>
