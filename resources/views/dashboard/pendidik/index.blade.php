@@ -29,9 +29,17 @@
                             <div class="card-header">
                                 <h4>{{ $title }}</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Guru">
                                         <i class="fas fa-plus"></i>
-                                        Tambah Data
+                                    </a>
+                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" data-placement="top" title="Impor Data Guru">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Download Data Guru">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
+                                        <i class="fas fa-book"></i>
                                     </a>
                                 </div>
                             </div>
@@ -87,6 +95,7 @@
                 </div>
             </div>
         </section>
+        @include('dashboard.pendidik.import')
     </div>
 @endsection
 
@@ -98,4 +107,9 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
+    <script>
+        document.getElementById('btn-import').addEventListener('click', function () {
+            $('#importGuru').modal('show');
+        });
+    </script>
 @endsection

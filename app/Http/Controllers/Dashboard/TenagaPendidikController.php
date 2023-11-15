@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Exports\PendidikExport;
 use App\Http\Controllers\Controller;
+use App\Imports\PendidikImport;
 use App\Models\Mapel;
 use App\Models\Pendidik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TenagaPendidikController extends Controller
 {
@@ -191,5 +194,27 @@ class TenagaPendidikController extends Controller
         toast('Tenaga Pendidik berhasil dihapus.', 'success');
         
         return redirect()->back();
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        try {
+            Excel::import(new PendidikImport, $request->file('file'));
+    
+            toast('Data Tenaga Pendidik berhasil diimpor!', 'success');
+        } catch(\Exception $e) {
+            toast('Data Tenaga Pendidik gagal diimpor.', 'warning');
+        }
+
+        return redirect()->back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new PendidikExport, 'Data Tenaga Pendidik.xlsx');
     }
 }
