@@ -34,12 +34,12 @@ class LandingPageController extends Controller
             ->latest();
 
         $mading = [
-            'post' => Post::with('penulis')
+            'list' => Post::with('penulis')
                 ->where(['kategori' => 'agenda', 'status' => '1'])
                 ->latest()
                 ->limit(4)
                 ->get(),
-            'title' =>  'ANGENDA SEKOLAH',
+            'title' =>  'AGENDA SEKOLAH',
         ];
 
         $konsentrasi = KonsentrasiKeahlian::get();
