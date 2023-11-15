@@ -6,47 +6,70 @@ import SideDropLink from "../Dropdown/SideDropLink";
 function Sidebar({ isActive }) {
     const [dropdown, setDropdown] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
+    const [dropdown3, setDropdown3] = useState(false);
     return (
         <div
-            className={`fixed w-4/6 md:w-1/2 min-h-screen bg-[#F2F7FF] z-[60] top-0 duration-700 lg:hidden ${
+            className={`fixed w-[70%] md:w-[44%] min-h-screen bg-[#F2F7FF] z-[60] top-0 duration-700 lg:hidden ${
                 isActive == false ? "-right-[1000px]" : "-right-1"
             }`}
         >
             <div className="flex flex-col items-center my-8">
                 <img
+                    loading="lazy"
                     src="/images/favicon.png"
                     alt="logo smkn 4"
                     width={60}
                     className="object-contain"
                 />
-                <ul className="w-full h-[500px] md:h-full px-10 pt-8 overflow-y-auto">
-                    <DropLink href="#" border="border-b-2">
+                <ul className="w-full h-[500px] md:h-full px-8 md:px-10 pt-8 overflow-y-auto">
+                    <DropLink href="#" border="border-b-2" pb={true}>
                         BERANDA
                     </DropLink>
                     <span onClick={() => setDropdown(!dropdown)}>
                         <SideDropDown title="PROFILE SEKOLAH" active={dropdown}>
                             <SideDropLink>
-                                <DropLink href="#">TENTANG SEKOLAH</DropLink>
-                                <DropLink href="#">GURU DAN STAF</DropLink>
+                                <DropLink href="#" pb={true}>
+                                    TENTANG SEKOLAH
+                                </DropLink>
+                                <DropLink href="#" pb={true}>
+                                    GURU DAN STAF
+                                </DropLink>
                             </SideDropLink>
                         </SideDropDown>
                     </span>
-                    <DropLink href="#" border="border-b-2">
+                    <DropLink href="#" border="border-b-2" pb={true}>
                         JURUSAN
                     </DropLink>
                     <span onClick={() => setDropdown2(!dropdown2)}>
                         <SideDropDown title="BERITA" active={dropdown2}>
                             <SideDropLink>
-                                <DropLink href="#">ARTIKEL</DropLink>
-                                <DropLink href="#">BERITA TERKINI</DropLink>
-                                <DropLink href="#">EVENT</DropLink>
-                                <DropLink href="#">PRESTASI</DropLink>
+                                <DropLink href="#" pb={true}>
+                                    ARTIKEL
+                                </DropLink>
+                                <DropLink href="#" pb={true}>
+                                    BERITA TERKINI
+                                </DropLink>
+                                <DropLink href="#" pb={true}>
+                                    EVENT
+                                </DropLink>
+                                <DropLink href="#" pb={true}>
+                                    AGENDA
+                                </DropLink>
                             </SideDropLink>
                         </SideDropDown>
                     </span>
-                    <DropLink href="#" border="border-b-2">
-                        PROFILE ALUMNI
-                    </DropLink>
+                    <span onClick={() => setDropdown3(!dropdown3)}>
+                        <SideDropDown title="KESISWAAN" active={dropdown3}>
+                            <SideDropLink>
+                                <DropLink href="#" pb={true}>
+                                    PRESTASI
+                                </DropLink>
+                                <DropLink href="#" pb={true}>
+                                    EKSKUL
+                                </DropLink>
+                            </SideDropLink>
+                        </SideDropDown>
+                    </span>
                 </ul>
             </div>
         </div>
