@@ -23,30 +23,28 @@ class PendidikImport implements ToCollection, WithHeadingRow
                 $bagian = 'pegawai';
             }
 
-            // dd($bagian);
-
             if ($row['sub_bagian'] === 'Guru Produktif') {
                 $subBagian = 'guru';
             } elseif ($row['sub_bagian'] === 'Staff Kurikulum') {
                 $subBagian = 'staff';
             }
 
-            // dd($bagian, $subBagian);
-
-            $mapel = Mapel::where('nama', $row['mapel'])
+            $mapel = Mapel::where('nama', $row['mata_pelajaran'])
                 ->first();
 
-            // dd($bagian, $subBagian, $mapel);
-            
             if ($mapel !== null) {
-                Pendidik::insert([
-                    'slug' => $slug,
-                    'nama' => $row['nama'],
-                    'bagian' => $bagian,
-                    'sub_bagian' => $subBagian,
-                    'id_mapel' => $mapel->id,
-                ]);
+                $id_mapel = $mapel->id;
+            } else {
+                $id_mapel = null;
             }
+
+            Pendidik::insert([
+                'slug' => $slug,
+                'nama' => $row['nama'],
+                'bagian' => $bagian,
+                'sub_bagian' => $subBagian,
+                'id_mapel' => $id_mapel,
+            ]);
         }
     }
 }
