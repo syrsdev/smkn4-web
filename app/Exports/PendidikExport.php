@@ -3,52 +3,18 @@
 namespace App\Exports;
 
 use App\Models\Pendidik;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class PendidikExport implements FromCollection, WithMapping, WithHeadings
+class PendidikExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return Pendidik::with('mapel')
+        $guru = Pendidik::with('mapel')
             ->orderBy('nama', 'asc')
             ->get();
-    }
 
-    public function map($guru): array
-    {
-        $i = 0;
-
-        if ($guru->mapel !== null) {
-            return [
-                $i++,
-                $guru->nama,
-                $guru->bagian,
-                $guru->sub_bagian,
-                $guru->mapel->nama,
-            ];
-        } else {
-            return [
-                $i++,
-                $guru->nama,
-                $guru->bagian,
-                $guru->sub_bagian,
-            ];
-        }
-    }
-
-    public function headings(): array
-    {
-        return [
-            'NO',
-            'NAMA',
-            'BAGIAN',
-            'SUB BAGIAN',
-            'MATA PELAJARAN',
-        ];
+        return view('dashboard.pendidik.export')
+            ->with(['guru' => $guru]);
     }
 }
