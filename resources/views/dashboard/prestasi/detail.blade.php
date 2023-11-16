@@ -42,7 +42,7 @@
                                                     <div class="ticket-desc">
                                                         <div>{{ $item->penulis->name }}</div>
                                                         <div class="bullet"></div>
-                                                        <div>{{ $item->created_at->diffForHumans() }}</div>
+                                                        <div>{{ $item->created_at->format('j F Y') }}</div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -60,7 +60,7 @@
                                                 <div class="ticket-info">
                                                     <div class="font-weight-600">{{ $prestasi->penulis->name }}</div>
                                                     <div class="bullet"></div>
-                                                    <div class="text-primary font-weight-600">{{ $prestasi->created_at->diffForHumans() }}</div>
+                                                    <div class="text-primary font-weight-600">{{ $prestasi->created_at->format('j F Y') }}</div>
                                                 </div>
                                             </div>
                                         </div>
