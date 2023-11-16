@@ -10,18 +10,26 @@ function Home(props) {
     const [namaSekolah, setNamaSekolah] = useState("");
     const [welcome, setWelcome] = useState("");
     const [deskripsi, setDeskripsi] = useState("");
+    const [mading, setMading] = useState("");
+    const [listMading, setListMading] = useState([]);
 
     useEffect(() => {
         const { nama_sekolah } = props.sekolah;
         const { welcome, deskripsi } = props.heroSection;
+        const { title } = props.mading;
+        const { list } = props.mading;
 
         setNamaSekolah(nama_sekolah);
         setWelcome(welcome);
         setDeskripsi(deskripsi);
+        setMading(title);
+        setListMading(list);
     }, [
         props.sekolah.nama_sekolah,
         props.heroSection.welcome,
         props.heroSection.deskripsi,
+        props.mading.title,
+        props.mading.list,
     ]);
     return (
         <LandingLayout
@@ -54,7 +62,7 @@ function Home(props) {
                 </div>
             </Container>
             <Container classname="my-10">
-                <MadingLayout>
+                <MadingLayout title={mading} listPost={listMading}>
                     <h2 className="text-primary text-[18px] md:text-[24px] font-bold mb-4 lg:hidden block text-center md:text-left">
                         {props.sambutan.judul}
                     </h2>
@@ -63,20 +71,22 @@ function Home(props) {
                             <img
                                 src="/images/default/no-image-34.png"
                                 alt="foto kepala sekolah"
-                                className="object-contain"
+                                className="object-contain max-w-[177px]"
                             />
-                            <div className="flex flex-col mt-8 text-primary whitespace-nowrap">
-                                <p className="font-bold text-[16px] lg:text-[18px] border-b-2 border-primary">
+                            <div className="flex flex-col mt-10 text-primary whitespace-nowrap">
+                                <p className="font-bold text-[16px] border-b-2 border-primary">
                                     {props.sambutan.kepsek.nama}
                                 </p>
                                 <p>Plt. Kepala Sekolah</p>
                             </div>
                         </div>
                         <div className="flex flex-col text-center md:text-left">
-                            <h2 className="text-primary text-[18px] md:text-[24px] font-bold mb-4 hidden lg:block">
+                            <h2 className="text-primary text-[18px] md:text-[24px] font-bold mb-3 hidden lg:block">
                                 {props.sambutan.judul}
                             </h2>
-                            <p>{props.sambutan.konten}</p>
+                            <p className="text-[14px]">
+                                {props.sambutan.konten}
+                            </p>
                         </div>
                     </div>
                 </MadingLayout>

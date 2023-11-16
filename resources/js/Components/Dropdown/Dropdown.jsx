@@ -7,7 +7,7 @@ function Dropdown({ children, shown }) {
                 shown == false ? "hidden" : "block"
             }`}
         >
-            <ul className="flex flex-col justify-center items-start gap-5 px-6 py-9 mt-5 bg-[#F2F7FF] rounded-lg">
+            <ul className="flex drop-shadow-2xl flex-col justify-center items-start gap-5 px-6 py-9 mt-5 bg-[#F2F7FF] rounded-lg">
                 {children}
             </ul>
         </div>
