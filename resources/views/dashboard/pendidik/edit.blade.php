@@ -35,45 +35,39 @@
                                 <h4>Tulis Post</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('guru.update', $guru->slug) }}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama
-                                            Pendidik</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pendidik</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama"
-                                                value="{{ $guru->nama }}" autofocus>
+                                            <input type="text" class="form-control" name="nama" value="{{ $guru->nama }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" name="bagian">
-                                                <option disabled selected>Bagian</option>
-                                                <option value="pendidik">Tenaga Pendidik</option>
-                                                <option value="pegawai">Tenaga Kepegawaian</option>
+                                                <option value="pendidik" {{ $guru->bagian == 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
+                                                <option value="pegawai" {{ $guru->bagian == 'pegawai' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub
-                                            Bagian</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" name="sub_bagian">
-                                                <option disabled selected>Sub Bagian</option>
-                                                <option value="guru">Guru</option>
-                                                <option value="staff">Staff</option>
+                                                <option value="guru" {{ $guru->sub_bagian == 'guru' ? 'selected' : '' }}>Guru</option>
+                                                <option value="staff" {{ $guru->sub_bagian == 'staff' ? 'selected' : '' }}>Staff</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata
-                                            Pelajaran</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control select2" name="mapel">
-                                                <option value="{{ null }}" selected>Mata Pelajaran</option>
                                                 @foreach ($mapel as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}" {{ $item->id === $guru->mapel ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -109,8 +103,6 @@
     <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    {{-- <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script> --}}
-
     <script>
         "use strict";
     
@@ -124,5 +116,25 @@
             no_label: false,
             success_callback: null
         });
+    </script>
+
+    <script>
+        function updateSelectOptions() {
+            let bagian = document.getElementById("bagian");
+            let subBagian = document.getElementById("sub_bagian");
+            let formMapel = document.getElementById("form_mapel");
+            let mapel = document.getElementById("mapel");
+
+            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+                formMapel.style.display = "flex";
+            } else if (bagian.value === "pegawai" && subBagian.value === "staff") {
+                mapel.value = null;
+                formMapel.style.display = "none";
+            } else {
+                formMapel.style.display = "flex";
+            }
+        }
+
+        updateSelectOptions();
     </script>
 @endsection

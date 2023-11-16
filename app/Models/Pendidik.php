@@ -17,6 +17,11 @@ class Pendidik extends Model
 
     protected $fillable = ['slug', 'nama', 'bagian', 'sub_bagian', 'id_mapel'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function mapel()
     {
         return $this->belongsTo(Mapel::class, 'id_mapel');

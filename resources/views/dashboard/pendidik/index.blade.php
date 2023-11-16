@@ -2,8 +2,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
 @endsection
 
@@ -30,9 +29,17 @@
                             <div class="card-header">
                                 <h4>{{ $title }}</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Guru">
                                         <i class="fas fa-plus"></i>
-                                        Tambah Data
+                                    </a>
+                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" data-placement="top" title="Impor Data Guru">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Download Data Guru">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
+                                        <i class="fas fa-book"></i>
                                     </a>
                                 </div>
                             </div>
@@ -63,25 +70,27 @@
                                                             Tenaga Pendidik
                                                         @elseif ($item->bagian === 'pegawai')
                                                             Tenaga Kepegawaian
-                                                        @endif
-                                                    </td>
-                                                    <td>{{ ucfirst($item->sub_bagian) }}</td>
-                                                    <td>
-                                                        @if ($item->mapel !== null)
-                                                            {{ $item->mapel->nama }}
+                                                        @else
+                                                            -
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('guru.edit', $item->slug) }}"
-                                                            class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit Guru">
+                                                        @if ($item->sub_bagian === 'guru')
+                                                            Guru Produktif
+                                                        @elseif ($item->sub_bagian === 'staff')
+                                                            Staff Kurikulum
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    <td>
+                                                        {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Guru">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}"
-                                                            class="btn btn-sm btn-danger" data-confirm-delete="true"
-                                                            data-toggle="tooltip" data-placement="top" title="Hapus Guru">
-                                                            <i class="fas fa-trash"
-                                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Guru">
+                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -95,6 +104,7 @@
                 </div>
             </div>
         </section>
+        @include('dashboard.pendidik.import')
     </div>
 @endsection
 
@@ -106,34 +116,9 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-
     <script>
-        $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
-                let slug = $(this).data('slug');
-                let status = $(this).prop('checked') === true ? 1 : 0;
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/dashboard/post/' + slug + '/status',
-                    data: {
-                        'status': status,
-                    },
-                    success: function(response) {
-                        if (response.status === '1') {
-                            badge = `
-                                <div class="badge badge-success badge-${response.slug}">Published</div>
-                            `;
-                        } else if (response.status === '0') {
-                            badge = `
-                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
-                            `;
-                        }
-
-                        $(`.badge-${response.slug}`).replaceWith(badge);
-                    }
-                });
-            });
+        document.getElementById('btn-import').addEventListener('click', function () {
+            $('#importGuru').modal('show');
         });
     </script>
 @endsection

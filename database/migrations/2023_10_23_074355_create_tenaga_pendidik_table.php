@@ -21,10 +21,13 @@ return new class extends Migration
 
         Schema::create('tenaga_pendidik', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')
+                ->unique();
             $table->string('nama');
-            $table->enum('bagian', ['pendidik', 'pegawai']);
-            $table->enum('sub_bagian', ['guru', 'staff']);
+            $table->enum('bagian', ['pendidik', 'pegawai'])
+                ->nullable();
+            $table->enum('sub_bagian', ['guru', 'staff'])
+                ->nullable();
             $table->string('gambar')
                 ->nullable()
                 ->default('no-image-34.png');

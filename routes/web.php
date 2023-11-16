@@ -68,6 +68,14 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
         });
 
         Route::resource('/guru', TenagaPendidikController::class);
+
+        Route::prefix('guru')->group(function () {
+            Route::post('/import', [TenagaPendidikController::class, 'import'])
+                ->name('guru.import');
+
+            Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
+                ->name('guru.export');
+        });
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

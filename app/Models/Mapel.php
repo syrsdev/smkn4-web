@@ -17,6 +17,11 @@ class Mapel extends Model
 
     protected $fillable = ['slug', 'nama'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function pendidik()
     {
         return $this->hasMany(Pendidik::class, 'id_mapel');
