@@ -15,5 +15,10 @@ class Ekskul extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['nama', 'link_sosmed', 'gambar'];
+    protected $fillable = ['slug', 'nama', 'link_sosmed', 'gambar'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
