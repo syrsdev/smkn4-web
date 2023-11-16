@@ -34,12 +34,12 @@ class LandingPageController extends Controller
             ->latest();
 
         $mading = [
+            'title' => 'AGENDA SEKOLAH',
             'list' => Post::with('penulis')
                 ->where(['kategori' => 'agenda', 'status' => '1'])
                 ->latest()
                 ->limit(4)
                 ->get(),
-            'title' =>  'AGENDA SEKOLAH',
         ];
 
         $konsentrasi = KonsentrasiKeahlian::get();
@@ -68,7 +68,7 @@ class LandingPageController extends Controller
         $agent = new Agent();
 
         if ($agent->isMobile() || $agent->isTablet()) { 
-            $berita = $berita->limit(4)
+            $berita = $berita->limit(2)
                 ->get();
 
             $prestasi = $prestasi->limit(4)

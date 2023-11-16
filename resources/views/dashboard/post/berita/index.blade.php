@@ -56,7 +56,9 @@
 													<td>{{ $loop->iteration }}</td>
 													<td>{{ $item->judul }}</td>
 													<td>{{ $item->penulis->name }}</td>
-													<td>{{ $item->created_at->diffForHumans() }}</td>
+													<td>
+														{{ $item->created_at->format('j F Y') }}
+													</td>
 													<td>
 														<div class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
                                                             {{ $item->status === 1 ? 'Published' : 'Draft' }}

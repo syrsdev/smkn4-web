@@ -82,8 +82,8 @@
                         <li class="{{ $subActive === 'Bidang' ? 'active' : '' }}">
                             <a class="nav-link" href="#">Bidang Keahlian</a>
                         </li>
-                        <li class="{{ $subActive === 'Kompetensi' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Kompetensi Keahlian</a>
+                        <li class="{{ $subActive === 'Program' ? 'active' : '' }}">
+                            <a class="nav-link" href="#">Program Keahlian</a>
                         </li>
                         <li class="{{ $subActive === 'Konsentrasi' ? 'active' : '' }}">
                             <a class="nav-link" href="#">Konsentrasi Keahlian</a>
