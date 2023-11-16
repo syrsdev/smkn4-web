@@ -70,9 +70,18 @@
                                                             Tenaga Pendidik
                                                         @elseif ($item->bagian === 'pegawai')
                                                             Tenaga Kepegawaian
+                                                        @else
+                                                            -
                                                         @endif
                                                     </td>
-                                                    <td>{{ ucfirst($item->sub_bagian) }}</td>
+                                                    <td>
+                                                        @if ($item->sub_bagian === 'guru')
+                                                            Guru Produktif
+                                                        @elseif ($item->sub_bagian === 'staff')
+                                                            Staff Kurikulum
+                                                        @else
+                                                            -
+                                                        @endif
                                                     <td>
                                                         {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
                                                     </td>

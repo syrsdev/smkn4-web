@@ -17,26 +17,32 @@ class PendidikImport implements ToCollection, WithHeadingRow
             $nama = preg_replace('/[^a-z0-9]+/i', ' ', $row['nama']);
             $slug = rtrim(strtolower(str_replace(' ', '-', $nama)), '-');
 
-            if ($row['bagian'] === 'Tenaga Pendidik') {
-                $bagian = 'pendidik';
-            } elseif ($row['bagian'] === 'Tenaga Kepegawaian') {
-                $bagian = 'pegawai';
+            switch ($row['bagian']) {
+                case 'Tenaga Pendidik':
+                    $bagian = 'pendidik';
+                    break;
+                case 'Tenaga Kepegawaian':
+                    $bagian = 'pegawai';
+                    break;
+                default:
+                    $bagian = null;
             }
 
-            if ($row['sub_bagian'] === 'Guru Produktif') {
-                $subBagian = 'guru';
-            } elseif ($row['sub_bagian'] === 'Staff Kurikulum') {
-                $subBagian = 'staff';
+            switch ($row['sub_bagian']) {
+                case 'Guru Produktif':
+                    $subBagian = 'guru';
+                    break;
+                case 'Staff Kurikulum':
+                    $subBagian = 'staff';
+                    break;
+                default:
+                    $subBagian = null;
             }
 
             $mapel = Mapel::where('nama', $row['mata_pelajaran'])
                 ->first();
 
-            if ($mapel !== null) {
-                $id_mapel = $mapel->id;
-            } else {
-                $id_mapel = null;
-            }
+            ($mapel !== null) ? ($id_mapel = $mapel->id) : ($id_mapel = null);
 
             Pendidik::insert([
                 'slug' => $slug,
