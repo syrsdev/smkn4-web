@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
 use App\Http\Controllers\Dashboard\IndexPostController;
+use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
@@ -75,6 +76,8 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
 
             Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
                 ->name('guru.export');
+
+            Route::resource('/mapel', MapelController::class);
         });
     });
 
