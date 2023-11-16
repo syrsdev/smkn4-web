@@ -37,7 +37,7 @@
                                 <h4>{{ $title }}</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('ekskul.update', $ekskul->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('ekskul.update', $ekskul->slug) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group row mb-4">

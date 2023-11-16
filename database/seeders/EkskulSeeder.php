@@ -14,12 +14,12 @@ class EkskulSeeder extends Seeder
     public function run(): void
     {
         Ekskul::insert([
-            ['nama' => 'BASKET'],
-            ['nama' => 'MULTIMEDIA'],
-            ['nama' => 'MARAWIS'],
-            ['nama' => 'ROHIS'],
-            ['nama' => 'KARATE'],
-            ['nama' => 'SISPATETA'],
+            ['slug' => 'basket', 'nama' => 'BASKET'],
+            ['slug' => 'multimedia', 'nama' => 'MULTIMEDIA'],
+            ['slug' => 'marawis', 'nama' => 'MARAWIS'],
+            ['slug' => 'rohis', 'nama' => 'ROHIS'],
+            ['slug' => 'karate', 'nama' => 'KARATE'],
+            ['slug' => 'sispateta', 'nama' => 'SISPATETA'],
         ]);
     }
 }

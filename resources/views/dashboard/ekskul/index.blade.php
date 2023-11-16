@@ -57,13 +57,17 @@
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
                                                     <td>
-                                                        <a href="{{ $item->link_sosmed }}" target="_blank">{{ $item->link_sosmed }}</a>
+                                                        @if ($item->link_sosmed !== null)
+                                                            <a href="{{ $item->link_sosmed }}" target="_blank">{{ $item->link_sosmed }}</a>
+                                                        @else
+                                                            -
+                                                        @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('ekskul.edit', $item->id) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Ekstrakurikuler">
+                                                        <a href="{{ route('ekskul.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Ekstrakurikuler">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('ekskul.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler">
+                                                        <a href="{{ route('ekskul.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

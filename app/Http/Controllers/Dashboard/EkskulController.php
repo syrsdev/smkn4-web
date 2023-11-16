@@ -50,11 +50,15 @@ class EkskulController extends Controller
 
         $request->validate([
             'nama' => 'required',
-            'link_sosmed' => 'required',
+            'link_sosmed' => 'nullable',
         ]);
 
+        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
+        $slug = strtolower(str_replace(' ', '-', $nama));
+
         $ekskul = [
-            'nama' => $request->input('nama'),
+            'slug' => $slug,
+            'nama' => strtoupper($request->input('nama')),
             'link_sosmed' => $request->input('link_sosmed'),
         ];
 
@@ -111,11 +115,15 @@ class EkskulController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'link_sosmed' => 'required',
+            'link_sosmed' => 'nullable',
         ]);
 
+        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
+        $slug = strtolower(str_replace(' ', '-', $nama));
+
         $updatedEkskul = [
-            'nama' => $request->input('nama'),
+            'slug' => $slug,
+            'nama' => strtoupper($request->input('nama')),
             'link_sosmed' => $request->input('link_sosmed'),
         ];
 
