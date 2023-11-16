@@ -22,11 +22,13 @@ class DatabaseSeeder extends Seeder
 
         User::insert([
             [
+                'slug' => 'super-admin',
                 'name' => 'Super Admin',
                 'email' => 'admin@example.com',
                 'password' => bcrypt('password'),
                 'level' => 'admin'
             ], [
+                'slug' => 'operator',
                 'name' => 'Operator',
                 'email' => 'operator@example.com',
                 'password' => bcrypt('password'),
