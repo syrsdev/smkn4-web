@@ -1,8 +1,14 @@
 import FooterLayout from "@/Layouts/FooterLayout";
 import React from "react";
 import Copyright from "../Copyright/Copyright";
+import Instagram from "./Icons/Instagram";
+import Whatsapp from "./Icons/Whatsapp";
+import X from "./Icons/X";
+import Facebook from "./Icons/Facebook";
+import Youtube from "./Icons/Youtube";
+import IconLayout from "./Icons/IconLayout";
 
-function Footer({ logo, alamat }) {
+function Footer({ logo, alamat, sosmed }) {
     return (
         <>
             <FooterLayout>
@@ -20,6 +26,17 @@ function Footer({ logo, alamat }) {
                     <h4 className="font-bold text-[20px] xl:text-[24px] mt-5 text-left md:text-center">
                         SOCIAL MEDIA
                     </h4>
+                    <div className="flex flex-wrap items-center justify-start gap-4 xl:gap-6 md:justify-center">
+                        {sosmed.map((item, index) => (
+                            <IconLayout href={item.url} key={index}>
+                                {item.id == 1 && <Facebook />}
+                                {item.id == 2 && <Instagram />}
+                                {item.id == 3 && <X />}
+                                {item.id == 4 && <Youtube />}
+                                {item.id == 5 && <Whatsapp />}
+                            </IconLayout>
+                        ))}
+                    </div>
                 </div>
             </FooterLayout>
             <Copyright />
