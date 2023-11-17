@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\IndexPostController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
+use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\LandingPageController;
@@ -82,6 +83,8 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
         });
 
         Route::resource('/user', UsersController::class);
+
+        Route::resource('/sosmed', SocialMediaController::class);
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

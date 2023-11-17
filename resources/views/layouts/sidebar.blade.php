@@ -130,7 +130,7 @@
                     </a>
                 </li>
                 <li class="dropdown {{ $active === 'Sosmed' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('sosmed.index') }}" class="nav-link">
                         <i class="fas fa-share-alt"></i>
                         <span>Sosial Media</span>
                     </a>
