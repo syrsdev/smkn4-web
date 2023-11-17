@@ -15,14 +15,13 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Kesiswaan</div>
-                    <div class="breadcrumb-item">Ekstrakulikuler</div>
+                    <div class="breadcrumb-item">Kelola user</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Kelola {{ $title }}</h2>
+                <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -30,7 +29,7 @@
                             <div class="card-header">
                                 <h4>{{ $title }}</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('ekskul.create') }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-plus"></i>
                                         Tambah Data
                                     </a>
@@ -42,34 +41,30 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Logo</th>
-                                                <th>Nama Ekstrakurikuler</th>
-                                                <th>Link Sosmed</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
+                                                <th>Level</th>
+                                                <th>Jumlah Postingan</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($ekskul as $item)
+                                            @foreach ($users as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $item->email }}</td>
+                                                    <td>{{ $item->level }}</td>
+                                                    <td>{{ $item->post_count+$item->prestasi_count }}</td>
                                                     <td>
-                                                        <img src="{{ $item->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
-                                                    </td>
-                                                    <td>{{ $item->nama }}</td>
-                                                    <td>
-                                                        @if ($item->link_sosmed !== null)
-                                                            <a href="{{ $item->link_sosmed }}" target="_blank">{{ $item->link_sosmed }}</a>
-                                                        @else
-                                                            -
+                                                        @if ($item->id !== Auth::id())
+                                                            <a href="{{ route('user.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit User">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Usere">
+                                                                <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                            </a>
                                                         @endif
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ route('ekskul.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Ekstrakurikuler">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ route('ekskul.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Ekstrakurikuler">
-                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
