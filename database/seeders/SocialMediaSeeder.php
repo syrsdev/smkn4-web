@@ -27,7 +27,7 @@ class SocialMediaSeeder extends Seeder
                 'url' => null,
                 'status' => 0,
             ], [
-                'name' => 'Youtube',
+                'name' => 'YouTube',
                 'url' => 'https://www.youtube.com',
                 'status' => 1,
             ], [

@@ -129,6 +129,12 @@
                         <span>Hero Konten</span>
                     </a>
                 </li>
+                <li class="dropdown {{ $active === 'Sosmed' ? 'active' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Sosial Media</span>
+                    </a>
+                </li>
                 <li class="menu-header">Users</li>
                 <li class="dropdown {{ $active === 'Users' ? 'active' : '' }}">
                     <a href="{{ route('user.index') }}" class="nav-link">
