@@ -24,7 +24,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maiores!
+                    Di halaman ini Anda {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-md-12">
