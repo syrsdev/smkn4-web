@@ -62,13 +62,11 @@ class SocialMediaController extends Controller
     public function update(Request $request, SocialMedia $sosmed)
     {
         $request->validate([
-            'nama' => 'required',
-            'url' => 'required',
+            'url' => 'nullable',
         ]);
 
         try {
             $sosmed->update([
-                'nama' => $request->input('nama'),
                 'url' => $request->input('url'),
             ]);
 

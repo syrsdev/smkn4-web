@@ -5,6 +5,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>{{ $title }} | {{ $sekolah['nama_sekolah'] }}</title>
 
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/png">
+
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
