@@ -28,7 +28,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }} Baru</h2>
                 <p class="section-lead">
-                    On this page you can create a new Ekskul and fill in all fields.
+                    Di halaman ini Anda {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-12">
