@@ -19,6 +19,8 @@ class UsersController extends Controller
             ->withCount(['post', 'prestasi'])
             ->get();
 
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data User?');
+
         return view('dashboard.user.index')
             ->with([
                 'title' => 'Data User',
