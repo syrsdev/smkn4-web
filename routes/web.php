@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
+use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\ProfileController;
@@ -79,6 +80,8 @@ Route::middleware(['auth', 'checkLevel:admin,operator'])->group(function () {
 
             Route::resource('/mapel', MapelController::class);
         });
+
+        Route::resource('/user', UsersController::class);
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

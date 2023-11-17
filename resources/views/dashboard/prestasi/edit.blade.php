@@ -92,15 +92,6 @@
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
-										<div class="col-sm-12 col-md-7">
-											<select class="form-control selectric" name="status">
-												<option value="0" {{ $prestasi->status === 0 ? 'selected' : '' }}>Draft</option>
-												<option value="1" {{ $prestasi->status === 1 ? 'selected' : '' }}>Publish</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
 										<div class="col-sm-12 col-md-7">
 											<button type="submit" class="btn btn-primary">Edit Prestasi</button>
