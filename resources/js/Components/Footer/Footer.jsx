@@ -28,7 +28,11 @@ function Footer({ logo, alamat, sosmed }) {
                     </h4>
                     <div className="flex flex-wrap items-center justify-start gap-4 xl:gap-6 md:justify-center">
                         {sosmed.map((item, index) => (
-                            <IconLayout href={item.url} key={index}>
+                            <IconLayout
+                                href={item.url}
+                                name={item.name}
+                                key={index}
+                            >
                                 {item.id == 1 && <Facebook />}
                                 {item.id == 2 && <Instagram />}
                                 {item.id == 3 && <X />}
