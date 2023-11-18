@@ -8,71 +8,64 @@ use Inertia\Inertia;
 
 class PostPageController extends Controller
 {
+    private function getPostData($search, $kategori, $post)
+    {
+        $mapKategori = [
+            'agenda' => ['mading' => 'artikel', 'allPost' => 'artikel'],
+            'artikel' => ['mading' => 'berita', 'allPost' => 'berita'],
+            'berita' => ['mading' => 'event', 'allPost' => 'event'],
+            'event' => ['mading' => 'agenda', 'allPost' => 'agenda'],
+        ];
+
+        $kategoriMading = $mapKategori[$kategori]['mading'];
+        $kategoriAllPost = $mapKategori[$kategori]['allPost'];
+
+        $mading = [
+            'title' => strtoupper($kategoriMading) . ' SEKOLAH',
+            'kategori' => $kategoriMading,
+            'list' => Post::with('penulis')
+                ->where('kategori', $kategoriMading)
+                ->where('slug', '!=', $post->slug)
+                ->limit(4)
+                ->get(),
+        ];
+
+        $allPost = Post::with('penulis')
+            ->where('kategori', '!=', $kategoriAllPost)
+            ->where('slug', '!=', $post->slug)
+            ->when(strlen($search), function ($query) use ($search) {
+                return $query->where('judul', 'like', "%$search%")
+                    ->orWhere('created_at', 'like', "%$search%")
+                    ->orWhereHas('penulis', function ($query) use ($search) {
+                        $query->where('name', 'like', "%$search%");
+                    });
+            })
+            ->latest()
+            ->get();
+
+        return compact('mading', 'allPost');
+    }
+
     public function index(Request $request, $kategori)
     {
         $search = $request->input('search');
+        
+        $post = Post::with('penulis')
+            ->where('kategori', $kategori)
+            ->latest()
+            ->first();
 
-        if (strlen($search)) {
-            $recentPost = Post::with('penulis')
-                ->where('kategori', $kategori)
-                ->latest()
-                ->first();
+        $data = $this->getPostData($search, $kategori, $post);
 
-            $allPost = Post::with('penulis')
-                ->where('slug', '!=', $recentPost->slug)
-                ->where(function ($query) use ($search) {
-                    $query->orWhere('judul', 'like', "%$search%")
-                        ->orWhere('created_at', 'like', "%$search%")
-                        ->orWhereHas('penulis', function ($query) use ($search) {
-                            $query->where('name', 'like', "%$search%");
-                        });
-                })
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else {
-            $recentPost = Post::with('penulis')
-                ->where('kategori', $kategori)
-                ->latest()
-                ->first();
-
-            $allPost = Post::with('penulis')
-                ->where('slug', '!=', $recentPost->slug)
-                ->orderBy('created_at', 'desc')
-                ->get();
-        }
-
-        return Inertia::render('Post')->with([
-            'recentPost' => $recentPost,
-            'allPost' => $allPost,
-        ]);
+        return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
 
     public function show(Request $request, $kategori, Post $post)
     {
         $search = $request->input('search');
 
-        if (strlen($search)) {
-            $allPost = Post::with('penulis')
-                ->where('slug', '!=', $post->slug)
-                ->where(function ($query) use ($search) {
-                    $query->orWhere('judul', 'like', "%$search%")
-                        ->orWhere('created_at', 'like', "%$search%")
-                        ->orWhereHas('penulis', function ($query) use ($search) {
-                            $query->where('name', 'like', "%$search%");
-                        });
-                })
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } else {
-            $allPost = Post::with('penulis')
-                ->where('slug', '!=', $post->slug)
-                ->orderBy('created_at', 'desc')
-                ->get();
-        }
+        $data = $this->getPostData($search, $kategori, $post);
 
-        return Inertia::render('Post')->with([
-            'post' => $post,
-            'allPost' => $allPost,
-        ]);
+        return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
 }
