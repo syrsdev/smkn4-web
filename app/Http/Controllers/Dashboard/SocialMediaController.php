@@ -25,38 +25,6 @@ class SocialMediaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(SocialMedia $sosmed)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SocialMedia $sosmed)
-    {
-        ///
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, SocialMedia $sosmed)
@@ -71,20 +39,10 @@ class SocialMediaController extends Controller
             ]);
 
             toast('Sosial Media berhasil diedit!', 'success');
-
-            return redirect()->route('sosmed.index');
         } catch (\Exception $e){
-            toast('Sosial Media gagal diedit.', 'warning');
-            
-            return redirect()->back();
+            toast('Sosial Media gagal diedit.', 'warning');    
         }
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SocialMedia $sosmed)
-    {
-        //
+        return redirect()->back();
     }
 }
