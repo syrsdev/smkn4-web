@@ -18,9 +18,6 @@ return new class extends Migration
             $table->string('url')
                 ->nullable()
                 ->default(null);
-            $table->boolean('status')
-                ->nullable()
-                ->default(0);
             $table->timestamps();
         });
     }
