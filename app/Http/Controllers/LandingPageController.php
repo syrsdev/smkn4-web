@@ -35,6 +35,7 @@ class LandingPageController extends Controller
 
         $mading = [
             'title' => 'AGENDA SEKOLAH',
+            'kategori' => 'agenda',
             'list' => Post::with('penulis')
                 ->where(['kategori' => 'agenda', 'status' => '1'])
                 ->latest()
