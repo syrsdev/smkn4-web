@@ -15,7 +15,7 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Guru dan Staff</div>
+                    <div class="breadcrumb-item">Mata Pelajaran</div>
                 </div>
             </div>
             <div class="section-body">
@@ -29,18 +29,10 @@
                             <div class="card-header">
                                 <h4>{{ $title }}</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Guru">
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#tambahMapel">
                                         <i class="fas fa-plus"></i>
-                                    </a>
-                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" data-placement="top" title="Impor Data Guru">
-                                        <i class="fas fa-upload"></i>
+                                        Tambah Mapel
                                     </button>
-                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Download Data Guru">
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
-                                        <i class="fas fa-book"></i>
-                                    </a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -49,47 +41,22 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Foto</th>
-                                                <th>Nama Guru</th>
-                                                <th>Bagian</th>
-                                                <th>Sub-bagian</th>
-                                                <th>Mapel</th>
+                                                <th>Mata Pelajaran</th>
+                                                <th>Jumlah Guru</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($guru as $item)
+                                            @foreach ($mapel as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>
-                                                        <img src="{{ $item->gambar !== 'no-image-34.png' ? asset('storage/gambar/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
-                                                    </td>
                                                     <td>{{ $item->nama }}</td>
+                                                    <td>{{ $item->pendidik_count }}</td>
                                                     <td>
-                                                        @if ($item->bagian === 'pendidik')
-                                                            Tenaga Pendidik
-                                                        @elseif ($item->bagian === 'pegawai')
-                                                            Tenaga Kepegawaian
-                                                        @else
-                                                            -
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if ($item->sub_bagian === 'guru')
-                                                            Guru Produktif
-                                                        @elseif ($item->sub_bagian === 'staff')
-                                                            Staff Kurikulum
-                                                        @else
-                                                            -
-                                                        @endif
-                                                    <td>
-                                                        {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Guru">
+                                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editMapel{{ $item->slug }}">
                                                             <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Guru">
+                                                        </button>
+                                                        <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Mapel">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
@@ -104,7 +71,11 @@
                 </div>
             </div>
         </section>
-        @include('dashboard.pendidik.import')
+        @include('dashboard.mapel.create')
+
+        @foreach ($mapel as $item)
+            @include('dashboard.mapel.edit')
+        @endforeach
     </div>
 @endsection
 
@@ -118,7 +89,7 @@
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
     <script>
         document.getElementById('btn-import').addEventListener('click', function () {
-            $('#importGuru').modal('show');
+            $('#importmapel').modal('show');
         });
     </script>
 @endsection

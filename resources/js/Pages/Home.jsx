@@ -64,7 +64,11 @@ function Home(props) {
                 </div>
             </Container>
             <Container classname="my-10">
-                <MadingLayout title={mading} listPost={listMading}>
+                <MadingLayout
+                    title={mading}
+                    listPost={listMading}
+                    href={props.mading.kategori}
+                >
                     <h2 className="text-primary text-[18px] font-bold mb-4 lg:hidden block text-center md:text-left">
                         {props.sambutan.judul}
                     </h2>
@@ -95,7 +99,18 @@ function Home(props) {
             </Container>
 
             <Container classname="my-10">
-                <MadingTitle title="BERITA TERKINI" />
+                <MadingTitle title="BERITA TERKINI" href="berita" />
+            </Container>
+            <Container classname="py-16 mt-10 bg-primary">
+                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    KONTAK KAMI
+                </h3>
+                <div
+                    className="maps"
+                    dangerouslySetInnerHTML={{
+                        __html: props.sekolah.link_alamat,
+                    }}
+                ></div>
             </Container>
         </LandingLayout>
     );

@@ -22,7 +22,7 @@ function Sidebar({ isActive }) {
                     className="object-contain"
                 />
                 <ul className="w-full h-[500px] md:h-full px-8 md:px-10 pt-8 overflow-y-auto">
-                    <DropLink href="#" border="border-b-2" pb={true}>
+                    <DropLink href="/" border="border-b-2" pb={true}>
                         BERANDA
                     </DropLink>
                     <span onClick={() => setDropdown(!dropdown)}>
@@ -43,16 +43,16 @@ function Sidebar({ isActive }) {
                     <span onClick={() => setDropdown2(!dropdown2)}>
                         <SideDropDown title="BERITA" active={dropdown2}>
                             <SideDropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/post/artikel" pb={true}>
                                     ARTIKEL
                                 </DropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/post/berita" pb={true}>
                                     BERITA TERKINI
                                 </DropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/post/event" pb={true}>
                                     EVENT
                                 </DropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/post/agenda" pb={true}>
                                     AGENDA
                                 </DropLink>
                             </SideDropLink>

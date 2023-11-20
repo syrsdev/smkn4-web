@@ -16,7 +16,7 @@ function Footer({ logo, alamat, sosmed }) {
                     <img
                         src={`/images/${logo}`}
                         alt="logo smkn 4"
-                        className="object-contain w-5/6 md:w-9/12 xl:w-5/6"
+                        className="object-contain w-5/6 md:w-9/12"
                     />
                     <p className="w-9/12 text-[16px] xl:text-[19px]">
                         {alamat}

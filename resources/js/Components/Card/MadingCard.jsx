@@ -18,7 +18,10 @@ function MadingCard({ item }) {
                     className="text-[12px] line-clamp-2"
                     dangerouslySetInnerHTML={{ __html: item.konten }}
                 ></div>
-                <Link className="text-[12px] border-b text-slate-300 border-slate-300">
+                <Link
+                    className="text-[12px] border-b text-slate-300 border-slate-300"
+                    href={`post/${item.kategori}/${item.slug}`}
+                >
                     Read More...
                 </Link>
             </div>
