@@ -22,7 +22,7 @@
 			<div class="section-body">
 				<h2 class="section-title">Kelola {{ $title }}</h2>
 				<p class="section-lead">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Disini anda dapat mengelola dan melihat {{ $title }}
 				</p>
 				<div class="row">
 					<div class="col-12">

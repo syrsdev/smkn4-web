@@ -32,7 +32,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }} Baru</h2>
                 <p class="section-lead">
-                    On this page you can create a new post and fill in all fields.
+                    Disini anda dapat menambahkan Data Post dan mengisinya dikolom yang sudah disediakan
                 </p>
                 <div class="row">
                     <div class="col-12">

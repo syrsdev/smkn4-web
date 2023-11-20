@@ -34,7 +34,7 @@
 			<div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    On this page you can create a new Prestasi and fill in all fields.
+                    Disini anda dapat mengedit Data Prestasi dan mengisinya dikolom yang sudah disediakan
                 </p>
 				<div class="row">
 					<div class="col-12">
