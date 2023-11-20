@@ -68,7 +68,7 @@
                                             <select class="form-control selectric" name="level">
                                                 <option disabled selected>Level</option>
                                                 <option value="admin">Admin</option>
-                                                <option value="operator">Operator</option>
+                                                <option value="author">Author</option>
                                             </select>
                                         </div>
                                     </div>

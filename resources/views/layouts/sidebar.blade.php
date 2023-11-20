@@ -36,7 +36,7 @@
                 </ul>
             </li>
             <li class="menu-header">Sekolah</li>
-            @if (Auth::user()->level === 'operator')
+            @if (Auth::user()->level === 'author')
                 <li class="dropdown {{ $active === 'Kesiswaan' ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown">
                         <i class="fas fa-fire"></i>

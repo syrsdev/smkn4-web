@@ -35,7 +35,7 @@ Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
     ->name('landing.post.show');
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('checkLevel:admin,operator')->group(function () {
+    Route::middleware('checkLevel:admin,author')->group(function () {
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])
                 ->name('dashboard');
