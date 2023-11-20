@@ -17,7 +17,9 @@ class MapelController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        return view('dashboard.pendidik.mapel.index')
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Mata Pelajaran?');
+
+        return view('dashboard.mapel.index')
             ->with([
                 'title' => 'Data Mata Pelajaran',
                 'active' => 'Guru',
