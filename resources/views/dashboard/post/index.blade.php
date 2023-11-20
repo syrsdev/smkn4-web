@@ -16,7 +16,7 @@
 						<a href="{{ route('dashboard') }}">Dashboard</a>
 					</div>
 					<div class="breadcrumb-item">Post</div>
-					<div class="breadcrumb-item">Artikel</div>
+					<div class="breadcrumb-item">Agenda</div>
 				</div>
 			</div>
 			<div class="section-body">
@@ -26,13 +26,43 @@
 				</p>
 				<div class="row">
 					<div class="col-12">
+						<div class="card mb-0">
+							<div class="card-body">
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'agenda' ? 'active' : '' }}" href="{{ route('post.index', 'agenda') }}">Agenda 
+											<span class="badge badge-{{ $post->first()->kategori === 'agenda' ? 'white' : 'primary' }}">{{ $sumPost['agenda'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'artikel' ? 'active' : '' }}" href="{{ route('post.index', 'artikel') }}">Artikel 
+											<span class="badge badge-{{ $post->first()->kategori === 'artikel' ? 'white' : 'primary' }}">{{ $sumPost['artikel'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'berita' ? 'active' : '' }}" href="{{ route('post.index', 'berita') }}">Berita 
+											<span class="badge badge-{{ $post->first()->kategori === 'berita' ? 'white' : 'primary' }}">{{ $sumPost['berita'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'event' ? 'active' : '' }}" href="{{ route('post.index', 'event') }}">Event 
+											<span class="badge badge-{{ $post->first()->kategori === 'event' ? 'white' : 'primary' }}">{{ $sumPost['event'] }}</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
 								<h4>{{ $title }}</h4>
 								<div class="card-header-action">
 									<a href="{{ route('post.create') }}" class="btn btn-sm btn-primary">
 										<i class="fas fa-plus"></i>
-										Tambah Artikel
+										Tambah Agenda
 									</a>
 								</div>
 							</div>
@@ -42,7 +72,7 @@
 										<thead>
 											<tr>
 												<th>#</th>
-												<th>Judul Artikel</th>
+												<th>Judul Agenda</th>
 												<th>Penulis</th>
 												<th>Tanggal</th>
 												<th>Status</th>
@@ -51,7 +81,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($artikel as $item)
+											@foreach ($post as $item)
 												<tr>
 													<td>{{ $loop->iteration }}</td>
 													<td>{{ $item->judul }}</td>
@@ -69,13 +99,13 @@
                                                         </label>
 													</td>
 													<td>
-														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Artikel">
+														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Agenda">
 															<i class="fas fa-eye"></i>
 														</a>
-														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Artikel">
+														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Agenda">
 															<i class="fas fa-edit"></i>
 														</a>
-														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" data-placement="top" title="Hapus Artikel">
+														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" data-placement="top" title="Hapus Agenda">
 															<i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
 														</a>
 													</td>

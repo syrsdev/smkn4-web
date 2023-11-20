@@ -43,23 +43,14 @@ Route::middleware('auth')->group(function () {
             Route::resource('/post', PostController::class);
 
             Route::prefix('post')->group(function () {
+                Route::get('/kategori/{kategori}', [PostController::class, 'index'])
+                    ->name('post.index');
+
                 Route::get('/{post}/status', [PostController::class, 'update_status'])
                     ->name('post.status');
 
                 Route::post('/upload/image', [PostController::class, 'upload_image'])
                     ->name('post.upload.image');
-
-                Route::get('/kategori/agenda', [IndexPostController::class, 'agenda'])
-                    ->name('agenda.index');
-
-                Route::get('/kategori/artikel', [IndexPostController::class, 'artikel'])
-                    ->name('artikel.index');
-
-                Route::get('/kategori/berita', [IndexPostController::class, 'berita'])
-                    ->name('berita.index');
-
-                Route::get('/kategori/event', [IndexPostController::class, 'event'])
-                    ->name('event.index');
             });
 
             Route::prefix('kesiswaan')->group(function () {

@@ -13,37 +13,36 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getPost($kategori)
     {
-        $post = [
-            'agenda' => Post::with('penulis')
-                ->where(['kategori' => 'agenda', 'status' => '1'])
-                ->latest()
-                ->limit(3)
-                ->get(),
-            'artikel' => Post::with('penulis')
-                ->where(['kategori' => 'artikel', 'status' => '1'])
-                ->latest()
-                ->limit(3)
-                ->get(),
-            'berita' => Post::with('penulis')
-                ->where(['kategori' => 'berita', 'status' => '1'])
-                ->latest()
-                ->limit(3)
-                ->get(),
-            'event' => Post::with('penulis')
-                ->where(['kategori' => 'agenda', 'status' => '1'])
-                ->latest()
-                ->limit(3)
-                ->get(),
+        $post = Post::with('penulis')
+            ->where('kategori', $kategori)
+            ->latest()
+            ->get();
+
+        return $post;
+    }
+
+    public function index($kategori)
+    {
+        $post = $this->getPost($kategori);
+
+        $sumPost = [
+            'agenda' => $this->getPost('agenda')->count(), 
+            'artikel' => $this->getPost('artikel')->count(), 
+            'berita' => $this->getPost('berita')->count(), 
+            'event' => $this->getPost('event')->count(), 
         ];
+
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data '. ucfirst($kategori) . '?');
 
         return view('dashboard.post.index')
             ->with([
-                'post' => $post,
+                'title' => 'Data ' . ucfirst($kategori),
                 'active' => 'Post',
-                'subActive' => null,
-                'title' => 'Data Post',
+                'subActive' => ucfirst($kategori),
+                'post' => $post,
+                'sumPost' => $sumPost,
             ]);
     }
 
