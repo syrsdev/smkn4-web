@@ -22,7 +22,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat melihat {{$title}}.
+                    Di halaman ini Anda {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-md-12">

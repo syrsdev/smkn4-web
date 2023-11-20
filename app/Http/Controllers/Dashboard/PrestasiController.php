@@ -56,7 +56,6 @@ class PrestasiController extends Controller
             'kategori' => 'required',
             'konten' => 'required',
             'pemenang' => 'required',
-            'status' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -69,7 +68,6 @@ class PrestasiController extends Controller
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
             'pemenang' => $request->input('pemenang'),
-            'status' => $request->input('status'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 
@@ -143,7 +141,6 @@ class PrestasiController extends Controller
             'kategori' => 'required',
             'konten' => 'required',
             'pemenang' => 'required',
-            'status' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -156,7 +153,6 @@ class PrestasiController extends Controller
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
             'pemenang' => $request->input('pemenang'),
-            'status' => $request->input('status'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 

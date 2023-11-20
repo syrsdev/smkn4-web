@@ -17,23 +17,18 @@ class SocialMediaSeeder extends Seeder
             [
                 'name' => 'Facebook',
                 'url' => null,
-                'status' => 0,
             ], [
                 'name' => 'Instagram',
                 'url' => 'https://www.instagram.com',
-                'status' => 1,
             ], [
                 'name' => 'Twitter',
                 'url' => null,
-                'status' => 0,
             ], [
-                'name' => 'Youtube',
+                'name' => 'YouTube',
                 'url' => 'https://www.youtube.com',
-                'status' => 1,
             ], [
                 'name' => 'WhatsApp',
                 'url' => null,
-                'status' => 0,
             ],
         ]);
     }

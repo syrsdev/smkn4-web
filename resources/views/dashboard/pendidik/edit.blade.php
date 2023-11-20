@@ -2,7 +2,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/choices.js/public/assets/styles/choices.css') }}">
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengedit Data Tenaga Pendidik dan mengisinya dikolom yang sudah disediakan
+                    Di halaman ini Anda {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -48,8 +48,8 @@
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" name="bagian">
-                                                <option value="pendidik" {{ $guru->bagian == 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
-                                                <option value="pegawai" {{ $guru->bagian == 'pegawai' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
+                                                <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
+                                                <option value="pegawai" {{ $guru->bagian === 'pegawai' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
                                             </select>
                                         </div>
                                     </div>
@@ -57,17 +57,17 @@
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" name="sub_bagian">
-                                                <option value="guru" {{ $guru->sub_bagian == 'guru' ? 'selected' : '' }}>Guru</option>
-                                                <option value="staff" {{ $guru->sub_bagian == 'staff' ? 'selected' : '' }}>Staff</option>
+                                                <option value="guru" {{ $guru->sub_bagian === 'guru' ? 'selected' : '' }}>Guru</option>
+                                                <option value="staff" {{ $guru->sub_bagian === 'staff' ? 'selected' : '' }}>Staff</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control select2" name="mapel">
+                                        <div class="col-sm-12 col-md-7" style="z-index: 99">
+                                            <select class="form-control choices" name="mapel">
                                                 @foreach ($mapel as $item)
-                                                    <option value="{{ $item->id }}" {{ $item->id === $guru->mapel ? 'selected' : '' }}>{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}" {{ $item->id === $guru->mapel->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -99,25 +99,13 @@
 
 @section('script')
     <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
-
-    <!-- Page Specific JS File -->
-    <script>
-        "use strict";
+    <script src="{{ asset('assets/modules/choices.js/public/assets/scripts/choices.js') }}"></script>
     
-        $("selectric").selectric();
-        $.uploadPreview({
-            input_field: "#image-upload",
-            preview_box: "#image-preview",
-            label_field: "#image-label",
-            label_default: "Choose File",
-            label_selected: "Change File",
-            no_label: false,
-            success_callback: null
-        });
-    </script>
-
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
+    <script src="{{ asset('assets/js/page/modules-choices.js')}}"></script>
+    
     <script>
         function updateSelectOptions() {
             let bagian = document.getElementById("bagian");

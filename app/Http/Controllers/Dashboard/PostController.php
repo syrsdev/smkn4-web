@@ -72,7 +72,6 @@ class PostController extends Controller
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'status' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -85,7 +84,6 @@ class PostController extends Controller
             'judul' => $request->input('judul'),
             'kategori' => $kategori,
             'konten' => $request->input('konten'),
-            'status' => $request->input('status'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 
@@ -163,7 +161,6 @@ class PostController extends Controller
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'status' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -176,7 +173,6 @@ class PostController extends Controller
             'judul' => $request->input('judul'),
             'kategori' => $kategori,
             'konten' => $request->input('konten'),
-            'status' => $request->input('status'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 

@@ -28,7 +28,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengedit Data Ekstrakurikuler dan mengisinya dikolom yang sudah disediakan
+                    Di halaman ini Anda {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-12">
