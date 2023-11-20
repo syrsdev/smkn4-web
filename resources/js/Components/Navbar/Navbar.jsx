@@ -62,7 +62,7 @@ export default function Navbar({ subnav, logo }) {
                             <>
                                 <ul className="items-center hidden gap-6 font-semibold lg:flex">
                                     <li className="duration-150 hover-link before:bg-tertiary">
-                                        <Link href="#">BERANDA</Link>
+                                        <Link href="/">BERANDA</Link>
                                     </li>
                                     <li
                                         className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
@@ -109,14 +109,18 @@ export default function Navbar({ subnav, logo }) {
                                             <IoChevronDown className="duration-150 rotate" />
                                         </Link>
                                         <Dropdown shown={hoverDropdown2}>
-                                            <DropLink href="#">
+                                            <DropLink href="/post/artikel">
                                                 ARTIKEL
                                             </DropLink>
-                                            <DropLink href="#">
+                                            <DropLink href="/post/berita">
                                                 BERITA TERKINI
                                             </DropLink>
-                                            <DropLink href="#">EVENT</DropLink>
-                                            <DropLink href="#">AGENDA</DropLink>
+                                            <DropLink href="/post/event">
+                                                EVENT
+                                            </DropLink>
+                                            <DropLink href="/post/agenda">
+                                                AGENDA
+                                            </DropLink>
                                         </Dropdown>
                                     </li>
                                     <li
