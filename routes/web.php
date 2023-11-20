@@ -85,9 +85,9 @@ Route::middleware('auth')->group(function () {
     
                 Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
                     ->name('guru.export');
-    
-                Route::resource('/mapel', MapelController::class);
             });
+
+            Route::resource('/mapel', MapelController::class);
     
             Route::resource('/user', UsersController::class);
     
