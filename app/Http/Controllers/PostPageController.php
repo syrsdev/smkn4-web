@@ -66,6 +66,9 @@ class PostPageController extends Controller
 
         $data = $this->getPostData($search, $kategori, $post);
 
+        $post->views = $post->views + 1;
+        $post->save();
+
         return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
 }
