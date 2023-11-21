@@ -3,9 +3,9 @@
         <div class="sidebar-brand">
             <a href="{{ route('home') }}">{{ $sekolah['nama_sekolah'] }}</a>
         </div>
-        <div class="sidebar-brand sidebar-brand-sm">
+        {{-- <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('home') }}">04</a>
-        </div>
+        </div> --}}
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="dropdown {{ $active === 'Dashboard' ? 'active' : '' }}">
@@ -75,7 +75,7 @@
                 </li>
                 <li class="dropdown {{ $active === 'Jurusan' ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-book"></i>
                         <span>Jurusan</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -92,7 +92,7 @@
                 </li>
                 <li class="dropdown {{ $active === 'Kesiswaan' ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-trophy"></i>
                         <span>Kesiswaan</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -106,7 +106,7 @@
                 </li>
                 {{-- <li class="dropdown {{ $active === 'Alumni' ? 'active' : '' }}">
                     <a href="#" class="nav-link" data-toggle="dropdown">
-                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-graduation-cap"></i>
                         <span>Profil Alumni</span>
                     </a>
                 </li> --}}
@@ -131,7 +131,7 @@
                 </li>
                 <li class="dropdown {{ $active === 'Sosmed' ? 'active' : '' }}">
                     <a href="{{ route('sosmed.index') }}" class="nav-link">
-                        <i class="fas fa-share-alt"></i>
+                        <i class="fas fa-link"></i>
                         <span>Sosial Media</span>
                     </a>
                 </li>
@@ -143,6 +143,13 @@
                     </a>
                 </li>
             @endif
+            {{-- <li class="menu-header">Bantuan</li>
+            <li class="dropdown {{ $active === 'Developer' ? 'active' : '' }}">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Kontak Developer</span>
+                </a>
+            </li> --}}
         </ul>
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="{{ route('home') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
