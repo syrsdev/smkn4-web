@@ -65,6 +65,8 @@
                                                     <div class="font-weight-600">{{ $prestasi->penulis->name }}</div>
                                                     <div class="bullet"></div>
                                                     <div class="text-primary font-weight-600">{{ $prestasi->created_at->format('j F Y') }}</div>
+                                                    <div class="bullet"></div>
+                                                    <div class="text-primary font-weight-600">{{ $prestasi->views }} views</div>
                                                 </div>
                                             </div>
                                         </div>

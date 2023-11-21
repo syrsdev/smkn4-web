@@ -45,8 +45,9 @@
                                                 <th>Judul</th>
                                                 <th>Kategori</th>
                                                 <th>Pemenang</th>
-                                                <th>Status</th>
+                                                <th>Views</th>
                                                 <th>Publish</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -57,16 +58,17 @@
                                                     <td>{{ $item->judul}}</td>
                                                     <td>{{ ucfirst($item->kategori) }}</td>
                                                     <td>{{ $item->pemenang }}</td>
-                                                    <td>
-                                                        <div class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
-                                                            {{ $item->status === 1 ? 'Published' : 'Draft' }}
-                                                        </div>
-													</td>
+                                                    <td>{{ $item->views }}</td>
                                                     <td>
 														<label class="custom-switch mt-1">
                                                             <input type="checkbox" class="custom-switch-input" data-slug="{{ $item->slug }}" {{ $item->status === 1 ? 'checked' : '' }}>
                                                             <span class="custom-switch-indicator"></span>
                                                         </label>
+													</td>
+                                                    <td>
+                                                        <div class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
+                                                            {{ $item->status === 1 ? 'Published' : 'Draft' }}
+                                                        </div>
 													</td>
                                                     <td>
                                                         <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Prestasi">

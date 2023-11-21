@@ -66,6 +66,8 @@
                                                     <div class="font-weight-600">{{ $post->penulis->name }}</div>
                                                     <div class="bullet"></div>
                                                     <div class="text-primary font-weight-600">{{ $post->created_at->format('j F Y') }}</div>
+                                                    <div class="bullet"></div>
+                                                    <div class="text-primary font-weight-600">{{ $post->views }} views</div>
                                                 </div>
                                             </div>
                                         </div>
