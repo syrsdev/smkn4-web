@@ -14,13 +14,15 @@
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
-                <h1>Edit Data Baru</h1>
+                <h1>{{ $title }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Guru dan Staff</div>
-                    <div class="breadcrumb-item">Edit Pendidik</div>
+                    <div class="breadcrumb-item">
+                        <a href="{{ route('guru.index') }}">Guru dan Staff</a>
+                    </div>
+                    <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
             <div class="section-body">

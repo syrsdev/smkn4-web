@@ -22,21 +22,21 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="{{ $subActive === 'Agenda' ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('agenda.index') }}">Agenda</a>
+                        <a class="nav-link" href="{{ route('post.index', 'agenda') }}">Agenda</a>
                     </li>
                     <li class="{{ $subActive === 'Artikel' ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('artikel.index') }}">Artikel</a>
+                        <a class="nav-link" href="{{ route('post.index', 'artikel') }}">Artikel</a>
                     </li>
                     <li class="{{ $subActive === 'Berita' ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('berita.index') }}">Berita</a>
+                        <a class="nav-link" href="{{ route('post.index', 'berita') }}">Berita</a>
                     </li>
                     <li class="{{ $subActive === 'Event' ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('event.index') }}">Event</a>
+                        <a class="nav-link" href="{{ route('post.index', 'event') }}">Event</a>
                     </li>
                 </ul>
             </li>
             <li class="menu-header">Sekolah</li>
-            @if (Auth::user()->level === 'operator')
+            @if (Auth::user()->level === 'author')
                 <li class="dropdown {{ $active === 'Kesiswaan' ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown">
                         <i class="fas fa-fire"></i>

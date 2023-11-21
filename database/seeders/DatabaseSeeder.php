@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'level' => 'admin'
             ], [
-                'slug' => 'operator',
-                'name' => 'Operator',
-                'email' => 'operator@example.com',
+                'slug' => 'author',
+                'name' => 'Author',
+                'email' => 'author@example.com',
                 'password' => bcrypt('password'),
-                'level' => 'operator'
+                'level' => 'author'
             ]
         ]);
 
