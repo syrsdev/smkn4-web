@@ -6,6 +6,9 @@ import { FaAngleRight } from "react-icons/fa6";
 import ReactTypingEffect from "react-typing-effect";
 import MadingLayout from "@/Layouts/MadingLayout";
 import MadingTitle from "@/Components/Card/MadingTitle";
+import { LiaFaxSolid } from "react-icons/lia";
+import { BsTelephone } from "react-icons/bs";
+import { MdOutlineEmail } from "react-icons/md";
 function Home(props) {
     console.log(props);
     const [namaSekolah, setNamaSekolah] = useState("");
@@ -111,6 +114,39 @@ function Home(props) {
                         __html: props.sekolah.link_alamat,
                     }}
                 ></div>
+                <div className="flex flex-col items-start my-14 md:flex-wrap gap-7 md:gap-0 md:justify-between md:items-center md:flex-row xl:justify-evenly text-secondary">
+                    <div className="flex gap-5">
+                        <BsTelephone className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <div className="flex flex-col">
+                            <h5 className="text-[16px] xl:text-[20px] font-bold">
+                                NO. TELP
+                            </h5>
+                            <p className="text-[14px] ">
+                                {props.sekolah.telepon_sekolah}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex gap-5">
+                        <LiaFaxSolid className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <div className="flex flex-col">
+                            <h5 className="text-[16px] xl:text-[20px] font-bold">
+                                FAX
+                            </h5>
+                            <p className="text-[14px] ">{props.sekolah.fax}</p>
+                        </div>
+                    </div>
+                    <div className="flex gap-5">
+                        <MdOutlineEmail className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <div className="flex flex-col">
+                            <h5 className="text-[16px] xl:text-[20px] font-bold">
+                                EMAIL
+                            </h5>
+                            <p className="text-[14px] ">
+                                {props.sekolah.email_sekolah}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </Container>
         </LandingLayout>
     );
