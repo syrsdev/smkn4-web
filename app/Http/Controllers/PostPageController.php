@@ -24,7 +24,7 @@ class PostPageController extends Controller
             'title' => strtoupper($kategoriMading) . ' SEKOLAH',
             'kategori' => $kategoriMading,
             'list' => Post::with('penulis')
-                ->where('kategori', $kategoriMading)
+                ->where(['kategori' => $kategoriMading, 'status' => '1'])
                 ->where('slug', '!=', $post->slug)
                 ->limit(4)
                 ->get(),
@@ -51,7 +51,7 @@ class PostPageController extends Controller
         $search = $request->input('search');
         
         $post = Post::with('penulis')
-            ->where('kategori', $kategori)
+            ->where([ 'kategori' => $kategori, 'status' => '1'])
             ->latest()
             ->first();
 
