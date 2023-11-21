@@ -20,7 +20,7 @@ function MadingCard({ item }) {
                 ></div>
                 <Link
                     className="text-[12px] border-b text-slate-300 border-slate-300"
-                    href={`post/${item.kategori}/${item.slug}`}
+                    href={`/post/${item.kategori}/${item.slug}`}
                 >
                     Read More...
                 </Link>
