@@ -31,6 +31,7 @@ class PostPageController extends Controller
         ];
 
         $allPost = Post::with('penulis')
+            ->where('status', '1')
             ->where('kategori', '!=', $kategoriAllPost)
             ->where('slug', '!=', $post->slug)
             ->when(strlen($search), function ($query) use ($search) {
