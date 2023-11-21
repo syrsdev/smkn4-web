@@ -38,7 +38,7 @@
                                     <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Download Data Guru">
                                         <i class="fas fa-download"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
+                                    <a href="{{ route('mapel.index') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
                                         <i class="fas fa-book"></i>
                                     </a>
                                 </div>
@@ -62,7 +62,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <img src="{{ $item->gambar !== 'no-image-34.png' ? asset('storage/gambar/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
+                                                        <img src="{{ $item->gambar !== 'no-image-34.png' ? asset('storage/pendidik/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
                                                     <td>
