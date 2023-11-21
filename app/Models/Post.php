@@ -15,7 +15,7 @@ class Post extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['slug', 'judul', 'kategori', 'konten', 'gambar', 'status', 'id_penulis'];
+    protected $fillable = ['slug', 'judul', 'kategori', 'konten', 'gambar', 'status', 'views', 'id_penulis'];
 
     public function getRouteKeyName()
     {

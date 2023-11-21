@@ -24,6 +24,8 @@ return new class extends Migration
             $table->boolean('status')
                 ->nullable()
                 ->default(0);
+            $table->unsignedBigInteger('views')
+                ->nullable();
             $table->unsignedBigInteger('id_penulis');
             $table->foreign('id_penulis')
                 ->references('id')
@@ -48,6 +50,8 @@ return new class extends Migration
             $table->boolean('status')
                 ->nullable()
                 ->default(0);
+            $table->unsignedBigInteger('views')
+                ->nullable();
             $table->unsignedBigInteger('id_penulis');
             $table->foreign('id_penulis')
                 ->references('id')
