@@ -47,6 +47,6 @@ class AuthenticatedSessionController extends Controller
 
         toast('Anda berhasil logout.', 'success');
 
-        return redirect('/');
+        return redirect()->route('dashboard');
     }
 }

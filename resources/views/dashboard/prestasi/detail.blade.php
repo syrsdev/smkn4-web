@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
+    <link rel="stylesheet" href="{{ asset('assets/modules/chocolat/dist/css/chocolat.css') }}">
 @endsection
 
 @section('content')
@@ -28,11 +29,14 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{$title}}</h4>
+                                <h4>Prestasi</h4>
                             </div>
                             <div class="card-body">
-                                <div class="tickets">
-                                    <div class="ticket-items" id="ticket-items">
+                                <a href="#" class="btn btn-primary btn-icon icon-left btn-lg btn-block mb-4 d-md-none" data-toggle-slide="#ticket-items">
+                                    <i class="fas fa-list"></i> Prestasi Lainnya
+                                </a>
+                                <div class="tickets row">
+                                    <div class="col-12 col-lg-3 ticket-items" id="ticket-items">
                                         @foreach ($other as $item)
                                             <a href="{{ route('prestasi.show', $item->slug) }}">
                                                 <div class="ticket-item">
@@ -48,7 +52,7 @@
                                             </a>
                                         @endforeach
                                     </div>
-                                    <div class="ticket-content">
+                                    <div class="col-12 col-lg-9 ticket-content">
                                         <div class="ticket-header">
                                             <div class="ticket-sender-picture img-shadow">
                                                 <img src="{{ asset('images/default/profile-admin.png') }}" alt="{{ $prestasi->penulis->name }}">
@@ -65,8 +69,8 @@
                                             </div>
                                         </div>
                                         <div class="ticket-description">
-                                            <div class="gallery mb-3">
-                                                <img src="{{ $prestasi->gambar !== 'no-image-43.png' ? url('storage/prestasi/' . $prestasi->gambar) : url('images/default/' . $prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 400px;">
+                                            <div class="gallery gallery-fw" data-item-height="300">
+                                                <div class="gallery-item" data-image="{{ $prestasi->gambar !== 'no-image-43.png' ? url('storage/prestasi/' . $prestasi->gambar) : url('images/default/' . $prestasi->gambar) }}" data-title="{{ $prestasi->judul }}"></div>
                                             </div>
 
                                             {!! $prestasi->konten !!}
@@ -92,4 +96,5 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 @endsection

@@ -15,7 +15,7 @@
         <section class="section">
             <div class="section-header">
                 <div class="section-header-back">
-                    <a href="{{ route('prestasi.index') }}" class="btn btn-icon">
+                    <a href="{{ route('user.index') }}" class="btn btn-icon">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
@@ -23,6 +23,9 @@
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
+                    </div>
+                    <div class="breadcrumb-item active">
+                        <a href="{{ route('user.index') }}">Kelola User</a>
                     </div>
                     <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
@@ -68,7 +71,7 @@
                                             <select class="form-control selectric" name="level">
                                                 <option disabled selected>Level</option>
                                                 <option value="admin">Admin</option>
-                                                <option value="operator">Operator</option>
+                                                <option value="author">Author</option>
                                             </select>
                                         </div>
                                     </div>

@@ -19,7 +19,9 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Guru dan Staff</div>
+                    <div class="breadcrumb-item">
+                        <a href="{{ route('guru.index') }}">Guru dan Staff</a>
+                    </div>
                     <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>

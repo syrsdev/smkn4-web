@@ -16,7 +16,7 @@
 		<section class="section">
 			<div class="section-header">
 				<div class="section-header-back">
-					<a href="{{ route($kategori.'.index') }}" class="btn btn-icon">
+					<a href="{{ route('post.index', $kategori) }}" class="btn btn-icon">
 						<i class="fas fa-arrow-left"></i>
 					</a>
 				</div>
@@ -27,7 +27,7 @@
 					</div>
 					<div class="breadcrumb-item">Post</div>
 					<div class="breadcrumb-item active">
-						<a href="{{ route($kategori.'.index') }}">{{ ucfirst($kategori) }}</a>
+						<a href="{{ route('post.index', $kategori) }}">{{ ucfirst($kategori) }}</a>
 					</div>
 					<div class="breadcrumb-item">Edit {{ ucfirst($kategori) }}</div>
 				</div>

@@ -15,7 +15,7 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Kelola user</div>
+                    <div class="breadcrumb-item">Kelola User</div>
                 </div>
             </div>
             <div class="section-body">
@@ -54,7 +54,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->level }}</td>
+                                                    <td>{{ ucfirst($item->level) }}</td>
                                                     <td>{{ $item->post_count+$item->prestasi_count }}</td>
                                                     <td>
                                                         @if ($item->id !== Auth::id())

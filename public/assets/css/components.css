@@ -1483,7 +1483,6 @@ tr:first-child > td > .fc-day-grid-event {
 }
 .tickets .ticket-items {
   width: 30%;
-  padding-right: 30px;
 }
 .tickets .ticket-items .ticket-item {
   display: inline-block;

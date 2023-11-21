@@ -25,6 +25,9 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Kesiswaan</div>
+                    <div class="breadcrumb-item active">
+                        <a href="{{ route('prestasi.index') }}">Prestasi</a>
+                    </div>
                     <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>

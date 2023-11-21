@@ -26,6 +26,36 @@
 				</p>
 				<div class="row">
 					<div class="col-12">
+						<div class="card mb-0">
+							<div class="card-body">
+								<ul class="nav nav-pills">
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'agenda' ? 'active' : '' }}" href="{{ route('post.index', 'agenda') }}">Agenda 
+											<span class="badge badge-{{ $post->first()->kategori === 'agenda' ? 'white' : 'primary' }}">{{ $sumPost['agenda'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'artikel' ? 'active' : '' }}" href="{{ route('post.index', 'artikel') }}">Artikel 
+											<span class="badge badge-{{ $post->first()->kategori === 'artikel' ? 'white' : 'primary' }}">{{ $sumPost['artikel'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'berita' ? 'active' : '' }}" href="{{ route('post.index', 'berita') }}">Berita 
+											<span class="badge badge-{{ $post->first()->kategori === 'berita' ? 'white' : 'primary' }}">{{ $sumPost['berita'] }}</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link {{ $post->first()->kategori === 'event' ? 'active' : '' }}" href="{{ route('post.index', 'event') }}">Event 
+											<span class="badge badge-{{ $post->first()->kategori === 'event' ? 'white' : 'primary' }}">{{ $sumPost['event'] }}</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
 								<h4>{{ $title }}</h4>
@@ -51,7 +81,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($agenda as $item)
+											@foreach ($post as $item)
 												<tr>
 													<td>{{ $loop->iteration }}</td>
 													<td>{{ $item->judul }}</td>
