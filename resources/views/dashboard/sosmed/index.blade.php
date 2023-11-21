@@ -24,49 +24,39 @@
                 <p class="section-lead">
                     Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
                 </p>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>{{ $title }}</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nama</th>
-                                                <th>Link</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($sosmed as $item)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td>
-                                                        @if ($item->url !== null)
-                                                            <a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a>
-                                                        @else
-                                                            -
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning btn-edit"
-                                                            data-id="{{ $item->id }}" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit Link {{ $item->name }}">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                <div class="row sortable-card">
+                    @foreach ($sosmed as $item)
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h4>
+                                        <i class="fab fa-{{ strtolower($item->name) }} mr-1"></i>
+                                        {{ $item->name }}
+                                    </h4>
+                                    <div class="card-header-action">
+                                        <a data-collapse="#{{ $item->name }}-collapse" class="btn btn-icon btn-info" href="#">
+                                            <i class="fas fa-minus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="collapse show" id="{{ $item->name }}-collapse">
+                                    <div class="card-body">
+                                        @if ($item->url !== null)
+                                            <a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a>
+                                        @else
+                                            -
+                                        @endif
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-sm btn-warning btn-edit" data-toggle="modal" data-target="#editSosmed{{ $item->name }}">
+                                            <i class="fas fa-edit"></i>
+                                            Edit Link
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -83,16 +73,4 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-    <script>
-        document.getElementById('btn-import').addEventListener('click', function() {
-            $('#importGuru').modal('show');
-        });
-    </script>
-
-    <script>
-        $('.btn-edit').click(function() {
-            let id = $(this).data('id');
-            $('#editSosmed' + id).modal('show')
-        });
-    </script>
 @endsection

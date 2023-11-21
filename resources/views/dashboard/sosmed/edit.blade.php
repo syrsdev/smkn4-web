@@ -1,5 +1,5 @@
 @foreach ($sosmed as $item)
-    <div class="modal fade" tabindex="-1" role="dialog" id="editSosmed{{ $item->id }}">
+    <div class="modal fade" tabindex="-1" role="dialog" id="editSosmed{{ $item->name }}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,8 +14,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="url">Link</label>
-                            <input type="text" class="form-control" id="url" name="url"
-                                value="{{ $item->url }}">
+                            <input type="text" class="form-control" id="url" name="url" value="{{ $item->url }}">
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
