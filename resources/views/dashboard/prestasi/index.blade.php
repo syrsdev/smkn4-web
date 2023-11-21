@@ -58,7 +58,7 @@
                                                     <td>{{ $item->judul}}</td>
                                                     <td>{{ ucfirst($item->kategori) }}</td>
                                                     <td>{{ $item->pemenang }}</td>
-                                                    <td>{{ $item->views }}</td>
+                                                    <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
 														<label class="custom-switch mt-1">
                                                             <input type="checkbox" class="custom-switch-input" data-slug="{{ $item->slug }}" {{ $item->status === 1 ? 'checked' : '' }}>

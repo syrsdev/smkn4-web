@@ -10,6 +10,11 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
+                <div class="section-header-back">
+                    <a href="{{ route('guru.index') }}" class="btn btn-icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
                 <h1>{{ $title }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
@@ -53,7 +58,7 @@
                                                     <td>{{ $item->nama }}</td>
                                                     <td>{{ $item->pendidik_count }}</td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editMapel{{ $item->slug }}">
+                                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" data-placement="top" title="Edit Mapel">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
                                                         <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Mapel">
@@ -72,10 +77,7 @@
             </div>
         </section>
         @include('dashboard.mapel.create')
-
-        @foreach ($mapel as $item)
-            @include('dashboard.mapel.edit')
-        @endforeach
+        @include('dashboard.mapel.edit')
     </div>
 @endsection
 
@@ -88,8 +90,9 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
     <script>
-        document.getElementById('btn-import').addEventListener('click', function () {
-            $('#importmapel').modal('show');
+        $('.btn-edit').click(function() {
+            let slug = $(this).data('slug');
+            $('#editMapel' + slug).modal('show');
         });
     </script>
 @endsection

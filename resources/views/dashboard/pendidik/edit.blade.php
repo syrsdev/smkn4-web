@@ -41,6 +41,12 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
+										<div class="col-sm-12 col-md-7">
+											<img src="{{ $guru->gambar !== 'no-image-34.png' ? asset('storage/pendidik/'.$guru->gambar) : asset('images/default/'.$guru->gambar) }}" alt="{{ $guru->nama }}" style="width: 250px">
+										</div>
+									</div>
+                                    <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pendidik</label>
                                         <div class="col-sm-12 col-md-7">
                                             <input type="text" class="form-control" name="nama" value="{{ $guru->nama }}" autofocus>
@@ -75,7 +81,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto Baru (Opsional)</label>
                                         <div class="col-sm-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
