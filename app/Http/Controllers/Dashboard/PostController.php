@@ -103,7 +103,7 @@ class PostController extends Controller
 
             toast(ucfirst($kategori) . ' berhasil dibuat!', 'success');
 
-            return redirect()->route($kategori . '.index');
+            return redirect()->route('post.index', $kategori);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal dibuat.', 'warning');
 
@@ -197,7 +197,7 @@ class PostController extends Controller
 
             toast(ucfirst($kategori) . ' berhasil diedit!', 'success');
 
-            return redirect()->route($kategori . '.index');
+            return redirect()->route('post.index', $kategori);
         } catch (\Exception $e) {
             toast(ucfirst($kategori) . ' gagal diedit!', 'warning');
 
