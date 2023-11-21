@@ -36,8 +36,8 @@
                                 <a href="#" class="btn btn-primary btn-icon icon-left btn-lg btn-block mb-4 d-md-none" data-toggle-slide="#ticket-items">
                                     <i class="fas fa-list"></i> {{ ucfirst($kategori) }} Lainnya
                                 </a>
-                                <div class="tickets">
-                                    <div class="ticket-items" id="ticket-items">
+                                <div class="tickets row">
+                                    <div class="col-12 col-lg-3 ticket-items" id="ticket-items">
                                         @foreach ($otherPost as $item)
                                             <a href="{{ route('post.show', $item->slug) }}">
                                                 <div class="ticket-item">
@@ -53,7 +53,7 @@
                                             </a>
                                         @endforeach
                                     </div>
-                                    <div class="ticket-content">
+                                    <div class="col-12 col-lg-9 ticket-content">
                                         <div class="ticket-header">
                                             <div class="ticket-sender-picture img-shadow">
                                                 <img src="{{ asset('images/default/profile-admin.png') }}" alt="{{ $post->penulis->name }}">
@@ -70,8 +70,8 @@
                                             </div>
                                         </div>
                                         <div class="ticket-description">
-                                            <div class="gallery mb-3">
-                                                <img src="{{ $post->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $post->gambar) : url('images/default/' . $post->gambar) }}" alt="{{ $post->judul }}" style="width: 400px;">
+                                            <div class="gallery gallery-fw" data-item-height="300">
+                                                <div class="gallery-item" data-image="{{ $post->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $post->gambar) : url('images/default/' . $post->gambar) }}" data-title="{{ $post->judul }}"></div>
                                             </div>
 
                                             {!! $post->konten !!}
@@ -97,6 +97,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 @endsection
