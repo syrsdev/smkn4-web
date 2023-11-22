@@ -13,10 +13,9 @@ class SubNavbarController extends Controller
      */
     public function index()
     {
-        $subNavbar = SubNavbar::where('status', '1')
-            ->get();
+        $subNavbar = SubNavbar::get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Sub Navbar');
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Sub Navbar?');
 
         return view('dashboard.sub-navbar.index')
             ->with([
