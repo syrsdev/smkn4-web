@@ -12,10 +12,14 @@
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
-                        <label>Nama Sub Navbar</label>
-                        <input type="text" class="form-control" name="name" value="{{ $item->name }}">
-                        <label>Link</label>
-                        <input type="text" class="form-control" name="url" value="{{ $item->url }}">
+                        <div class="form-group">
+                            <label>Nama Sub Navbar</label>
+                            <input type="text" class="form-control" name="name" value="{{ $item->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input type="text" class="form-control" name="url" value="{{ $item->url }}">
+                        </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

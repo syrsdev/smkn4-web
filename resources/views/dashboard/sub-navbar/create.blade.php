@@ -10,10 +10,14 @@
             <form action="{{ route('sub-navbar.store') }}" method="post">
                 @csrf
                 <div class="modal-body">
-                    <label>Nama Sub Navbar</label>
-                    <input type="text" class="form-control" name="name" value="{{ Session::get('name') }}">
-                    <label>Link</label>
-                    <input type="text" class="form-control" name="url" value="{{ Session::get('url') }}">
+                    <div class="form-group">
+                        <label>Nama Sub Navbar</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Link</label>
+                        <input type="text" class="form-control" name="url">
+                    </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

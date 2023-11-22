@@ -31,7 +31,7 @@
                                 <div class="card-header-action">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#tambahSubNavbar">
                                         <i class="fas fa-plus"></i>
-                                        Tambah Mapel
+                                        Tambah Data
                                     </button>
                                 </div>
                             </div>
@@ -43,6 +43,7 @@
                                                 <th>#</th>
                                                 <th>Nama</th>
                                                 <th>Link</th>
+                                                <th>Publish</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -54,15 +55,21 @@
                                                     <td>{{ $item->name}}</td>
                                                     <td>{{ $item->url}}</td>
                                                     <td>
+                                                        <label class="custom-switch mt-1">
+                                                            <input type="checkbox" class="custom-switch-input" data-id="{{ $item->id }}" {{ $item->status === 1 ? 'checked' : '' }}>
+                                                            <span class="custom-switch-indicator"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>
                                                         <div class="badge badge-{{ $item->id }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
                                                             {{ $item->status === 1 ? 'Published' : 'Draft' }}
                                                         </div>
 													</td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-warning btn-edit" data-target="#editSubNavbar{{ $item->id }}" data-toggle="modal" data-placement="top" title="Edit Sub Navbar">
+                                                        <button class="btn btn-sm btn-warning btn-edit" data-id="{{ $item->id }}" data-toggle="tooltip" data-placement="top" title="Edit Sub Navbar">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <a href="{{ route('sub-navbar.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus sub-navbar">
+                                                        <a href="{{ route('sub-navbar.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Sub Navbar">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
@@ -92,29 +99,36 @@
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
 
     <script>
+        $('.btn-edit').click(function() {
+            let id = $(this).data('id');
+            $('#editSubNavbar' + id).modal('show');
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
             $('.custom-switch-input').change(function() {
-                let slug = $(this).data('slug');
+                let id = $(this).data('id');
                 let status = $(this).prop('checked') === true ? 1 : 0;
 
                 $.ajax({
                     type: 'GET',
-                    url: '/dashboard/kesiswaan/sub-navbar/' + slug + '/status',
+                    url: '/dashboard/sub-navbar/' + id + '/status',
                     data: {
                         'status': status,
                     },
                     success: function(response) {
                         if (response.status === '1') {
                             badge = `
-                                <div class="badge badge-success badge-${response.slug}">Published</div>
+                                <div class="badge badge-success badge-${response.id}">Published</div>
                             `;
                         } else if (response.status === '0') {
                             badge = `
-                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
+                                <div class="badge badge-warning badge-${response.id}">Draft</div>
                             `;
                         }
 
-                        $(`.badge-${response.slug}`).replaceWith(badge);
+                        $(`.badge-${response.id}`).replaceWith(badge);
                     }
                 });
             });
