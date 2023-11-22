@@ -116,7 +116,7 @@ function Home(props) {
                 ></div>
                 <div className="flex flex-col items-start my-14 md:flex-wrap gap-7 md:gap-0 md:justify-between md:items-center md:flex-row xl:justify-evenly text-secondary">
                     <div className="flex gap-5">
-                        <BsTelephone className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <BsTelephone className="text-[35px] md:text-[40px]" />
                         <div className="flex flex-col">
                             <h5 className="text-[16px] xl:text-[20px] font-bold">
                                 NO. TELP
@@ -127,7 +127,7 @@ function Home(props) {
                         </div>
                     </div>
                     <div className="flex gap-5">
-                        <LiaFaxSolid className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <LiaFaxSolid className="text-[35px] md:text-[40px]" />
                         <div className="flex flex-col">
                             <h5 className="text-[16px] xl:text-[20px] font-bold">
                                 FAX
@@ -136,7 +136,7 @@ function Home(props) {
                         </div>
                     </div>
                     <div className="flex gap-5">
-                        <MdOutlineEmail className="text-[35px] md:text-[40px] xl:text-[50px]" />
+                        <MdOutlineEmail className="text-[35px] md:text-[40px]" />
                         <div className="flex flex-col">
                             <h5 className="text-[16px] xl:text-[20px] font-bold">
                                 EMAIL
