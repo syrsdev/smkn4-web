@@ -16,7 +16,7 @@
 						<a href="{{ route('dashboard') }}">Dashboard</a>
 					</div>
 					<div class="breadcrumb-item">Post</div>
-					<div class="breadcrumb-item">Agenda</div>
+					<div class="breadcrumb-item">{{ ucfirst($post->first()->kategori) }}</div>
 				</div>
 			</div>
 			<div class="section-body">

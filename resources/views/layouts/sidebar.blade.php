@@ -118,7 +118,7 @@
                     </a>
                 </li>
                 <li class="dropdown {{ $active === 'SubNavbar' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('sub-navbar.index') }}" class="nav-link">
                         <i class="fas fa-project-diagram"></i>
                         <span>Sub Navbar</span>
                     </a>
