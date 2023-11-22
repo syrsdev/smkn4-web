@@ -25,7 +25,9 @@ class PostPageController extends Controller
             'kategori' => $kategoriMading,
             'list' => Post::with('penulis')
                 ->where(['kategori' => $kategoriMading, 'status' => '1'])
-                ->where('slug', '!=', $post->slug)
+                ->when(strlen($post), function ($query) use ($post) {
+                    return $query->where('slug', '!=', $post->slug);
+                })
                 ->limit(4)
                 ->get(),
         ];
@@ -33,7 +35,9 @@ class PostPageController extends Controller
         $allPost = Post::with('penulis')
             ->where('status', '1')
             ->where('kategori', '!=', $kategoriAllPost)
-            ->where('slug', '!=', $post->slug)
+            ->when(strlen($post), function ($query) use ($post) {
+                return $query->where('slug', '!=', $post->slug);
+            })
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('judul', 'like', "%$search%")
                     ->orWhere('created_at', 'like', "%$search%")
@@ -56,10 +60,12 @@ class PostPageController extends Controller
             ->latest()
             ->first();
 
-        $data = $this->getPostData($search, $kategori, $post);
-    
-        $post->views = $post->views + 1;
-        $post->save();
+        if (strlen($post)) {
+            $post->views = $post->views + 1;
+            $post->save();
+        }
+
+        $data = $this->getPostData($search, $kategori, $post);    
 
         return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
@@ -68,10 +74,16 @@ class PostPageController extends Controller
     {
         $search = $request->input('search');
 
+        $post = Post::with('penulis')
+            ->where('slug', $post->slug)
+            ->first();
+
         $data = $this->getPostData($search, $kategori, $post);
 
-        $post->views = $post->views + 1;
-        $post->save();
+        if (strlen($post)) {
+            $post->views = $post->views + 1;
+            $post->save();
+        }
 
         return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
