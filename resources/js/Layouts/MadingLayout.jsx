@@ -17,9 +17,25 @@ function MadingLayout({ children, listPost, title, href = "#" }) {
                                 : "md:justify-start"
                         } `}
                     >
-                        {listPost.map((item, index) => (
-                            <MadingCard item={item} key={index} />
-                        ))}
+                        {listPost.length > 0 ? (
+                            <>
+                                {listPost.map((item, index) => (
+                                    <MadingCard item={item} key={index} />
+                                ))}
+                            </>
+                        ) : (
+                            <div className="flex flex-col items-center justify-center">
+                                <img
+                                    src={`/images/default/no-data-mading.svg`}
+                                    alt="thumbnail post"
+                                    className="max-h-[200px]"
+                                />
+                                <h2 className="font-bold text-[20px] text-center text-secondary">
+                                    <span className="lowercase">{title}</span>{" "}
+                                    belum ada
+                                </h2>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
