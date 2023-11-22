@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
-use App\Http\Controllers\Dashboard\IndexPostController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
+use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\LandingPageController;
@@ -83,6 +83,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('/user', UsersController::class);
     
             Route::resource('/sosmed', SocialMediaController::class);
+
+            Route::resource('/sub-navbar', SubNavbarController::class);
         });
     });
 
