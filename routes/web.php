@@ -85,6 +85,9 @@ Route::middleware('auth')->group(function () {
             Route::resource('/sosmed', SocialMediaController::class);
 
             Route::resource('/sub-navbar', SubNavbarController::class);
+
+            Route::get('/sub-navbar/{sub_navbar}/status', [SubNavbarController::class, 'update_status'])
+                ->name('sub-navbar.status');
         });
     });
 
