@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Post;
+use App\Models\Prestasi;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,12 +18,41 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function index(Request $request)
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        $total = [
+            'post' => [
+                'post' => Post::where('id_penulis', Auth::id())->count(),
+                'views' => Post::where('id_penulis', Auth::id())->sum('views'),
+            ],
+            'prestasi' => [
+                'prestasi' => Prestasi::where('id_penulis', Auth::id())->count(),
+                'views' => Prestasi::where('id_penulis', Auth::id())->sum('views'),
+            ],
+        ];
+
+        $post = [
+            'totalPost' => $total['post']['post'] + $total['prestasi']['prestasi'],
+            'totalViews' => $total['post']['views'] + $total['prestasi']['views'],
+            'getPost' => [
+                'post' => Post::where('id_penulis', Auth::id())
+                    ->latest()
+                    ->limit(2)
+                    ->get(),
+                'prestasi' => Prestasi::where('id_penulis', Auth::id())
+                    ->latest()
+                    ->limit(2)
+                    ->get(),
+            ],
+        ];
+
+        return view('profile.index')
+            ->with([
+                'title' => 'Profile',
+                'active' => null,
+                'subActive' => null,
+                'post' => $post,
+            ]);
     }
 
     /**
@@ -37,7 +68,9 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        toast('Informasi Profile berhasil diperbarui!', 'success');
+
+        return Redirect::route('profile.index');
     }
 
     /**
