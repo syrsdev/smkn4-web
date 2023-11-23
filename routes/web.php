@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
@@ -96,6 +97,12 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/sub-navbar/{sub_navbar}/status', [SubNavbarController::class, 'update_status'])
                 ->name('sub-navbar.status');
+
+            Route::get('/hero', [HeroSectionController::class, 'edit'])
+                ->name('hero.edit');
+
+            Route::patch('/hero', [HeroSectionController::class, 'update'])
+                ->name('hero.update');
         });
     });
 });
