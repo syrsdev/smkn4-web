@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
+use App\Http\Controllers\GuruPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,9 @@ Route::get('/post/{kategori}', [PostPageController::class, 'index'])
 
 Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
     ->name('landing.post.show');
+
+Route::get('/guru', [GuruPageController::class, 'index'])
+    ->name('landing.guru');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
