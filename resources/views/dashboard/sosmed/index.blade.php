@@ -30,6 +30,9 @@
                                         <a data-collapse="#{{ $item->name }}-collapse" class="btn btn-icon btn-info" href="#">
                                             <i class="fas fa-minus"></i>
                                         </a>
+                                        <button class="btn btn-sm btn-warning btn-edit" data-name="{{ $item->name }}" data-toggle="tooltip" title="Edit Sosial Media">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="collapse show" id="{{ $item->name }}-collapse">
@@ -46,12 +49,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button class="btn btn-sm btn-warning btn-edit" data-toggle="modal" data-target="#editSosmed{{ $item->name }}">
-                                            <i class="fas fa-edit"></i>
-                                            Edit Link
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -64,4 +61,11 @@
 @endsection
 
 @section('script')
+    <!-- Page Specific JS File -->
+    <script>
+        $('.btn-edit').click(function() {
+            let name = $(this).data('name');
+            $('#editSosmed' + name).modal('show');
+        });
+    </script>
 @endsection
