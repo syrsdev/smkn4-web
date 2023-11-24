@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DropLink from "../Dropdown/DropLink";
 import SideDropDown from "../Dropdown/SideDropDown";
 import SideDropLink from "../Dropdown/SideDropLink";
+import { Link } from "@inertiajs/react";
 
 function Sidebar({ isActive }) {
     const [dropdown, setDropdown] = useState(false);
@@ -14,13 +15,15 @@ function Sidebar({ isActive }) {
             }`}
         >
             <div className="flex flex-col items-center max-h-screen my-8 overflow-y-auto">
-                <img
-                    loading="lazy"
-                    src="/images/favicon.png"
-                    alt="logo smkn 4"
-                    width={60}
-                    className="object-contain"
-                />
+                <Link href="/">
+                    <img
+                        loading="lazy"
+                        src="/images/favicon.png"
+                        alt="logo smkn 4"
+                        width={60}
+                        className="object-contain"
+                    />
+                </Link>
                 <ul className="w-full px-8 pt-8 pb-16 md:px-10">
                     <DropLink href="/" border="border-b-2" pb={true}>
                         BERANDA
