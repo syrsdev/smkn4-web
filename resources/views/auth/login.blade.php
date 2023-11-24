@@ -47,7 +47,7 @@
                         <div class="login-brand">
                             <img src="{{ asset('images/' . $sekolah['favicon']) }}" alt="Logo Sekolah" width="100">
                         </div>
-                        <div class="card card-primary">
+                        <div class="card card-primary" id="login">
                             <div class="card-header">
                                 <h4>Login</h4>
                             </div>
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" onclick="$.cardProgress('#login');">
                                             Login
                                         </button>
                                     </div>
