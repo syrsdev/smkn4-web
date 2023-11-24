@@ -58,10 +58,10 @@
                                                     <td>{{ $item->post_count+$item->prestasi_count }}</td>
                                                     <td>
                                                         @if ($item->id !== Auth::id())
-                                                            <a href="{{ route('user.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit User">
+                                                            <a href="{{ route('user.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit User">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Usere">
+                                                            <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus User">
                                                                 <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                             </a>
                                                         @endif

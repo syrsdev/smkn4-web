@@ -71,13 +71,13 @@
                                                         </div>
 													</td>
                                                     <td>
-                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Prestasi">
+                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat Prestasi">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Prestasi">
+                                                        <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Prestasi">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Prestasi">
+                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Prestasi">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

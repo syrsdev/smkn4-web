@@ -58,10 +58,10 @@
                                                     <td>{{ $item->nama }}</td>
                                                     <td>{{ $item->pendidik_count }}</td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" data-placement="top" title="Edit Mapel">
+                                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Mapel">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Mapel">
+                                                        <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Mapel">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

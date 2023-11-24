@@ -29,16 +29,16 @@
                             <div class="card-header">
                                 <h4>{{ $title }}</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Guru">
+                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Tambah Guru">
                                         <i class="fas fa-plus"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" data-placement="top" title="Impor Data Guru">
+                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" title="Impor Data Guru">
                                         <i class="fas fa-upload"></i>
                                     </button>
-                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Download Data Guru">
+                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Download Data Guru">
                                         <i class="fas fa-download"></i>
                                     </a>
-                                    <a href="{{ route('mapel.index') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Data Mata Pelajaran">
+                                    <a href="{{ route('mapel.index') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Data Mata Pelajaran">
                                         <i class="fas fa-book"></i>
                                     </a>
                                 </div>
@@ -86,10 +86,10 @@
                                                         {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Guru">
+                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Guru">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Guru">
+                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Guru">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

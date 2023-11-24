@@ -101,13 +101,13 @@
                                                         </div>
 													</td>
 													<td>
-														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat {{ $kategori }}">
+														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat {{ $kategori }}">
 															<i class="fas fa-eye"></i>
 														</a>
-														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit {{ $kategori }}">
+														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit {{ $kategori }}">
 															<i class="fas fa-edit"></i>
 														</a>
-														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" data-placement="top" title="Hapus {{ $kategori }}">
+														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" title="Hapus {{ $kategori }}">
 															<i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
 														</a>
 													</td>
