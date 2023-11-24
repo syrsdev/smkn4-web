@@ -13,7 +13,7 @@ function Sidebar({ isActive }) {
                 isActive == false ? "-right-[1000px]" : "-right-1"
             }`}
         >
-            <div className="flex flex-col items-center my-8">
+            <div className="flex flex-col items-center max-h-screen my-8 overflow-y-auto">
                 <img
                     loading="lazy"
                     src="/images/favicon.png"
@@ -21,7 +21,7 @@ function Sidebar({ isActive }) {
                     width={60}
                     className="object-contain"
                 />
-                <ul className="w-full h-[500px] md:h-full px-8 md:px-10 pt-8 overflow-y-auto">
+                <ul className="w-full px-8 pt-8 pb-16 md:px-10">
                     <DropLink href="/" border="border-b-2" pb={true}>
                         BERANDA
                     </DropLink>
