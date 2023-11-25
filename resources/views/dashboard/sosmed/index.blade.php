@@ -30,8 +30,8 @@
                                         <a data-collapse="#{{ $item->name }}-collapse" class="btn btn-icon btn-info" href="#">
                                             <i class="fas fa-minus"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-warning btn-edit" data-name="{{ $item->name }}" data-toggle="tooltip" title="Edit Sosial Media">
-                                            <i class="fas fa-edit"></i>
+                                        <button class="btn btn-sm btn-warning btn-edit" data-name="{{ $item->name }}" data-toggle="tooltip" title="Edit Link">
+                                            <i class="fas fa-pencil-alt"></i>
                                         </button>
                                     </div>
                                 </div>
