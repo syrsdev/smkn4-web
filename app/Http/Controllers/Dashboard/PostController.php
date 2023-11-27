@@ -184,8 +184,8 @@ class PostController extends Controller
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
 
-            if ($post->gambar !== 'no-image-43.png') {
-                File::delete(public_path('storage/' . $kategori . '/' . $post->gambar));
+            if (str_contains($post->gambar, 'no-image-43.png')) {
+                File::delete(public_path($post->gambar));
             }
 
             $file->move(public_path('storage/' . $kategori), $gambar);
@@ -211,8 +211,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->gambar !== 'no-image-43.png') {
-            File::delete(public_path('storage/' . $post->kategori . '/' . $post->gambar));
+        if (str_contains($post->gambar, 'no-image-43.png')) {
+            File::delete(public_path($post->gambar));
         }
 
         $post->delete();
