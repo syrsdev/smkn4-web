@@ -96,7 +96,7 @@ class PostController extends Controller
             $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/' . $kategori), $gambar);
 
-            $post['gambar'] = $gambar;
+            $post['gambar'] = '/storage/' . $kategori . '/' .  $gambar;
         }
 
         try {
@@ -190,7 +190,7 @@ class PostController extends Controller
 
             $file->move(public_path('storage/' . $kategori), $gambar);
 
-            $updatedPost['gambar'] = $gambar;
+            $updatedPost['gambar'] = '/storage/' . $kategori . '/' . $gambar;
         }
 
         try {
