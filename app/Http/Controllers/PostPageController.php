@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Jenssegers\Agent\Agent;
 
 class PostPageController extends Controller
 {
@@ -45,8 +46,15 @@ class PostPageController extends Controller
                         $query->where('name', 'like', "%$search%");
                     });
             })
-            ->latest()
-            ->get();
+            ->latest();
+
+        $agent = new Agent();
+
+        if ($agent->isMobile() || $agent->isTablet()) { 
+            $allPost = $allPost->paginate(4);
+        } else {
+            $allPost = $allPost->paginate(9);
+        }
 
         return compact('mading', 'allPost');
     }
