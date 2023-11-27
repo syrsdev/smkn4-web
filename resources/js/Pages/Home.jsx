@@ -49,17 +49,17 @@ function Home(props) {
                 <div className="w-full md:w-10/12 lg:w-1/2">
                     <h1 className="relative z-20 flex flex-col gap-1 text-2xl font-bold xl:gap-2 xl:text-4xl text-secondary">
                         <span className="text-base font-normal xl:text-3xl">
-                            {welcome}
+                            {props.heroSection.welcome}
                         </span>{" "}
                         <ReactTypingEffect
-                            text={[namaSekolah]}
+                            text={[props.sekolah.nama_sekolah]}
                             typingDelay={1000}
                             eraseDelay={2000}
                         />
                     </h1>
 
                     <p className="relative z-20 mt-3 mb-5 md:mt-5 md:mb-7">
-                        {deskripsi}
+                        {props.heroSection.deskripsi}
                     </p>
                     <ButtonPrimary>
                         Lihat Jurusan <FaAngleRight />
@@ -68,8 +68,8 @@ function Home(props) {
             </Container>
             <Container classname="my-10">
                 <MadingLayout
-                    title={mading}
-                    listPost={listMading}
+                    title={props.mading.title}
+                    listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
                     <h2 className="text-primary text-[18px] font-bold mb-4 lg:hidden block text-center md:text-left">
