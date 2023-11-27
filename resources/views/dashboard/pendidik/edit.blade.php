@@ -43,7 +43,7 @@
                                     <div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
 										<div class="col-sm-12 col-md-7">
-											<img src="{{ $guru->gambar !== 'no-image-34.png' ? asset('storage/pendidik/'.$guru->gambar) : asset('images/default/'.$guru->gambar) }}" alt="{{ $guru->nama }}" style="width: 250px">
+											<img src="{{ asset($guru->gambar) }}" alt="{{ $guru->nama }}" style="width: 250px">
 										</div>
 									</div>
                                     <div class="form-group row mb-4">
@@ -75,7 +75,6 @@
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
                                             <select class="form-control choices" id="mapel" name="mapel">
                                                 @foreach ($mapel as $item)
-
                                                     <option value="{{ $item->id }}" {{ $item->id === ($guru->mapel->id ?? null) ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>

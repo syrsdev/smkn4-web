@@ -50,7 +50,7 @@
                                     <div class="form-group row mb-4">
 										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
 										<div class="col-sm-12 col-md-7">
-											<img src="{{ $prestasi->gambar !== 'no-image-43.png' ? asset('storage/prestasi/'.$prestasi->gambar) : asset('images/default/'.$prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 250px">
+											<img src="{{ asset($prestasi->gambar) }}" alt="{{ $prestasi->judul }}" style="width: 250px">
 										</div>
 									</div>
 									<div class="form-group row mb-4">

@@ -15,9 +15,13 @@
                 </div>
                 <h1>{{ $title }}</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+                    <div class="breadcrumb-item active">
+                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                    </div>
                     <div class="breadcrumb-item">Post</div>
-                    <div class="breadcrumb-item active"><a href="{{ route('post.index', $kategori) }}">{{ ucfirst($kategori) }}</a></div>
+                    <div class="breadcrumb-item active">
+                        <a href="{{ route('post.index', $kategori) }}">{{ ucfirst($kategori) }}</a>
+                    </div>
                     <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
@@ -73,7 +77,7 @@
                                         </div>
                                         <div class="ticket-description">
                                             <div class="gallery gallery-fw" data-item-height="300">
-                                                <div class="gallery-item" data-image="{{ $post->gambar !== 'no-image-43.png' ? url('storage/' . $kategori . '/' . $post->gambar) : url('images/default/' . $post->gambar) }}" data-title="{{ $post->judul }}"></div>
+                                                <div class="gallery-item" data-image="{{ asset($post->gambar) }}" data-title="{{ $post->judul }}"></div>
                                             </div>
 
                                             {!! $post->konten !!}
