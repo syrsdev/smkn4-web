@@ -55,7 +55,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" name="bagian">
+                                            <select class="form-control selectric" id="bagian" name="bagian" onchange="updateSelectOptions()">
                                                 <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
                                                 <option value="pegawai" {{ $guru->bagian === 'pegawai' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
                                             </select>
@@ -64,18 +64,19 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" name="sub_bagian">
+                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" onchange="updateSelectOptions()">
                                                 <option value="guru" {{ $guru->sub_bagian === 'guru' ? 'selected' : '' }}>Guru</option>
                                                 <option value="staff" {{ $guru->sub_bagian === 'staff' ? 'selected' : '' }}>Staff</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-4">
+                                    <div class="form-group row mb-4" id="form_mapel">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
-                                            <select class="form-control choices" name="mapel">
+                                            <select class="form-control choices" id="mapel" name="mapel">
                                                 @foreach ($mapel as $item)
-                                                    <option value="{{ $item->id }}" {{ $item->id === $guru->mapel->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+
+                                                    <option value="{{ $item->id }}" {{ $item->id === ($guru->mapel->id ?? null) ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
