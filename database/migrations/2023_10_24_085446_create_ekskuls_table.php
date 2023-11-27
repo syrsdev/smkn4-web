@@ -20,7 +20,7 @@ return new class extends Migration
                 ->nullable();
             $table->string('gambar')
                 ->nullable()
-                ->default('no-image-11.png');
+                ->default('/images/default/no-image-11.png');
             $table->timestamps();
         });
     }

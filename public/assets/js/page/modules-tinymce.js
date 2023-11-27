@@ -1,8 +1,8 @@
 tinymce.init({
     selector: "textarea",
     plugins:
-        "image, advimage, advlink, table, lists, code, media, paste, powerpaste, spellchecker, wordcount, fullscreen, autosave, emoticons, charactermap, tableofcontents, mediaembed, nonbreaking",
-        // "ai tinycomments mentions anchor autolink charmap code codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss",
+        "image table lists code media wordcount fullscreen autosave emoticons nonbreaking",
+        // "ai tinycomments mentions anchor advimage advlink autolink charmap charactermap code codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags paste powerpaste spellchecker tinymcespellchecker autocorrect a11ychecker typography inlinecss",
     toolbar:
         "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
     relative_urls: false,

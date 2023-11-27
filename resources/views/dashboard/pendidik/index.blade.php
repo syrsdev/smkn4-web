@@ -62,7 +62,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>
-                                                        <img src="{{ $item->gambar !== 'no-image-34.png' ? asset('storage/pendidik/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" style="width: 100px" alt="{{ $item->nama }}">
+                                                        <img src="{{ asset($item->gambar) }}" alt="{{ $item->nama }}" style="width: 100px">
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
                                                     <td>

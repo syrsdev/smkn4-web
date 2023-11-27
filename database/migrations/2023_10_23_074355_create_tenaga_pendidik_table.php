@@ -30,7 +30,7 @@ return new class extends Migration
                 ->nullable();
             $table->string('gambar')
                 ->nullable()
-                ->default('no-image-34.png');
+                ->default('/images/default/no-image-34.png');
             $table->unsignedBigInteger('id_mapel')
                 ->nullable();
             $table->foreign('id_mapel')

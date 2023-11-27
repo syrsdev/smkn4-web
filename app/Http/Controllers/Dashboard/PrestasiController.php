@@ -80,7 +80,7 @@ class PrestasiController extends Controller
             $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/prestasi'), $gambar);
 
-            $prestasi['gambar'] = $gambar;
+            $prestasi['gambar'] = '/storage/prestasi/' . $gambar;
         }
 
         try {
@@ -164,13 +164,13 @@ class PrestasiController extends Controller
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
 
-            if ($prestasi->gambar !== 'no-image-43.png') {
-                File::delete(public_path('storage/prestasi/' . $prestasi->gambar));
+            if (str_contains($prestasi->gambar, 'no-image-43.png')) {
+                File::delete(public_path($prestasi->gambar));
             }
 
             $file->move(public_path('storage/prestasi'), $gambar);
 
-            $updatedPrestasi['gambar'] = $gambar;
+            $updatedPrestasi['gambar'] = '/storage/prestasi/' . $gambar;
         }
         
         try {
@@ -191,8 +191,8 @@ class PrestasiController extends Controller
      */
     public function destroy(Prestasi $prestasi)
     {
-        if ($prestasi->gambar !== 'no-image-43.png') {
-            File::delete(public_path('storage/prestasi/' . $prestasi->gambar));
+        if (str_contains($prestasi->gambar, 'no-image-43.png')) {
+            File::delete(public_path($prestasi->gambar));
         }
 
         $prestasi->delete();

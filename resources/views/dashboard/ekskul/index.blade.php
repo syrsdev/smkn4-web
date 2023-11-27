@@ -47,7 +47,7 @@
                                 <div class="collapse show" id="{{ $item->slug }}-collapse">
                                     <div class="card-body">
                                         <div class="media">
-                                            <img class="mr-3" src="{{ $item->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $item->gambar) : asset('images/default/' . $item->gambar) }}" alt="{{ $item->nama }}" style="width: 100px">
+                                            <img class="mr-3" src="{{ asset($item->gambar) }}" alt="{{ $item->nama }}" style="width: 100px">
                                             <div class="media-body">
                                                 <h5 class="mt-0">{{ $item->nama }}</h5>
                                                 <p class="mb-0">

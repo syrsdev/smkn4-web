@@ -41,10 +41,10 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('icon')
                 ->nullable()
-                ->default('icon-jurusan.png');
+                ->default('/images/default/icon-jurusan.png');
             $table->string('gambar')
                 ->nullable()
-                ->default('no-image-169.png');
+                ->default('/images/default/no-image-169.png');
             $table->unsignedBigInteger('id_program');
             $table->foreign('id_program')
                 ->references('id')

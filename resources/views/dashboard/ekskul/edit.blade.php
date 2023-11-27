@@ -43,7 +43,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <img src="{{ $ekskul->gambar !== 'no-image-11.png' ? asset('storage/ekskul/' . $ekskul->gambar) : asset('images/default/' . $ekskul->gambar) }}" alt="{{ $ekskul->nama }}" style="width: 250px">
+                                            <img src="{{ asset($ekskul->gambar) }}" alt="{{ $ekskul->nama }}" style="width: 250px">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
