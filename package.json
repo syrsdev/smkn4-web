@@ -20,6 +20,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@splidejs/react-splide": "^0.7.12",
         "react-icons": "^4.11.0",
         "react-tooltip": "^5.23.0",
         "react-typing-effect": "^2.0.5"
