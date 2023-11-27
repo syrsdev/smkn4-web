@@ -21,7 +21,7 @@ class EkskulController extends Controller
         confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Ekstrakurikuler?');
 
         return view('dashboard.ekskul.index')->with([
-            'title' => 'Data Ekstrakurikuler',
+            'title' => 'Ekstrakurikuler',
             'active' => 'Kesiswaan',
             'subActive' => 'Ekstrakurikuler',
             'ekskul' => $ekskul,

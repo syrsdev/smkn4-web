@@ -27,7 +27,7 @@ class PostController extends Controller
     {
         $post = $this->getPost($kategori);
 
-        $sumPost = [
+        $total = [
             'agenda' => $this->getPost('agenda')->count(), 
             'artikel' => $this->getPost('artikel')->count(), 
             'berita' => $this->getPost('berita')->count(), 
@@ -41,8 +41,9 @@ class PostController extends Controller
                 'title' => 'Data ' . ucfirst($kategori),
                 'active' => 'Post',
                 'subActive' => ucfirst($kategori),
+                'kategori' => ucfirst($kategori),
                 'post' => $post,
-                'sumPost' => $sumPost,
+                'total' => $total,
             ]);
     }
 

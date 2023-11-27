@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Prestasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,9 +17,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('name')
+        $users = User::orderBy('name', 'asc')
             ->withCount(['post', 'prestasi'])
+            ->latest()
             ->get();
+
+        $users->each(function ($user) {
+            $user->views = [
+                'post' => Post::where('id_penulis', $user->id)->sum('views'),
+                'prestasi' => Prestasi::where('id_penulis', $user->id)->sum('views'),
+            ];
+        });
 
         confirmDelete('Hapus Data?', 'Yakin ingin hapus Data User?');
 
@@ -26,7 +36,7 @@ class UsersController extends Controller
                 'title' => 'Data User',
                 'active' => 'User',
                 'subActive' => null,
-                'users' => $user,
+                'users' => $users,
             ]);
     }
 
