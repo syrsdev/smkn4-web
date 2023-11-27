@@ -9,32 +9,10 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 import { LiaFaxSolid } from "react-icons/lia";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
+import PostCard from "@/Components/Card/PostCard";
+import PostLayout from "@/Layouts/PostLayout";
 function Home(props) {
     console.log(props);
-    const [namaSekolah, setNamaSekolah] = useState("");
-    const [welcome, setWelcome] = useState("");
-    const [deskripsi, setDeskripsi] = useState("");
-    const [mading, setMading] = useState("");
-    const [listMading, setListMading] = useState([]);
-
-    useEffect(() => {
-        const { nama_sekolah } = props.sekolah;
-        const { welcome, deskripsi } = props.heroSection;
-        const { title } = props.mading;
-        const { list } = props.mading;
-
-        setNamaSekolah(nama_sekolah);
-        setWelcome(welcome);
-        setDeskripsi(deskripsi);
-        setMading(title);
-        setListMading(list);
-    }, [
-        props.sekolah.nama_sekolah,
-        props.heroSection.welcome,
-        props.heroSection.deskripsi,
-        props.mading.title,
-        props.mading.list,
-    ]);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -43,7 +21,7 @@ function Home(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container
-                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] bg-fixed bg-center bg-[url('images/hero.png')] bg-no-repeat relative`}
+                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
                 <div className="w-full md:w-10/12 lg:w-1/2">
@@ -66,7 +44,7 @@ function Home(props) {
                     </ButtonPrimary>
                 </div>
             </Container>
-            <Container classname="my-10">
+            <Container classname="my-10 md:my-16">
                 <MadingLayout
                     title={props.mading.title}
                     listPost={props.mading.list}
@@ -101,8 +79,32 @@ function Home(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10">
+            <Container classname="my-10 md:my-16">
                 <MadingTitle title="BERITA TERKINI" href="berita" />
+                <PostLayout data={props.berita} />
+            </Container>
+
+            <Container classname="my-10 md:my-16">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    KONSENTRASI KEAHLIAN
+                </h3>
+            </Container>
+
+            <Container classname="py-16 mt-10 bg-primary">
+                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    PRESTASI
+                </h3>
+            </Container>
+
+            <Container classname="my-10 md:my-16">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    TENAGA PENDIDIK DAN KEPENDIDIKAN
+                </h3>
+            </Container>
+            <Container classname="my-10 md:my-16">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    EKSTRAKURIKULER
+                </h3>
             </Container>
             <Container classname="py-16 mt-10 bg-primary">
                 <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
