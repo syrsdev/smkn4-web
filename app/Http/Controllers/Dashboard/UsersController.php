@@ -81,13 +81,11 @@ class UsersController extends Controller
             ]);
 
             toast('User berhasil dibuat!', 'success');
-
-            return redirect()->route('user.index');
         } catch (\Exception $e) {
-            toast('User gagal dibuat!', 'warning');
-            
-            return redirect()->back();
+            toast('User gagal dibuat!', 'warning');            
         }
+
+        return redirect()->back();
     }
 
     /**
@@ -135,13 +133,11 @@ class UsersController extends Controller
             ]);
 
             toast('User berhasil diedit!', 'success');
-
-            return redirect()->route('user.index');
         } catch (\Exception $e) {
             toast('User gagal diedit!', 'warning');
-            
-            return redirect()->back();
         }
+
+        return redirect()->back();
     }
 
     /**

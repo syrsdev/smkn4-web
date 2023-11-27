@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('konten');
             $table->string('gambar')
                 ->nullable()
-                ->default('no-image-43.png');
+                ->default('/images/default/no-image-43.png');
             $table->boolean('status')
                 ->nullable()
                 ->default(0);
@@ -46,7 +46,7 @@ return new class extends Migration
                 ->nullable();
             $table->string('gambar')
                 ->nullable()
-                ->default('no-image-43.png');
+                ->default('/images/default/no-image-43.png');
             $table->boolean('status')
                 ->nullable()
                 ->default(0);
