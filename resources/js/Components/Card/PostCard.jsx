@@ -3,12 +3,14 @@ import React from "react";
 
 function PostCard({ data }) {
     return (
-        <div className="flex flex-col gap-2">
-            <img
-                src={`${data.gambar}`}
-                alt="thumbnail post"
-                className="max-h-[168px] xl:max-h-[200px] object-cover"
-            />
+        <div className="flex flex-col gap-2 thumbnail">
+            <div className="h-[120px] overflow-hidden md:h-[168px] xl:h-[200px]">
+                <img
+                    src={`${data.gambar}`}
+                    alt="thumbnail post"
+                    className="object-cover thumbnail h-[120px] w-full md:h-[168px] xl:h-[200px]"
+                />
+            </div>
             <div>
                 <h4 className="text-[16px] xl:text-[20px] font-bold text-primary truncate">
                     {data.judul}
