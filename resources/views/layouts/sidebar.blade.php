@@ -80,10 +80,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="{{ $subActive === 'Bidang' ? 'active' : '' }}">
-                            <a class="nav-link" href="{{route('bidang.index')}}">Bidang Keahlian</a>
+                            <a class="nav-link" href="{{ route('bidang.index') }}">Bidang Keahlian</a>
                         </li>
                         <li class="{{ $subActive === 'Program' ? 'active' : '' }}">
-                            <a class="nav-link" href="#">Program Keahlian</a>
+                            <a class="nav-link" href="{{ route('program.index') }}">Program Keahlian</a>
                         </li>
                         <li class="{{ $subActive === 'Konsentrasi' ? 'active' : '' }}">
                             <a class="nav-link" href="#">Konsentrasi Keahlian</a>
