@@ -56,7 +56,7 @@ function Home(props) {
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
                         <div className="flex flex-col items-center md:items-start lg:w-7/12">
                             <img
-                                src="/images/default/no-image-34.png"
+                                src={props.sambutan.kepsek.gambar}
                                 alt="foto kepala sekolah"
                                 className="object-contain max-w-[177px]"
                             />

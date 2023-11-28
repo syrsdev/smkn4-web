@@ -30,12 +30,12 @@ function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
             <Navbar subnav={subnav} logo={logo} />
             {children}
             <div
-                className={`fixed justify-center items-center z-50 p-4 cursor-pointer  shadow-xl rounded-full bg-primary border border-slate-300 bottom-5 right-5 ${
+                className={`fixed justify-center items-center z-50 p-3 cursor-pointer  shadow-xl rounded-full bg-primary ring-2 ring-yellow-300 border-slate-300 bottom-8 right-5 ${
                     isVisible ? "flex" : "hidden"
                 }`}
                 onClick={scrollToTop}
             >
-                <FaArrowUp className="text-sm text-white animate-bounce" />
+                <FaArrowUp className="text-base text-white animate-bounce" />
             </div>
             <Footer logo={logo} alamat={alamat} sosmed={sosmed} />
         </>

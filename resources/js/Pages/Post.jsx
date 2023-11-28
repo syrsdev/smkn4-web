@@ -36,9 +36,8 @@ function Post(props) {
                                     <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
                                         {props.post.judul}
                                     </h2>
-                                    <p className="text-[14px] font-semibold text-gray-500 flex items-center gap-2">
-                                        <span className="text-primary">
-                                            {" "}
+                                    <p className="text-[14px] font-semibold text-primary flex items-center gap-2">
+                                        <span>
                                             Post by {props.post.penulis.name}
                                         </span>
                                         {new Date(
