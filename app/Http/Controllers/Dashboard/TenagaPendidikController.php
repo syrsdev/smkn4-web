@@ -158,7 +158,7 @@ class TenagaPendidikController extends Controller
             $file = $request->file('gambar');
             $gambar = $request->input('nama') . '.' . $file->extension();
 
-            if (str_contains($guru->gambar, 'no-image-34.png')) {
+            if (!str_contains($guru->gambar, 'no-image-34.png')) {
                 File::delete(public_path($guru->gambar));
             }
 
@@ -185,7 +185,7 @@ class TenagaPendidikController extends Controller
      */
     public function destroy(Pendidik $guru)
     {
-        if (str_contains($guru->gambar, 'no-image-34.png')) {
+        if (!str_contains($guru->gambar, 'no-image-34.png')) {
             File::delete(public_path($guru->gambar));
         }
 
