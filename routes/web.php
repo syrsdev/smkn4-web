@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
+use App\Http\Controllers\PrestasiPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,12 @@ Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
 
 Route::get('/guru', [GuruPageController::class, 'index'])
     ->name('landing.guru');
+
+Route::get('/prestasi', [PrestasiPageController::class, 'index'])
+    ->name('landing.prestasi.index');
+
+Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
+    ->name('landing.prestasi.show');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {

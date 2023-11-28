@@ -64,7 +64,7 @@ class PostPageController extends Controller
         $search = $request->input('search');
         
         $post = Post::with('penulis')
-            ->where([ 'kategori' => $kategori, 'status' => '1'])
+            ->where(['kategori' => $kategori, 'status' => '1'])
             ->latest()
             ->first();
 
