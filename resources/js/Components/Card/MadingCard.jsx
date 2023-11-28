@@ -7,7 +7,7 @@ function MadingCard({ item }) {
             <img
                 src={`${item.gambar}`}
                 alt="thumbnail mading"
-                className="h-[110px] w-[100px] object-cover"
+                className="h-[110px] min-w-[100px] w-[100px] object-cover"
             />
             <div className="w-full overflow-hidden">
                 <h4 className="font-bold text-[16px] truncate">{item.judul}</h4>
