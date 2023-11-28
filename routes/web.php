@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
 use App\Http\Controllers\Dashboard\MapelController;
@@ -96,6 +97,10 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/sub-navbar/{sub_navbar}/status', [SubNavbarController::class, 'update_status'])
                 ->name('sub-navbar.status');
+
+            Route::prefix('jurusan')->group(function () {
+                Route::resource('/bidang', BidangKeahlianController::class);
+            });
         });
     });
 });
