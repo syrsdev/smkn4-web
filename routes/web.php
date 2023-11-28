@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
@@ -110,6 +111,8 @@ Route::middleware('auth')->group(function () {
                 Route::resource('/bidang', BidangKeahlianController::class);
 
                 Route::resource('/program', ProgramKeahlianController::class);
+
+                Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
             });
         });
     });
