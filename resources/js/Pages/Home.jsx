@@ -101,7 +101,7 @@ function Home(props) {
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
             </Container>
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-16" id="ekskul">
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
                     EKSTRAKURIKULER
                 </h3>
