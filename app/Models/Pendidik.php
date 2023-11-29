@@ -15,7 +15,7 @@ class Pendidik extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['slug', 'nama', 'bagian', 'sub_bagian', 'id_mapel'];
+    protected $fillable = ['slug', 'nama', 'bagian', 'sub_bagian', 'id_mapel', 'gambar'];
 
     public function getRouteKeyName()
     {
