@@ -7,10 +7,10 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 
-function Post(props) {
+function Prestasi(props) {
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState("");
-
+    console.log(props);
     const openModal = () => {
         setShowModal(true);
     };
@@ -40,35 +40,43 @@ function Post(props) {
                 >
                     {props.post !== null ? (
                         <>
-                            <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
+                            {/* <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
                                 {window.location.pathname.split("/").length < 4
                                     ? `${props.post.kategori} TERBARU`
                                     : `DETAIL ${props.post.kategori}`}
-                            </h1>
+                            </h1> */}
                             <div className="flex flex-col gap-2 md:flex-row xl:flex-col md:gap-4">
                                 <img
                                     onClick={openModal}
-                                    src={`${props.post.gambar}`}
+                                    src={`${props.prestasi.gambar}`}
                                     alt="thumbnail post"
                                     className="max-h-[200px] object-cover xl:max-h-[380px] cursor-zoom-in md:w-1/2 xl:w-full"
                                 />
                                 <div className="flex flex-col">
                                     <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
-                                        {props.post.judul}
+                                        {props.prestasi.judul}
                                     </h2>
                                     <p className="text-[14px] font-semibold text-primary flex items-center gap-2">
                                         <span>
-                                            Post by {props.post.penulis.name}
+                                            Post by{" "}
+                                            {props.prestasi.penulis.name}
                                         </span>
                                         {new Date(
-                                            props.post.created_at
+                                            props.prestasi.created_at
                                         ).toLocaleDateString("id-ID")}
                                     </p>
+                                    <div className="flex flex-wrap items-center justify-between mt-2 font-semibold text-primary">
+                                        <figure>
+                                            Peserta Lomba:{" "}
+                                            {props.prestasi.pemenang}
+                                        </figure>
+                                        <p>Tingkat {props.prestasi.kategori}</p>
+                                    </div>
                                     <p
                                         dangerouslySetInnerHTML={{
-                                            __html: props.post.konten,
+                                            __html: props.prestasi.konten,
                                         }}
-                                        className="text-[14px] mt-2"
+                                        className="text-[14px] mt-1"
                                     ></p>
                                 </div>
                             </div>
@@ -81,7 +89,7 @@ function Post(props) {
                                 className="max-h-[380px] "
                             />
                             <h2 className="font-bold text-[20px] text-primary">
-                                Belum ada Post di upload
+                                Belum ada Prestasi di upload
                             </h2>
                         </div>
                     )}
@@ -127,7 +135,7 @@ function Post(props) {
             </Container>
 
             <Container classname="my-10 md:mt-7 md:mb-16">
-                <PostLayout data={props.allPost.data} />
+                <PostLayout data={props.allPrestasi.data} />
             </Container>
 
             {showModal && (
@@ -155,4 +163,4 @@ function Post(props) {
     );
 }
 
-export default Post;
+export default Prestasi;

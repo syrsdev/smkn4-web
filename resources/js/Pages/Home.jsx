@@ -9,7 +9,6 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 import { LiaFaxSolid } from "react-icons/lia";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import PostCard from "@/Components/Card/PostCard";
 import PostLayout from "@/Layouts/PostLayout";
 function Home(props) {
     console.log(props);

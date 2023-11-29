@@ -5,7 +5,7 @@ function DropLink({ href, children, border, pb }) {
     return (
         <Link
             href={href}
-            className={`w-full block font-bold border-primary hover:opacity-100 opacity-80 text-primary ${
+            className={`w-full cursor-pointer block font-bold border-primary hover:opacity-100 opacity-80 text-primary ${
                 pb == true ? "pb-4" : ""
             } ${border}`}
         >

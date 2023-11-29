@@ -64,10 +64,10 @@ function Sidebar({ isActive }) {
                     <span onClick={() => setDropdown3(!dropdown3)}>
                         <SideDropDown title="KESISWAAN" active={dropdown3}>
                             <SideDropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/prestasi" pb={true}>
                                     PRESTASI
                                 </DropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/#ekskul" pb={true}>
                                     EKSKUL
                                 </DropLink>
                             </SideDropLink>

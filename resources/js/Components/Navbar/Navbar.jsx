@@ -140,7 +140,7 @@ export default function Navbar({ subnav, logo }) {
                                             <IoChevronDown className="duration-150 rotate" />
                                         </Link>
                                         <Dropdown shown={hoverDropdown3}>
-                                            <DropLink href="#">
+                                            <DropLink href="/prestasi">
                                                 PRESTASI
                                             </DropLink>
                                             <DropLink href="/#ekskul">
