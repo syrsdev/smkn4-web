@@ -49,7 +49,7 @@
                                         <div class="media">
                                             <div class="media-body">
                                                 <h5 class="mt-0">{{ $item->nama }}</h5>
-                                                <p>{{ $item->program_count }}</p>
+                                                <p>Total Program Keahlian : {{ $item->program_count }}</p>
                                             </div>
                                         </div>
                                     </div>
