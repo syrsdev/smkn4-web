@@ -143,7 +143,9 @@ export default function Navbar({ subnav, logo }) {
                                             <DropLink href="#">
                                                 PRESTASI
                                             </DropLink>
-                                            <DropLink href="#">EKSKUL</DropLink>
+                                            <DropLink href="/#ekskul">
+                                                EKSKUL
+                                            </DropLink>
                                         </Dropdown>
                                     </li>
                                 </ul>
