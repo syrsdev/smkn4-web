@@ -3,9 +3,11 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
+use App\Http\Controllers\Dashboard\ProgramKeahlianController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
@@ -107,6 +109,10 @@ Route::middleware('auth')->group(function () {
 
             Route::prefix('jurusan')->group(function () {
                 Route::resource('/bidang', BidangKeahlianController::class);
+
+                Route::resource('/program', ProgramKeahlianController::class);
+
+                Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
             });
         });
     });

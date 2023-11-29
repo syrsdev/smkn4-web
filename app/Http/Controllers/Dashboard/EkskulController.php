@@ -135,7 +135,7 @@ class EkskulController extends Controller
             $file = $request->file('gambar');
             $gambar = $request->input('nama') . '.' . $file->extension();
 
-            if (str_contains($ekskul->gambar, 'no-image-11.png')) {
+            if (!str_contains($ekskul->gambar, 'no-image-11.png')) {
                 File::delete(public_path($ekskul->gambar));
             }
 
@@ -162,7 +162,7 @@ class EkskulController extends Controller
      */
     public function destroy(Ekskul $ekskul)
     {
-        if (str_contains($ekskul->gambar, 'no-image-11.png')) {
+        if (!str_contains($ekskul->gambar, 'no-image-11.png')) {
             File::delete(public_path($ekskul->gambar));
         }
 
