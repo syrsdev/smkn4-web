@@ -183,12 +183,11 @@ class PostController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
+            $file->move(public_path('storage/' . $kategori), $gambar);
 
             if (!str_contains($post->gambar, 'no-image-43.png')) {
                 File::delete(public_path($post->gambar));
             }
-
-            $file->move(public_path('storage/' . $kategori), $gambar);
 
             $updatedPost['gambar'] = '/storage/' . $kategori . '/' . $gambar;
         }

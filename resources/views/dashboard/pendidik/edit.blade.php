@@ -73,7 +73,7 @@
                                     <div class="form-group row mb-4" id="form_mapel">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
-                                            <select class="form-control choices" id="mapel" name="mapel">
+                                            <select class="form-control choices" id="mapel" name="id_mapel">
                                                 @foreach ($mapel as $item)
                                                     <option value="{{ $item->id }}" {{ $item->id === ($guru->mapel->id ?? null) ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach

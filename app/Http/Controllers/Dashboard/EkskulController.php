@@ -134,12 +134,11 @@ class EkskulController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $request->input('nama') . '.' . $file->extension();
+            $file->move(public_path('storage/ekskul'), $gambar);
 
             if (!str_contains($ekskul->gambar, 'no-image-11.png')) {
                 File::delete(public_path($ekskul->gambar));
             }
-
-            $file->move(public_path('storage/ekskul'), $gambar);
 
             $updatedEkskul['gambar'] = '/storage/ekskul/' . $gambar;
         }
