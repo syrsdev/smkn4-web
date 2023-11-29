@@ -30,7 +30,6 @@ class PrestasiPageController extends Controller
                 return $query->where('judul', 'like', "%$search%")
                     ->orWhere('kategori', 'like', "%$search%")
                     ->orWhere('pemenang', 'like', "%$search%")
-                    ->orWhere('created_at', 'like', "%$search%")
                     ->orWhereHas('penulis', function ($query) use ($search) {
                         $query->where('name', 'like', "%$search%");
                     });

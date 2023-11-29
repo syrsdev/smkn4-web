@@ -41,7 +41,7 @@ class PostPageController extends Controller
             })
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('judul', 'like', "%$search%")
-                    ->orWhere('created_at', 'like', "%$search%")
+                    ->orWhere('kategori', 'like', "%$search%")
                     ->orWhereHas('penulis', function ($query) use ($search) {
                         $query->where('name', 'like', "%$search%");
                     });
