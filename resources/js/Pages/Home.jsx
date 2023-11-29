@@ -56,7 +56,7 @@ function Home(props) {
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
                         <div className="flex flex-col items-center md:items-start lg:w-7/12">
                             <img
-                                src="/images/default/no-image-34.png"
+                                src={props.sambutan.kepsek.gambar}
                                 alt="foto kepala sekolah"
                                 className="object-contain max-w-[177px]"
                             />
@@ -101,7 +101,7 @@ function Home(props) {
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
             </Container>
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-16" id="ekskul">
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
                     EKSTRAKURIKULER
                 </h3>
