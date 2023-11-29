@@ -1,11 +1,12 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/PostLayout";
+import PostLayout from "@/Layouts/CardListLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
+import CardListLayout from "@/Layouts/CardListLayout";
 
 function Post(props) {
     const [showModal, setShowModal] = useState(false);
@@ -88,7 +89,7 @@ function Post(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10 md:mt-16" id="post">
+            <Container classname="my-12 md:mt-20" id="post">
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
                         Postingan Lainnya
@@ -127,7 +128,7 @@ function Post(props) {
             </Container>
 
             <Container classname="my-10 md:mt-7 md:mb-16">
-                <PostLayout data={props.allPost.data} />
+                <CardListLayout data={props.allPost.data} />
             </Container>
 
             {showModal && (
