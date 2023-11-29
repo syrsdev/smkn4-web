@@ -26,7 +26,7 @@ class KonsentrasiKeahlianController extends Controller
                 'title' => 'Konsentrasi Keahlian',
                 'active' => 'Jurusan',
                 'subActive' => 'Konsentrasi',
-                'konsentrasi' => $konsentrasi, 
+                'konsentrasi' => $konsentrasi,
             ]);
     }
 
@@ -68,32 +68,21 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => $request->input('id_program'),
         ];
 
-        if ($request->hasFile('icon') || $request->hasFile('gambar')) {
+        if ($request->hasFile('icon')) {
             $request->validate([
                 'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
             ]);
 
-            if ($request->hasFile('icon')) {
-                $file = $request->file('icon');
-                $icon = 'icon-' . $slug . '.' . $file->extension();
-                $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
+            $file = $request->file('icon');
+            $icon = 'icon-' . $slug . '.' . $file->extension();
+            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
 
-                $konsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
-            }
-
-            if ($request->hasFile('gambar')) {
-                $file = $request->file('gambar');
-                $gambar = $slug . '.' . $file->extension();
-                $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
-    
-                $konsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
-            }
+            $konsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
         }
 
         try {
             KonsentrasiKeahlian::create($konsentrasi);
-            
+
             toast('Konsentrasi Keahlian berhasil dibuat!', 'success');
 
             return redirect()->route('konsentrasi.index');
@@ -151,35 +140,20 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => $request->input('id_program'),
         ];
 
-        if ($request->hasFile('icon') || $request->hasFile('gambar')) {
+        if ($request->hasFile('icon')) {
             $request->validate([
                 'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
             ]);
 
-            if ($request->hasFile('icon')) {
-                $file = $request->file('icon');
-                $icon = 'icon-' . $slug . '.' . $file->extension();
-                $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
+            $file = $request->file('icon');
+            $icon = 'icon-' . $slug . '.' . $file->extension();
+            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
 
-                if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
-                    File::delete(public_path($konsentrasi->icon));
-                }
-
-                $newKonsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
+            if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
+                File::delete(public_path($konsentrasi->icon));
             }
 
-            if ($request->hasFile('gambar')) {
-                $file = $request->file('gambar');
-                $gambar = $slug . '.' . $file->extension();
-                $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
-
-                $newKonsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
-
-                if (!str_contains($konsentrasi->gambar, 'no-image-169.png')) {
-                    File::delete(public_path($konsentrasi->gambar));
-                }
-            }
+            $newKonsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
         }
 
         try {
