@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="tambahbidang">
+<div class="modal fade" tabindex="-1" role="dialog" id="tambahBidang">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,8 +11,8 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Bidang Keahlian</label>
-                        <input type="text" class="form-control" name="nama">
+                        <label for="nama">Nama Bidang Keahlian</label>
+                        <input type="text" class="form-control" id="nama" name="nama">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">

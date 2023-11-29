@@ -9,7 +9,7 @@
             <div class="section-header">
                 <h1>{{ $title }}</h1>
                 <div class="section-header-button">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#tambahbidang  ">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBidang  ">
                         Tambah Data
                     </button>
                 </div>
@@ -28,7 +28,7 @@
                 </p>
                 <div class="row">
                     @foreach ($bidang as $item)
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6">
                             <div class="card">
                                 <div class="card-header">
                                     <h4>{{ $item->nama }}</h4>
@@ -36,7 +36,7 @@
                                         <a data-collapse="#{{ $item->slug }}-collapse" class="btn btn-icon btn-info" href="#">
                                             <i class="fas fa-minus"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-warning btn-edit" data-id="{{ $item->id }}" data-toggle="tooltip" title="Edit Bidang Keahlian">
+                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Bidang Keahlian">
                                             <i class="fas fa-pencil-alt"></i>
                                         </button>
                                         <a href="{{ route('bidang.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Bidang Keahlian">
@@ -49,6 +49,7 @@
                                         <div class="media">
                                             <div class="media-body">
                                                 <h5 class="mt-0">{{ $item->nama }}</h5>
+                                                <p>{{ $item->program_count }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -68,8 +69,8 @@
     <!-- Page Specific JS File -->
     <script>
         $('.btn-edit').click(function() {
-            let id = $(this).data('id');
-            $('#editBidang' + id).modal('show');
+            let slug = $(this).data('slug');
+            $('#editBidang' + slug).modal('show');
         });
     </script>    
 @endsection
