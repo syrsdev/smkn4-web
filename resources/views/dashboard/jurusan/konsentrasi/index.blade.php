@@ -17,6 +17,7 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
+                    <div class="breadcrumb-item">Jurusan</div>
                     <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>

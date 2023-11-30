@@ -18,10 +18,9 @@
                         </div>
                         <div class="form-group">
                             <label for="id_bidang">Bidang Keahlian</label>
-                            <select class="form-control selectric" name="id_bidang" id="id_bidang">
-                                <option disabled selected>Bidang Keahlian</option>
-                                @foreach ($bidang as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            <select class="form-control choices" name="id_bidang" id="id_bidang">
+                                @foreach ($bidang as $b)
+                                    <option value="{{ $b->id }}" {{ $b->id === $item->id_bidang ? 'selected' : '' }}>{{ $b->nama }}</option>
                                 @endforeach
                             </select>
                         </div>

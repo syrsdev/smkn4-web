@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-<link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/choices.js/public/assets/styles/choices.css') }}">
 @endsection
 
 @section('content')
@@ -68,9 +68,10 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/choices.js/public/assets/scripts/choices.js') }}"></script>
 
     <!-- Page Specific JS File -->
+    <script src="{{ asset('assets/js/page/modules-choices.js')}}"></script>
     <script>
         $('.btn-edit').click(function() {
             let slug = $(this).data('slug');
