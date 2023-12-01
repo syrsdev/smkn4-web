@@ -9,7 +9,8 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 import { LiaFaxSolid } from "react-icons/lia";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import PostLayout from "@/Layouts/PostLayout";
+import PostLayout from "@/Layouts/CardListLayout";
+import CardListLayout from "@/Layouts/CardListLayout";
 function Home(props) {
     console.log(props);
     return (
@@ -80,7 +81,7 @@ function Home(props) {
 
             <Container classname="my-10 md:my-16">
                 <MadingTitle title="BERITA TERKINI" href="berita" />
-                <PostLayout data={props.berita} />
+                <CardListLayout data={props.berita} />
             </Container>
 
             <Container classname="my-10 md:my-16">

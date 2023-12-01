@@ -1,11 +1,12 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/PostLayout";
+import PostLayout from "@/Layouts/CardListLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
+import CardListLayout from "@/Layouts/CardListLayout";
 
 function Prestasi(props) {
     const [showModal, setShowModal] = useState(false);
@@ -40,18 +41,23 @@ function Prestasi(props) {
                 >
                     {props.post !== null ? (
                         <>
-                            {/* <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
-                                {window.location.pathname.split("/").length < 4
-                                    ? `${props.post.kategori} TERBARU`
-                                    : `DETAIL ${props.post.kategori}`}
-                            </h1> */}
+                            <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
+                                {window.location.pathname.split("/").length < 3
+                                    ? `PRESTASI TERBARU`
+                                    : `DETAIL PRESTASI`}
+                            </h1>
                             <div className="flex flex-col gap-2 md:flex-row xl:flex-col md:gap-4">
-                                <img
-                                    onClick={openModal}
-                                    src={`${props.prestasi.gambar}`}
-                                    alt="thumbnail post"
-                                    className="max-h-[200px] object-cover xl:max-h-[380px] cursor-zoom-in md:w-1/2 xl:w-full"
-                                />
+                                <div className="relative md:w-1/2 xl:w-full">
+                                    <img
+                                        onClick={openModal}
+                                        src={`${props.prestasi.gambar}`}
+                                        alt="thumbnail post"
+                                        className="max-h-[200px] w-full object-cover xl:max-h-[380px] cursor-zoom-in "
+                                    />
+                                    <div className="absolute top-0 right-0 px-4 py-2 xl:px-6 rounded-bl-2xl bg-primary text-secondary">
+                                        {props.prestasi.kategori}
+                                    </div>
+                                </div>
                                 <div className="flex flex-col">
                                     <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
                                         {props.prestasi.judul}
@@ -65,13 +71,9 @@ function Prestasi(props) {
                                             props.prestasi.created_at
                                         ).toLocaleDateString("id-ID")}
                                     </p>
-                                    <div className="flex flex-wrap items-center justify-between mt-2 font-semibold text-primary">
-                                        <figure>
-                                            Peserta Lomba:{" "}
-                                            {props.prestasi.pemenang}
-                                        </figure>
-                                        <p>Tingkat {props.prestasi.kategori}</p>
-                                    </div>
+                                    <figure className="mt-2 font-semibold text-primary">
+                                        Peserta Lomba: {props.prestasi.pemenang}
+                                    </figure>
                                     <p
                                         dangerouslySetInnerHTML={{
                                             __html: props.prestasi.konten,
@@ -96,10 +98,10 @@ function Prestasi(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10 md:mt-16" id="post">
+            <Container classname="my-12 md:mt-20" id="post">
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
-                        Postingan Lainnya
+                        Prestasi Lainnya
                     </h3>
 
                     <div className="flex items-center gap-2 md:gap-3">
@@ -134,8 +136,8 @@ function Prestasi(props) {
                 </div>
             </Container>
 
-            <Container classname="my-10 md:mt-7 md:mb-16">
-                <PostLayout data={props.allPrestasi.data} />
+            <Container classname="my-10 md:mt-5 md:mb-16">
+                <CardListLayout data={props.allPrestasi.data} type="prestasi" />
             </Container>
 
             {showModal && (
@@ -146,7 +148,7 @@ function Prestasi(props) {
                     ></div>
                     <div className="flex justify-center object-contain w-full p-4 bg-white rounded-lg shadow-lg modal-content">
                         <img
-                            src={`${props.post.gambar}`}
+                            src={`${props.prestasi.gambar}`}
                             alt="Preview"
                             className="object-contain w-1/2 max-h-1/2 z-[55]"
                         />
