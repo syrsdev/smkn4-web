@@ -53,7 +53,7 @@
                                 <div class="col-12 col-sm-6">
                                     <article class="article article-style-b">
                                         <div class="article-header">
-                                            <div class="article-image" data-background="{{ $item->gambar !== 'no-image-43.png' ? asset('storage/' . $item->kategori . '/' . $item->gambar) : asset('images/default/' . $item->gambar) }}">
+                                            <div class="article-image" data-background="{{ $item->gambar }}">
                                             </div>
                                             <div class="article-badge">
                                                 <div class="article-badge-item bg-info">
@@ -92,7 +92,7 @@
                                 <div class="col-12 col-sm-6 col-md-6">
                                     <article class="article article-style-b">
                                         <div class="article-header">
-                                            <div class="article-image" data-background="{{ $item->gambar !== 'no-image-43.png' ? asset('storage/prestasi/' . $item->gambar) : asset('images/default/' . $item->gambar) }}">
+                                            <div class="article-image" data-background="{{ $item->gambar }}">
                                             </div>
                                             <div class="article-badge">
                                                 <div class="article-badge-item bg-info">
