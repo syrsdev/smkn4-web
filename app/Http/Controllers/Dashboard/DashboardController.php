@@ -41,4 +41,32 @@ class DashboardController extends Controller
                 'sumBox' => $sumBox,
             ]);
     }
+
+
+    public function statistic()
+    {
+        $postDates = Post::selectRaw('DATE(created_at) as date')
+            ->groupBy('date')
+            ->get()
+            ->pluck('date');
+
+        $prestasiDates = Prestasi::selectRaw('DATE(created_at) as date')
+            ->groupBy('date')
+            ->get()
+            ->pluck('date');
+
+        $allDates = $postDates->merge($prestasiDates)->unique();
+
+        $statistics = [];
+
+        foreach ($allDates as $date) {
+            $statistics[] = [
+                'date' => $date,
+                'post' => Post::whereDate('created_at', $date)->count(),
+                'prestasi' => Prestasi::whereDate('created_at', $date)->count(),
+            ];
+        }
+
+        return response()->json($statistics);
+    }
 }
