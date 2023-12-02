@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function get()
     {
         return view('dashboard.dashboard')
             ->with([
-                'title' => 'Dahsboard',
+                'title' => 'Dashboard',
                 'active' => 'Dashboard',
-                'subActive' => '',
+                'subActive' => null,
+            ]);
+    }
+
+    public function index()
+    {
+        return view('dashboard.dashboard.dashboard')
+            ->with([
+                'title' => 'Dashboard',
+                'active' => 'Dashboard',
+                'subActive' => null,
             ]);
     }
 }
