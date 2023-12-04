@@ -110,6 +110,7 @@ export default function Navbar({ subnav, logo }) {
                                             setHoverDropdown({
                                                 ...hoverDropdown,
                                                 dropdown2: true,
+                                                dropdown3: false,
                                             });
                                         }}
                                         onMouseLeave={() => {
@@ -148,6 +149,7 @@ export default function Navbar({ subnav, logo }) {
                                         onMouseEnter={() => {
                                             setHoverDropdown({
                                                 ...hoverDropdown,
+                                                dropdown2: false,
                                                 dropdown3: true,
                                             });
                                         }}
