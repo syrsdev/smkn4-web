@@ -31,7 +31,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 3',
@@ -40,7 +40,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 4',
@@ -49,7 +49,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 5',
@@ -58,7 +58,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 6',
@@ -67,7 +67,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 7',
@@ -76,7 +76,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-3 days')),
             ],
         ]);
 

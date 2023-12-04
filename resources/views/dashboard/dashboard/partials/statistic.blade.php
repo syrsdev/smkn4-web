@@ -10,7 +10,7 @@
             let post = data.map(stat => stat.post);
             let prestasi = data.map(stat => stat.prestasi);
 
-            let ctx = document.getElementById("postVsPrestasi").getContext('2d');
+            let ctx = document.getElementById("postPrestasi").getContext('2d');
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -24,7 +24,7 @@
                             borderColor: 'rgba(63,82,227,.8)',
                             pointBackgroundColor: 'rgba(63,82,227,.8)',
                             pointBorderColor: 'transparent',
-                            pointRadius: 2,
+                            pointRadius: 5,
                         },
                         {
                             label: 'Prestasi',
@@ -34,7 +34,7 @@
                             borderColor: 'rgba(254,86,83,.7)',
                             pointBackgroundColor: 'rgba(254,86,83,.7)',
                             pointBorderColor: 'transparent',
-                            pointRadius: 2,
+                            pointRadius: 5,
                         }
                     ]
                 },
@@ -50,7 +50,7 @@
                             },
                             ticks: {
                                 beginAtZero: true,
-                                stepSize: 5
+                                stepSize: 1
                             }
                         }],
                         xAxes: [{
