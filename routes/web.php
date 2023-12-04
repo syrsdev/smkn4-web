@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])
                 ->name('dashboard');
 
+            Route::get('/dashboard', [DashboardController::class, 'get'])
+                ->name('dashboard.get');
+
             Route::resource('/post', PostController::class);
 
             Route::prefix('post')->group(function () {
