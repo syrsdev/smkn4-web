@@ -50,9 +50,9 @@ class SubNavbarController extends Controller
                 'url' => $request->input('url'),
             ]);
 
-            toast('Sub Navbar berhasil ditambahkan!', 'success');
+            toast('Sub Navbar berhasil dibuat!', 'success');
         } catch (\Exception $e) {
-            toast('Sub Navbar gagal ditambahkan.', 'warning');
+            toast('Sub Navbar gagal dibuat.', 'warning');
         }
 
         return redirect()->back();

@@ -9,7 +9,11 @@ function SideDropDown({ children, active, title }) {
             >
                 <div className="flex justify-between mb-3">
                     <p>{title}</p>
-                    <IoChevronDown className="text-[24px]" />
+                    <IoChevronDown
+                        className={`text-[24px] duration-150 ${
+                            active && "rotate-180"
+                        }`}
+                    />
                 </div>
                 {active == true ? children : ""}
             </li>

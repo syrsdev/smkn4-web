@@ -27,7 +27,7 @@ class PostController extends Controller
     {
         $post = $this->getPost($kategori);
 
-        $sumPost = [
+        $total = [
             'agenda' => $this->getPost('agenda')->count(), 
             'artikel' => $this->getPost('artikel')->count(), 
             'berita' => $this->getPost('berita')->count(), 
@@ -41,8 +41,9 @@ class PostController extends Controller
                 'title' => 'Data ' . ucfirst($kategori),
                 'active' => 'Post',
                 'subActive' => ucfirst($kategori),
+                'kategori' => ucfirst($kategori),
                 'post' => $post,
-                'sumPost' => $sumPost,
+                'total' => $total,
             ]);
     }
 
@@ -95,7 +96,7 @@ class PostController extends Controller
             $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/' . $kategori), $gambar);
 
-            $post['gambar'] = $gambar;
+            $post['gambar'] = '/storage/' . $kategori . '/' . $gambar;
         }
 
         try {
@@ -182,14 +183,13 @@ class PostController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
-
-            if ($post->gambar !== 'no-image-43.png') {
-                File::delete(public_path('storage/' . $kategori . '/' . $post->gambar));
-            }
-
             $file->move(public_path('storage/' . $kategori), $gambar);
 
-            $updatedPost['gambar'] = $gambar;
+            if (!str_contains($post->gambar, 'no-image-43.png')) {
+                File::delete(public_path($post->gambar));
+            }
+
+            $updatedPost['gambar'] = '/storage/' . $kategori . '/' . $gambar;
         }
 
         try {
@@ -210,8 +210,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->gambar !== 'no-image-43.png') {
-            File::delete(public_path('storage/' . $post->kategori . '/' . $post->gambar));
+        if (!str_contains($post->gambar, 'no-image-43.png')) {
+            File::delete(public_path($post->gambar));
         }
 
         $post->delete();

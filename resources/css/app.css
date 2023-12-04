@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero-img {
+    background-image: url("/images/hero.png") !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 .hover-link {
     position: relative;
     text-decoration: none;
@@ -89,4 +95,18 @@
     width: 100%;
     max-height: 300px;
     border-radius: 10px;
+}
+
+.konten-card *,
+.konten-card {
+    font-size: 12px !important;
+}
+
+.thumbnail:not(div.thumbnail:hover) {
+    transition: all 0.3s ease-in-out;
+}
+
+div:hover.thumbnail .thumbnail {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
 }

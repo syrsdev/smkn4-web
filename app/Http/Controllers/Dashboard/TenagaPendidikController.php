@@ -85,7 +85,7 @@ class TenagaPendidikController extends Controller
             $gambar = $request->input('nama') . '.' . $file->extension();
             $file->move(public_path('storage/pendidik'), $gambar);
 
-            $guru['gambar'] = $gambar;
+            $guru['gambar'] = '/storage/pendidik/' . $gambar;
         }
 
         try {
@@ -156,15 +156,14 @@ class TenagaPendidikController extends Controller
             ]);
 
             $file = $request->file('gambar');
-            $gambar = $request->input('nama') . '.' . $file->extension();
-
-            if ($guru->gambar !== 'no-image-34.png') {
-                File::delete(public_path('storage/pendidik/' . $guru->gambar));
-            }
-
+            $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/pendidik'), $gambar);
 
-            $updateGuru['gambar'] = $gambar;
+            if (!str_contains($guru->gambar, 'no-image-34.png')) {
+                File::delete(public_path($guru->gambar));
+            }
+
+            $updateGuru['gambar'] = '/storage/pendidik/' . $gambar;
         }
 
         try {
@@ -185,8 +184,8 @@ class TenagaPendidikController extends Controller
      */
     public function destroy(Pendidik $guru)
     {
-        if ($guru->gambar !== 'no-image-34.png') {
-            File::delete(public_path('storage/pendidik/' . $guru->gambar));
+        if (!str_contains($guru->gambar, 'no-image-34.png')) {
+            File::delete(public_path($guru->gambar));
         }
 
         $guru->delete();

@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="ticket-description">
                                             <div class="gallery gallery-fw" data-item-height="300">
-                                                <div class="gallery-item" data-image="{{ $prestasi->gambar !== 'no-image-43.png' ? url('storage/prestasi/' . $prestasi->gambar) : url('images/default/' . $prestasi->gambar) }}" data-title="{{ $prestasi->judul }}"></div>
+                                                <div class="gallery-item" data-image="{{ asset($prestasi->gambar) }}" data-title="{{ $prestasi->judul }}"></div>
                                             </div>
 
                                             {!! $prestasi->konten !!}

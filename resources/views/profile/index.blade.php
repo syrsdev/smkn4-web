@@ -53,7 +53,7 @@
                                 <div class="col-12 col-sm-6">
                                     <article class="article article-style-b">
                                         <div class="article-header">
-                                            <div class="article-image" data-background="{{ $item->gambar !== 'no-image-43.png' ? asset('storage/' . $item->kategori . '/' . $item->gambar) : asset('images/default/' . $item->gambar) }}">
+                                            <div class="article-image" data-background="{{ $item->gambar }}">
                                             </div>
                                             <div class="article-badge">
                                                 <div class="article-badge-item bg-info">
@@ -63,13 +63,19 @@
                                         </div>
                                         <div class="article-details">
                                             <div class="article-title">
-                                                <h2><a href="{{ route('post.show', $item->slug) }}">{{ $item->judul }}</a></h2>
+                                                <h2><a href="{{ route('post.show', $item->slug) }}">
+                                                    @if (strlen($item->judul) > 25)
+                                                        {{ substr($item->judul, 0, 25) . '...' }}
+                                                    @else
+                                                        {{ $item->judul }}    
+                                                    @endif
+                                                </a></h2>
                                             </div>
                                             <p>
-                                                @if (strlen($item->konten) > 100)
-                                                    {{ substr($item->konten, 0, 100) . '...' }}
+                                                @if (strlen(strip_tags($item->konten)) > 100)
+                                                   {!! '<p>' . substr(strip_tags($item->konten), 0, 100) . '...</p>' !!}
                                                 @else
-                                                    {{ $item->konten }}
+                                                   {!! '<p>' . $item->konten . '</p>' !!}
                                                 @endif
                                             </p>
                                             <div class="article-cta">
@@ -86,7 +92,7 @@
                                 <div class="col-12 col-sm-6 col-md-6">
                                     <article class="article article-style-b">
                                         <div class="article-header">
-                                            <div class="article-image" data-background="{{ $item->gambar !== 'no-image-43.png' ? asset('storage/prestasi/' . $item->gambar) : asset('images/default/' . $item->gambar) }}">
+                                            <div class="article-image" data-background="{{ $item->gambar }}">
                                             </div>
                                             <div class="article-badge">
                                                 <div class="article-badge-item bg-info">
@@ -96,13 +102,19 @@
                                         </div>
                                         <div class="article-details">
                                             <div class="article-title">
-                                                <h2><a href="{{ route('prestasi.show', $item->slug) }}">{{ $item->judul }}</a></h2>
+                                                <h2><a href="{{ route('prestasi.show', $item->slug) }}">
+                                                    @if (strlen($item->judul) > 25)
+                                                        {{ substr($item->judul, 0, 25) . '...' }}
+                                                    @else
+                                                        {{ $item->judul }}    
+                                                    @endif
+                                                </a></h2>
                                             </div>
                                             <p>
-                                                @if (strlen($item->konten) > 100)
-                                                    {{ substr($item->konten, 0, 100) . '...' }}
+                                                @if (strlen(strip_tags($item->konten)) > 100)
+                                                   {!! '<p>' . substr(strip_tags($item->konten), 0, 100) . '...</p>' !!}
                                                 @else
-                                                    {{ $item->konten }}
+                                                   {!! '<p>' . $item->konten . '</p>' !!}
                                                 @endif
                                             </p>
                                             <div class="article-cta">

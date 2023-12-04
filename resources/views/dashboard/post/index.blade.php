@@ -16,7 +16,7 @@
 						<a href="{{ route('dashboard') }}">Dashboard</a>
 					</div>
 					<div class="breadcrumb-item">Post</div>
-					<div class="breadcrumb-item">{{ ucfirst($post->first()->kategori) }}</div>
+					<div class="breadcrumb-item">{{ $kategori }}</div>
 				</div>
 			</div>
 			<div class="section-body">
@@ -30,23 +30,23 @@
 							<div class="card-body">
 								<ul class="nav nav-pills">
 									<li class="nav-item">
-										<a class="nav-link {{ $post->first()->kategori === 'agenda' ? 'active' : '' }}" href="{{ route('post.index', 'agenda') }}">Agenda 
-											<span class="badge badge-{{ $post->first()->kategori === 'agenda' ? 'white' : 'primary' }}">{{ $sumPost['agenda'] }}</span>
+										<a class="nav-link {{ $kategori === 'Agenda' ? 'active' : '' }}" href="{{ route('post.index', 'agenda') }}">Agenda 
+											<span class="badge badge-{{ $kategori === 'Agenda' ? 'white' : 'primary' }}">{{ $total['agenda'] }}</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link {{ $post->first()->kategori === 'artikel' ? 'active' : '' }}" href="{{ route('post.index', 'artikel') }}">Artikel 
-											<span class="badge badge-{{ $post->first()->kategori === 'artikel' ? 'white' : 'primary' }}">{{ $sumPost['artikel'] }}</span>
+										<a class="nav-link {{ $kategori === 'Artikel' ? 'active' : '' }}" href="{{ route('post.index', 'artikel') }}">Artikel 
+											<span class="badge badge-{{ $kategori === 'Artikel' ? 'white' : 'primary' }}">{{ $total['artikel'] }}</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link {{ $post->first()->kategori === 'berita' ? 'active' : '' }}" href="{{ route('post.index', 'berita') }}">Berita 
-											<span class="badge badge-{{ $post->first()->kategori === 'berita' ? 'white' : 'primary' }}">{{ $sumPost['berita'] }}</span>
+										<a class="nav-link {{ $kategori === 'Berita' ? 'active' : '' }}" href="{{ route('post.index', 'berita') }}">Berita 
+											<span class="badge badge-{{ $kategori === 'Berita' ? 'white' : 'primary' }}">{{ $total['berita'] }}</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link {{ $post->first()->kategori === 'event' ? 'active' : '' }}" href="{{ route('post.index', 'event') }}">Event 
-											<span class="badge badge-{{ $post->first()->kategori === 'event' ? 'white' : 'primary' }}">{{ $sumPost['event'] }}</span>
+										<a class="nav-link {{ $kategori === 'Event' ? 'active' : '' }}" href="{{ route('post.index', 'event') }}">Event 
+											<span class="badge badge-{{ $kategori === 'Event' ? 'white' : 'primary' }}">{{ $total['event'] }}</span>
 										</a>
 									</li>
 								</ul>
@@ -62,7 +62,7 @@
 								<div class="card-header-action">
 									<a href="{{ route('post.create') }}" class="btn btn-sm btn-primary">
 										<i class="fas fa-plus"></i>
-										Tambah Agenda
+										Tambah {{ $kategori }}
 									</a>
 								</div>
 							</div>
@@ -72,7 +72,7 @@
 										<thead>
 											<tr>
 												<th>#</th>
-												<th>Judul Agenda</th>
+												<th>Judul {{ $kategori }}</th>
 												<th>Penulis</th>
 												<th>Tanggal</th>
 												<th>Views</th>
@@ -101,13 +101,13 @@
                                                         </div>
 													</td>
 													<td>
-														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Lihat Agenda">
+														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat {{ $kategori }}">
 															<i class="fas fa-eye"></i>
 														</a>
-														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Agenda">
+														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit {{ $kategori }}">
 															<i class="fas fa-edit"></i>
 														</a>
-														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" data-placement="top" title="Hapus Agenda">
+														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" title="Hapus {{ $kategori }}">
 															<i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
 														</a>
 													</td>

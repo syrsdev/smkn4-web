@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
 @endsection
 
 @section('content')
@@ -11,6 +9,11 @@
         <section class="section">
             <div class="section-header">
                 <h1>{{ $title }}</h1>
+                <div class="section-header-button">
+                    <button class="btn btn-primary" data-toggle="collapse" data-target="#tambahUser">
+                        Tambah User
+                    </button>
+                </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -23,57 +26,50 @@
                 <p class="section-lead">
                     Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
                 </p>
+                @include('dashboard.user.create')
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>{{ $title }}</h4>
-                                <div class="card-header-action">
-                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-plus"></i>
-                                        Tambah Data
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nama</th>
-                                                <th>Email</th>
-                                                <th>Level</th>
-                                                <th>Jumlah Postingan</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($users as $item)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ ucfirst($item->level) }}</td>
-                                                    <td>{{ $item->post_count+$item->prestasi_count }}</td>
-                                                    <td>
-                                                        @if ($item->id !== Auth::id())
-                                                            <a href="{{ route('user.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit User">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" data-placement="top" title="Hapus Usere">
-                                                                <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                                            </a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                    @foreach ($users as $item)
+                        <div class="col-12 col-md-6">
+                            <div class="card author-box card-primary">
+                                <div class="card-body">
+                                    <div class="author-box-left">
+                                        <img src="{{ url('images/default/profile-admin.png') }}" alt="{{ $item->name }}" class="rounded-circle author-box-picture">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="author-box-details">
+                                        <div class="author-box-name">
+                                            <p class="font-weight-bold">{{ $item->name }}</p>
+                                        </div>
+                                        <div class="author-box-job">
+                                            {{ ucfirst($item->level) }} / {{ $item->email }}
+                                        </div>
+                                        <div class="author-box-description">
+                                            {{ $item->post_count + $item->prestasi_count }} Posts
+                                            <div class="bullet"></div>
+                                            {{ $item->views['post'] + $item->views['prestasi'] }} Views
+                                        </div>
+                                        <div class="mb-2 mt-3">
+                                            <div class="text-small font-weight-bold">Menu</div>
+                                        </div>
+                                        @if ($item->id !== Auth::id())
+                                            <button class="btn btn-sm btn-warning" data-toggle="collapse" data-target="#edit{{ $item->slug }}">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">
+                                                <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('profile.index') }}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        @endif
+                                        <div class="w-100 d-sm-none"></div>
+                                    </div>
+                                    @include('dashboard.user.edit')
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -81,11 +77,8 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/modules/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
+    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
 @endsection

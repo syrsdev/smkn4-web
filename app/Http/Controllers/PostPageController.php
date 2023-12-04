@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Jenssegers\Agent\Agent;
 
 class PostPageController extends Controller
 {
@@ -40,13 +41,20 @@ class PostPageController extends Controller
             })
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('judul', 'like', "%$search%")
-                    ->orWhere('created_at', 'like', "%$search%")
+                    ->orWhere('kategori', 'like', "%$search%")
                     ->orWhereHas('penulis', function ($query) use ($search) {
                         $query->where('name', 'like', "%$search%");
                     });
             })
-            ->latest()
-            ->get();
+            ->latest();
+
+        $agent = new Agent();
+
+        if ($agent->isMobile() || $agent->isTablet()) { 
+            $allPost = $allPost->paginate(4);
+        } else {
+            $allPost = $allPost->paginate(9);
+        }
 
         return compact('mading', 'allPost');
     }
@@ -56,7 +64,7 @@ class PostPageController extends Controller
         $search = $request->input('search');
         
         $post = Post::with('penulis')
-            ->where([ 'kategori' => $kategori, 'status' => '1'])
+            ->where(['kategori' => $kategori, 'status' => '1'])
             ->latest()
             ->first();
 

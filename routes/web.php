@@ -1,18 +1,22 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
-use App\Http\Controllers\Dashboard\HeroSectionController;
+use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
+use App\Http\Controllers\Dashboard\ProgramKeahlianController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
+use App\Http\Controllers\JurusanPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
+use App\Http\Controllers\PrestasiPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,11 +43,26 @@ Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
 Route::get('/guru', [GuruPageController::class, 'index'])
     ->name('landing.guru');
 
+Route::get('/prestasi', [PrestasiPageController::class, 'index'])
+    ->name('landing.prestasi.index');
+
+Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
+    ->name('landing.prestasi.show');
+
+Route::get('/jurusan', [JurusanPageController::class, 'index'])
+    ->name('landing.jurusan.index');
+
+Route::get('/jurusan/{jurusan}', [JurusanPageController::class, 'show'])
+    ->name('landing.jurusan.show');
+
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])
                 ->name('dashboard');
+
+            Route::get('/dashboard', [DashboardController::class, 'get'])
+                ->name('dashboard.get');
 
             Route::resource('/post', PostController::class);
 
@@ -97,6 +116,14 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/sub-navbar/{sub_navbar}/status', [SubNavbarController::class, 'update_status'])
                 ->name('sub-navbar.status');
+
+            Route::prefix('jurusan')->group(function () {
+                Route::resource('/bidang', BidangKeahlianController::class);
+
+                Route::resource('/program', ProgramKeahlianController::class);
+
+                Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
+            });
 
             Route::get('/hero', [HeroSectionController::class, 'edit'])
                 ->name('hero.edit');

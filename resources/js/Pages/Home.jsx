@@ -9,32 +9,10 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 import { LiaFaxSolid } from "react-icons/lia";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
+import PostLayout from "@/Layouts/CardListLayout";
+import CardListLayout from "@/Layouts/CardListLayout";
 function Home(props) {
     console.log(props);
-    const [namaSekolah, setNamaSekolah] = useState("");
-    const [welcome, setWelcome] = useState("");
-    const [deskripsi, setDeskripsi] = useState("");
-    const [mading, setMading] = useState("");
-    const [listMading, setListMading] = useState([]);
-
-    useEffect(() => {
-        const { nama_sekolah } = props.sekolah;
-        const { welcome, deskripsi } = props.heroSection;
-        const { title } = props.mading;
-        const { list } = props.mading;
-
-        setNamaSekolah(nama_sekolah);
-        setWelcome(welcome);
-        setDeskripsi(deskripsi);
-        setMading(title);
-        setListMading(list);
-    }, [
-        props.sekolah.nama_sekolah,
-        props.heroSection.welcome,
-        props.heroSection.deskripsi,
-        props.mading.title,
-        props.mading.list,
-    ]);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -43,33 +21,33 @@ function Home(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container
-                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] bg-fixed bg-center bg-[url('images/hero.png')] bg-no-repeat relative`}
+                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
                 <div className="w-full md:w-10/12 lg:w-1/2">
                     <h1 className="relative z-20 flex flex-col gap-1 text-2xl font-bold xl:gap-2 xl:text-4xl text-secondary">
                         <span className="text-base font-normal xl:text-3xl">
-                            {welcome}
+                            {props.heroSection.welcome}
                         </span>{" "}
                         <ReactTypingEffect
-                            text={[namaSekolah]}
+                            text={[props.sekolah.nama_sekolah]}
                             typingDelay={1000}
                             eraseDelay={2000}
                         />
                     </h1>
 
                     <p className="relative z-20 mt-3 mb-5 md:mt-5 md:mb-7">
-                        {deskripsi}
+                        {props.heroSection.deskripsi}
                     </p>
                     <ButtonPrimary>
                         Lihat Jurusan <FaAngleRight />
                     </ButtonPrimary>
                 </div>
             </Container>
-            <Container classname="my-10">
+            <Container classname="my-10 md:my-16">
                 <MadingLayout
-                    title={mading}
-                    listPost={listMading}
+                    title={props.mading.title}
+                    listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
                     <h2 className="text-primary text-[18px] font-bold mb-4 lg:hidden block text-center md:text-left">
@@ -78,7 +56,7 @@ function Home(props) {
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
                         <div className="flex flex-col items-center md:items-start lg:w-7/12">
                             <img
-                                src="/images/default/no-image-34.png"
+                                src={props.sambutan.kepsek.gambar}
                                 alt="foto kepala sekolah"
                                 className="object-contain max-w-[177px]"
                             />
@@ -101,8 +79,32 @@ function Home(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10">
+            <Container classname="my-10 md:my-16">
                 <MadingTitle title="BERITA TERKINI" href="berita" />
+                <CardListLayout data={props.berita} />
+            </Container>
+
+            <Container classname="my-10 md:my-16">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    KONSENTRASI KEAHLIAN
+                </h3>
+            </Container>
+
+            <Container classname="py-16 mt-10 bg-primary">
+                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    PRESTASI
+                </h3>
+            </Container>
+
+            <Container classname="my-10 md:my-16">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    TENAGA PENDIDIK DAN KEPENDIDIKAN
+                </h3>
+            </Container>
+            <Container classname="my-10 md:my-16" id="ekskul">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                    EKSTRAKURIKULER
+                </h3>
             </Container>
             <Container classname="py-16 mt-10 bg-primary">
                 <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">

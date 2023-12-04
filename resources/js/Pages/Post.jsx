@@ -1,10 +1,31 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import React from "react";
+import PostLayout from "@/Layouts/CardListLayout";
+import { router } from "@inertiajs/react";
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa6";
+import CardListLayout from "@/Layouts/CardListLayout";
 
 function Post(props) {
-    console.log(props);
+    const [showModal, setShowModal] = useState(false);
+    const [search, setSearch] = useState("");
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    let handleSearch = (e) => {
+        e.preventDefault();
+        router.get(`${window.location.pathname}#post`, {
+            search: search,
+        });
+    };
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -12,7 +33,7 @@ function Post(props) {
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
         >
-            <Container classname="my-10">
+            <Container classname="my-10 md:my-16">
                 <MadingLayout
                     title={props.mading.title}
                     listPost={props.mading.list}
@@ -27,26 +48,29 @@ function Post(props) {
                             </h1>
                             <div className="flex flex-col gap-2 md:flex-row xl:flex-col md:gap-4">
                                 <img
-                                    src={`/images/default/${props.post.gambar}`}
+                                    onClick={openModal}
+                                    src={`${props.post.gambar}`}
                                     alt="thumbnail post"
-                                    className="max-h-[280px] xl:max-h-[350px] object-cover md:w-1/2 xl:w-full"
+                                    className="max-h-[200px] object-cover xl:max-h-[380px] cursor-zoom-in md:w-1/2 xl:w-full"
                                 />
                                 <div className="flex flex-col">
                                     <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
                                         {props.post.judul}
                                     </h2>
-                                    <p className="text-[14px] font-semibold text-gray-500 flex items-center gap-2">
+                                    <p className="text-[14px] font-semibold text-primary flex items-center gap-2">
+                                        <span>
+                                            Post by {props.post.penulis.name}
+                                        </span>
                                         {new Date(
                                             props.post.created_at
                                         ).toLocaleDateString("id-ID")}
-                                        <span className="text-primary">
-                                            {" "}
-                                            Post by {props.post.penulis.name}
-                                        </span>
                                     </p>
-                                    <p className="text-[14px] mt-2">
-                                        {props.post.konten}
-                                    </p>
+                                    <p
+                                        dangerouslySetInnerHTML={{
+                                            __html: props.post.konten,
+                                        }}
+                                        className="text-[14px] mt-2"
+                                    ></p>
                                 </div>
                             </div>
                         </>
@@ -64,6 +88,70 @@ function Post(props) {
                     )}
                 </MadingLayout>
             </Container>
+
+            <Container classname="my-12 md:mt-20" id="post">
+                <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
+                    <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
+                        Postingan Lainnya
+                    </h3>
+
+                    <div className="flex items-center gap-2 md:gap-3">
+                        <button className="p-2 border-2 rounded-md border-slate-300">
+                            <FaFilter />
+                        </button>
+
+                        <form
+                            onSubmit={handleSearch}
+                            className="flex items-center border rounded-full md:pe-3 xl:pe-4 bg-primary border-slate-300"
+                        >
+                            <div className="relative flex items-center">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    onChange={(e) => {
+                                        setSearch(e.target.value);
+                                    }}
+                                    placeholder="Cari postingan..."
+                                    className="w-full border rounded-full xl:px-5 border-slate-300"
+                                />
+                                <FaSearch className="absolute right-4" />
+                            </div>
+                            <button
+                                type="submit"
+                                className="px-4 py-2 text-white rounded-full xl:px-4 md:px-3 bg-primary"
+                            >
+                                Cari
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </Container>
+
+            <Container classname="my-10 md:mt-7 md:mb-16">
+                <CardListLayout data={props.allPost.data} />
+            </Container>
+
+            {showModal && (
+                <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full">
+                    <div
+                        className="fixed top-0 left-0 w-full h-full opacity-75 modal-overlay"
+                        onClick={closeModal}
+                    ></div>
+                    <div className="flex justify-center object-contain w-full p-4 bg-white rounded-lg shadow-lg modal-content">
+                        <img
+                            src={`${props.post.gambar}`}
+                            alt="Preview"
+                            className="object-contain w-1/2 max-h-1/2 z-[55]"
+                        />
+                        <button
+                            onClick={closeModal}
+                            className="px-4 py-2 mt-2 text-white rounded-md bg-primary"
+                        >
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            )}
         </LandingLayout>
     );
 }
