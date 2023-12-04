@@ -51,11 +51,11 @@ Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
         Route::prefix('dashboard')->group(function () {
-            Route::get('/', [DashboardController::class, 'get'])
+            Route::get('/', [DashboardController::class, 'index'])
                 ->name('dashboard');
 
-            Route::get('/dashboard', [DashboardController::class, 'index'])
-                ->name('dashboard.index');
+            Route::get('/dashboard', [DashboardController::class, 'get'])
+                ->name('dashboard.get');
 
             Route::resource('/post', PostController::class);
 
