@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
+use App\Http\Controllers\JurusanPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\PrestasiPageController;
@@ -47,6 +48,12 @@ Route::get('/prestasi', [PrestasiPageController::class, 'index'])
 
 Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
     ->name('landing.prestasi.show');
+
+Route::get('/jurusan', [JurusanPageController::class, 'index'])
+    ->name('landing.jurusan.index');
+
+Route::get('/jurusan/{jurusan}', [JurusanPageController::class, 'show'])
+    ->name('landing.jurusan.show');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
