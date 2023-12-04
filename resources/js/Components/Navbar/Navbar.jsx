@@ -8,9 +8,11 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function Navbar({ subnav, logo }) {
     const [sidebar, setSidebar] = useState(false);
-    const [hoverDropdown, setHoverDropdown] = useState(false);
-    const [hoverDropdown2, setHoverDropdown2] = useState(false);
-    const [hoverDropdown3, setHoverDropdown3] = useState(false);
+    const [hoverDropdown, setHoverDropdown] = useState({
+        dropdown1: false,
+        dropdown2: false,
+        dropdown3: false,
+    });
 
     return (
         <>
@@ -67,10 +69,16 @@ export default function Navbar({ subnav, logo }) {
                                     <li
                                         className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
                                         onMouseEnter={() => {
-                                            setHoverDropdown(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown1: true,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown1: false,
+                                            });
                                         }}
                                     >
                                         <Link
@@ -80,7 +88,9 @@ export default function Navbar({ subnav, logo }) {
                                             PROFIL SEKOLAH{" "}
                                             <IoChevronDown className="duration-150 rotate" />
                                         </Link>
-                                        <Dropdown shown={hoverDropdown}>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown1}
+                                        >
                                             <DropLink href="#">
                                                 TENTANG SEKOLAH
                                             </DropLink>
@@ -90,15 +100,23 @@ export default function Navbar({ subnav, logo }) {
                                         </Dropdown>
                                     </li>
                                     <li className="duration-150 hover-link before:bg-tertiary">
-                                        <Link href="#">PROGRAM KEAHLIAN</Link>
+                                        <Link href="/jurusan">
+                                            PROGRAM KEAHLIAN
+                                        </Link>
                                     </li>
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
                                         onMouseEnter={() => {
-                                            setHoverDropdown2(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown2: true,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown2(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown2: false,
+                                            });
                                         }}
                                     >
                                         <Link
@@ -108,7 +126,9 @@ export default function Navbar({ subnav, logo }) {
                                             BERITA{" "}
                                             <IoChevronDown className="duration-150 rotate" />
                                         </Link>
-                                        <Dropdown shown={hoverDropdown2}>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown2}
+                                        >
                                             <DropLink href="/post/artikel">
                                                 ARTIKEL
                                             </DropLink>
@@ -126,10 +146,16 @@ export default function Navbar({ subnav, logo }) {
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
                                         onMouseEnter={() => {
-                                            setHoverDropdown3(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown3: true,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown3(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown3: false,
+                                            });
                                         }}
                                     >
                                         <Link
@@ -139,7 +165,9 @@ export default function Navbar({ subnav, logo }) {
                                             KESISWAAN{" "}
                                             <IoChevronDown className="duration-150 rotate" />
                                         </Link>
-                                        <Dropdown shown={hoverDropdown3}>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown3}
+                                        >
                                             <DropLink href="/prestasi">
                                                 PRESTASI
                                             </DropLink>

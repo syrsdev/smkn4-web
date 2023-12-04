@@ -5,9 +5,12 @@ import SideDropLink from "../Dropdown/SideDropLink";
 import { Link } from "@inertiajs/react";
 
 function Sidebar({ isActive }) {
-    const [dropdown, setDropdown] = useState(false);
-    const [dropdown2, setDropdown2] = useState(false);
-    const [dropdown3, setDropdown3] = useState(false);
+    const [dropdown, setDropdown] = useState({
+        dropdown1: false,
+        dropdown2: false,
+        dropdown3: false,
+    });
+
     return (
         <div
             className={`fixed w-[70%] md:w-[44%] min-h-screen bg-[#F2F7FF] z-[60] top-0 duration-700 lg:hidden ${
@@ -28,8 +31,18 @@ function Sidebar({ isActive }) {
                     <DropLink href="/" border="border-b-2" pb={true}>
                         BERANDA
                     </DropLink>
-                    <span onClick={() => setDropdown(!dropdown)}>
-                        <SideDropDown title="PROFILE SEKOLAH" active={dropdown}>
+                    <span
+                        onClick={() =>
+                            setDropdown({
+                                ...dropdown,
+                                dropdown1: !dropdown.dropdown1,
+                            })
+                        }
+                    >
+                        <SideDropDown
+                            title="PROFILE SEKOLAH"
+                            active={dropdown.dropdown1}
+                        >
                             <SideDropLink>
                                 <DropLink href="#" pb={true}>
                                     TENTANG SEKOLAH
@@ -40,11 +53,21 @@ function Sidebar({ isActive }) {
                             </SideDropLink>
                         </SideDropDown>
                     </span>
-                    <DropLink href="#" border="border-b-2" pb={true}>
+                    <DropLink href="/jurusan" border="border-b-2" pb={true}>
                         JURUSAN
                     </DropLink>
-                    <span onClick={() => setDropdown2(!dropdown2)}>
-                        <SideDropDown title="BERITA" active={dropdown2}>
+                    <span
+                        onClick={() =>
+                            setDropdown({
+                                ...dropdown,
+                                dropdown2: !dropdown.dropdown2,
+                            })
+                        }
+                    >
+                        <SideDropDown
+                            title="BERITA"
+                            active={dropdown.dropdown2}
+                        >
                             <SideDropLink>
                                 <DropLink href="/post/artikel" pb={true}>
                                     ARTIKEL
@@ -61,8 +84,18 @@ function Sidebar({ isActive }) {
                             </SideDropLink>
                         </SideDropDown>
                     </span>
-                    <span onClick={() => setDropdown3(!dropdown3)}>
-                        <SideDropDown title="KESISWAAN" active={dropdown3}>
+                    <span
+                        onClick={() =>
+                            setDropdown({
+                                ...dropdown,
+                                dropdown3: !dropdown.dropdown3,
+                            })
+                        }
+                    >
+                        <SideDropDown
+                            title="KESISWAAN"
+                            active={dropdown.dropdown3}
+                        >
                             <SideDropLink>
                                 <DropLink href="/prestasi" pb={true}>
                                     PRESTASI
