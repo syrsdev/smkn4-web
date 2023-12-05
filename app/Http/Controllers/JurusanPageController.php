@@ -23,6 +23,6 @@ class JurusanPageController extends Controller
             ->where('slug', $jurusan->slug)
             ->first();
 
-        return Inertia::render('Detail-Jurusan')->with(['jurusan' => $jurusan]);
+        return Inertia::render('DetailJurusan')->with(['jurusan' => $jurusan]);
     }
 }
