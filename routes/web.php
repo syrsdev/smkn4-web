@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;

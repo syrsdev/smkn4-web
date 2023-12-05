@@ -22,9 +22,10 @@ class HeroSectionController extends Controller
     {
         return view('dashboard.cms.hero.edit')
             ->with([
-                'title' => 'Edit Hero Konten',
+                'title' => 'Hero Konten',
                 'active' => 'Hero',
                 'subActive' => null,
+                'tab' => 'Hero',
                 'heroSection' => $this->heroSection,
             ]);
     }
@@ -37,7 +38,7 @@ class HeroSectionController extends Controller
         ]);
 
         foreach ($request->all() as $key => $value) {
-            if ($key === 'hero_image') {
+            if (in_array($key, ['hero_image'])) {
                 if ($request->hasFile($key)) {
                     $request->validate([
                         $key => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,svg,webp'],
@@ -47,11 +48,11 @@ class HeroSectionController extends Controller
                     $heroImage = $key . '.' . $file->extension();
                     $file->move(public_path('images'), $heroImage);
 
-                    $value = $heroImage;
+                    $value = '/images/' . $heroImage;
 
-                    $oldValue = HeroSection::where('key', $key)->value('value');
-                    if ($oldValue !== $heroImage && File::exists(public_path('images') . '/' . $oldValue)) {
-                        File::delete(public_path('images') . '/' . $oldValue);
+                    $oldImage = HeroSection::where('key', $key)->value('value');
+                    if ($oldImage !== $value && File::exists(public_path($oldImage))) {
+                        File::delete(public_path($oldImage));
                     }
                 }
             }
