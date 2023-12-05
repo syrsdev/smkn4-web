@@ -98,7 +98,12 @@ function Prestasi(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-12 md:mt-20" id="post">
+            <Container classname="relative my-12 md:mt-20">
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="post"
+                ></div>
+
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
                         Prestasi Lainnya
