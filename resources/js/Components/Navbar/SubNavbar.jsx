@@ -8,7 +8,7 @@ function SubNavbar({ subnav }) {
             {subnav.length > 0 && (
                 <Container
                     classname={
-                        " bg-secondary text-secondary py-3 items-center overflow-x-auto "
+                        " bg-secondary text-secondary py-3 items-center overflow-x-auto shadow-2xl"
                     }
                 >
                     <div className="text-right">
