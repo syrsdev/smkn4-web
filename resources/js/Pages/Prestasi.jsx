@@ -54,7 +54,7 @@ function Prestasi(props) {
                                         alt="thumbnail post"
                                         className="max-h-[200px] w-full object-cover xl:max-h-[380px] cursor-zoom-in "
                                     />
-                                    <div className="absolute top-0 right-0 px-4 py-2 xl:px-6 rounded-bl-2xl bg-primary text-secondary">
+                                    <div className="absolute top-0 right-0 px-4 py-2 capitalize xl:px-6 rounded-bl-2xl bg-primary text-secondary">
                                         {props.prestasi.kategori}
                                     </div>
                                 </div>
