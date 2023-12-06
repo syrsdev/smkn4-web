@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\ProgramKeahlianController;
+use App\Http\Controllers\Dashboard\SambutanKepsekController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
@@ -131,6 +132,12 @@ Route::middleware('auth')->group(function () {
 
             Route::patch('/hero', [HeroSectionController::class, 'update'])
                 ->name('hero.update');
+
+            Route::get('/sambutan', [SambutanKepsekController::class, 'edit'])
+                ->name('sambutan.edit');
+
+            Route::patch('/sambutan', [SambutanKepsekController::class, 'update'])
+                ->name('sambutan.update');
         });
     });
 });

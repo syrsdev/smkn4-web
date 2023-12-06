@@ -63,7 +63,7 @@
                             <a class="nav-link" href="#">Visi & Misi Sekolah</a>
                         </li>
                         <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }} mt-2">
-                            <a class="nav-link" href="#">Sambutan Kepala Sekolah</a>
+                            <a class="nav-link" href="{{ route('sambutan.edit') }}">Sambutan Kepala Sekolah</a>
                         </li>
                     </ul>
                 </li>
