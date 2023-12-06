@@ -25,7 +25,6 @@ class HeroSectionController extends Controller
                 'title' => 'Hero Konten',
                 'active' => 'Hero',
                 'subActive' => null,
-                'tab' => 'Hero',
                 'heroSection' => $this->heroSection,
             ]);
     }
