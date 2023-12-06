@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
@@ -124,6 +125,12 @@ Route::middleware('auth')->group(function () {
 
                 Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
             });
+
+            Route::get('/hero', [HeroSectionController::class, 'edit'])
+                ->name('hero.edit');
+
+            Route::patch('/hero', [HeroSectionController::class, 'update'])
+                ->name('hero.update');
         });
     });
 });

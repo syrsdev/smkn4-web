@@ -124,7 +124,7 @@
                     </a>
                 </li>
                 <li class="dropdown {{ $active === 'Hero' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('hero.edit') }}" class="nav-link">
                         <i class="fas fa-lightbulb"></i>
                         <span>Hero Konten</span>
                     </a>
