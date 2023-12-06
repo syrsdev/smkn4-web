@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import LandingLayout from "@/Layouts/LandingLayout";
 import Container from "@/Components/Container/Container";
 import ButtonPrimary from "@/Components/ButtonPrimary/Button";
@@ -9,8 +8,12 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 import { LiaFaxSolid } from "react-icons/lia";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import PostLayout from "@/Layouts/CardListLayout";
 import CardListLayout from "@/Layouts/CardListLayout";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import { Link } from "@inertiajs/react";
+import { Tooltip } from "react-tooltip";
+
 function Home(props) {
     console.log(props);
     return (
@@ -106,9 +109,60 @@ function Home(props) {
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="ekskul"
                 ></div>
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-10">
                     EKSTRAKURIKULER
                 </h3>
+
+                <Splide
+                    aria-label="EKSKUL"
+                    className="flex justify-center visible "
+                    options={{
+                        rewind: true,
+                        autoplay: true,
+                        perPage: 6,
+                        gap: "2rem",
+                        breakpoints: {
+                            767: {
+                                perPage: 2,
+                                gap: "0rem",
+                            },
+                            1024: {
+                                perPage: 4,
+                                gap: "1rem",
+                            },
+                            1280: {
+                                perPage: 6,
+                                gap: "2rem",
+                            },
+                        },
+                    }}
+                >
+                    {props.ekskul.map((item, index) => (
+                        <SplideSlide
+                            data-tooltip-id="tooltip"
+                            data-tooltip-content={`${
+                                item.link_sosmed != null
+                                    ? "Lihat Sosial Media"
+                                    : ""
+                            }`}
+                            key={index}
+                            className="flex flex-col items-center gap-3 font-semibold text-primary"
+                        >
+                            <a
+                                href={item.link_sosmed}
+                                target="_blank"
+                                className="flex items-center justify-center p-6 overflow-hidden border-2 rounded-full md:p-7 h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 xl:p-8 border-primary "
+                            >
+                                <img
+                                    src={item.gambar}
+                                    alt="Image 1"
+                                    className="object-contain"
+                                />
+                            </a>
+                            <h6>{item.nama}</h6>
+                        </SplideSlide>
+                    ))}
+                </Splide>
             </Container>
             <Container classname="py-16 mt-10 bg-primary">
                 <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
