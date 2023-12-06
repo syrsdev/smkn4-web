@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi" class="form-control-label">Deskripsi</label>
-                                <textarea class="form-control" name="deskripsi">{{ $heroSection['deskripsi'] }}</textarea>
+                                <textarea class="form-control" name="deskripsi" style="height: 100px">{{ $heroSection['deskripsi'] }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
