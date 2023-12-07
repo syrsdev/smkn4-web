@@ -35,7 +35,7 @@
                             <div class="card-header-action dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
                                 <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                    <li class="dropdown-title">Guruf dan Staff</li>
+                                    <li class="dropdown-title">Guru dan Staff</li>
                                     <li><a href="#" class="dropdown-item">Agenda</a></li>
                                     <li><a href="#" class="dropdown-item">Artikel</a></li>
                                     <li><a href="#" class="dropdown-item">Berita</a></li>
@@ -45,17 +45,18 @@
                         </div>
                         <div class="card-body" id="top-5-scroll">
                             <ul class="list-unstyled list-unstyled-border">
+                                @foreach ($post as $item)
                                 <li class="media">
-                                    <img class="mr-3 rounded" width="55" src="assets/img/products/product-3-50.png"
-                                        alt="product">
+                                    <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
                                     <div class="media-body">
                                         <div class="float-right">
-                                            <div class="font-weight-600 text-muted text-small">Event</div>
+                                            <div class="font-weight-600 text-muted text-small">{{ $item->kategori }}</div>
                                         </div>
-                                        <div class="media-title">Hari Lahir Pancasila</div>
-                                        <div class="media-title">1 Juni 2023</div>
+                                        <div class="media-title">{{ $item->judul }}</div>
+                                        <div class="media-title">{{ \Carbon\Carbon::parse($item->created_at)->format ('d F Y') }}</div>
                                     </div>
                                 </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="card-footer pt-3 d-flex justify-content-center">
