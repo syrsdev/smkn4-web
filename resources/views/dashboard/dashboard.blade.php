@@ -107,22 +107,15 @@
                         <div class="card-header">
                             <h4>Post Terbaru</h4>
                             <div class="card-header-action dropdown">
-                                <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
-                                <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                    <li class="dropdown-title">Guru dan Staff</li>
-                                    @if (auth()->user()->level == 1)
-                                        <li><a href="#" class="dropdown-item">Agenda</a></li>
-                                        <li><a href="#" class="dropdown-item">Artikel</a></li>
-                                        <li><a href="#" class="dropdown-item">Berita</a></li>
-                                        <li><a href="#" class="dropdown-item">Event</a></li>
-                                        
-                                    @endif
-                                    <li><a href="#" class="dropdown-item">Agenda</a></li>
-                                    <li><a href="#" class="dropdown-item">Artikel</a></li>
-                                    <li><a href="#" class="dropdown-item">Berita</a></li>
-                                    <li><a href="#" class="dropdown-item">Event</a></li>
-                                </ul>
-                            </div>
+                              <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
+                              <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                  <li class="dropdown-title">Guru dan Staff</li>
+                                  <li><a href="#" class="dropdown-item">Agenda</a></li>
+                                  <li><a href="#" class="dropdown-item">Artikel</a></li>
+                                  <li><a href="#" class="dropdown-item">Berita</a></li>
+                                  <li><a href="#" class="dropdown-item">Event</a></li>
+                              </ul>
+                          </div>
                         </div>
                         <div class="card-body" id="top-5-scroll">
                             <ul class="list-unstyled list-unstyled-border">
