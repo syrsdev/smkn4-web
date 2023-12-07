@@ -3,7 +3,10 @@ import React from "react";
 
 function PrestasiCard({ data }) {
     return (
-        <div className="flex flex-col gap-2 thumbnail">
+        <Link
+            href={`/prestasi/${data.slug}`}
+            className="flex flex-col gap-2 thumbnail"
+        >
             <div className="h-[120px] overflow-hidden md:h-[168px] xl:h-[200px]">
                 <div className="relative">
                     <img
@@ -31,7 +34,7 @@ function PrestasiCard({ data }) {
             >
                 Read More...
             </Link>
-        </div>
+        </Link>
     );
 }
 

@@ -11,8 +11,8 @@ import { MdOutlineEmail } from "react-icons/md";
 import CardListLayout from "@/Layouts/CardListLayout";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { Link } from "@inertiajs/react";
-import { Tooltip } from "react-tooltip";
+import Carousel from "@/Components/Carousel/Carousel";
+import JurusanCard from "@/Components/Card/JurusanCard";
 
 function Home(props) {
     console.log(props);
@@ -88,19 +88,25 @@ function Home(props) {
             </Container>
 
             <Container classname="my-10 md:my-16">
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     KONSENTRASI KEAHLIAN
                 </h3>
+
+                <Carousel>
+                    {props.konsentrasi.map((item, index) => (
+                        <JurusanCard item={item} key={index} />
+                    ))}
+                </Carousel>
             </Container>
 
             <Container classname="py-16 mt-10 bg-primary">
-                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     PRESTASI
                 </h3>
             </Container>
 
             <Container classname="my-10 md:my-16">
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
             </Container>
@@ -109,7 +115,7 @@ function Home(props) {
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="ekskul"
                 ></div>
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-10">
+                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     EKSTRAKURIKULER
                 </h3>
 
@@ -155,7 +161,7 @@ function Home(props) {
                             >
                                 <img
                                     src={item.gambar}
-                                    alt="Image 1"
+                                    alt="Logo Ekskul"
                                     className="object-contain"
                                 />
                             </a>
@@ -165,7 +171,7 @@ function Home(props) {
                 </Splide>
             </Container>
             <Container classname="py-16 mt-10 bg-primary">
-                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-7">
+                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-10">
                     KONTAK KAMI
                 </h3>
                 <div
