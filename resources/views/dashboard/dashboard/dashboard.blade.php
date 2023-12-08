@@ -36,26 +36,30 @@
                                 <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
                                 <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                     <li class="dropdown-title">Guru dan Staff</li>
-                                    <li><a href="#" class="dropdown-item">Agenda</a></li>
-                                    <li><a href="#" class="dropdown-item">Artikel</a></li>
-                                    <li><a href="#" class="dropdown-item">Berita</a></li>
-                                    <li><a href="#" class="dropdown-item">Event</a></li>
+                                    @foreach ($post as $item)
+                                    <li><a href="#" class="dropdown-item">{{ ucfirst($item->kategori) }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body" id="top-5-scroll">
                             <ul class="list-unstyled list-unstyled-border">
                                 @foreach ($post as $item)
-                                <li class="media">
-                                    <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
-                                    <div class="media-body">
-                                        <div class="float-right">
-                                            <div class="font-weight-600 text-muted text-small">{{ $item->kategori }}</div>
-                                        </div>
-                                        <div class="media-title">{{ $item->judul }}</div>
-                                        <div class="media-title">{{ \Carbon\Carbon::parse($item->created_at)->format ('d F Y') }}</div>
-                                    </div>
-                                </li>
+                                    <a href="{{ route('post.show', $item->slug) }}">
+                                        <li class="media">
+                                            <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
+                                                alt="{{ $item->judul }}">
+                                            <div class="media-body">
+                                                <div class="float-right">
+                                                    <div class="font-weight-600 text-muted text-small">{{ ucfirst($item->kategori) }}
+                                                    </div>
+                                                </div>
+                                                <div class="media-title">{{ $item->judul }}</div>
+                                                <div class="media-title">
+                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</div>
+                                            </div>
+                                        </li>
+                                    </a>
                                 @endforeach
                             </ul>
                         </div>
