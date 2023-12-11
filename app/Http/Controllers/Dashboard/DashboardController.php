@@ -7,16 +7,24 @@ use App\Models\KonsentrasiKeahlian;
 use App\Models\Post;
 use App\Models\Prestasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function get()
     {
+        $post = [
+            'agenda' => Post::where('kategori', 'agenda')->paginate(5),
+            'artikel' => Post::where('kategori', 'artikel')->paginate(5),
+            'berita' => Post::where('kategori', 'berita')->paginate(5),
+            'event' => Post::where('kategori', 'event')->paginate(5),
+        ];
         return view('dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
                 'active' => 'Dashboard',
                 'subActive' => null,
+                'post' => $post,
             ]);
     }
 
@@ -33,12 +41,20 @@ class DashboardController extends Controller
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
 
+        $post = DB::table('post')
+            ->select('slug', 'judul', 'gambar', 'created_at', 'kategori')
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
         return view('dashboard.dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
                 'active' => 'Dashboard',
                 'subActive' => null,
                 'sumBox' => $sumBox,
+                'post' => $post,
             ]);
     }
 
