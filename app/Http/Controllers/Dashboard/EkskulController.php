@@ -134,12 +134,12 @@ class EkskulController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $request->input('nama') . '.' . $file->extension();
-            $file->move(public_path('storage/ekskul'), $gambar);
 
-            if (!str_contains($ekskul->gambar, 'icon-ekskul.png')) {
+            if ($ekskul->gambar !== '/images/default/icon-ekskul.png') {
                 File::delete(public_path($ekskul->gambar));
             }
-
+            
+            $file->move(public_path('storage/ekskul'), $gambar);
             $updatedEkskul['gambar'] = '/storage/ekskul/' . $gambar;
         }
         
@@ -161,7 +161,7 @@ class EkskulController extends Controller
      */
     public function destroy(Ekskul $ekskul)
     {
-        if (!str_contains($ekskul->gambar, 'icon-ekskul.png')) {
+        if ($ekskul->gambar !== '/images/default/icon-ekskul.png') {
             File::delete(public_path($ekskul->gambar));
         }
 
