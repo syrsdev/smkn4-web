@@ -42,8 +42,8 @@ Route::get('/post/{kategori}', [PostPageController::class, 'index'])
 Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
     ->name('landing.post.show');
 
-Route::get('/guru', [GuruPageController::class, 'index'])
-    ->name('landing.guru');
+Route::get('/pegawai', [GuruPageController::class, 'index'])
+    ->name('landing.pegawai');
 
 Route::get('/prestasi', [PrestasiPageController::class, 'index'])
     ->name('landing.prestasi.index');
@@ -93,25 +93,25 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('checkLevel:admin')->group(function () {
-        Route::prefix('dashboard')->group(function() {
+        Route::prefix('dashboard')->group(function () {
             Route::prefix('kesiswaan')->group(function () {
                 Route::resource('/ekskul', EkskulController::class);
             });
-    
+
             Route::resource('/guru', TenagaPendidikController::class);
-    
+
             Route::prefix('guru')->group(function () {
                 Route::post('/import', [TenagaPendidikController::class, 'import'])
                     ->name('guru.import');
-    
+
                 Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
                     ->name('guru.export');
             });
 
             Route::resource('/mapel', MapelController::class);
-    
+
             Route::resource('/user', UsersController::class);
-    
+
             Route::resource('/sosmed', SocialMediaController::class);
 
             Route::resource('/sub-navbar', SubNavbarController::class);
