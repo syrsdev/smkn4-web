@@ -13,6 +13,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Carousel from "@/Components/Carousel/Carousel";
 import JurusanCard from "@/Components/Card/JurusanCard";
+import PegawaiCard from "@/Components/Card/PegawaiCard";
 
 function Home(props) {
     console.log(props);
@@ -42,7 +43,7 @@ function Home(props) {
                     <p className="relative z-20 mt-3 mb-5 md:mt-5 md:mb-7">
                         {props.heroSection.deskripsi}
                     </p>
-                    <ButtonPrimary>
+                    <ButtonPrimary href="/jurusan">
                         Lihat Jurusan <FaAngleRight />
                     </ButtonPrimary>
                 </div>
@@ -61,9 +62,9 @@ function Home(props) {
                             <img
                                 src={props.sambutan.kepsek.gambar}
                                 alt="foto kepala sekolah"
-                                className="object-contain max-w-[177px]"
+                                className="object-contain max-w-[177px] max-h-[350px]"
                             />
-                            <div className="flex flex-col mt-10 text-primary whitespace-nowrap">
+                            <div className="flex flex-col mt-4 text-primary whitespace-nowrap">
                                 <p className="font-bold text-[16px] border-b-2 border-primary">
                                     {props.sambutan.kepsek.nama}
                                 </p>
@@ -109,6 +110,11 @@ function Home(props) {
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
+                <Carousel>
+                    {props.tenagaPendidik.map((item, index) => (
+                        <PegawaiCard item={item} key={index} />
+                    ))}
+                </Carousel>
             </Container>
             <Container classname="relative my-10 md:my-16">
                 <div

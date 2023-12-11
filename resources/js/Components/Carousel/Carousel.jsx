@@ -10,7 +10,7 @@ function Carousel({ label, children }) {
                 rewind: true,
                 autoplay: true,
                 perPage: 4,
-                gap: "2.4rem",
+                gap: "2.6rem",
                 breakpoints: {
                     767: {
                         perPage: 2,
@@ -22,7 +22,7 @@ function Carousel({ label, children }) {
                     },
                     1280: {
                         perPage: 4,
-                        gap: "2.4rem",
+                        gap: "2.6rem",
                     },
                 },
             }}

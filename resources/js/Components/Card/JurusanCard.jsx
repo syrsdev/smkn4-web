@@ -1,7 +1,5 @@
 import React from "react";
-import Carousel from "../Carousel/Carousel";
 import CarouselCardLayout from "@/Layouts/CarouselCardLayout";
-import { Link } from "@inertiajs/react";
 
 function JurusanCard({ item }) {
     return (
