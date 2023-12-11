@@ -157,12 +157,12 @@ class TenagaPendidikController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
-            $file->move(public_path('storage/pendidik'), $gambar);
 
-            if (!str_contains($guru->gambar, 'no-image-34.png')) {
+            if ($guru->gambar !== '/images/default/no-image-34.png') {
                 File::delete(public_path($guru->gambar));
             }
 
+            $file->move(public_path('storage/pendidik'), $gambar);
             $updateGuru['gambar'] = '/storage/pendidik/' . $gambar;
         }
 
@@ -184,7 +184,7 @@ class TenagaPendidikController extends Controller
      */
     public function destroy(Pendidik $guru)
     {
-        if (!str_contains($guru->gambar, 'no-image-34.png')) {
+        if ($guru->gambar !== '/images/default/no-image-34.png') {
             File::delete(public_path($guru->gambar));
         }
 

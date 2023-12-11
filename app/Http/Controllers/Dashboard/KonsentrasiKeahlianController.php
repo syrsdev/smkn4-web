@@ -98,7 +98,15 @@ class KonsentrasiKeahlianController extends Controller
      */
     public function show(KonsentrasiKeahlian $konsentrasi)
     {
-        //
+        $konsentrasi->load(['program', 'program.bidang']);
+
+        return view('dashboard.jurusan.konsentrasi.detail')
+            ->with([
+                'title' => 'Detail Konsentrasi Keahlian',   
+                'active' => 'Jurusan',
+                'subActive' => 'Konsentrasi',
+                'konsentrasi' => $konsentrasi,
+            ]);
     }
 
     /**
@@ -147,12 +155,12 @@ class KonsentrasiKeahlianController extends Controller
 
             $file = $request->file('icon');
             $icon = 'icon-' . $slug . '.' . $file->extension();
-            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
 
-            if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
+            if ($konsentrasi->icon !== '/images/default/icon-jurusan.png') {
                 File::delete(public_path($konsentrasi->icon));
             }
-
+            
+            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
             $newKonsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
         }
 
@@ -174,11 +182,11 @@ class KonsentrasiKeahlianController extends Controller
      */
     public function destroy(KonsentrasiKeahlian $konsentrasi)
     {
-        if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
+        if ($konsentrasi->icon !== '/images/default/icon-jurusan.png') {
             File::delete(public_path($konsentrasi->icon));
         }
 
-        if (!str_contains($konsentrasi->gambar, 'no-image-169.png')) {
+        if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
             File::delete(public_path($konsentrasi->gambar));
         }
 
