@@ -20,7 +20,7 @@ return new class extends Migration
                 ->nullable();
             $table->string('gambar')
                 ->nullable()
-                ->default('/images/default/no-image-11.png');
+                ->default('/images/default/icon-ekskul.png');
             $table->timestamps();
         });
     }

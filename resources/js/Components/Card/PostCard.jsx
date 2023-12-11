@@ -3,7 +3,10 @@ import React from "react";
 
 function PostCard({ data }) {
     return (
-        <div className="flex flex-col gap-2 thumbnail">
+        <Link
+            href={`/post/${data.kategori}/${data.slug}`}
+            className="flex flex-col gap-2 thumbnail"
+        >
             <div className="h-[120px] overflow-hidden md:h-[168px] xl:h-[200px]">
                 <img
                     src={`${data.gambar}`}
@@ -30,7 +33,7 @@ function PostCard({ data }) {
             >
                 Read More...
             </Link>
-        </div>
+        </Link>
     );
 }
 

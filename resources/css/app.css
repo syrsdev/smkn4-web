@@ -102,11 +102,31 @@
     font-size: 12px !important;
 }
 
-.thumbnail:not(div.thumbnail:hover) {
+.thumbnail:not(a.thumbnail:hover) {
     transition: all 0.3s ease-in-out;
 }
 
-div:hover.thumbnail .thumbnail {
+a:hover.thumbnail .thumbnail {
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
+}
+
+.splide__pagination__page.is-active {
+    background-color: #1a274d !important;
+}
+
+.splide__arrow--prev {
+    left: -1em !important;
+}
+.splide__arrow--next {
+    right: -1em !important;
+}
+
+@media screen and (min-width: 1000px) {
+    .splide__arrow--prev {
+        left: 1em !important;
+    }
+    .splide__arrow--next {
+        right: 1em !important;
+    }
 }

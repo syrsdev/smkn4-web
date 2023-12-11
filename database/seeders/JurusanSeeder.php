@@ -34,16 +34,57 @@ class JurusanSeeder extends Seeder
         ]);
 
         KonsentrasiKeahlian::insert([
-            ['slug' => 'teknik-pemesinan', 'nama' => 'Teknik Pemesinan', 'deskripsi' => '', 'id_program' => 1],
-            ['slug' => 'teknik-mekanik-industri', 'nama' => 'Teknik Mekanik Industri', 'deskripsi' => '', 'id_program' => 1],
-            ['slug' => 'desain-gambar-mesin', 'nama' => 'Desain Gambar Mesin', 'deskripsi' => '', 'id_program' => 1],
-            ['slug' => 'teknik-otomasi-industri', 'nama' => 'Teknik Otomasi Industri', 'deskripsi' => '', 'id_program' => 2],
-            ['slug' => 'teknik-instalasi-tenaga-listrik', 'nama' => 'Teknik Instalasi Tenaga Listrik', 'deskripsi' => '', 'id_program' => 3],
-            ['slug' => 'teknik-geomatika', 'nama' => 'Teknik Geomatika', 'deskripsi' => '', 'id_program' => 4],
-            ['slug' => 'teknik-perawatan-gedung', 'nama' => 'Teknik Perawatan Gedung', 'deskripsi' => '', 'id_program' => 5],
-            ['slug' => 'teknik-konstruksi-dan-perumahan', 'nama' => 'Teknik Konstruksi dan Perumahan', 'deskripsi' => '', 'id_program' => 6],
-            ['slug' => 'desain-pemodelan-dan-informasi-bangunan', 'nama' => 'Desain Pemodelan dan Informasi Bangunan', 'deskripsi' => '', 'id_program' => 7],
-            ['slug' => 'rekayasa-perangkat-lunak', 'nama' => 'Rekayasa Perangkat Lunak', 'deskripsi' => '', 'id_program' => 8],
+            [
+                'slug' => 'teknik-pemesinan', 
+                'nama' => 'Teknik Pemesinan', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 1
+            ], [
+                'slug' => 'teknik-mekanik-industri', 
+                'nama' => 'Teknik Mekanik Industri', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 1
+            ], [
+                'slug' => 'desain-gambar-mesin', 
+                'nama' => 'Desain Gambar Mesin', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 1
+            ], [
+                'slug' => 'teknik-otomasi-industri', 
+                'nama' => 'Teknik Otomasi Industri', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 2
+            ], [
+                'slug' => 'teknik-instalasi-tenaga-listrik', 
+                'nama' => 'Teknik Instalasi Tenaga Listrik', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 3
+            ], [
+                'slug' => 'teknik-geomatika', 
+                'nama' => 'Teknik Geomatika', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 4
+            ], [
+                'slug' => 'teknik-perawatan-gedung', 
+                'nama' => 'Teknik Perawatan Gedung', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 5
+            ], [
+                'slug' => 'teknik-konstruksi-dan-perumahan', 
+                'nama' => 'Teknik Konstruksi dan Perumahan', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 6
+            ], [
+                'slug' => 'desain-pemodelan-dan-informasi-bangunan', 
+                'nama' => 'Desain Pemodelan dan Informasi Bangunan', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 7
+            ], [
+                'slug' => 'rekayasa-perangkat-lunak', 
+                'nama' => 'Rekayasa Perangkat Lunak', 
+                'deskripsi' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et assumenda quibusdam ratione rerum repellendus exercitationem deserunt. Incidunt hic excepturi tempora?', 
+                'id_program' => 8
+            ],
         ]);
     }
 }

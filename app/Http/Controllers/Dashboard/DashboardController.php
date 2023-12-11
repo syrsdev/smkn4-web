@@ -32,12 +32,12 @@ class DashboardController extends Controller
     {
         $sumBox = [
             'post' => [
-                'agenda' => Post::where(['kategori' => 'agenda','status' => 1])->count(),
-                'artikel' => Post::where(['kategori' => 'artikel','status' => 1])->count(),
-                'berita' => Post::where(['kategori' => 'berita','status' => 1])->count(),
-                'event' => Post::where(['kategori' => 'event','status' => 1])->count(),
+                'agenda' => Post::where('kategori', 'agenda')->count(),
+                'artikel' => Post::where('kategori', 'artikel')->count(),
+                'berita' => Post::where('kategori', 'berita')->count(),
+                'event' => Post::where('kategori', 'event')->count(),
             ],
-            'prestasi' => Prestasi::where('status', 1)->count(),
+            'prestasi' => Prestasi::count(),
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
 
@@ -62,11 +62,13 @@ class DashboardController extends Controller
     public function statistic()
     {
         $postDates = Post::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');
 
         $prestasiDates = Prestasi::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');

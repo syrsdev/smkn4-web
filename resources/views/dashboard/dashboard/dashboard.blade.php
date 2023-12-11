@@ -24,7 +24,7 @@
                             <h4>Statistik Post & Prestasi</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="postVsPrestasi" height="160"></canvas>
+                            <canvas id="postPrestasi" height="160"></canvas>
                         </div>
                     </div>
                 </div>
