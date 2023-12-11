@@ -9,7 +9,7 @@ function PegawaiCard({ item, carousel = true }) {
                     <img
                         src={item.gambar}
                         alt="Foto Tenaga Pendidik/Kependidikan"
-                        className="w-full h-[160px] md:h-[220px] xl:h-[330px] object-cover rounded-xl mb-4"
+                        className="w-full h-[170px] md:h-[200px] xl:h-[250px] object-cover rounded-xl mb-2"
                     />
                     <div className="">
                         <p className="text-[12px] md:text-[14px] xl:text-[16px] capitalize">
@@ -34,7 +34,7 @@ function PegawaiCard({ item, carousel = true }) {
                         <img
                             src={item.gambar}
                             alt="Foto Tenaga Pendidik/Kependidikan"
-                            className="w-full h-[160px] md:h-[220px] xl:h-[330px] object-cover rounded-xl mb-4"
+                            className="w-full h-[170px] md:h-[200px] xl:h-[250px] object-cover rounded-xl mb-2"
                         />
                         <div className="">
                             <p className="text-[12px] md:text-[14px] xl:text-[16px] capitalize">

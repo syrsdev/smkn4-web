@@ -13,11 +13,10 @@ function Pegawai(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container>
-                <h1 className="my-10 text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center xl:my-14 text-primary">
+                <h1 className="my-7 md:my-10 text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center text-primary">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h1>
-
-                <div className="grid grid-cols-2 gap-5 mb-14 md:grid-cols-3 xl:grid-cols-4 xl:gap-7">
+                <div className="grid grid-cols-2 gap-5 md:gap-7 mb-14 md:grid-cols-3 xl:grid-cols-5">
                     {props.pegawai.map((item, index) => (
                         <PegawaiCard carousel={false} item={item} key={index} />
                     ))}
