@@ -37,7 +37,7 @@
                                 <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                     <li class="dropdown-title">Guru dan Staff</li>
                                     @foreach ($post as $item)
-                                    <li><a href="#" class="dropdown-item">{{ ucfirst($item->kategori) }}</a></li>
+                                    <li><a href="#" class="dropdown-item">Kategori</a></li>
                                     @endforeach
                                 </ul>
                             </div>
