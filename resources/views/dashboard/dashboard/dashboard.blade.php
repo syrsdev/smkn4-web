@@ -24,7 +24,50 @@
                             <h4>Statistik Post & Prestasi</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="postVsPrestasi" height="160"></canvas>
+                            <canvas id="postPrestasi" height="160"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card gradient-bottom">
+                        <div class="card-header">
+                            <h4>Post Terbaru</h4>
+                            <div class="card-header-action dropdown">
+                                <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
+                                <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <li class="dropdown-title">Guru dan Staff</li>
+                                    @foreach ($post as $item)
+                                    <li><a href="#" class="dropdown-item">Kategori</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body" id="top-5-scroll">
+                            <ul class="list-unstyled list-unstyled-border">
+                                @foreach ($post as $item)
+                                    <a href="{{ route('post.show', $item->slug) }}">
+                                        <li class="media">
+                                            <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
+                                                alt="{{ $item->judul }}">
+                                            <div class="media-body">
+                                                <div class="float-right">
+                                                    <div class="font-weight-600 text-muted text-small">{{ ucfirst($item->kategori) }}
+                                                    </div>
+                                                </div>
+                                                <div class="media-title">{{ $item->judul }}</div>
+                                                <div class="media-title">
+                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</div>
+                                            </div>
+                                        </li>
+                                    </a>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="card-footer pt-3 d-flex justify-content-center">
+                            <div class="budget-price justify-content-center">
+                                <div class="budget-price-square bg-primary" data-width="20"></div>
+                                <div class="budget-price-label">Total Post</div>
+                            </div>
                         </div>
                     </div>
                 </div>

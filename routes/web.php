@@ -3,16 +3,19 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\ProgramKeahlianController;
+use App\Http\Controllers\Dashboard\SambutanKepsekController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
+use App\Http\Controllers\JurusanPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\PrestasiPageController;
@@ -47,6 +50,12 @@ Route::get('/prestasi', [PrestasiPageController::class, 'index'])
 
 Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
     ->name('landing.prestasi.show');
+
+Route::get('/jurusan', [JurusanPageController::class, 'index'])
+    ->name('landing.jurusan.index');
+
+Route::get('/jurusan/{jurusan}', [JurusanPageController::class, 'show'])
+    ->name('landing.jurusan.show');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
@@ -117,6 +126,18 @@ Route::middleware('auth')->group(function () {
 
                 Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
             });
+
+            Route::get('/hero', [HeroSectionController::class, 'edit'])
+                ->name('hero.edit');
+
+            Route::patch('/hero', [HeroSectionController::class, 'update'])
+                ->name('hero.update');
+
+            Route::get('/sambutan', [SambutanKepsekController::class, 'edit'])
+                ->name('sambutan.edit');
+
+            Route::patch('/sambutan', [SambutanKepsekController::class, 'update'])
+                ->name('sambutan.update');
         });
     });
 });

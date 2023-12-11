@@ -54,7 +54,7 @@ function Prestasi(props) {
                                         alt="thumbnail post"
                                         className="max-h-[200px] w-full object-cover xl:max-h-[380px] cursor-zoom-in "
                                     />
-                                    <div className="absolute top-0 right-0 px-4 py-2 xl:px-6 rounded-bl-2xl bg-primary text-secondary">
+                                    <div className="absolute top-0 right-0 px-4 py-2 capitalize xl:px-6 rounded-bl-2xl bg-primary text-secondary">
                                         {props.prestasi.kategori}
                                     </div>
                                 </div>
@@ -98,7 +98,12 @@ function Prestasi(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-12 md:mt-20" id="post">
+            <Container classname="relative my-12 md:mt-20">
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="post"
+                ></div>
+
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
                         Prestasi Lainnya

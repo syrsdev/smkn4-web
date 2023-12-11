@@ -7,16 +7,24 @@ use App\Models\KonsentrasiKeahlian;
 use App\Models\Post;
 use App\Models\Prestasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function get()
     {
+        $post = [
+            'agenda' => Post::where('kategori', 'agenda')->paginate(5),
+            'artikel' => Post::where('kategori', 'artikel')->paginate(5),
+            'berita' => Post::where('kategori', 'berita')->paginate(5),
+            'event' => Post::where('kategori', 'event')->paginate(5),
+        ];
         return view('dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
                 'active' => 'Dashboard',
                 'subActive' => null,
+                'post' => $post,
             ]);
     }
 
@@ -24,14 +32,21 @@ class DashboardController extends Controller
     {
         $sumBox = [
             'post' => [
-                'agenda' => Post::where(['kategori' => 'agenda','status' => 1])->count(),
-                'artikel' => Post::where(['kategori' => 'artikel','status' => 1])->count(),
-                'berita' => Post::where(['kategori' => 'berita','status' => 1])->count(),
-                'event' => Post::where(['kategori' => 'event','status' => 1])->count(),
+                'agenda' => Post::where('kategori', 'agenda')->count(),
+                'artikel' => Post::where('kategori', 'artikel')->count(),
+                'berita' => Post::where('kategori', 'berita')->count(),
+                'event' => Post::where('kategori', 'event')->count(),
             ],
-            'prestasi' => Prestasi::where('status', 1)->count(),
+            'prestasi' => Prestasi::count(),
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
+
+        $post = DB::table('post')
+            ->select('slug', 'judul', 'gambar', 'created_at', 'kategori')
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
 
         return view('dashboard.dashboard.dashboard')
             ->with([
@@ -39,6 +54,7 @@ class DashboardController extends Controller
                 'active' => 'Dashboard',
                 'subActive' => null,
                 'sumBox' => $sumBox,
+                'post' => $post,
             ]);
     }
 
@@ -46,11 +62,13 @@ class DashboardController extends Controller
     public function statistic()
     {
         $postDates = Post::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');
 
         $prestasiDates = Prestasi::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');
