@@ -12,7 +12,7 @@ class GuruPageController extends Controller
     {
         $search = $request->input('search');
 
-        $guru = Pendidik::with('mapel')
+        $pegawai = Pendidik::with('mapel')
             ->orderBy('created_at', 'asc')
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('nama', 'like', "%$search%")
@@ -24,7 +24,7 @@ class GuruPageController extends Controller
             })
             ->get();
 
-        return Inertia::render('Guru')
-            ->with(['guru' => $guru]);
+        return Inertia::render('Pegawai')
+            ->with(['pegawai' => $pegawai]);
     }
 }
