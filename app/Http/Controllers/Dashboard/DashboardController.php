@@ -46,11 +46,13 @@ class DashboardController extends Controller
     public function statistic()
     {
         $postDates = Post::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');
 
         $prestasiDates = Prestasi::selectRaw('DATE(created_at) as date')
+            ->orderBy('date', 'asc')
             ->groupBy('date')
             ->get()
             ->pluck('date');
