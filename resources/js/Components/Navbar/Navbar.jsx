@@ -94,7 +94,7 @@ export default function Navbar({ subnav, logo }) {
                                             <DropLink href="#">
                                                 TENTANG SEKOLAH
                                             </DropLink>
-                                            <DropLink href="#">
+                                            <DropLink href="/pegawai">
                                                 GURU DAN STAF
                                             </DropLink>
                                         </Dropdown>

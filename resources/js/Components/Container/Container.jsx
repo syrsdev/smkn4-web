@@ -1,8 +1,9 @@
 import React from "react";
 
-function Container({ children, classname, id = "#" }) {
+function Container({ children, classname, id = "#", style }) {
     return (
         <div
+            style={style}
             id={id}
             className={`px-[40px] md:px-[65px] xl:px-[100px]  ${
                 classname ? `${classname}` : ""

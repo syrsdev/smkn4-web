@@ -1,6 +1,6 @@
 import LandingLayout from "@/Layouts/LandingLayout";
 import Container from "@/Components/Container/Container";
-import ButtonPrimary from "@/Components/ButtonPrimary/Button";
+import ButtonPrimary from "@/Components/Button/ButtonPrimary";
 import { FaAngleRight } from "react-icons/fa6";
 import ReactTypingEffect from "react-typing-effect";
 import MadingLayout from "@/Layouts/MadingLayout";
@@ -14,9 +14,10 @@ import "@splidejs/react-splide/css";
 import Carousel from "@/Components/Carousel/Carousel";
 import JurusanCard from "@/Components/Card/JurusanCard";
 import PegawaiCard from "@/Components/Card/PegawaiCard";
+import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 
 function Home(props) {
-    console.log(props);
+    console.log(props.heroSection.hero_image);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -25,6 +26,9 @@ function Home(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container
+                style={{
+                    backgroundImage: `url('${props.heroSection.hero_image}')`,
+                }}
                 classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
@@ -104,17 +108,23 @@ function Home(props) {
                 <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     PRESTASI
                 </h3>
+                <ButtonSecondary dark={true} href="/prestasi">
+                    LIHAT SELENGKAPNYA
+                </ButtonSecondary>
             </Container>
 
             <Container classname="my-10 md:my-16">
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
-                <Carousel>
+                <Carousel perpageXl={5}>
                     {props.tenagaPendidik.map((item, index) => (
                         <PegawaiCard item={item} key={index} />
                     ))}
                 </Carousel>
+                <ButtonSecondary href="/pegawai">
+                    LIHAT SELENGKAPNYA
+                </ButtonSecondary>
             </Container>
             <Container classname="relative my-10 md:my-16">
                 <div

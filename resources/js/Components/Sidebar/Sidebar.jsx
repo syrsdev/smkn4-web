@@ -47,7 +47,7 @@ function Sidebar({ isActive }) {
                                 <DropLink href="#" pb={true}>
                                     TENTANG SEKOLAH
                                 </DropLink>
-                                <DropLink href="#" pb={true}>
+                                <DropLink href="/pegawai" pb={true}>
                                     GURU DAN STAF
                                 </DropLink>
                             </SideDropLink>

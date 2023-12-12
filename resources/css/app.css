@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 .hero-img {
-    background-image: url("/images/hero.png") !important;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
