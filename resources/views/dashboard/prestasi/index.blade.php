@@ -71,7 +71,7 @@
                                                         </div>
 													</td>
                                                     <td>
-                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat Prestasi">
+                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat Prestasi">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
                                                         <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Prestasi">

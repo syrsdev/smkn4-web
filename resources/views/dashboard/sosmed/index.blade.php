@@ -31,7 +31,7 @@
                                             <i class="fas fa-minus"></i>
                                         </a>
                                         <button class="btn btn-sm btn-warning btn-edit" data-name="{{ $item->name }}" data-toggle="tooltip" title="Edit Link">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </button>
                                     </div>
                                 </div>

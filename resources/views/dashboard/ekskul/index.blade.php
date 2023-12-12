@@ -37,7 +37,7 @@
                                             <i class="fas fa-minus"></i>
                                         </a>
                                         <a href="{{ route('ekskul.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Ekstrakurikuler">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
                                         <a href="{{ route('ekskul.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Ekstrakurikuler">
                                             <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>

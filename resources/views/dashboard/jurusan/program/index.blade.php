@@ -33,19 +33,22 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5>{{ $item->nama }}</h5>
-                                    <P>Bidang Keahlian: {{ $item->bidang->nama }}</P>
-                                    <p>Total Konsentrasi Keahlian: {{ $item->konsentrasi_count }}</p>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}"
-                                        data-toggle="tooltip" title="Edit Program Keahlian">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button>
-                                    <a href="{{ route('program.destroy', $item->slug) }}" class="btn btn-sm btn-danger"
-                                        data-confirm-delete="true" data-toggle="tooltip" title="Hapus Program Keahlian">
-                                        <i class="fas fa-trash"
-                                            onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                    </a>
+                                    <p>
+                                        Bidang Keahlian: {{ $item->bidang->nama }}
+                                        <br>
+                                        Total Konsentrasi Keahlian: {{ $item->konsentrasi_count }}
+                                    </p>
+                                    <div class="text-right">
+                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}"
+                                            data-toggle="tooltip" title="Edit Program Keahlian">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <a href="{{ route('program.destroy', $item->slug) }}" class="btn btn-sm btn-danger"
+                                            data-confirm-delete="true" data-toggle="tooltip" title="Hapus Program Keahlian">
+                                            <i class="fas fa-trash"
+                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

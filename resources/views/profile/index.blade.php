@@ -49,14 +49,14 @@
                             Berikut adalah post terbaru Anda.
                         </p>
                         <div class="row">
-                            @foreach ($post['getPost']['post'] as $item)
+                            @foreach ($post['post'] as $item)
                                 <div class="col-12 col-sm-6">
                                     <article class="article article-style-b">
                                         <div class="article-header">
                                             <div class="article-image" data-background="{{ $item->gambar }}">
                                             </div>
                                             <div class="article-badge">
-                                                <div class="article-badge-item bg-info">
+                                                <div class="article-badge-item bg-primary">
                                                     {{ $item->created_at->diffForHumans() }}
                                                 </div>
                                             </div>
@@ -80,45 +80,6 @@
                                             </p>
                                             <div class="article-cta">
                                                 <a href="{{ route('post.show', $item->slug) }}">
-                                                    Selengkapnya 
-                                                    <i class="fas fa-chevron-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            @endforeach
-                            @foreach ($post['getPost']['prestasi'] as $item)
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <article class="article article-style-b">
-                                        <div class="article-header">
-                                            <div class="article-image" data-background="{{ $item->gambar }}">
-                                            </div>
-                                            <div class="article-badge">
-                                                <div class="article-badge-item bg-info">
-                                                    {{ $item->created_at->diffForHumans() }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="article-details">
-                                            <div class="article-title">
-                                                <h2><a href="{{ route('prestasi.show', $item->slug) }}">
-                                                    @if (strlen($item->judul) > 25)
-                                                        {{ substr($item->judul, 0, 25) . '...' }}
-                                                    @else
-                                                        {{ $item->judul }}    
-                                                    @endif
-                                                </a></h2>
-                                            </div>
-                                            <p>
-                                                @if (strlen(strip_tags($item->konten)) > 100)
-                                                   {!! '<p>' . substr(strip_tags($item->konten), 0, 100) . '...</p>' !!}
-                                                @else
-                                                   {!! '<p>' . $item->konten . '</p>' !!}
-                                                @endif
-                                            </p>
-                                            <div class="article-cta">
-                                                <a href="{{ route('prestasi.show', $item->slug) }}">
                                                     Selengkapnya 
                                                     <i class="fas fa-chevron-right"></i>
                                                 </a>

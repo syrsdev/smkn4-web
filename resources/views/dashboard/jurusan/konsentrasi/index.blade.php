@@ -47,7 +47,7 @@
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="{{ route('konsentrasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
                                         <a href="{{ route('konsentrasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
