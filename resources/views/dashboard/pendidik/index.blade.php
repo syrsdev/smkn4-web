@@ -87,7 +87,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Guru">
-                                                            <i class="fas fa-edit"></i>
+                                                            <i class="fas fa-pen"></i>
                                                         </a>
                                                         <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Guru">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
