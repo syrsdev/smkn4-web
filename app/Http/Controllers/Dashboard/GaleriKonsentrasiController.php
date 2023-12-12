@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Galeri;
 use App\Models\KonsentrasiKeahlian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GaleriKonsentrasiController extends Controller
 {
@@ -42,8 +43,11 @@ class GaleriKonsentrasiController extends Controller
         $request->validate([
             'id_konsentrasi' => 'required',
             'gambar' => 'required|array',
-            'gambar.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'gambar.*' => 'file|image|mimes:jpeg,png,jpg,gif,svg,webp',
         ]);
+
+        $konsentrasi = KonsentrasiKeahlian::where('id', $request->id_konsentrasi)
+            ->first();
 
         foreach ($request->file('gambar') as $file) {
             $gambar = time() . '.' . $file->extension();
@@ -57,9 +61,9 @@ class GaleriKonsentrasiController extends Controller
             Galeri::create($galeri);
         }
 
-        toast('Galeri Konsentrasi ditambahkan!', 'success');
+        toast('Galeri Konsentrasi berhasil ditambahkan!', 'success');
 
-        return redirect('/dashboard/jurusan/galeri?id_konsentrasi=' . $request->id_konsentrasi);
+        return redirect()->route('konsentrasi.show', $konsentrasi->slug);
     }
 
     /**
@@ -73,9 +77,19 @@ class GaleriKonsentrasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Galeri $galeri)
+    public function edit(Request $request, Galeri $galeri)
     {
-        //
+        $konsentrasi = KonsentrasiKeahlian::where('id', $request->id_konsentrasi)
+            ->first();
+
+        return view('dashboard.jurusan.galeri.edit')
+            ->with([
+                'title' => 'Galeri Konsentrasi',
+                'active' => 'Jurusan',
+                'subActive' => 'Konsentrasi',
+                'konsentrasi' => $konsentrasi,
+                'galeri' => $galeri,
+            ]);
     }
 
     /**
@@ -83,7 +97,45 @@ class GaleriKonsentrasiController extends Controller
      */
     public function update(Request $request, Galeri $galeri)
     {
-        //
+        $request->validate([
+            'id_konsentrasi' => 'required',
+            'keterangan' => 'nullable',
+        ]);
+
+        $konsentrasi = KonsentrasiKeahlian::where('id', $request->input('id_konsentrasi'))
+            ->first();
+
+        $update = [
+            'id_konsentrasi' => $request->input('id_konsentrasi'),
+            'keterangan' => $request->input('keterangan') ?? 'Tidak ada keterangan',
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            ]);
+
+            $file = $request->file('gambar');
+            $gambar = time() . '.' . $file->extension();
+
+            File::delete(public_path($galeri->gambar));
+            $file->move(public_path('/storage/jurusan/galeri'), $gambar);
+
+            $update['gambar'] = '/storage/jurusan/galeri/' . $gambar;
+        }
+
+        try {
+            $galeri->update($update);
+    
+            toast('Galeri Konsentrasi berhasil diedit!', 'success');
+    
+            return redirect()->route('konsentrasi.show', $konsentrasi->slug);
+        } catch (\Exception $e) {
+            toast($e, 'warning');
+            // toast('Galeri Konsentrasi gagal diedit.', 'warning');
+    
+            return redirect()->back();
+        }
     }
 
     /**
@@ -91,6 +143,12 @@ class GaleriKonsentrasiController extends Controller
      */
     public function destroy(Galeri $galeri)
     {
-        //
+        File::delete(public_path($galeri->gambar));
+
+        $galeri->delete();
+
+        toast('Galeri Konsentrasi berhasil dihapus!', 'success');
+
+        return redirect()->back();
     }
 }

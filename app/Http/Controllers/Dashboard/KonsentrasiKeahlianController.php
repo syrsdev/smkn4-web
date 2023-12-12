@@ -100,6 +100,8 @@ class KonsentrasiKeahlianController extends Controller
     {
         $konsentrasi->load(['program', 'program.bidang', 'galeri']);
 
+        confirmDelete('Hapus Gambar?', 'Yakin ingin hapus gambar dari galeri?');
+
         return view('dashboard.jurusan.konsentrasi.detail')
             ->with([
                 'title' => 'Detail Konsentrasi Keahlian',   
