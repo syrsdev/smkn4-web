@@ -52,7 +52,7 @@ function Home(props) {
                     </ButtonPrimary>
                 </div>
             </Container>
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-20">
                 <MadingLayout
                     title={props.mading.title}
                     listPost={props.mading.list}
@@ -87,12 +87,12 @@ function Home(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-20">
                 <MadingTitle title="BERITA TERKINI" href="berita" />
                 <CardListLayout data={props.berita} />
             </Container>
 
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-20">
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     KONSENTRASI KEAHLIAN
                 </h3>
@@ -113,7 +113,7 @@ function Home(props) {
                 </ButtonSecondary>
             </Container>
 
-            <Container classname="my-10 md:my-16">
+            <Container classname="my-10 md:my-20">
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
@@ -126,7 +126,7 @@ function Home(props) {
                     LIHAT SELENGKAPNYA
                 </ButtonSecondary>
             </Container>
-            <Container classname="relative my-10 md:my-16">
+            <Container classname="relative my-10 md:my-20">
                 <div
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="ekskul"

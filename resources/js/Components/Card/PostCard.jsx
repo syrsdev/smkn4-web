@@ -24,7 +24,7 @@ function PostCard({ data }) {
                 </p>
             </div>
             <p
-                className="line-clamp-3 konten-card"
+                className="line-clamp-2 xl:line-clamp-3 konten-card"
                 dangerouslySetInnerHTML={{ __html: data.konten }}
             ></p>
             <Link
