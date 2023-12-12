@@ -30,29 +30,20 @@
                     @foreach ($bidang as $item)
                         <div class="col-12 col-md-6">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4>{{ $item->nama }}</h4>
-                                    <div class="card-header-action">
-                                        <a data-collapse="#{{ $item->slug }}-collapse" class="btn btn-icon btn-info" href="#">
-                                            <i class="fas fa-minus"></i>
-                                        </a>
-                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Bidang Keahlian">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </button>
-                                        <a href="{{ route('bidang.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Bidang Keahlian">
-                                            <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                        </a>
-                                    </div>
+                                <div class="card-body">
+                                    <h5 class="mt-0">{{ $item->nama }}</h5>
+                                    <p>Total Program Keahlian : {{ $item->program_count }}</p>
                                 </div>
-                                <div class="collapse show" id="{{ $item->slug }}-collapse">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-body">
-                                                <h5 class="mt-0">{{ $item->nama }}</h5>
-                                                <p>Total Program Keahlian : {{ $item->program_count }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}"
+                                        data-toggle="tooltip" title="Edit Bidang Keahlian">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <a href="{{ route('bidang.destroy', $item->slug) }}" class="btn btn-sm btn-danger"
+                                        data-confirm-delete="true" data-toggle="tooltip" title="Hapus Bidang Keahlian">
+                                        <i class="fas fa-trash"
+                                            onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -72,5 +63,5 @@
             let slug = $(this).data('slug');
             $('#editBidang' + slug).modal('show');
         });
-    </script>    
+    </script>
 @endsection
