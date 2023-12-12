@@ -6,7 +6,7 @@ function CarouselCardLayout({
     children,
     href = "",
     gap,
-    p = "px-3 py-5 md:px-5 xl:px-10 xl:py-14 md:py-9",
+    p = "px-3 py-7 md:px-5 xl:px-10 xl:py-14 md:py-9",
 }) {
     return (
         <>

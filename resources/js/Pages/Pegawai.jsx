@@ -12,7 +12,7 @@ function Pegawai(props) {
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
         >
-            <Container>
+            <Container classname="my-10">
                 <h1 className="my-7 md:my-10 text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center text-primary">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h1>
