@@ -58,7 +58,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_konsentrasi');
             $table->string('gambar');
-            $table->string('keterangan');
+            $table->string('keterangan')
+                ->nullable()
+                ->default('Tidak ada keterangan');
             $table->foreign('id_konsentrasi')
                 ->references('id')
                 ->on('konsentrasi_keahlian')

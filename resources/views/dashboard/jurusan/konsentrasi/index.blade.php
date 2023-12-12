@@ -30,20 +30,6 @@
                     @foreach ($konsentrasi as $item)
                         <div class="col-12 col-md-6">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4>{{ $item->nama }}</h4>
-                                    <div class="card-header-action">
-                                        <a data-collapse="#{{ $item->slug }}-collapse" class="btn btn-icon btn-info" href="#">
-                                            <i class="fas fa-plus"></i>
-                                        </a>
-                                        <a href="{{ route('konsentrasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <a href="{{ route('konsentrasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
-                                            <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                        </a>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="media mb-3">
                                         <img class="mr-3" src="{{ asset($item->icon) }}" alt="{{ $item->nama }}" style="width: 100px">
@@ -56,17 +42,15 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="collapse hide" id="{{ $item->slug }}-collapse">
-                                        @if (strlen($item->deskripsi) > 200)
-                                            {!! '<p>' . substr(strip_tags($item->deskripsi), 0, 200) . '...</p>' !!}
-                                        @else
-                                            {!! '<p>' . $item->deskripsi . '</p>' !!}
-                                        @endif
-                                    </div>
                                     <div class="text-right">
-                                        <a href="{{ route('konsentrasi.show', $item->slug) }}" class="card-cta text-primary">
-                                            Selengkapnya
-                                            <i class="fas fa-chevron-right"></i>
+                                        <a href="{{ route('konsentrasi.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat Data">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('konsentrasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('konsentrasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
+                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                         </a>
                                     </div>
                                 </div>

@@ -98,7 +98,9 @@ class KonsentrasiKeahlianController extends Controller
      */
     public function show(KonsentrasiKeahlian $konsentrasi)
     {
-        $konsentrasi->load(['program', 'program.bidang']);
+        $konsentrasi->load(['program', 'program.bidang', 'galeri']);
+
+        confirmDelete('Hapus Gambar?', 'Yakin ingin hapus gambar dari galeri?');
 
         return view('dashboard.jurusan.konsentrasi.detail')
             ->with([
@@ -193,6 +195,32 @@ class KonsentrasiKeahlianController extends Controller
         $konsentrasi->delete();
 
         toast('Konsentrasi Keahlian berhasil dihapus!', 'success');
+
+        return redirect()->back();
+    }
+
+    public function update_image(Request $request, KonsentrasiKeahlian $konsentrasi)
+    {
+        $request->validate([
+            'gambar' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg,webp',
+        ]);
+
+        $file = $request->file('gambar');
+        $gambarNama = $konsentrasi->slug . '.' . $file->extension();
+
+        if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
+            File::delete(public_path($konsentrasi->gambar));
+        }
+        
+        $file->move(public_path('storage/jurusan/konsentrasi'), $gambarNama);
+        $gambar = '/storage/jurusan/konsentrasi/' . $gambarNama;
+
+        try {
+            $konsentrasi->update(['gambar' => $gambar,]);
+            toast('Konsentrasi Keahlian berhasil diedit!', 'success');
+        } catch (\Exception $e) {
+            toast('Konsentrasi Keahlian gagal diedit!', 'warning');
+        }
 
         return redirect()->back();
     }

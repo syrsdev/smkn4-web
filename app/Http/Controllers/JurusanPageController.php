@@ -19,7 +19,7 @@ class JurusanPageController extends Controller
 
     public function show(KonsentrasiKeahlian $jurusan)
     {
-        $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
+        $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang', 'galeri'])
             ->where('slug', $jurusan->slug)
             ->first();
 
