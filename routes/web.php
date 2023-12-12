@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\GaleriKonsentrasiController;
 use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
@@ -125,6 +126,11 @@ Route::middleware('auth')->group(function () {
                 Route::resource('/program', ProgramKeahlianController::class);
 
                 Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
+
+                Route::patch('/konsentrasi/{konsentrasi}/gambar', [KonsentrasiKeahlianController::class, 'update_image'])
+                    ->name('konsentrasi.gambar');
+
+                Route::resource('/galeri', GaleriKonsentrasiController::class);
             });
 
             Route::get('/hero', [HeroSectionController::class, 'edit'])
