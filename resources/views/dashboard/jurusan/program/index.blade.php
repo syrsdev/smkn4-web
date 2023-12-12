@@ -41,7 +41,7 @@
                                     <div class="text-right">
                                         <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}"
                                             data-toggle="tooltip" title="Edit Program Keahlian">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </button>
                                         <a href="{{ route('program.destroy', $item->slug) }}" class="btn btn-sm btn-danger"
                                             data-confirm-delete="true" data-toggle="tooltip" title="Hapus Program Keahlian">

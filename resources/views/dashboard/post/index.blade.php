@@ -101,7 +101,7 @@
                                                         </div>
 													</td>
 													<td>
-														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat {{ $kategori }}">
+														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat {{ $kategori }}">
 															<i class="fas fa-eye"></i>
 														</a>
 														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit {{ $kategori }}">
