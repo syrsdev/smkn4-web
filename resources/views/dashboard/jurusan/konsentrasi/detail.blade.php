@@ -98,16 +98,16 @@
                             <div class="col-12 col-md-6 col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Gambar Utama</h4>
+                                        <h4>Edit Thumbnail</h4>
                                         <div class="card-header-action">
-                                            <a href="#" data-collapse="#images-collapse" class="btn btn-icon btn-success">
+                                            <a href="#" data-collapse="#images-collapse" class="btn btn-icon btn-info">
                                                 <i class="fas fa-plus"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <p class="text-muted">
-                                            Ganti gambar utama disini.
+                                            Edit thumbnail konsentrasi keahlian disini.
                                         </p>
                                         <div class="collapse hide" id="images-collapse">
                                             <hr>
@@ -115,11 +115,11 @@
                                                 @csrf
                                                 @method('patch')
                                                 <div class="form-group">
-                                                    <label>Gambar Lama</label><br>
+                                                    <label>Thumbnail Lama</label><br>
                                                     <img src="{{ asset($konsentrasi->gambar) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px;">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="gambar">Gambar Baru</label>
+                                                    <label for="gambar">Thumbnail Baru</label>
                                                     <div id="image-preview" class="image-preview">
                                                         <label for="image-upload" id="image-label">Pilih File</label>
                                                         <input type="file" class="form-control image-preview-filepond" name="gambar" id="image-upload" />
@@ -130,27 +130,6 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Galeri</h4>
-                                        <div class="card-header-action">
-                                            <form action="{{ route('galeri.create') }}" method="get">
-                                                <input type="hidden" name="id_konsentrasi" value="{{ $konsentrasi->id }}">
-                                                <button type="submit" class="btn btn-icon btn-info" data-toggle="tooltip"
-                                                    title="Tambah Gambar">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="text-muted">
-                                            Tambah gambar untuk galeri konsentrasi keahlian disini.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
