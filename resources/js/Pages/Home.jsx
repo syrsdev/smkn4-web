@@ -17,7 +17,7 @@ import PegawaiCard from "@/Components/Card/PegawaiCard";
 import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 
 function Home(props) {
-    console.log(props);
+    console.log(props.heroSection.hero_image);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -26,6 +26,9 @@ function Home(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container
+                style={{
+                    backgroundImage: `url('${props.heroSection.hero_image}')`,
+                }}
                 classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
