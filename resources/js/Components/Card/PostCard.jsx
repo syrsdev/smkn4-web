@@ -27,12 +27,9 @@ function PostCard({ data }) {
                 className="line-clamp-2 xl:line-clamp-3 konten-card"
                 dangerouslySetInnerHTML={{ __html: data.konten }}
             ></p>
-            <Link
-                className="text-[14px] text-primary underline underline-offset-8 pb-7"
-                href={`/post/${data.kategori}/${data.slug}`}
-            >
+            <span className="text-[14px] text-primary underline underline-offset-8 pb-7">
                 Read More...
-            </Link>
+            </span>
         </Link>
     );
 }
