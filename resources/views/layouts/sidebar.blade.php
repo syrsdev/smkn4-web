@@ -136,7 +136,7 @@
                     </a>
                 </li>
                 <li class="menu-header">Users</li>
-                <li class="dropdown {{ $active === 'Users' ? 'active' : '' }}">
+                <li class="dropdown {{ $active === 'User' ? 'active' : '' }}">
                     <a href="{{ route('user.index') }}" class="nav-link">
                         <i class="fas fa-user-cog"></i>
                         <span>Kelola User</span>

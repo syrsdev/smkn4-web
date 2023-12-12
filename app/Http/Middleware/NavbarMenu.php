@@ -25,28 +25,9 @@ class NavbarMenu
             ->pluck('value', 'key')
             ->toArray();
 
-        $navMenu = [
-            'berita' => [
-                'artikel' => Post::where(['kategori' => 'artikel', 'status' => '1'])
-                    ->latest()
-                    ->first(),
-                'berita' => Post::where(['kategori' => 'berita', 'status' => '1'])
-                    ->latest()
-                    ->first(),
-                'event' => Post::where(['kategori' => 'event', 'status' => '1'])
-                    ->latest()
-                    ->first(),
-            ],
-            'kesiswaan' => [
-                'prestasi' => Prestasi::where('status', '1')
-                    ->latest()
-                    ->first(),
-            ],
-        ];
-
         $subNavbar = SubNavbar::where('status', '1')->latest()->get();
 
-        Inertia::share(['sekolah' => $sekolah, 'navMenu' => $navMenu, 'subNavbar' => $subNavbar]);
+        Inertia::share(['sekolah' => $sekolah, 'subNavbar' => $subNavbar]);
         View::share(['sekolah' => $sekolah]);
 
         return $next($request);

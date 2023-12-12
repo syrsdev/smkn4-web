@@ -36,7 +36,7 @@
                                             <i class="fas fa-minus"></i>
                                         </a>
                                         <button class="btn btn-sm btn-warning btn-edit" data-id="{{ $item->id }}" data-toggle="tooltip" title="Edit Sub Navbar">
-                                            <i class="fas fa-pencil-alt"></i>
+                                            <i class="fas fa-pen"></i>
                                         </button>
                                         <a href="{{ route('sub-navbar.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Sub Navbar">
                                             <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>

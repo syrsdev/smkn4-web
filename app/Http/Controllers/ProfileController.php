@@ -34,16 +34,10 @@ class ProfileController extends Controller
         $post = [
             'totalPost' => $total['post']['post'] + $total['prestasi']['prestasi'],
             'totalViews' => $total['post']['views'] + $total['prestasi']['views'],
-            'getPost' => [
-                'post' => Post::where('id_penulis', Auth::id())
-                    ->latest()
-                    ->limit(2)
-                    ->get(),
-                'prestasi' => Prestasi::where('id_penulis', Auth::id())
-                    ->latest()
-                    ->limit(2)
-                    ->get(),
-            ],
+            'post' => Post::where('id_penulis', Auth::id())
+                ->latest()
+                ->limit(4)
+                ->get(),
         ];
 
         return view('profile.index')
