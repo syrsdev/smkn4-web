@@ -60,11 +60,8 @@
                         <span>Profil Sekolah</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="{{ $subActive === 'Sejarah' ? 'active' : '' }} mb-2">
-                            <a class="nav-link" href="#">Sejarah Sekolah</a>
-                        </li>
-                        <li class="{{ $subActive === 'Visi-Misi' ? 'active' : '' }} mb-3">
-                            <a class="nav-link" href="#">Visi & Misi Sekolah</a>
+                        <li class="{{ $subActive === 'Tentang' ? 'active' : '' }} mb-2">
+                            <a class="nav-link" href="#">Tentang Sekolah</a>
                         </li>
                         <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }} mt-2">
                             <a class="nav-link" href="{{ route('sambutan.edit') }}">Sambutan Kepala Sekolah</a>

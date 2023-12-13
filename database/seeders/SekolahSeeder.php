@@ -19,10 +19,7 @@ class SekolahSeeder extends Seeder
             ['key' => 'favicon', 'value' => 'favicon.png'],
             ['key' => 'alamat_sekolah', 'value' => 'Jl. Veteran No. 1A Babakan, Tangerang, Kota Tangerang - Banten'],
             ['key' => 'link_alamat', 'value' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5769326362083!2d106.63517767461776!3d-6.187328060621096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f929162547c7%3A0xbbf35137362e584d!2sSMK%20Negeri%204%20Kota%20Tangerang!5e0!3m2!1sid!2sid!4v1700232373573!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'],
-            ['key' => 'sejarah_sekolah', 'value' => ''],
-            ['key' => 'visi_sekolah', 'value' => ''],
-            ['key' => 'misi_sekolah', 'value' => ''],
-            ['key' => 'tujuan_sekolah', 'value' => ''],
+            ['key' => 'tentang_sekolah', 'value' => ''],
             ['key' => 'fax', 'value' => '-'],
             ['key' => 'telepon_sekolah', 'value' => '021-5523429'], // * Isi yang ini sekalian
             ['key' => 'email_sekolah', 'value' => 'smkn4kotatng@yahoo.co.id'], // * Isi yang ini sekalian
