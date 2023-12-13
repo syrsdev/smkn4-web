@@ -26,17 +26,20 @@ function Jurusan(props) {
                         <div className="w-full overflow-hidden xl:w-fit">
                             <img
                                 src={item.gambar}
-                                className="w-full md:w-[300px] xl:w-[400px] max-h-[166px] md:max-h-[200px] xl:max-h-[270px] object-cover thumbnail"
+                                className="w-full md:w-[300px] xl:w-[400px] h-[166px] md:h-[200px] xl:h-[250px] object-cover thumbnail"
                                 alt="gambar jurusan"
                             />
                         </div>
-                        <div className="flex flex-col items-center w-full gap-1 text-center xl:w-4/12 md:text-start md:items-start text-primary">
+                        <div className="flex flex-col items-center w-full gap-2 text-center xl:w-4/12 md:text-start md:items-start text-primary">
                             <h2 className="font-bold text-[16px] md:text-[18px] xl:text-[20px]">
                                 {item.nama}
                             </h2>
-                            <p className="line-clamp-3 text-[16px] ">
-                                {item.deskripsi}
-                            </p>
+                            <p
+                                dangerouslySetInnerHTML={{
+                                    __html: item.deskripsi,
+                                }}
+                                className="line-clamp-3 text-[16px] "
+                            ></p>
                             <Link
                                 className="flex items-center gap-2 font-semibold "
                                 href={`/jurusan/${item.slug}`}

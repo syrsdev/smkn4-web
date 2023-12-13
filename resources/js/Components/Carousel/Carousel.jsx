@@ -10,7 +10,7 @@ function Carousel({ label, children, perpageXl = 4 }) {
                 rewind: true,
                 autoplay: true,
                 perPage: perpageXl,
-                gap: perpageXl != 4 ? "2rem" : "2.6rem",
+                gap: perpageXl != 4 ? "2rem" : "3rem",
                 breakpoints: {
                     321: {
                         perPage: 1,

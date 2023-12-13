@@ -5,7 +5,11 @@ function PegawaiCard({ item, carousel = true }) {
     return (
         <>
             {carousel == true ? (
-                <CarouselCardLayout href={null} p="pb-10 pt-2 px-2" gap="gap-1">
+                <CarouselCardLayout
+                    href={null}
+                    p="pb-5 xl:pb-10 pt-2 px-2"
+                    gap="gap-1"
+                >
                     <img
                         src={item.gambar}
                         alt="Foto Tenaga Pendidik/Kependidikan"
@@ -26,7 +30,7 @@ function PegawaiCard({ item, carousel = true }) {
                 </CarouselCardLayout>
             ) : (
                 <div
-                    className={`duration-500 border-2 rounded-md hover:shadow-xl hover:shadow-[#1A274D]  text-primary border-primary pb-10 pt-2 px-2`}
+                    className={`duration-500 border-2 rounded-md hover:shadow-xl hover:shadow-[#1A274D]  text-primary border-primary pb-6 pt-2 px-2`}
                 >
                     <div
                         className={`flex flex-col items-center justify-start text-center gap-1`}
