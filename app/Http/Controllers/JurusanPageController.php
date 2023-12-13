@@ -17,12 +17,19 @@ class JurusanPageController extends Controller
         return Inertia::render('Jurusan')->with(['jurusan' => $jurusan]);
     }
 
-    public function show(KonsentrasiKeahlian $jurusan)
+    public function show(KonsentrasiKeahlian $konsentrasi)
     {
-        $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang', 'galeri'])
-            ->where('slug', $jurusan->slug)
+        $konsentrasi = KonsentrasiKeahlian::with(['program', 'program.bidang', 'galeri'])
+            ->where('slug', $konsentrasi->slug)
             ->first();
 
-        return Inertia::render('DetailJurusan')->with(['jurusan' => $jurusan]);
+        $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
+            ->where('slug', '!=', $konsentrasi->slug)
+            ->get();
+
+        return Inertia::render('DetailJurusan')->with([
+            'konsentrasi' => $konsentrasi,
+            'jurusan' => $jurusan,
+        ]);    
     }
 }

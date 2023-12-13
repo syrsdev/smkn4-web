@@ -61,12 +61,10 @@ class DashboardController extends Controller
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
 
-        $post = DB::table('post')
-            ->select('slug', 'judul', 'gambar', 'created_at', 'kategori')
-            ->where('status', 1)
-            ->orderBy('created_at', 'desc')
-            ->limit(5)
-            ->get();
+        $donut = [
+            'post' => Post::sum('views'),
+            'prestasi' => Prestasi::sum('views'),
+        ];
 
         return view('dashboard.dashboard.dashboard')
             ->with([
@@ -74,7 +72,7 @@ class DashboardController extends Controller
                 'active' => 'Dashboard',
                 'subActive' => null,
                 'sumBox' => $sumBox,
-                'post' => $post,
+                'donut' => $donut,
             ]);
     }
 
