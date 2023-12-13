@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="{{ $subActive === 'Tentang' ? 'active' : '' }} mb-2">
-                            <a class="nav-link" href="#">Tentang Sekolah</a>
+                            <a class="nav-link" href="{{ route('tentang.edit') }}">Tentang Sekolah</a>
                         </li>
                         <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }} mt-2">
                             <a class="nav-link" href="{{ route('sambutan.edit') }}">Sambutan Kepala Sekolah</a>

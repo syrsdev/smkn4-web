@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\TentangSekolahController;
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
@@ -144,6 +145,12 @@ Route::middleware('auth')->group(function () {
 
             Route::patch('/sambutan', [SambutanKepsekController::class, 'update'])
                 ->name('sambutan.update');
+
+            Route::get('/tentang', [TentangSekolahController::class, 'edit'])
+                ->name('tentang.edit');
+
+            Route::patch('/tentang', [TentangSekolahController::class, 'update'])
+                ->name('tentang.update');
         });
     });
 });
