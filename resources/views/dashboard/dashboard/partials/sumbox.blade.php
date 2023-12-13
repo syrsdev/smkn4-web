@@ -2,7 +2,7 @@
     <div class="col-12 col-md-6 col-lg-4">
         <a href="{{ route('post.index', 'agenda') }}">
             <div class="card card-statistic-2">
-                <div class="card-icon shadow-primary bg-primary">
+                <div class="card-icon shadow-primary bg-info">
                     <i class="fas fa-thumbtack ml-0"></i>
                 </div>
                 <div class="card-wrap">
@@ -77,7 +77,7 @@
     <div class="col-12 col-md-6 col-lg-4">
         <a href="{{ route('konsentrasi.index') }}">
             <div class="card card-statistic-2">
-                <div class="card-icon shadow-info bg-info">
+                <div class="card-icon shadow-info bg-primary">
                     <i class="fas fa-book ml-0"></i>
                 </div>
                 <div class="card-wrap">
