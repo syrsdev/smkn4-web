@@ -62,10 +62,29 @@ class DashboardController extends Controller
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
 
-        $recentPost = Post::with('penulis')
-            ->latest()
-            ->limit(10)
+        $post = [
+            'latest' => Post::with('penulis')
+                ->latest()
+                ->limit(10)
+                ->get(),
+            'table' => Post::with('penulis')
+                ->latest()
+                ->limit(5)
+                ->get(),
+        ];
+
+        $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
+            ->orderBy('nama', 'asc')
             ->get();
+
+        $guru = [
+            'pendidik' => Pendidik::where('bagian', 'pendidik')
+                ->limit(3)
+                ->get(),
+            'pegawai' => Pendidik::where('bagian', 'pegawai')
+                ->limit(3)
+                ->get(),
+        ];
 
         $donut = [
             'post' => Post::sum('views'),
@@ -78,8 +97,10 @@ class DashboardController extends Controller
                 'active' => 'Dashboard',
                 'subActive' => null,
                 'sumBox' => $sumBox,
+                'post' => $post,
+                'jurusan' => $jurusan,
+                'guru' => $guru,
                 'donut' => $donut,
-                'recentPost' => $recentPost,
             ]);
     }
 
