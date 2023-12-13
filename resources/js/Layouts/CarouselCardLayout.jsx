@@ -16,7 +16,7 @@ function CarouselCardLayout({
                 {href != null ? (
                     <Link
                         href={href}
-                        className="flex flex-col items-center justify-start gap-2 text-center xl:gap-5 "
+                        className="flex flex-col items-center justify-start gap-2 text-center"
                     >
                         {children}
                     </Link>
