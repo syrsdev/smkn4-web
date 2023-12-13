@@ -49,13 +49,13 @@ class PrestasiController extends Controller
     {
         Session::flash('judul', $request->input('judul'));
         Session::flash('konten', $request->input('konten'));
-        Session::flash('pemenang', $request->input('pemenang'));
+        Session::flash('peserta', $request->input('peserta'));
 
         $request->validate([
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'pemenang' => 'required',
+            'peserta' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -67,7 +67,7 @@ class PrestasiController extends Controller
             'judul' => $request->input('judul'),
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
-            'pemenang' => $request->input('pemenang'),
+            'peserta' => $request->input('peserta'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 
@@ -140,7 +140,7 @@ class PrestasiController extends Controller
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'pemenang' => 'required',
+            'peserta' => 'required',
             'id_penulis' => 'required',
         ]);
 
@@ -152,7 +152,7 @@ class PrestasiController extends Controller
             'judul' => $request->input('judul'),
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
-            'pemenang' => $request->input('pemenang'),
+            'peserta' => $request->input('peserta'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 

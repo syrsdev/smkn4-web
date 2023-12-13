@@ -44,7 +44,7 @@
                                                 <th>#</th>
                                                 <th>Judul</th>
                                                 <th>Kategori</th>
-                                                <th>Pemenang</th>
+                                                <th>Pesert</th>
                                                 <th>Views</th>
                                                 <th>Publish</th>
                                                 <th>Status</th>
@@ -57,7 +57,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->judul}}</td>
                                                     <td>{{ ucfirst($item->kategori) }}</td>
-                                                    <td>{{ $item->pemenang }}</td>
+                                                    <td>{{ $item->peserta }}</td>
                                                     <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
 														<label class="custom-switch mt-1">

@@ -72,7 +72,7 @@ function Prestasi(props) {
                                         ).toLocaleDateString("id-ID")}
                                     </p>
                                     <figure className="mt-2 font-semibold text-primary">
-                                        Peserta Lomba: {props.prestasi.pemenang}
+                                        Peserta Lomba: {props.prestasi.peserta}
                                     </figure>
                                     <p
                                         dangerouslySetInnerHTML={{
