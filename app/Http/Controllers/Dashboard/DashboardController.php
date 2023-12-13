@@ -14,12 +14,10 @@ class DashboardController extends Controller
 {
     public function get()
     {
-        $post = [
-            'agenda' => Post::where('kategori', 'agenda')->paginate(5),
-            'artikel' => Post::where('kategori', 'artikel')->paginate(5),
-            'berita' => Post::where('kategori', 'berita')->paginate(5),
-            'event' => Post::where('kategori', 'event')->paginate(5),
-        ];
+        $recentPost = Post::with('penulis')
+            ->latest()
+            ->limit(10)
+            ->get();
 
         $guru = [
             'pendidik' => Pendidik::where('bagian', 'pendidik')
@@ -30,9 +28,13 @@ class DashboardController extends Controller
                 ->get(),
         ];
 
-        $table_post = Post::with('penulis')
+        $tablePost = Post::with('penulis')
             ->latest()
             ->limit(5)
+            ->get();
+
+        $konsentrasi = KonsentrasiKeahlian::with(['program', 'program.bidang'])
+            ->orderBy('nama', 'asc')
             ->get();
 
         return view('dashboard.dashboard')
@@ -40,9 +42,10 @@ class DashboardController extends Controller
                 'title' => 'Dashboard',
                 'active' => 'Dashboard',
                 'subActive' => null,
-                'post' => $post,
+                'recentPost' => $recentPost,
                 'guru' => $guru,
-                'table_post' => $table_post,
+                'tablePost' => $tablePost,
+                'konsentrasi' => $konsentrasi,
             ]);
     }
 
@@ -59,6 +62,11 @@ class DashboardController extends Controller
             'konsentrasi' => KonsentrasiKeahlian::count(),
         ];
 
+        $recentPost = Post::with('penulis')
+            ->latest()
+            ->limit(10)
+            ->get();
+
         $donut = [
             'post' => Post::sum('views'),
             'prestasi' => Prestasi::sum('views'),
@@ -71,6 +79,7 @@ class DashboardController extends Controller
                 'subActive' => null,
                 'sumBox' => $sumBox,
                 'donut' => $donut,
+                'recentPost' => $recentPost,
             ]);
     }
 

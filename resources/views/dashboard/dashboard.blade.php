@@ -95,86 +95,17 @@
                     <div class="card gradient-bottom">
                         <div class="card-header">
                             <h4>Post Terbaru</h4>
-                            <div class="card-header-action dropdown">
-                                <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
-                                <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                    <li><a href="#agenda" class="dropdown-item">Agenda</a></li>
-                                    <li><a href="#artikel" class="dropdown-item">Artikel</a></li>
-                                    <li><a href="#berita" class="dropdown-item">Berita</a></li>
-                                    <li><a href="#event" class="dropdown-item">Event</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="card-body" id="top-5-scroll">
                             <div class="tab-pane fade show active" id="agenda" role="tabpanel">
                                 <ul class="list-unstyled list-unstyled-border">
-                                    @foreach ($post['agenda'] as $item)
+                                    @foreach ($recentPost as $item)
                                         <li class="media">
                                             <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
                                                 alt="{{ $item->judul }}">
                                             <div class="media-body">
                                                 <div class="float-right">
                                                     <div class="font-weight-600 text-muted text-small">{{ $item->kategori }}
-                                                    </div>
-                                                </div>
-                                                <div class="media-title">{{ $item->judul }}</div>
-                                                <div class="media-title">
-                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade" id="artikel" role="tabpanel">
-                                <ul class="list-unstyled list-unstyled-border">
-                                    @foreach ($post['artikel'] as $item)
-                                        <li class="media">
-                                            <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
-                                                alt="{{ $item->judul }}">
-                                            <div class="media-body">
-                                                <div class="float-right">
-                                                    <div class="font-weight-600 text-muted text-small">
-                                                        {{ $item->kategori }}
-                                                    </div>
-                                                </div>
-                                                <div class="media-title">{{ $item->judul }}</div>
-                                                <div class="media-title">
-                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade" id="berita" role="tabpanel">
-                                <ul class="list-unstyled list-unstyled-border">
-                                    @foreach ($post['berita'] as $item)
-                                        <li class="media">
-                                            <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
-                                                alt="{{ $item->judul }}">
-                                            <div class="media-body">
-                                                <div class="float-right">
-                                                    <div class="font-weight-600 text-muted text-small">
-                                                        {{ $item->kategori }}
-                                                    </div>
-                                                </div>
-                                                <div class="media-title">{{ $item->judul }}</div>
-                                                <div class="media-title">
-                                                    {{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="tab-pane fade" id="event" role="tabpanel">
-                                <ul class="list-unstyled list-unstyled-border">
-                                    @foreach ($post['event'] as $item)
-                                        <li class="media">
-                                            <img class="mr-3 rounded" width="55" src="{{ asset($item->gambar) }}"
-                                                alt="{{ $item->judul }}">
-                                            <div class="media-body">
-                                                <div class="float-right">
-                                                    <div class="font-weight-600 text-muted text-small">
-                                                        {{ $item->kategori }}
                                                     </div>
                                                 </div>
                                                 <div class="media-title">{{ $item->judul }}</div>
@@ -199,18 +130,19 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Best Products</h4>
+                            <h4>Konsentrasi Keahlian</h4>
                         </div>
                         <div class="card-body">
                             <div class="owl-carousel owl-theme" id="products-carousel">
+                                @foreach ($konsentrasi as $item)
                                 <div>
                                     <div class="product-item pb-3">
                                         <div class="product-image">
-                                            <img alt="image" src="{{ asset('assets/img/products/product-4-50.png') }}"
+                                            <img alt="{{$item->nama}}" src="{{ asset($item->image) }}"
                                                 class="img-fluid">
                                         </div>
                                         <div class="product-details">
-                                            <div class="product-name">iBook Pro 2018</div>
+                                            <div class="product-name">{{$item->nama}}</div>
                                             <div class="product-review">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -218,57 +150,14 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                             </div>
-                                            <div class="text-muted text-small">67 Sales</div>
+                                            <div class="text-muted text-small">{{ $item->deskripsi }}</div>
                                             <div class="product-cta">
-                                                <a href="#" class="btn btn-primary">Detail</a>
+                                                <a href="{{ route('konsentrasi.show', $item->slug) }}" class="btn btn-primary">Detail</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="product-item">
-                                        <div class="product-image">
-                                            <img alt="image" src="{{ asset('assets/img/products/product-3-50.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="product-details">
-                                            <div class="product-name">oPhone S9 Limited</div>
-                                            <div class="product-review">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <div class="text-muted text-small">86 Sales</div>
-                                            <div class="product-cta">
-                                                <a href="#" class="btn btn-primary">Detail</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="product-item">
-                                        <div class="product-image">
-                                            <img alt="image" src="{{ asset('assets/img/products/product-1-50.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="product-details">
-                                            <div class="product-name">Headphone Blitz</div>
-                                            <div class="product-review">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                            <div class="text-muted text-small">63 Sales</div>
-                                            <div class="product-cta">
-                                                <a href="#" class="btn btn-primary">Detail</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -276,40 +165,38 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tenaga Pendidik dan Ketenaganakerjaan</h4>
+                            <h4>Tenaga Pendidik dan Kepegawaian</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="text-title mb-2">Tenaga Pendidik</div>
                                     @foreach ($guru['pendidik'] as $item)
-                                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                            src="{{ $item->gambar }}"
-                                            alt="{{ $item->slug}}" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">{{ $item->nama }}</div>
-                                                <div class="text-small text-muted">{{ ucfirst($item->sub_bagian) }}</div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                                            <li class="media">
+                                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}"
+                                                    alt="{{ $item->nama }}" width="40">
+                                                <div class="media-body ml-3">
+                                                    <div class="media-title">{{ $item->nama }}</div>
+                                                    <div class="text-small text-muted">Guru Produktif</div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     @endforeach
                                 </div>
                                 <div class="col-sm-6 mt-sm-0 mt-4">
-                                    <div class="text-title mb-2">Ketenaganakerjaan</div>
+                                    <div class="text-title mb-2">Tenaga Kepegawaian</div>
                                     @foreach ($guru['pegawai'] as $item)
-                                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                            src="{{ $item->gambar }}"
-                                            alt="{{ $item->slug}}" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">{{ $item->nama }}</div>
-                                                <div class="text-small text-muted">{{ ucfirst($item->sub_bagian) }}</div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                                            <li class="media">
+                                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}"
+                                                    alt="{{ $item->nama }}" width="40">
+                                                <div class="media-body ml-3">
+                                                    <div class="media-title">{{ $item->nama }}</div>
+                                                    <div class="text-small text-muted">Staff Kurikulum</div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     @endforeach
                                 </div>
                             </div>
@@ -341,17 +228,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($table_post as $item)
-                                        <tr>
-                                            {{-- <td>{{ $loop->iteration }}</td> --}}
-                                            <td>{{ $item->judul }}</td>
-                                            <td>{{ ucFirst($item->kategori) }}</td>
-                                            <td class="font-weight-600">{{ $item->penulis->name }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
-                                            <td>
-                                                <a href="{{ route('post.show', $item->slug) }}" class="btn btn-primary">Detail</a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($tablePost as $item)
+                                            <tr>
+                                                {{-- <td>{{ $loop->iteration }}</td> --}}
+                                                <td>{{ $item->judul }}</td>
+                                                <td>{{ ucFirst($item->kategori) }}</td>
+                                                <td class="font-weight-600">{{ $item->penulis->name }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('post.show', $item->slug) }}"
+                                                        class="btn btn-primary">Detail</a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -421,4 +310,5 @@
 
     <!-- Page Specific js File -->
     @include('dashboard.dashboard.partials.statistic')
+    <script src="assets/js/page/index.js"></script>
 @endsection
