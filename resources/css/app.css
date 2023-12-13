@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .hero-img {
-    background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
 .hover-link {
     position: relative;
@@ -123,9 +123,26 @@ a:hover.thumbnail .thumbnail {
 
 @media screen and (min-width: 1000px) {
     .splide__arrow--prev {
-        left: 1em !important;
+        left: -1.5em !important;
     }
     .splide__arrow--next {
-        right: 1em !important;
+        right: -1.5em !important;
     }
+    .splide__arrow {
+        width: 2.8rem !important;
+        height: 2.8rem !important;
+    }
+}
+
+.splide__arrow {
+    background: #233154 !important;
+    opacity: 100% !important;
+    border: solid !important;
+    border-width: 2px !important;
+    border-color: #ffd600 !important;
+    /* width: 2rem !important;
+    height: 2rem !important; */
+}
+.splide__arrow svg {
+    fill: white !important;
 }

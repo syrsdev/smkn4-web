@@ -15,7 +15,7 @@ class Prestasi extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['slug', 'judul', 'kategori', 'konten', 'pemenang', 'gambar', 'status', 'views', 'id_penulis'];
+    protected $fillable = ['slug', 'judul', 'kategori', 'konten', 'peserta', 'gambar', 'status', 'views', 'id_penulis'];
 
     public function getRouteKeyName()
     {

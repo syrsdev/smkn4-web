@@ -131,8 +131,7 @@ class GaleriKonsentrasiController extends Controller
     
             return redirect()->route('konsentrasi.show', $konsentrasi->slug);
         } catch (\Exception $e) {
-            toast($e, 'warning');
-            // toast('Galeri Konsentrasi gagal diedit.', 'warning');
+            toast('Galeri Konsentrasi gagal diedit.', 'warning');
     
             return redirect()->back();
         }

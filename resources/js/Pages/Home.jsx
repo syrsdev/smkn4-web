@@ -10,14 +10,13 @@ import { BsTelephone } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import CardListLayout from "@/Layouts/CardListLayout";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import Carousel from "@/Components/Carousel/Carousel";
 import JurusanCard from "@/Components/Card/JurusanCard";
 import PegawaiCard from "@/Components/Card/PegawaiCard";
 import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 
 function Home(props) {
-    console.log(props.heroSection.hero_image);
+    console.log(props.heroSection.image_position);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -28,6 +27,7 @@ function Home(props) {
             <Container
                 style={{
                     backgroundImage: `url('${props.heroSection.hero_image}')`,
+                    backgroundPosition: props.heroSection.image_position,
                 }}
                 classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
@@ -58,7 +58,7 @@ function Home(props) {
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    <h2 className="text-primary text-[18px] font-bold mb-4 lg:hidden block text-center md:text-left">
+                    <h2 className="text-primary text-[18px] font-bold mb-6 lg:hidden block text-center xl:text-left">
                         {props.sambutan.judul}
                     </h2>
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">

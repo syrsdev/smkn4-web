@@ -1,11 +1,15 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="{{ route('home') }}">{{ $sekolah['nama_sekolah'] }}</a>
+        <div class="sidebar-brand mb-4">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/kulikoding-text.png') }}" alt="KuliKoding04" style="width: 130px">
+            </a>
         </div>
-        {{-- <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('home') }}">04</a>
-        </div> --}}
+        <div class="sidebar-brand sidebar-brand-sm">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/kulikoding-logo.png') }}" alt="KuliKoding04" style="width: 50px">
+            </a>
+        </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="dropdown {{ $active === 'Dashboard' ? 'active' : '' }}">
@@ -56,11 +60,8 @@
                         <span>Profil Sekolah</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="{{ $subActive === 'Sejarah' ? 'active' : '' }} mb-2">
-                            <a class="nav-link" href="#">Sejarah Sekolah</a>
-                        </li>
-                        <li class="{{ $subActive === 'Visi-Misi' ? 'active' : '' }} mb-3">
-                            <a class="nav-link" href="#">Visi & Misi Sekolah</a>
+                        <li class="{{ $subActive === 'Tentang' ? 'active' : '' }} mb-2">
+                            <a class="nav-link" href="#">Tentang Sekolah</a>
                         </li>
                         <li class="{{ $subActive === 'Sambutan' ? 'active' : '' }} mt-2">
                             <a class="nav-link" href="{{ route('sambutan.edit') }}">Sambutan Kepala Sekolah</a>

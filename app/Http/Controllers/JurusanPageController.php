@@ -19,12 +19,11 @@ class JurusanPageController extends Controller
 
     public function show(KonsentrasiKeahlian $konsentrasi)
     {
-        $konsentrasi = KonsentrasiKeahlian::with(['program', 'program.bidang', 'galeri'])
-            ->where('slug', $konsentrasi->slug)
-            ->first();
+        $konsentrasi->load(['program', 'program.bidang', 'galeri']);
 
         $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
             ->where('slug', '!=', $konsentrasi->slug)
+            ->orderBy('nama', 'asc')
             ->get();
 
         return Inertia::render('DetailJurusan')->with([

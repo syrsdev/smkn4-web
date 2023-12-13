@@ -55,7 +55,7 @@ Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
 Route::get('/jurusan', [JurusanPageController::class, 'index'])
     ->name('landing.jurusan.index');
 
-Route::get('/jurusan/{jurusan}', [JurusanPageController::class, 'show'])
+Route::get('/jurusan/{konsentrasi}', [JurusanPageController::class, 'show'])
     ->name('landing.jurusan.show');
 
 Route::middleware('auth')->group(function () {
