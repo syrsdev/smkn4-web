@@ -15,7 +15,6 @@
             </div>
             {{-- SumBox --}}
             @include('dashboard.dashboard.partials.sumbox')
-
             <div class="row">
                 {{-- Statistic --}}
                 <div class="col-12 col-lg-8">
@@ -24,21 +23,37 @@
                             <h4>Statistik Post & Prestasi</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="postPrestasiStat" height="100"></canvas>
+                            <canvas id="postPrestasiStat" height="130"></canvas>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-12 col-lg-4">
+                {{-- Latest Post --}}
+                @include('dashboard.dashboard.partials.latest-post')
+            </div>
+            <div class="row">
+                {{-- Jurusan --}}
+                @include('dashboard.dashboard.partials.jurusan')
+                {{-- Tenaga Pendidik --}}
+                @include('dashboard.dashboard.partials.pendidik')
+            </div>
+            <div class="row">
+                {{-- Post Table --}}
+                @include('dashboard.dashboard.partials.table-post')
+                {{-- Donut Chart --}}
+                <div class="col-12 col-lg-4">
                     <div class="card">
                         <div class="card-header">
                             <h4>Total Views</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="postPrestasiDonut" height="225"></canvas>
+                            @if ($donut['post'] + $donut['prestasi'] > 0)
+                                <canvas id="postPrestasiDonut" height="350"></canvas>
+                            @else
+                                <p class="text-center">Belum ada data.</p>
+                            @endif
                         </div>
                     </div>
-                </div> --}}
-                @include('dashboard.dashboard.partials.recent-post')
+                </div>
             </div>
         </section>
     </div>
@@ -53,6 +68,6 @@
 
     <!-- Page Specific js File -->
     @include('dashboard.dashboard.partials.statistic')
-
     @include('dashboard.dashboard.partials.donut')
+    @include('dashboard.dashboard.partials.jurusan-script')
 @endsection
