@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-4">
+                {{-- <div class="col-12 col-lg-4">
                     <div class="card">
                         <div class="card-header">
                             <h4>Total Views</h4>
@@ -37,7 +37,8 @@
                             <canvas id="postPrestasiDonut" height="225"></canvas>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                @include('dashboard.dashboard.partials.recent-post')
             </div>
         </section>
     </div>
