@@ -43,7 +43,8 @@ class LandingPageController extends Controller
                 ->get(),
         ];
 
-        $konsentrasi = KonsentrasiKeahlian::get();
+        $konsentrasi = KonsentrasiKeahlian::orderBy('nama', 'asc')
+            ->get();
 
         $prestasi = Prestasi::where('status', '1')
             ->latest();
