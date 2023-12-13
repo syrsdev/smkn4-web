@@ -23,17 +23,15 @@ class DashboardController extends Controller
 
         $guru = [
             'pendidik' => Pendidik::where('bagian', 'pendidik')
-            ->limit(3)
-            ->get(),
+                ->limit(3)
+                ->get(),
             'pegawai' => Pendidik::where('bagian', 'pegawai')
-            ->limit(3)
-            ->get(),
+                ->limit(3)
+                ->get(),
         ];
 
-        $table_post = DB::table('post')
-            ->select('slug', 'judul', 'gambar', 'created_at', 'kategori', 'id_penulis')
-            ->where('status', 1)
-            ->orderBy('created_at', 'desc')
+        $table_post = Post::with('penulis')
+            ->latest()
             ->limit(5)
             ->get();
 

@@ -98,7 +98,6 @@
                             <div class="card-header-action dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Kategori</a>
                                 <ul class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                    {{-- <li class="dropdown-title">Guru dan Staff</li> --}}
                                     <li><a href="#agenda" class="dropdown-item">Agenda</a></li>
                                     <li><a href="#artikel" class="dropdown-item">Artikel</a></li>
                                     <li><a href="#berita" class="dropdown-item">Berita</a></li>
@@ -319,7 +318,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Post</h4>
@@ -333,7 +332,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            {{-- <th>#</th> --}}
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Penulis</th>
@@ -344,10 +343,10 @@
                                     <tbody>
                                         @foreach ($table_post as $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            {{-- <td>{{ $loop->iteration }}</td> --}}
                                             <td>{{ $item->judul }}</td>
                                             <td>{{ ucFirst($item->kategori) }}</td>
-                                            <td class="font-weight-600">{{ $item->id_penulis }}</td>
+                                            <td class="font-weight-600">{{ $item->penulis->name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                                             <td>
                                                 <a href="{{ route('post.show', $item->slug) }}" class="btn btn-primary">Detail</a>
@@ -360,7 +359,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="card card-hero">
                         <div class="card-header">
                             <div class="card-icon">
@@ -407,7 +406,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
     </div>
