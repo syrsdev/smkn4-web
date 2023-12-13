@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\KonsentrasiKeahlian;
+use App\Models\Pendidik;
 use App\Models\Post;
 use App\Models\Prestasi;
 use Illuminate\Http\Request;
@@ -19,12 +20,31 @@ class DashboardController extends Controller
             'berita' => Post::where('kategori', 'berita')->paginate(5),
             'event' => Post::where('kategori', 'event')->paginate(5),
         ];
+
+        $guru = [
+            'pendidik' => Pendidik::where('bagian', 'pendidik')
+            ->limit(3)
+            ->get(),
+            'pegawai' => Pendidik::where('bagian', 'pegawai')
+            ->limit(3)
+            ->get(),
+        ];
+
+        $table_post = DB::table('post')
+            ->select('slug', 'judul', 'gambar', 'created_at', 'kategori', 'id_penulis')
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
         return view('dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
                 'active' => 'Dashboard',
                 'subActive' => null,
                 'post' => $post,
+                'guru' => $guru,
+                'table_post' => $table_post,
             ]);
     }
 

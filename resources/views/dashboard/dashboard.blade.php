@@ -277,73 +277,41 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>TTenaga Pendidik dan Keteneganakerjaan</h4>
+                            <h4>Tenaga Pendidik dan Ketenaganakerjaan</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="text-title mb-2">Guru</div>
+                                    <div class="text-title mb-2">Tenaga Pendidik</div>
+                                    @foreach ($guru['pendidik'] as $item)
                                     <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
                                         <li class="media">
                                             <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
+                                            src="{{ $item->gambar }}"
+                                            alt="{{ $item->slug}}" width="40">
                                             <div class="media-body ml-3">
-                                                <div class="media-title">Nama Guru</div>
-                                                <div class="text-small text-muted">Mapel</div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">Nama Guru</div>
-                                                <div class="text-small text-muted">Mapel</div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">Nama Guru</div>
-                                                <div class="text-small text-muted">Mapel</div>
+                                                <div class="media-title">{{ $item->nama }}</div>
+                                                <div class="text-small text-muted">{{ ucfirst($item->sub_bagian) }}</div>
                                             </div>
                                         </li>
                                     </ul>
+                                    @endforeach
                                 </div>
                                 <div class="col-sm-6 mt-sm-0 mt-4">
-                                    <div class="text-title mb-2">Staff</div>
+                                    <div class="text-title mb-2">Ketenaganakerjaan</div>
+                                    @foreach ($guru['pegawai'] as $item)
                                     <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
                                         <li class="media">
                                             <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
+                                            src="{{ $item->gambar }}"
+                                            alt="{{ $item->slug}}" width="40">
                                             <div class="media-body ml-3">
-                                                <div class="media-title">Nama Staff</div>
-                                                {{-- <div class="text-small text-muted">3,486</div> --}}
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">Nama Staff</div>
-                                                {{-- <div class="text-small text-muted">3,486</div> --}}
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="img-fluid mt-1 img-shadow"
-                                                src="{{ asset('assets/modules/flag-icon-css/flags/4x3/id.svg') }}"
-                                                alt="image" width="40">
-                                            <div class="media-body ml-3">
-                                                <div class="media-title">Nama Staff</div>
-                                                {{-- <div class="text-small text-muted">3,486</div> --}}
+                                                <div class="media-title">{{ $item->nama }}</div>
+                                                <div class="text-small text-muted">{{ ucfirst($item->sub_bagian) }}</div>
                                             </div>
                                         </li>
                                     </ul>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -355,10 +323,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Post</h4>
-                            <div class="card-header-action">
+                            {{-- <div class="card-header-action">
                                 <a href="#" class="btn btn-danger">Selengkapnya<i
                                         class="fas fa-chevron-right"></i></a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive table-invoice">
@@ -367,21 +335,25 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Judul</th>
+                                            <th>Kategori</th>
                                             <th>Penulis</th>
                                             <th>Tanggal</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($table_post as $item)
                                         <tr>
-                                            <td><a href="#">INV-87239</a></td>
-                                            <td>Admin Template</td>
-                                            <td class="font-weight-600">Kusnadi</td>
-                                            <td>July 19, 2018</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->judul }}</td>
+                                            <td>{{ ucFirst($item->kategori) }}</td>
+                                            <td class="font-weight-600">{{ $item->id_penulis }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">Detail</a>
+                                                <a href="{{ route('post.show', $item->slug) }}" class="btn btn-primary">Detail</a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
