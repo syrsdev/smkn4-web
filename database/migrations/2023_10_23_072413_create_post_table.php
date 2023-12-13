@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('judul');
             $table->enum('kategori', ['kota', 'provinsi', 'nasional', 'internasional']);
             $table->text('konten');
-            $table->string('pemenang')
+            $table->string('peserta')
                 ->nullable();
             $table->string('gambar')
                 ->nullable()

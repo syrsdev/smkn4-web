@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Multiple Upload</h2>
+                <h2 class="section-title">Tambah {{ $title }}</h2>
                 <p class="section-lead">
                     We use 'Dropzone.js' made by @Dropzone. You can check the full documentation <a href="http://www.dropzonejs.com/">here</a>.
                 </p>
@@ -34,7 +34,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Multiple Upload</h4>
+                                <h4>Upload Gambar</h4>
+                                <div class="card-header-action">
+                                    <button class="btn btn-sm btn-primary" id="upload-button">
+                                        Upload Gambar
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('galeri.store') }}" method="post" enctype="multipart/form-data" class="dropzone" id="mydropzone">
@@ -64,6 +69,7 @@
             url: "{{ route('galeri.store') }}",
             method: "post",
             paramName: "gambar[]",
+            autoProcessQueue: false,
             init: function () {
                 this.on("sending", function (file, xhr, formData) {
                     let id = document.getElementById("id_konsentrasi").value;
@@ -71,12 +77,13 @@
                     formData.append("id_konsentrasi", id);
                 });
                 this.on("success", function (file, response) {
-                    console.log(response);
-                    location.reload(); 
+                    window.location.href = "{{ route('konsentrasi.show', $konsentrasi->slug) }}";
                 });
                 this.on("error", function (file, message) {
-                    console.log(message);
-                    location.reload(); 
+                    location.reload();
+                });
+                document.getElementById("upload-button").addEventListener("click", function () {
+                    dropzone.processQueue();
                 });
             }
         });
