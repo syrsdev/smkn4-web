@@ -22,7 +22,7 @@ class PendidikImport implements ToCollection, WithHeadingRow
                     $bagian = 'pendidik';
                     break;
                 case 'Tenaga Kepegawaian':
-                    $bagian = 'pegawai';
+                    $bagian = 'kependidikan';
                     break;
                 default:
                     $bagian = null;

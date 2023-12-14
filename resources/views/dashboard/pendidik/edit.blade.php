@@ -57,7 +57,7 @@
                                         <div class="col-sm-12 col-md-7">
                                             <select class="form-control selectric" id="bagian" name="bagian" onchange="updateSelectOptions()">
                                                 <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
-                                                <option value="pegawai" {{ $guru->bagian === 'pegawai' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
+                                                <option value="kependidikan" {{ $guru->bagian === 'kependidikan' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
                                             </select>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
 
             if (bagian.value === "pendidik" && subBagian.value === "guru") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "pegawai" && subBagian.value === "staff") {
+            } else if (bagian.value === "kependidikan" && subBagian.value === "staff") {
                 mapel.value = null;
                 formMapel.style.display = "none";
             } else {

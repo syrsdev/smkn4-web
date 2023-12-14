@@ -9,7 +9,7 @@ use Jenssegers\Agent\Agent;
 
 class PostPageController extends Controller
 {
-    private function getPostData($search, $kategori, $post)
+    private function getPostData($search, $kategori, $order, $filerKategori, $penulis, $post)
     {
         $mapKategori = [
             'agenda' => ['mading' => 'artikel', 'allPost' => 'artikel'],
@@ -36,8 +36,17 @@ class PostPageController extends Controller
         $allPost = Post::with('penulis')
             ->where('status', '1')
             ->where('kategori', '!=', $kategoriAllPost)
+            ->orderBy('created_at', $order)
             ->when(strlen($post), function ($query) use ($post) {
                 return $query->where('slug', '!=', $post->slug);
+            })
+            ->when($penulis !== 'all', function ($query) use ($penulis) {
+                return $query->whereHas('penulis', function ($query) use ($penulis) {
+                    $query->where('slug', $penulis);
+                });
+            })
+            ->when($filerKategori !== 'all', function ($query) use ($filerKategori) {
+                return $query->where('kategori', $filerKategori);
             })
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('judul', 'like', "%$search%")
@@ -45,8 +54,7 @@ class PostPageController extends Controller
                     ->orWhereHas('penulis', function ($query) use ($search) {
                         $query->where('name', 'like', "%$search%");
                     });
-            })
-            ->latest();
+            });
 
         $agent = new Agent();
 
@@ -62,6 +70,9 @@ class PostPageController extends Controller
     public function index(Request $request, $kategori)
     {
         $search = $request->input('search');
+        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $filerKategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
+        $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
         
         $post = Post::with('penulis')
             ->where(['kategori' => $kategori, 'status' => '1'])
@@ -73,7 +84,7 @@ class PostPageController extends Controller
             $post->save();
         }
 
-        $data = $this->getPostData($search, $kategori, $post);    
+        $data = $this->getPostData($search, $kategori, $order, $filerKategori, $penulis, $post);    
 
         return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
     }
@@ -81,12 +92,15 @@ class PostPageController extends Controller
     public function show(Request $request, $kategori, Post $post)
     {
         $search = $request->input('search');
+        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $filerKategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
+        $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 
         $post = Post::with('penulis')
             ->where('slug', $post->slug)
             ->first();
 
-        $data = $this->getPostData($search, $kategori, $post);
+        $data = $this->getPostData($search, $kategori, $order, $filerKategori, $penulis, $post);
 
         if (strlen($post)) {
             $post->views = $post->views + 1;
