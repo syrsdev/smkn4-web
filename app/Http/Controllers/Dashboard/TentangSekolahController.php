@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TentangSekolahController extends Controller
 {
@@ -15,6 +16,12 @@ class TentangSekolahController extends Controller
         $this->tentang = Sekolah::where('key', 'tentang_sekolah')
             ->pluck('value', 'key')
             ->toArray();
+    }
+
+    public function index()
+    {
+        return Inertia::render('ProfilSekolah')
+            ->with(['tentang' => $this->tentang['tentang_sekolah']]);
     }
 
     public function edit()
