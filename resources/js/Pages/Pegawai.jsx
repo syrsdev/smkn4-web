@@ -1,5 +1,6 @@
 import PegawaiCard from "@/Components/Card/PegawaiCard";
 import Container from "@/Components/Container/Container";
+import FilterPegawai from "@/Components/Modal/FilterPegawai";
 import LandingLayout from "@/Layouts/LandingLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
@@ -8,10 +9,11 @@ import { FaFilter } from "react-icons/fa6";
 
 function Pegawai(props) {
     console.log(props);
+    const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");
     let handleSearch = (e) => {
         e.preventDefault();
-        router.get(`${window.location.pathname}`, {
+        router.get(`${window.location.href}`, {
             search: search,
         });
     };
@@ -22,13 +24,21 @@ function Pegawai(props) {
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
         >
+            <FilterPegawai
+                active={filter}
+                onClick={() => setFilter(false)}
+                mapel={props.mapel}
+            />
             <Container classname="my-10">
                 <h1 className="my-7 md:my-10 text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center text-primary">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h1>
 
                 <div className="flex items-center justify-end w-full gap-2 mb-8 md:gap-3">
-                    <button className="p-2 border-2 rounded-md border-slate-300">
+                    <button
+                        className="p-2 border-2 rounded-md border-slate-300"
+                        onClick={() => setFilter(true)}
+                    >
                         <FaFilter />
                     </button>
 

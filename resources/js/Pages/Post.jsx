@@ -7,22 +7,23 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 import CardListLayout from "@/Layouts/CardListLayout";
+import ImageModal from "@/Components/Modal/ImageModal";
+import FilterPost from "@/Components/Modal/FilterPost";
 
 function Post(props) {
+    console.log(props);
+
     const [showModal, setShowModal] = useState(false);
+    const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");
 
     const openModal = () => {
         setShowModal(true);
     };
 
-    const closeModal = () => {
-        setShowModal(false);
-    };
-
     let handleSearch = (e) => {
         e.preventDefault();
-        router.get(`${window.location.pathname}#post`, {
+        router.get(`${window.location.href}#post`, {
             search: search,
         });
     };
@@ -101,7 +102,10 @@ function Post(props) {
                     </h3>
 
                     <div className="flex items-center gap-2 md:gap-3">
-                        <button className="p-2 border-2 rounded-md border-slate-300">
+                        <button
+                            className="p-2 border-2 rounded-md border-slate-300"
+                            onClick={() => setFilter(true)}
+                        >
                             <FaFilter />
                         </button>
 
@@ -136,26 +140,18 @@ function Post(props) {
                 <CardListLayout data={props.allPost.data} />
             </Container>
 
+            <FilterPost
+                active={filter}
+                onClick={() => setFilter(false)}
+                penulis={props.penulis}
+            />
+
             {showModal && (
-                <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full">
-                    <div
-                        className="fixed top-0 left-0 w-full h-full opacity-75 modal-overlay"
-                        onClick={closeModal}
-                    ></div>
-                    <div className="flex justify-center object-contain w-full p-4 bg-white rounded-lg shadow-lg modal-content">
-                        <img
-                            src={`${props.post.gambar}`}
-                            alt="Preview"
-                            className="object-contain w-1/2 max-h-1/2 z-[55]"
-                        />
-                        <button
-                            onClick={closeModal}
-                            className="px-4 py-2 mt-2 text-white rounded-md bg-primary"
-                        >
-                            Tutup
-                        </button>
-                    </div>
-                </div>
+                <ImageModal
+                    src={props.post.gambar}
+                    active={showModal}
+                    onClick={() => setShowModal(false)}
+                />
             )}
         </LandingLayout>
     );
