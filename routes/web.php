@@ -59,6 +59,9 @@ Route::get('/jurusan', [JurusanPageController::class, 'index'])
 Route::get('/jurusan/{konsentrasi}', [JurusanPageController::class, 'show'])
     ->name('landing.jurusan.show');
 
+Route::get('/profil-sekolah', [TentangSekolahController::class, 'index'])
+    ->name('landing.sekolah');
+
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
         Route::prefix('dashboard')->group(function () {
