@@ -179,7 +179,7 @@ export default function Navbar({ subnav, logo }) {
                 <Sidebar isActive={sidebar} />
                 <div
                     onClick={() => setSidebar(false)}
-                    className={`w-[30%] md:w-[56%] min-h-screen fixed top-0 lg:hidden ${
+                    className={`w-full min-h-screen fixed top-0 lg:hidden ${
                         sidebar == false
                             ? "opacity-0 bg-transparent duration-500 invisible"
                             : "opacity-50 bg-black delay-300 duration-700 block"
