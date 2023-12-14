@@ -36,6 +36,7 @@ export default function Navbar({ subnav, logo }) {
                                         type="checkbox"
                                         id="burger"
                                         onClick={() => setSidebar(!sidebar)}
+                                        checked={sidebar}
                                     />
                                     <span
                                         className={`${
@@ -81,13 +82,10 @@ export default function Navbar({ subnav, logo }) {
                                             });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             PROFIL SEKOLAH{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
+                                        </div>
                                         <Dropdown
                                             shown={hoverDropdown.dropdown1}
                                         >
@@ -120,13 +118,10 @@ export default function Navbar({ subnav, logo }) {
                                             });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             BERITA{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
+                                        </div>
                                         <Dropdown
                                             shown={hoverDropdown.dropdown2}
                                         >
@@ -160,13 +155,10 @@ export default function Navbar({ subnav, logo }) {
                                             });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             KESISWAAN{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
+                                        </div>
                                         <Dropdown
                                             shown={hoverDropdown.dropdown3}
                                         >
@@ -185,6 +177,14 @@ export default function Navbar({ subnav, logo }) {
                 </div>
                 <SubNavbar subnav={subnav} />
                 <Sidebar isActive={sidebar} />
+                <div
+                    onClick={() => setSidebar(false)}
+                    className={`w-[30%] md:w-[56%] min-h-screen fixed top-0 lg:hidden ${
+                        sidebar == false
+                            ? "opacity-0 bg-transparent duration-500 invisible"
+                            : "opacity-50 bg-black delay-300 duration-700 block"
+                    }`}
+                ></div>
             </nav>
         </>
     );
