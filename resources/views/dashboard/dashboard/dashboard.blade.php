@@ -47,7 +47,7 @@
                         </div>
                         <div class="card-body">
                             @if ($donut['post'] + $donut['prestasi'] > 0)
-                                <canvas id="postPrestasiDonut" height="350"></canvas>
+                                <canvas id="postPrestasiDonut" height="230"></canvas>
                             @else
                                 <p class="text-center">Belum ada data.</p>
                             @endif
