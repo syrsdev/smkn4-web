@@ -30,7 +30,7 @@ function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
             <Navbar subnav={subnav} logo={logo} />
             {children}
             <div
-                className={`fixed justify-center items-center z-50 p-3 cursor-pointer  shadow-xl rounded-full bg-primary ring-2 ring-yellow-300 border-slate-300 bottom-8 right-5 ${
+                className={`fixed justify-center items-center p-3 cursor-pointer  shadow-xl rounded-full bg-primary ring-2 ring-yellow-300 border-slate-300 bottom-8 right-5 ${
                     isVisible ? "flex" : "hidden"
                 }`}
                 onClick={scrollToTop}
