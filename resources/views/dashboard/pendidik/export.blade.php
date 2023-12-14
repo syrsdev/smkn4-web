@@ -16,7 +16,7 @@
                 <td>
                     @if ($item->bagian === 'pendidik')
                         Tenaga Pendidik
-                    @elseif ($item->bagian === 'pegawai')
+                    @elseif ($item->bagian === 'kependidikan')
                         Tenaga Kepegawaian
                     @else
                         -
