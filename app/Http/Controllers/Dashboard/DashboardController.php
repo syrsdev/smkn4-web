@@ -7,48 +7,9 @@ use App\Models\KonsentrasiKeahlian;
 use App\Models\Pendidik;
 use App\Models\Post;
 use App\Models\Prestasi;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function get()
-    {
-        $recentPost = Post::with('penulis')
-            ->latest()
-            ->limit(10)
-            ->get();
-
-        $guru = [
-            'pendidik' => Pendidik::where('bagian', 'pendidik')
-                ->limit(3)
-                ->get(),
-            'pegawai' => Pendidik::where('bagian', 'pegawai')
-                ->limit(3)
-                ->get(),
-        ];
-
-        $tablePost = Post::with('penulis')
-            ->latest()
-            ->limit(5)
-            ->get();
-
-        $konsentrasi = KonsentrasiKeahlian::with(['program', 'program.bidang'])
-            ->orderBy('nama', 'asc')
-            ->get();
-
-        return view('dashboard.dashboard')
-            ->with([
-                'title' => 'Dashboard',
-                'active' => 'Dashboard',
-                'subActive' => null,
-                'recentPost' => $recentPost,
-                'guru' => $guru,
-                'tablePost' => $tablePost,
-                'konsentrasi' => $konsentrasi,
-            ]);
-    }
-
     public function index()
     {
         $sumBox = [
