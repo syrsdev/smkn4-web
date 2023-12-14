@@ -42,7 +42,7 @@ class GuruPageController extends Controller
         return Inertia::render('Pegawai')
             ->with([
                 'pegawai' => $pegawai,
-                'getMapel' => $getMapel,
+                'mapel' => $getMapel,
             ]);
     }
 }

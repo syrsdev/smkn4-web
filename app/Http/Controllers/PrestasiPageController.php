@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Prestasi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Jenssegers\Agent\Agent;
 
 class PrestasiPageController extends Controller
 {
-    private function getPrestasiData($search, $prestasi)
+    private function getPrestasiData($search, $order, $kategori, $penulis, $prestasi)
     {
         $mading = [
             'title' => 'BERITA SEKOLAH',
@@ -23,8 +24,15 @@ class PrestasiPageController extends Controller
 
         $allPrestasi = Prestasi::with('penulis')
             ->where('status', '1')
-            ->when(strlen($prestasi), function ($query) use ($prestasi) {
-                return $query->where('slug', '!=', $prestasi->slug);
+            ->where('slug', '!=', $prestasi->slug)
+            ->orderBy('created_at', $order)
+            ->when($penulis !== 'all', function ($query) use ($penulis) {
+                return $query->whereHas('penulis', function ($query) use ($penulis) {
+                    $query->where('slug', $penulis);
+                });
+            })
+            ->when($kategori !== 'all', function ($query) use ($kategori) {
+                return $query->where('kategori', $kategori);
             })
             ->when(strlen($search), function ($query) use ($search) {
                 return $query->where('judul', 'like', "%$search%")
@@ -33,8 +41,7 @@ class PrestasiPageController extends Controller
                     ->orWhereHas('penulis', function ($query) use ($search) {
                         $query->where('name', 'like', "%$search%");
                     });
-            })
-            ->latest();
+            });
 
         $agent = new Agent();
 
@@ -50,37 +57,51 @@ class PrestasiPageController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $kategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
+        $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 
         $prestasi = Prestasi::with('penulis')
             ->where('status', '1')
             ->latest()
             ->first();
 
-        $data = $this->getPrestasiData($search, $prestasi);
+        $getPenulis = User::whereHas('prestasi')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $data = $this->getPrestasiData($search, $order, $kategori, $penulis, $prestasi);
 
         if (strlen($prestasi)) {
             $prestasi->views = $prestasi->views + 1;
             $prestasi->save();
         }
 
-        return Inertia::render('Prestasi')->with(array_merge(['prestasi' => $prestasi], $data));
+        return Inertia::render('Prestasi')->with(array_merge(['prestasi' => $prestasi, 'penulis' => $getPenulis], $data));
     }
 
     public function show(Request $request, Prestasi $prestasi)
     {
         $search = $request->input('search');
+        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $kategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
+        $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 
         $prestasi = Prestasi::with('penulis')
             ->where('slug', $prestasi->slug)
             ->first();
 
-        $data = $this->getPrestasiData($search, $prestasi);
+        $getPenulis = User::whereHas('prestasi')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $data = $this->getPrestasiData($search, $order, $kategori, $penulis, $prestasi);
 
         if (strlen($prestasi)) {
             $prestasi->views = $prestasi->views + 1;
             $prestasi->save();
         }
 
-        return Inertia::render('Prestasi')->with(array_merge(['prestasi' => $prestasi], $data));
+        return Inertia::render('Prestasi')->with(array_merge(['prestasi' => $prestasi, 'penulis' => $getPenulis], $data));
     }
 }

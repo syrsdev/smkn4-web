@@ -186,7 +186,7 @@
                                 </div>
                                 <div class="col-sm-6 mt-sm-0 mt-4">
                                     <div class="text-title mb-2">Tenaga Kepegawaian</div>
-                                    @foreach ($guru['pegawai'] as $item)
+                                    @foreach ($guru['kependidikan'] as $item)
                                         <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
                                             <li class="media">
                                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}"
