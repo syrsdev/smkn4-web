@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Jenssegers\Agent\Agent;
@@ -79,6 +80,10 @@ class PostPageController extends Controller
             ->latest()
             ->first();
 
+        $getPenulis = User::whereHas('post')
+            ->orderBy('name', 'asc')
+            ->get();
+
         if (strlen($post)) {
             $post->views = $post->views + 1;
             $post->save();
@@ -86,7 +91,7 @@ class PostPageController extends Controller
 
         $data = $this->getPostData($search, $kategori, $order, $filerKategori, $penulis, $post);    
 
-        return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
+        return Inertia::render('Post')->with(array_merge(['post' => $post, 'penulis' => $getPenulis], $data));
     }
 
     public function show(Request $request, $kategori, Post $post)
@@ -99,6 +104,10 @@ class PostPageController extends Controller
         $post = Post::with('penulis')
             ->where('slug', $post->slug)
             ->first();
+        
+        $getPenulis = User::whereHas('prestasi')
+            ->orderBy('name', 'asc')
+            ->get();
 
         $data = $this->getPostData($search, $kategori, $order, $filerKategori, $penulis, $post);
 
@@ -107,6 +116,6 @@ class PostPageController extends Controller
             $post->save();
         }
 
-        return Inertia::render('Post')->with(array_merge(['post' => $post], $data));
+        return Inertia::render('Post')->with(array_merge(['post' => $post, 'penulis' => $getPenulis], $data));
     }
 }
