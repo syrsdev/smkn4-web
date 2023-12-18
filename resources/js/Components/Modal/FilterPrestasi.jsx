@@ -32,11 +32,18 @@ function FilterPrestasi({ active, onClick, penulis }) {
     });
     let handleFilter = (e) => {
         e.preventDefault();
-        router.get(`${window.location.href}#post`, {
-            kategori: filter.kategori,
-            penulis: filter.penulis,
-            order: filter.orderby,
-        });
+        router.get(
+            `${
+                window.location.href.slice(-5) == "#post"
+                    ? window.location.href
+                    : `${window.location.href}#post`
+            }`,
+            {
+                kategori: filter.kategori,
+                penulis: filter.penulis,
+                order: filter.orderby,
+            }
+        );
     };
 
     return (
