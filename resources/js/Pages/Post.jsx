@@ -23,9 +23,16 @@ function Post(props) {
 
     let handleSearch = (e) => {
         e.preventDefault();
-        router.get(`${window.location.href}#post`, {
-            search: search,
-        });
+        router.get(
+            `${
+                window.location.href.slice(-5) == "#post"
+                    ? window.location.href
+                    : `${window.location.href}#post`
+            }`,
+            {
+                search: search,
+            }
+        );
     };
     return (
         <LandingLayout
