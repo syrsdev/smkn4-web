@@ -5,18 +5,30 @@ import React from "react";
 function CardListLayout({ data, type = "post" }) {
     return (
         <>
-            {type == "post" && (
-                <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
-                    {data.map((item, index) => (
-                        <PostCard key={index} data={item} />
-                    ))}
-                </div>
-            )}
-            {type == "prestasi" && (
-                <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
-                    {data.map((item, index) => (
-                        <PrestasiCard key={index} data={item} />
-                    ))}
+            {data.length > 0 ? (
+                <>
+                    {type == "post" && (
+                        <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
+                            {data.map((item, index) => (
+                                <PostCard key={index} data={item} />
+                            ))}
+                        </div>
+                    )}
+                    {type == "prestasi" && (
+                        <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
+                            {data.map((item, index) => (
+                                <PrestasiCard key={index} data={item} />
+                            ))}
+                        </div>
+                    )}
+                </>
+            ) : (
+                <div className="flex items-center justify-center">
+                    <img
+                        src="/images/default/no-data-search.svg"
+                        alt="search not found"
+                        className="object-contain w-8/12 xl:w-4/12"
+                    />
                 </div>
             )}
         </>
