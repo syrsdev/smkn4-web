@@ -4,8 +4,6 @@
     fetch('/api/dashboard')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-
             let dates = data.map(stat => stat.date);
             let post = data.map(stat => stat.post);
             let prestasi = data.map(stat => stat.prestasi);
