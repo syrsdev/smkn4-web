@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-
-    <style>
-        .tox-promotion {
-            display: none !important;
-        }
-    </style>
 @endsection
 
 @section('content')

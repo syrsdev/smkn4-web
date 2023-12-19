@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-
-	<style>
-		.tox-promotion {
-			display: none !important;
-		}
-	</style>
 @endsection
 
 @section('content')
@@ -103,7 +96,6 @@
 @endsection
 
 @section('script')
-	{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
     <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>

@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('link')
-    <style>
-        .tox-promotion {
-            display: none !important;
-        }
-    </style>
 @endsection
 
 @section('content')
