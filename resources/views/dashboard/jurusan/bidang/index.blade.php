@@ -34,14 +34,11 @@
                                     <h5 class="mt-0">{{ $item->nama }}</h5>
                                     <p>Total Program Keahlian : {{ $item->program_count }}</p>
                                     <div class="text-right">
-                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}"
-                                            data-toggle="tooltip" title="Edit Bidang Keahlian">
+                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Bidang Keahlian">
                                             <i class="fas fa-pen"></i>
                                         </button>
-                                        <a href="{{ route('bidang.destroy', $item->slug) }}" class="btn btn-sm btn-danger"
-                                            data-confirm-delete="true" data-toggle="tooltip" title="Hapus Bidang Keahlian">
-                                            <i class="fas fa-trash"
-                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                        <a href="{{ route('bidang.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Bidang Keahlian">
+                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                         </a>
                                     </div>
                                 </div>

@@ -80,6 +80,18 @@ class KonsentrasiKeahlianController extends Controller
             $konsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
         }
 
+        if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+            ]);
+
+            $file = $request->file('gambar');
+            $gambar = $slug . '.' . $file->extension();
+            $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
+
+            $konsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
+        }
+
         try {
             KonsentrasiKeahlian::create($konsentrasi);
 
@@ -164,6 +176,22 @@ class KonsentrasiKeahlianController extends Controller
             
             $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
             $newKonsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
+        }
+
+        if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+            ]);
+
+            $file = $request->file('gambar');
+            $gambar = $slug . '.' . $file->extension();
+
+            if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
+                File::delete(public_path($konsentrasi->gambar));
+            }
+            
+            $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
+            $newKonsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
         }
 
         try {

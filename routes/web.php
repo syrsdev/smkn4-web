@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\SekolahController;
 use App\Http\Controllers\Dashboard\TentangSekolahController;
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -151,6 +152,12 @@ Route::middleware('auth')->group(function () {
 
             Route::patch('/tentang', [TentangSekolahController::class, 'update'])
                 ->name('tentang.update');
+
+            Route::get('/sekolah', [SekolahController::class, 'edit'])
+                ->name('sekolah.edit');
+
+            Route::patch('/sekolah', [SekolahController::class, 'update'])
+                ->name('sekolah.update');
         });
     });
 });
