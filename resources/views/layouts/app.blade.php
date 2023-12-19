@@ -26,9 +26,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        .custom-switch{
+        .custom-switch {
             cursor: pointer;
         }
+
+        .tox-promotion {
+			display: none !important;
+		}
     </style>
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>

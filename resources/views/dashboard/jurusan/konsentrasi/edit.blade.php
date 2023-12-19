@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/choices.js/public/assets/styles/choices.css') }}">
-
-	<style>
-		.tox-promotion {
-			display: none !important;
-		}
-	</style>
 @endsection
 
 @section('content')
@@ -48,12 +41,6 @@
 									@csrf
 									@method('PUT')
 									<div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
-										<div class="col-sm-12 col-md-7">
-											<img src="{{ asset($konsentrasi->icon) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px">
-										</div>
-									</div>
-									<div class="form-group row mb-4">
 										<label for="nama" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Konsentrasi Keahlian</label>
 										<div class="col-sm-12 col-md-7">
 											<input type="text" class="form-control" id="nama" name="nama" value="{{ $konsentrasi->nama }}">
@@ -76,12 +63,27 @@
 										</div>
 									</div>
 									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
+										<div class="col-sm-12 col-md-7">
+											<img src="{{ asset($konsentrasi->icon) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px">
+										</div>
+									</div>
+									<div class="form-group row mb-4">
 										<label for="icon" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon Baru (Opsional)</label>
 										<div class="col-sm-12 col-md-7">
-											<div id="image-preview" class="image-preview">
-												<label for="image-upload" id="image-label">Pilih File</label>
-												<input type="file" class="form-control image-preview-filepond" name="icon" id="image-upload" value="{{ $konsentrasi->icon }}" />
-											</div>
+											<input type="file" class="form-control image-preview-filepond" name="icon" id="icon" />
+										</div>
+									</div>
+									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
+										<div class="col-sm-12 col-md-7">
+											<img src="{{ asset($konsentrasi->gambar) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px">
+										</div>
+									</div>
+									<div class="form-group row mb-4">
+										<label for="gambar" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail Baru (Opsional)</label>
+										<div class="col-sm-12 col-md-7">
+											<input type="file" class="form-control image-preview-filepond" name="gambar" id="gambar" />
 										</div>
 									</div>
 									<div class="form-group row mb-4">
@@ -101,13 +103,10 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
-    <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
     <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/modules/choices.js/public/assets/scripts/choices.js') }}"></script>
     
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <script src="{{ asset('assets/js/page/modules-tinymce.js') }}"></script>
     <script src="{{ asset('assets/js/page/modules-choices.js')}}"></script>
 @endsection
