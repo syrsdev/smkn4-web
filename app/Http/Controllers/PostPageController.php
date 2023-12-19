@@ -30,6 +30,7 @@ class PostPageController extends Controller
                 ->when(strlen($post), function ($query) use ($post) {
                     return $query->where('slug', '!=', $post->slug);
                 })
+                ->latest()
                 ->limit(4)
                 ->get(),
         ];
@@ -71,7 +72,7 @@ class PostPageController extends Controller
     public function index(Request $request, $kategori)
     {
         $search = $request->input('search');
-        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $order = $request->input('order') === null ? 'desc' : $request->input('order');
         $filerKategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
         $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
         
@@ -97,7 +98,7 @@ class PostPageController extends Controller
     public function show(Request $request, $kategori, Post $post)
     {
         $search = $request->input('search');
-        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $order = $request->input('order') === null ? 'desc' : $request->input('order');
         $filerKategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
         $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 

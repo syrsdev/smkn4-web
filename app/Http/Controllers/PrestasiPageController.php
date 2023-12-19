@@ -18,6 +18,7 @@ class PrestasiPageController extends Controller
             'kategori' => 'berita',
             'list' => Post::with('penulis')
                 ->where(['kategori' => 'berita', 'status' => '1'])
+                ->latest()
                 ->limit(4)
                 ->get(),
         ];
@@ -57,7 +58,7 @@ class PrestasiPageController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $order = $request->input('order') === null ? 'desc' : $request->input('order');
         $kategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
         $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 
@@ -83,7 +84,7 @@ class PrestasiPageController extends Controller
     public function show(Request $request, Prestasi $prestasi)
     {
         $search = $request->input('search');
-        $order = $request->input('order') === null ? 'asc' : $request->input('order');
+        $order = $request->input('order') === null ? 'desc' : $request->input('order');
         $kategori = $request->input('kategori') === null ? 'all' : $request->input('kategori');
         $penulis = $request->input('penulis') === null ? 'all' : $request->input('penulis');
 
