@@ -6,8 +6,8 @@
     <title>{{ $title }} as {{ ucfirst(Auth::user()->level) }} | Website {{ $sekolah['nama_sekolah'] }}</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/png">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
