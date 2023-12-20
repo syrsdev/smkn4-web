@@ -1,10 +1,22 @@
 import JurusanCard from "@/Components/Card/JurusanCard";
 import Carousel from "@/Components/Carousel/Carousel";
 import Container from "@/Components/Container/Container";
+import ImageModal from "@/Components/Modal/ImageModal";
 import LandingLayout from "@/Layouts/LandingLayout";
-import React from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import React, { useState } from "react";
 
 function DetailJurusan(props) {
+    const [showModal, setShowModal] = useState(false);
+    const [imageSelect, setImageSelect] = useState(0);
+
+    const handleImage = (index) => {
+        setShowModal(true);
+        setImageSelect(index);
+    };
+    console.log(imageSelect);
+
+    console.log(props);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -30,6 +42,54 @@ function DetailJurusan(props) {
                     }}
                 ></p>
             </Container>
+            {props.konsentrasi.galeri.length > 0 && (
+                <Container classname="my-12">
+                    <h2 className="text-primary text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7">
+                        GALLERY JURUSAN
+                    </h2>
+                    <Splide
+                        className="flex justify-center visible"
+                        options={{
+                            rewind: true,
+                            autoplay: true,
+                            perPage: 4,
+                            gap: "2rem",
+                            breakpoints: {
+                                321: {
+                                    perPage: 1,
+                                    gap: "0.7rem",
+                                    fixedWidth: "65%",
+                                },
+                                767: {
+                                    perPage: 2,
+                                    gap: "0.8rem",
+                                },
+                                1024: {
+                                    perPage: 3,
+                                    gap: "1.3rem",
+                                },
+                                1280: {
+                                    perPage: 4,
+                                    gap: "2rem",
+                                },
+                            },
+                        }}
+                    >
+                        {props.konsentrasi.galeri.map((item, index) => (
+                            <SplideSlide key={index}>
+                                <img
+                                    data-tooltip-id="tooltip"
+                                    data-tooltip-content="Lihat Detail Gambar"
+                                    onClick={() => handleImage(index)}
+                                    src={item.gambar}
+                                    alt={item.keterangan}
+                                    className="w-full h-[100%] object-cover cursor-pointer"
+                                />
+                            </SplideSlide>
+                        ))}
+                    </Splide>
+                </Container>
+            )}
             <Container classname="my-10 md:my-20">
                 <h3 className="text-primary text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7">
                     KONSENTRASI KEAHLIAN LAINNYA
@@ -41,6 +101,14 @@ function DetailJurusan(props) {
                     ))}
                 </Carousel>
             </Container>
+
+            {showModal && (
+                <ImageModal
+                    src={props.konsentrasi.galeri[imageSelect].gambar}
+                    active={showModal}
+                    onClick={() => setShowModal(false)}
+                />
+            )}
         </LandingLayout>
     );
 }
