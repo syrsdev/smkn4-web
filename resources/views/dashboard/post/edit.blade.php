@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('link')
-    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-
-	<style>
-		.tox-promotion {
-			display: none !important;
-		}
-	</style>
 @endsection
 
 @section('content')
@@ -35,7 +28,7 @@
 			<div class="section-body">
 				<h2 class="section-title">Edit {{ ucfirst($kategori) }}</h2>
 				<p class="section-lead">
-					Di halaman ini Anda {{ $title }}.
+					Di halaman ini Anda dapat {{ $title }}.
 				</p>
 				<div class="row">
 					<div class="col-12">
@@ -103,7 +96,6 @@
 @endsection
 
 @section('script')
-	{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
     <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>

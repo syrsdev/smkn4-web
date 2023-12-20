@@ -113,7 +113,7 @@
                 </li> --}}
                 <li class="menu-header">Website</li>
                 <li class="dropdown {{ $active === 'Identitas' ? 'active' : '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('sekolah.edit') }}" class="nav-link">
                         <i class="fas fa-school"></i>
                         <span>Identitas Sekolah</span>
                     </a>

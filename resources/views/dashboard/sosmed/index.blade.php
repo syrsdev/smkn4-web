@@ -18,7 +18,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa mengedit {{ $title }}.
+                    Di halaman ini Anda dapat Edit {{ $title }}.
                 </p>
                 <div class="row sortable-card">
                     @foreach ($sosmed as $item)
