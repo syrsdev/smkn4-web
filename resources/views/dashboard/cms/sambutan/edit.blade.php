@@ -20,7 +20,7 @@
             <div class="section-body">
                 <h2 class="section-title">Edit {{ $title }}</h2>
                 <p class="section-lead">
-                    You can adjust all general settings here
+                    Anda bisa menambahkan sambutan kepala sekolah disini
                 </p>
                 <form action="{{ route('sambutan.update') }}" method="post" class="needs-validation">
                     @csrf

@@ -23,7 +23,7 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+                    Di halaman ini Anda bisa mengelola {{ $title }}.
                 </p>
                 <div class="row">
                     @foreach ($subNavbar as $item)
