@@ -89,7 +89,7 @@ export default function Navbar({ subnav, logo }) {
                                         <Dropdown
                                             shown={hoverDropdown.dropdown1}
                                         >
-                                            <DropLink href="#">
+                                            <DropLink href="/profil-sekolah">
                                                 TENTANG SEKOLAH
                                             </DropLink>
                                             <DropLink href="/pegawai">

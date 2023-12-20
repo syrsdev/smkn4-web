@@ -45,7 +45,7 @@ function Sidebar({ isActive }) {
                                 active={dropdown.dropdown1}
                             >
                                 <SideDropLink>
-                                    <DropLink href="#" pb={true}>
+                                    <DropLink href="/profil-sekolah" pb={true}>
                                         TENTANG SEKOLAH
                                     </DropLink>
                                     <DropLink href="/pegawai" pb={true}>
