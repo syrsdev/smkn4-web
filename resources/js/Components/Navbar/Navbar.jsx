@@ -20,7 +20,7 @@ export default function Navbar({ subnav, logo }) {
                 <div className="flex items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
                     <Link href="/" className="w-full lg:w-fit">
                         <img
-                            src={`/images/${logo}`}
+                            src={`${logo}`}
                             alt="Logo Smkn 4"
                             className="object-contain py-5"
                         />
@@ -35,7 +35,7 @@ export default function Navbar({ subnav, logo }) {
                                     <input
                                         type="checkbox"
                                         id="burger"
-                                        onClick={() => setSidebar(!sidebar)}
+                                        onChange={() => setSidebar(!sidebar)}
                                         checked={sidebar}
                                     />
                                     <span
@@ -89,7 +89,7 @@ export default function Navbar({ subnav, logo }) {
                                         <Dropdown
                                             shown={hoverDropdown.dropdown1}
                                         >
-                                            <DropLink href="#">
+                                            <DropLink href="/profil-sekolah">
                                                 TENTANG SEKOLAH
                                             </DropLink>
                                             <DropLink href="/pegawai">

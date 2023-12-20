@@ -3,7 +3,6 @@ import React from "react";
 import MadingTitle from "@/Components/Card/MadingTitle";
 
 function MadingLayout({ children, listPost, title, href = "#" }) {
-    // console.log(listPost);
     return (
         <>
             <div className="flex flex-col items-start justify-between lg:flex-row">

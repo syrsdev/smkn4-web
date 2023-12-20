@@ -14,7 +14,7 @@ function Footer({ logo, alamat, sosmed }) {
             <FooterLayout>
                 <div className="flex flex-col w-full gap-3 md:w-[300px] lg:w-[380px]">
                     <img
-                        src={`/images/${logo}`}
+                        src={`${logo}`}
                         alt="logo smkn 4"
                         className="object-contain w-5/6 md:w-9/12"
                     />

@@ -8,7 +8,6 @@ import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 
 function Pegawai(props) {
-    console.log(props);
     const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");
     let handleSearch = (e) => {

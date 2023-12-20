@@ -9,7 +9,6 @@ function CardListLayout({
     padding,
     dataLength,
 }) {
-    console.log(dataLength);
     return (
         <>
             {data.length > 0 ? (
