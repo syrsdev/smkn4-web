@@ -2,7 +2,6 @@ import { Link } from "@inertiajs/react";
 import React from "react";
 
 function PrestasiCard({ data, padding = false, dataLength }) {
-    console.log(dataLength);
     return (
         <Link
             href={`/prestasi/${data.slug}`}
@@ -17,7 +16,7 @@ function PrestasiCard({ data, padding = false, dataLength }) {
                         alt="thumbnail post"
                         className="object-cover thumbnail h-[120px] w-full md:h-[168px] xl:h-[200px]"
                     />
-                    <div className="absolute top-0 right-0 px-3 py-1 capitalize md:px-4 xl:py-2 xl:px-7 rounded-bl-2xl bg-primary text-secondary">
+                    <div className="absolute top-0 right-0 px-3 py-1 capitalize md:px-4 xl:py-2 xl:px-7 rounded-bl-2xl bg-secondary text-secondary">
                         {data.kategori}
                     </div>
                 </div>

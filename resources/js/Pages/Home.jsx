@@ -17,7 +17,6 @@ import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
 
 function Home(props) {
-    console.log(props.prestasi);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}

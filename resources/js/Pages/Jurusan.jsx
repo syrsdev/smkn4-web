@@ -5,7 +5,6 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 
 function Jurusan(props) {
-    console.log(props);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}

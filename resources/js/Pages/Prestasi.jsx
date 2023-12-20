@@ -14,7 +14,6 @@ function Prestasi(props) {
     const [filter, setFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState("");
-    console.log(props);
     const openModal = () => {
         setShowModal(true);
     };

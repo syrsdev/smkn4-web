@@ -11,8 +11,6 @@ import ImageModal from "@/Components/Modal/ImageModal";
 import FilterPost from "@/Components/Modal/FilterPost";
 
 function Post(props) {
-    console.log(props);
-
     const [showModal, setShowModal] = useState(false);
     const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");

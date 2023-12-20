@@ -5,7 +5,6 @@ import LandingLayout from "@/Layouts/LandingLayout";
 import React from "react";
 
 function DetailJurusan(props) {
-    console.log(props);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
