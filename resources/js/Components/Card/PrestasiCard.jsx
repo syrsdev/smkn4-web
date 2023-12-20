@@ -32,7 +32,7 @@ function PrestasiCard({ data, padding = false, dataLength }) {
                 </p>
             </div>
             <div
-                className={`text-[14px] text-primary underline underline-offset-8 pb-7 ${
+                className={`text-[14px] text-primary underline underline-offset-8 pb-7 mt-auto ${
                     padding == true && "px-2 md:px-4 xl:px-6"
                 }`}
                 href={`/prestasi/${data.slug}`}
