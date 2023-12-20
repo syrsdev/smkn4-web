@@ -1,11 +1,14 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
 
-function PrestasiCard({ data }) {
+function PrestasiCard({ data, padding = false, dataLength }) {
+    console.log(dataLength);
     return (
         <Link
             href={`/prestasi/${data.slug}`}
-            className="flex flex-col gap-2 thumbnail"
+            className={`flex flex-col gap-2 bg-white thumbnail ${
+                dataLength < 5 && "h-fit"
+            }`}
         >
             <div className="h-[120px] overflow-hidden md:h-[168px] xl:h-[200px]">
                 <div className="relative">
@@ -19,7 +22,7 @@ function PrestasiCard({ data }) {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className={`${padding == true && "px-2 md:px-4 xl:px-6"}`}>
                 <h4 className="text-[16px] xl:text-[20px] font-bold text-primary truncate">
                     {data.judul}
                 </h4>
@@ -28,12 +31,14 @@ function PrestasiCard({ data }) {
                     {new Date(data.created_at).toLocaleDateString("id-ID")}
                 </p>
             </div>
-            <Link
-                className="text-[14px] text-primary underline underline-offset-8 pb-7"
+            <div
+                className={`text-[14px] text-primary underline underline-offset-8 pb-7 ${
+                    padding == true && "px-2 md:px-4 xl:px-6"
+                }`}
                 href={`/prestasi/${data.slug}`}
             >
                 Read More...
-            </Link>
+            </div>
         </Link>
     );
 }

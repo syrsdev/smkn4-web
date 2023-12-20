@@ -14,9 +14,10 @@ import Carousel from "@/Components/Carousel/Carousel";
 import JurusanCard from "@/Components/Card/JurusanCard";
 import PegawaiCard from "@/Components/Card/PegawaiCard";
 import ButtonSecondary from "@/Components/Button/ButtonSecondary";
+import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
 
 function Home(props) {
-    console.log(props.heroSection.image_position);
+    console.log(props.prestasi);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -108,6 +109,50 @@ function Home(props) {
                 <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     PRESTASI
                 </h3>
+
+                <div className="flex flex-col gap-7 xl:flex-row">
+                    <div className="grid w-full grid-cols-2 gap-4 md:gap-8 xl:w-3/12 xl:grid-cols-1">
+                        <CardSumPrestasi
+                            title="INTERNASIONAL"
+                            sum={
+                                props.prestasi.filter(
+                                    (p) => p.kategori == "internasional"
+                                ).length
+                            }
+                        />
+                        <CardSumPrestasi
+                            title="NASIONAL"
+                            sum={
+                                props.prestasi.filter(
+                                    (p) => p.kategori == "nasional"
+                                ).length
+                            }
+                        />
+                        <CardSumPrestasi
+                            title="PROVINSI"
+                            sum={
+                                props.prestasi.filter(
+                                    (p) => p.kategori == "provinsi"
+                                ).length
+                            }
+                        />
+                        <CardSumPrestasi
+                            title="KOTA"
+                            sum={
+                                props.prestasi.filter(
+                                    (p) => p.kategori == "kota"
+                                ).length
+                            }
+                        />
+                    </div>
+                    <CardListLayout
+                        type="prestasi"
+                        data={props.prestasi}
+                        dataLength={props.prestasi.length}
+                        gridcols="2"
+                        padding={true}
+                    />
+                </div>
                 <ButtonSecondary dark={true} href="/prestasi">
                     LIHAT SELENGKAPNYA
                 </ButtonSecondary>

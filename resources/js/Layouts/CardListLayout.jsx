@@ -2,7 +2,14 @@ import PostCard from "@/Components/Card/PostCard";
 import PrestasiCard from "@/Components/Card/PrestasiCard";
 import React from "react";
 
-function CardListLayout({ data, type = "post" }) {
+function CardListLayout({
+    data,
+    type = "post",
+    gridcols = "3",
+    padding,
+    dataLength,
+}) {
+    console.log(dataLength);
     return (
         <>
             {data.length > 0 ? (
@@ -15,9 +22,18 @@ function CardListLayout({ data, type = "post" }) {
                         </div>
                     )}
                     {type == "prestasi" && (
-                        <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
+                        <div
+                            className={`grid grid-cols-2 gap-4 md:gap-7 xl:grid-cols-${gridcols} w-full ${
+                                dataLength < 5 && "h-fit"
+                            }`}
+                        >
                             {data.map((item, index) => (
-                                <PrestasiCard key={index} data={item} />
+                                <PrestasiCard
+                                    key={index}
+                                    data={item}
+                                    padding={padding}
+                                    dataLength={dataLength}
+                                />
                             ))}
                         </div>
                     )}
