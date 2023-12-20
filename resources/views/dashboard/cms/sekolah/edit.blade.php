@@ -18,7 +18,7 @@
             <div class="section-body">
                 <h2 class="section-title">Edit {{ $title }}</h2>
                 <p class="section-lead">
-                    You can adjust all general settings here
+                    Disini anda dapat mengedit {{ $title }}
                 </p>
                 <form action="{{ route('sekolah.update') }}" method="post" enctype="multipart/form-data" class="needs-validation">
                     @csrf

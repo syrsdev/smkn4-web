@@ -24,7 +24,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
                 </p>
                 @include('dashboard.user.create')
                 <div class="row">

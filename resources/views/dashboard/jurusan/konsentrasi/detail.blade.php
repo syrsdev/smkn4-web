@@ -27,7 +27,9 @@
             </div>
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
-                <p class="section-lead">This page is just an example for you to create your own page.</p>
+                <p class="section-lead">
+                    Di halaman ini Anda dapat melihat {{ $title }}.
+                </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">

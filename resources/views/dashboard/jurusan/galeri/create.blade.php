@@ -28,7 +28,7 @@
             <div class="section-body">
                 <h2 class="section-title">Tambah {{ $title }}</h2>
                 <p class="section-lead">
-                    We use 'Dropzone.js' made by @Dropzone. You can check the full documentation <a href="http://www.dropzonejs.com/">here</a>.
+                    Di halaman ini Anda dapat menambahkan galeri {{ $konsentrasi->nama }}.
                 </p>
                 <div class="row">
                     <div class="col-12">

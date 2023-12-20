@@ -28,7 +28,7 @@
 			<div class="section-body">
 				<h2 class="section-title">{{ $title }}</h2>
 				<p class="section-lead">
-					Di halaman ini Anda {{ $title }}.
+					Di halaman ini Anda dapat {{ $title }}.
 				</p>
 				<div class="row">
 					<div class="col-12">

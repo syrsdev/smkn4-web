@@ -1,6 +1,6 @@
 <h2 class="section-title">Galeri Konsentrasi Keahlian</h2>
 <p class="section-lead">
-    This page is just an example for you to create your own page.
+    Berikut galeri-galeri selama pelaksanaan kegiatan kejurusan
 </p>
 <div class="row">
     <div class="col-12">
