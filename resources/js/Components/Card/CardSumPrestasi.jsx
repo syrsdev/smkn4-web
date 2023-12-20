@@ -2,7 +2,7 @@ import React from "react";
 
 function CardSumPrestasi({ title, sum }) {
     return (
-        <div className="flex flex-col items-center justify-center gap-4 p-8 font-semibold text-white uppercase border-2 border-yellow-400 xl:p-10">
+        <div className="flex flex-col items-center justify-center gap-4 p-8 font-semibold text-white uppercase border-2 border-yellow-400 xl:p-5">
             <img
                 src="/images/sum-prestasi.svg"
                 alt="icon prestasi"
