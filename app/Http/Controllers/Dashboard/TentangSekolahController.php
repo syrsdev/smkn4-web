@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Models\Prestasi;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Jenssegers\Agent\Agent;
 
 class TentangSekolahController extends Controller
 {
@@ -22,24 +21,20 @@ class TentangSekolahController extends Controller
 
     public function index()
     {
-        $berita = Post::with('penulis')
-            ->where(['kategori' => 'berita', 'status' => '1'])
-            ->latest();
-
-        $agent = new Agent();
-
-        if ($agent->isMobile() || $agent->isTablet()) { 
-            $berita = $berita->limit(2)
-                ->get();
-        } else {
-            $berita = $berita->limit(3)
-                ->get();
-        }
+        $mading = [
+            'title' => 'PRESTASI SEKOLAH',
+            'kategori' => 'prestasi',
+            'list' => Prestasi::with('penulis')
+                ->where('status', '1')
+                ->latest()
+                ->limit(4)
+                ->get(),
+        ];
             
         return Inertia::render('ProfilSekolah')
             ->with([
                 'tentang' => $this->tentang['tentang_sekolah'],
-                'berita' => $berita,
+                'mading' => $mading,
             ]);
     }
 
