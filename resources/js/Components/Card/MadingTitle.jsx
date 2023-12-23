@@ -9,7 +9,7 @@ function MadingTitle({ title, href }) {
                 {title}
             </h3>
             <Link
-                href={`/post/${href}`}
+                href={`${href == "prestasi" ? `/${href}` : `/post/${href}`}`}
                 className="text-[12px] md:text-[16px] font-normal flex gap-1 items-center hover:underline hover:underline-offset-8"
             >
                 Tampilkan Semua <IoChevronForward />

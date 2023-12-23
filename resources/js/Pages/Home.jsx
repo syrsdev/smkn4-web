@@ -17,6 +17,7 @@ import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
 
 function Home(props) {
+    console.log(props);
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
@@ -237,7 +238,7 @@ function Home(props) {
                 <div
                     className="maps"
                     dangerouslySetInnerHTML={{
-                        __html: props.sekolah.link_alamat,
+                        __html: props.sekolah.sematkan_peta,
                     }}
                 ></div>
                 <div className="flex flex-col items-start my-14 md:flex-wrap gap-7 md:gap-0 md:justify-between md:items-center md:flex-row xl:justify-evenly text-secondary">
@@ -248,7 +249,9 @@ function Home(props) {
                                 NO. TELP
                             </h5>
                             <p className="text-[14px] ">
-                                {props.sekolah.telepon_sekolah}
+                                {props.sekolah.telepon_sekolah
+                                    ? props.sekolah.telepon_sekolah
+                                    : "-"}
                             </p>
                         </div>
                     </div>
@@ -258,7 +261,9 @@ function Home(props) {
                             <h5 className="text-[16px] xl:text-[20px] font-bold">
                                 FAX
                             </h5>
-                            <p className="text-[14px] ">{props.sekolah.fax}</p>
+                            <p className="text-[14px] ">
+                                {props.sekolah.fax ? props.sekolah.fax : "-"}
+                            </p>
                         </div>
                     </div>
                     <div className="flex gap-5">
@@ -268,7 +273,9 @@ function Home(props) {
                                 EMAIL
                             </h5>
                             <p className="text-[14px] ">
-                                {props.sekolah.email_sekolah}
+                                {props.sekolah.email_sekolah
+                                    ? props.sekolah.email_sekolah
+                                    : "-"}
                             </p>
                         </div>
                     </div>
