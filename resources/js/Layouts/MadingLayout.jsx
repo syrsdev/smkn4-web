@@ -5,9 +5,9 @@ import MadingTitle from "@/Components/Card/MadingTitle";
 function MadingLayout({ children, listPost, title, href = "#" }) {
     return (
         <>
-            <div className="flex flex-col items-start justify-between lg:flex-row">
+            <div className="flex flex-col items-start justify-between w-full lg:flex-row">
                 <div className="relative w-full lg:mr-7">{children}</div>
-                <div className="w-full mt-7 lg:w-8/12 lg:mt-0">
+                <div className="w-full mt-7 lg:w-6/12 lg:mt-0">
                     <MadingTitle title={title} href={href} />
                     <div
                         className={`flex flex-col flex-wrap gap-4 p-5 overflow-hidden text-white md:gap-10 lg:gap-4 lg:flex-col md:flex-row md:p-8 bg-secondary ${
@@ -19,7 +19,13 @@ function MadingLayout({ children, listPost, title, href = "#" }) {
                         {listPost.length > 0 ? (
                             <>
                                 {listPost.map((item, index) => (
-                                    <MadingCard item={item} key={index} />
+                                    <MadingCard
+                                        item={item}
+                                        key={index}
+                                        prestasi={
+                                            href == "prestasi" ? true : false
+                                        }
+                                    />
                                 ))}
                             </>
                         ) : (
