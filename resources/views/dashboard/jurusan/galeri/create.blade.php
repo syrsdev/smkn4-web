@@ -69,6 +69,7 @@
             url: "{{ route('galeri.store') }}",
             method: "post",
             paramName: "gambar[]",
+            parallelUploads: 100,
             autoProcessQueue: false,
             init: function () {
                 this.on("sending", function (file, xhr, formData) {

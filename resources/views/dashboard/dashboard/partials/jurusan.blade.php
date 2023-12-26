@@ -17,9 +17,17 @@
                                 </a>
                             </div>
                             <div class="text-muted text-small">
-                                {{ $item->program->nama }}
+                                @if (strlen($item->program->nama) > 20)
+                                    {{ substr($item->program->nama, 0, 20).'...' }}
+                                @else
+                                    {{ $item->program->nama }}
+                                @endif
                                 <br>
-                                {{ $item->program->bidang->nama }}
+                                @if (strlen($item->program->bidang->nama) > 20)
+                                    {{ substr($item->program->bidang->nama, 0, 20).'...' }}
+                                @else
+                                    {{ $item->program->bidang->nama }}
+                                @endif
                             </div>
                             <div class="product-cta">
                                 <a href="{{ route('konsentrasi.show', $item->slug) }}" class="btn btn-sm btn-primary btn-round">Detail</a>

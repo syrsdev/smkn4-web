@@ -7,6 +7,7 @@ use App\Models\Galeri;
 use App\Models\KonsentrasiKeahlian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class GaleriKonsentrasiController extends Controller
 {
@@ -49,8 +50,8 @@ class GaleriKonsentrasiController extends Controller
         $konsentrasi = KonsentrasiKeahlian::where('id', $request->id_konsentrasi)
             ->first();
 
-        foreach ($request->file('gambar') as $file) {
-            $gambar = time() . '.' . $file->extension();
+        foreach ($request->file('gambar.*') as $file) {
+            $gambar = Str::uuid() . '.' . $file->extension();
             $file->move(public_path('/storage/jurusan/galeri'), $gambar);
 
             $galeri = [
