@@ -21,12 +21,12 @@
                             <h4>Statistik Post & Prestasi</h4>
                         </div>
                         <div class="card-body">
-                            <canvas id="postPrestasiStat" height="130"></canvas>
+                            <canvas id="postPrestasiStat" height="170"></canvas>
                         </div>
                     </div>
                 </div>
-                {{-- Latest Post --}}
-                @include('dashboard.dashboard.partials.latest-post')
+                {{-- Trending Post --}}
+                @include('dashboard.dashboard.partials.trending-post')
             </div>
             <div class="row">
                 {{-- Jurusan --}}
@@ -35,8 +35,8 @@
                 @include('dashboard.dashboard.partials.pendidik')
             </div>
             <div class="row">
-                {{-- Post Table --}}
-                @include('dashboard.dashboard.partials.table-post')
+                {{-- latest Table --}}
+                @include('dashboard.dashboard.partials.latest-post')
                 {{-- Donut Chart --}}
                 <div class="col-12 col-md-4">
                     <div class="card">

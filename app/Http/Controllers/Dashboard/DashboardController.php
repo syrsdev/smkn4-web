@@ -24,11 +24,11 @@ class DashboardController extends Controller
         ];
 
         $post = [
-            'latest' => Post::with('penulis')
-                ->latest()
-                ->limit(10)
+            'trending' => Post::with('penulis')
+                ->orderBy('views', 'desc')
+                ->limit(5)
                 ->get(),
-            'table' => Post::with('penulis')
+            'latest' => Post::with('penulis')
                 ->latest()
                 ->limit(5)
                 ->get(),
