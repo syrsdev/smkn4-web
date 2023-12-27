@@ -121,6 +121,26 @@ class PostSeeder extends Seeder
                 'id_penulis' => 1,
                 'created_at' => now(),
             ],
+            [
+                'judul' => 'Back-End with Express',
+                'slug' => 'back-end-with-Express',
+                'kategori' => 'provinsi',
+                'konten' => 'Back-End with Express',
+                'peserta' => 'Muhamad Citra Hidayat',
+                'status' => '1',
+                'id_penulis' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'judul' => 'IoT Expert',
+                'slug' => 'iot-expert',
+                'kategori' => 'internasional',
+                'konten' => 'IoT Expert',
+                'peserta' => 'Surya Nata Ardhana',
+                'status' => '1',
+                'id_penulis' => 1,
+                'created_at' => now(),
+            ],
         ]);
     }
 }
