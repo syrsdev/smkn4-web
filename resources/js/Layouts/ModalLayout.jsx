@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 function ModalLayout({
@@ -50,11 +49,11 @@ function ModalLayout({
                                     onClick={() => onClick()}
                                 />
                             </div>
-                            <div className="z-[70] w-10/12 xl:w-5/12">
+                            <div className="z-[70] w-10/12 xl:w-5/12 ">
                                 <img
                                     src={src}
                                     alt="detail gambar"
-                                    className="object-contain w-full h-[350px] md:h-[500px]"
+                                    className="object-contain w-full h-full"
                                 />
                             </div>
                         </>

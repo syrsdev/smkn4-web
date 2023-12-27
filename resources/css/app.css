@@ -140,9 +140,20 @@ a:hover.thumbnail .thumbnail {
     border: solid !important;
     border-width: 2px !important;
     border-color: #ffd600 !important;
-    /* width: 2rem !important;
-    height: 2rem !important; */
 }
 .splide__arrow svg {
     fill: white !important;
 }
+
+div.galeri ul.splide__list {
+    justify-content: start !important;
+}
+@media only screen and (min-width: 768px) {
+    div.galeri ul.splide__list {
+        justify-content: center !important;
+    }
+}
+/* div.galeri ul.splide__list li.splide__slide {
+    max-width: 260px;
+    width: max-content !important;
+} */

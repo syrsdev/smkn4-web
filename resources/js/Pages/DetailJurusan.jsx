@@ -48,7 +48,9 @@ function DetailJurusan(props) {
                         GALLERY JURUSAN
                     </h2>
                     <Splide
-                        className="flex justify-center visible"
+                        className={`flex visible justify-center ${
+                            props.konsentrasi.galeri.length < 4 && "galeri"
+                        }`}
                         options={{
                             rewind: true,
                             autoplay: true,
@@ -83,7 +85,7 @@ function DetailJurusan(props) {
                                     onClick={() => handleImage(index)}
                                     src={item.gambar}
                                     alt={item.keterangan}
-                                    className="w-full h-[100%] object-cover cursor-pointer"
+                                    className="object-cover w-screen h-[150px] md:h-[200px] xl:h-[250px] cursor-pointer"
                                 />
                             </SplideSlide>
                         ))}
