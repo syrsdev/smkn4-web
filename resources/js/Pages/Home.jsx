@@ -114,35 +114,19 @@ function Home(props) {
                     <div className="grid w-full grid-cols-2 gap-4 md:gap-8 xl:w-3/12 xl:grid-cols-1">
                         <CardSumPrestasi
                             title="INTERNASIONAL"
-                            sum={
-                                props.prestasi.filter(
-                                    (p) => p.kategori == "internasional"
-                                ).length
-                            }
+                            sum={props.kategoriPrestasi.internasional}
                         />
                         <CardSumPrestasi
                             title="NASIONAL"
-                            sum={
-                                props.prestasi.filter(
-                                    (p) => p.kategori == "nasional"
-                                ).length
-                            }
+                            sum={props.kategoriPrestasi.nasional}
                         />
                         <CardSumPrestasi
                             title="PROVINSI"
-                            sum={
-                                props.prestasi.filter(
-                                    (p) => p.kategori == "provinsi"
-                                ).length
-                            }
+                            sum={props.kategoriPrestasi.provinsi}
                         />
                         <CardSumPrestasi
                             title="KOTA"
-                            sum={
-                                props.prestasi.filter(
-                                    (p) => p.kategori == "kota"
-                                ).length
-                            }
+                            sum={props.kategoriPrestasi.kota}
                         />
                     </div>
                     <CardListLayout
