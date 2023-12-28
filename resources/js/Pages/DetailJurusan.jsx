@@ -20,6 +20,7 @@ function DetailJurusan(props) {
     return (
         <LandingLayout
             logo={props.sekolah.logo_sekolah}
+            favicon={props.sekolah.favicon}
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}

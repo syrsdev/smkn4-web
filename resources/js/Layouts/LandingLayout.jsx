@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import { FaArrowUp } from "react-icons/fa";
+import { Head } from "@inertiajs/react";
 
-function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
+function LandingLayout({ children, subnav, logo, alamat, sosmed, favicon }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -27,6 +28,9 @@ function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
     };
     return (
         <>
+            <Head>
+                <link rel="icon" type="image/x-icon" href={favicon} />
+            </Head>
             <Navbar subnav={subnav} logo={logo} />
             {children}
             <div
