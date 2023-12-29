@@ -19,6 +19,7 @@ function DetailJurusan(props) {
     console.log(props);
     return (
         <LandingLayout
+            namaSekolah={props.sekolah.nama_sekolah}
             logo={props.sekolah.logo_sekolah}
             favicon={props.sekolah.favicon}
             alamat={props.sekolah.alamat_sekolah}
