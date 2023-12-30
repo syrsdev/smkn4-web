@@ -168,7 +168,11 @@ function Home(props) {
 
                 <Splide
                     aria-label="EKSKUL"
-                    className="flex justify-center visible "
+                    className={`flex visible justify-center ${
+                        props.ekskul.length < 6 && "ekskul"
+                    } ${props.ekskul.length < 4 && "ekskul_tablet"} ${
+                        props.ekskul.length < 2 && "ekskul_mobile"
+                    }`}
                     options={{
                         rewind: true,
                         autoplay: true,
@@ -177,7 +181,7 @@ function Home(props) {
                         breakpoints: {
                             767: {
                                 perPage: 2,
-                                gap: "0rem",
+                                gap: "0.5rem",
                             },
                             1024: {
                                 perPage: 4,
