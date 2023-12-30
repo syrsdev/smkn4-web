@@ -7,8 +7,8 @@
     <title>{{ $title }} | {{ $sekolah['nama_sekolah'] }}</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('images/' . $sekolah['favicon']) }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/' . $sekolah['favicon']) }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/png">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -60,20 +60,23 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" tabindex="1" placeholder="email@domain.com" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email"
+                                            tabindex="1" placeholder="email@domain.com" required autofocus>
                                         <div class="invalid-feedback">
                                             Masukkan Email yang valid.
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input id="password" type="password" class="form-control" name="password" tabindex="2" placeholder="********" required>
+                                        <input id="password" type="password" class="form-control" name="password"
+                                            tabindex="2" placeholder="********" required>
                                         <div class="invalid-feedback">
                                             Masukkan Password yang valid.
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" onclick="$.cardProgress('#login');">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4"
+                                            onclick="$.cardProgress('#login');">
                                             Login
                                         </button>
                                     </div>
