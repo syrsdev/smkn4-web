@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -76,8 +77,7 @@ class PostController extends Controller
         ]);
 
         $kategori = $request->input('kategori');
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $post = [
             'slug' => $slug,
@@ -165,8 +165,7 @@ class PostController extends Controller
         ]);
 
         $kategori = $request->input('kategori');
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $updatedPost = [
             'slug' => $slug,

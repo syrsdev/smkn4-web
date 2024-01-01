@@ -7,6 +7,7 @@ use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class PrestasiController extends Controller
 {
@@ -59,8 +60,7 @@ class PrestasiController extends Controller
             'id_penulis' => 'required',
         ]);
 
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));        
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $prestasi = [
             'slug' => $slug,
@@ -144,8 +144,7 @@ class PrestasiController extends Controller
             'id_penulis' => 'required',
         ]);
 
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));        
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));        
 
         $updatedPrestasi = [
             'slug' => $slug,

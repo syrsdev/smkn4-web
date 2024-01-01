@@ -10,6 +10,7 @@ use App\Models\Pendidik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TenagaPendidikController extends Controller
@@ -65,8 +66,7 @@ class TenagaPendidikController extends Controller
             'id_mapel' => 'nullable',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)), '-');
+        $slug = Str::slug($request->input('nama'));
 
         $guru = [
             'slug' => $slug,
@@ -82,7 +82,7 @@ class TenagaPendidikController extends Controller
             ]);
 
             $file = $request->file('gambar');
-            $gambar = $request->input('nama') . '.' . $file->extension();
+            $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/pendidik'), $gambar);
 
             $guru['gambar'] = '/storage/pendidik/' . $gambar;
@@ -139,8 +139,7 @@ class TenagaPendidikController extends Controller
             'id_mapel' => 'nullable',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = rtrim(strtolower(str_replace(' ', '-', $nama)), '-');
+        $slug = Str::slug($request->input('nama'));
 
         $updateGuru = [
             'slug' => $slug,

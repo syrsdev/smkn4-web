@@ -7,6 +7,7 @@ use App\Models\Ekskul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class EkskulController extends Controller
 {
@@ -53,8 +54,7 @@ class EkskulController extends Controller
             'link_sosmed' => 'nullable',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $ekskul = [
             'slug' => $slug,
@@ -68,7 +68,7 @@ class EkskulController extends Controller
             ]);
 
             $file = $request->file('gambar');
-            $gambar = $request->input('nama') . '.' . $file->extension();
+            $gambar = $slug . '.' . $file->extension();
             $file->move(public_path('storage/ekskul'), $gambar);
 
             $ekskul['gambar'] = '/storage/ekskul/' . $gambar;
@@ -118,8 +118,7 @@ class EkskulController extends Controller
             'link_sosmed' => 'nullable',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $updatedEkskul = [
             'slug' => $slug,
@@ -133,7 +132,7 @@ class EkskulController extends Controller
             ]);
 
             $file = $request->file('gambar');
-            $gambar = $request->input('nama') . '.' . $file->extension();
+            $gambar = $slug . '.' . $file->extension();
 
             if ($ekskul->gambar !== '/images/default/icon-ekskul.png') {
                 File::delete(public_path($ekskul->gambar));
