@@ -148,7 +148,28 @@ function Home(props) {
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
-                <Carousel perpageXl={5}>
+                <Carousel
+                    perpageXl={
+                        props.tenagaPendidik.length >= 5
+                            ? 5
+                            : props.tenagaPendidik.length
+                    }
+                    perpageLG={
+                        props.tenagaPendidik.length >= 4
+                            ? 4
+                            : props.tenagaPendidik.length
+                    }
+                    perpageMD={
+                        props.tenagaPendidik.length >= 3
+                            ? 3
+                            : props.tenagaPendidik.length
+                    }
+                    perpageSM={
+                        props.tenagaPendidik.length >= 2
+                            ? 2
+                            : props.tenagaPendidik.length
+                    }
+                >
                     {props.tenagaPendidik.map((item, index) => (
                         <PegawaiCard item={item} key={index} />
                     ))}

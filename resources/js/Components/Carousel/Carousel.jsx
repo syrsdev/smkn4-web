@@ -1,7 +1,14 @@
 import { Splide } from "@splidejs/react-splide";
 import React from "react";
 
-function Carousel({ label, children, perpageXl = 4 }) {
+function Carousel({
+    label,
+    children,
+    perpageXl = 4,
+    perpageLG = 4,
+    perpageMD = 3,
+    perpageSM = 2,
+}) {
     return (
         <Splide
             aria-label={label}
@@ -18,15 +25,15 @@ function Carousel({ label, children, perpageXl = 4 }) {
                         fixedWidth: "65%",
                     },
                     767: {
-                        perPage: 2,
+                        perPage: perpageSM,
                         gap: "0.8rem",
                     },
                     1024: {
-                        perPage: 3,
+                        perPage: perpageMD,
                         gap: "1.3rem",
                     },
                     1280: {
-                        perPage: 4,
+                        perPage: perpageLG,
                         gap: "2rem",
                     },
                 },
