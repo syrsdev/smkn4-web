@@ -7,6 +7,7 @@ use App\Models\KonsentrasiKeahlian;
 use App\Models\ProgramKeahlian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class KonsentrasiKeahlianController extends Controller
 {
@@ -58,8 +59,7 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $konsentrasi = [
             'slug' => $slug,
@@ -152,8 +152,7 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $newKonsentrasi = [
             'slug' => $slug,

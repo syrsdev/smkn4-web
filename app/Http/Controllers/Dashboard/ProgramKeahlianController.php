@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BidangKeahlian;
 use App\Models\ProgramKeahlian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProgramKeahlianController extends Controller
 {
@@ -52,12 +53,9 @@ class ProgramKeahlianController extends Controller
             'id_bidang' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
-
         try {
             ProgramKeahlian::create([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('nama')),
                 'nama' => $request->input('nama'),
                 'id_bidang' => $request->input('id_bidang'),
             ]);
@@ -96,12 +94,11 @@ class ProgramKeahlianController extends Controller
             'id_bidang' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         try {
             $program->update([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('nama')),
                 'nama' => $request->input('nama'),
                 'id_bidang' => $request->input('id_bidang'),
             ]);
