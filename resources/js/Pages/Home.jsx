@@ -20,6 +20,7 @@ function Home(props) {
     console.log(props);
     return (
         <LandingLayout
+            namaSekolah={props.sekolah.nama_sekolah}
             logo={props.sekolah.logo_sekolah}
             favicon={props.sekolah.favicon}
             alamat={props.sekolah.alamat_sekolah}
@@ -147,7 +148,28 @@ function Home(props) {
                 <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
-                <Carousel perpageXl={5}>
+                <Carousel
+                    perpageXl={
+                        props.tenagaPendidik.length >= 5
+                            ? 5
+                            : props.tenagaPendidik.length
+                    }
+                    perpageLG={
+                        props.tenagaPendidik.length >= 4
+                            ? 4
+                            : props.tenagaPendidik.length
+                    }
+                    perpageMD={
+                        props.tenagaPendidik.length >= 3
+                            ? 3
+                            : props.tenagaPendidik.length
+                    }
+                    perpageSM={
+                        props.tenagaPendidik.length >= 2
+                            ? 2
+                            : props.tenagaPendidik.length
+                    }
+                >
                     {props.tenagaPendidik.map((item, index) => (
                         <PegawaiCard item={item} key={index} />
                     ))}
@@ -167,7 +189,11 @@ function Home(props) {
 
                 <Splide
                     aria-label="EKSKUL"
-                    className="flex justify-center visible "
+                    className={`flex visible justify-center ${
+                        props.ekskul.length < 6 && "ekskul"
+                    } ${props.ekskul.length < 4 && "ekskul_tablet"} ${
+                        props.ekskul.length < 2 && "ekskul_mobile"
+                    }`}
                     options={{
                         rewind: true,
                         autoplay: true,
@@ -176,14 +202,17 @@ function Home(props) {
                         breakpoints: {
                             767: {
                                 perPage: 2,
-                                gap: "0rem",
+                                gap: "0.5rem",
                             },
                             1024: {
                                 perPage: 4,
                                 gap: "1rem",
                             },
                             1280: {
-                                perPage: 6,
+                                perPage:
+                                    props.ekskul.length >= 6
+                                        ? 6
+                                        : props.ekskul.length,
                                 gap: "2rem",
                             },
                         },

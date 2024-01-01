@@ -148,12 +148,24 @@ a:hover.thumbnail .thumbnail {
 div.galeri ul.splide__list {
     justify-content: start !important;
 }
+div.ekskul_mobile ul.splide__list {
+    justify-content: center;
+}
 @media only screen and (min-width: 768px) {
     div.galeri ul.splide__list {
         justify-content: center !important;
     }
+    div.ekskul_tablet ul.splide__list li.splide__slide {
+        width: max-content !important;
+    }
 }
-/* div.galeri ul.splide__list li.splide__slide {
-    max-width: 260px;
-    width: max-content !important;
-} */
+@media only screen and (min-width: 1280px) {
+    div.ekskul ul.splide__list li.splide__slide {
+        width: max-content !important;
+    }
+}
+
+.splide__arrow:disabled {
+    opacity: 0.7 !important;
+    cursor: not-allowed;
+}

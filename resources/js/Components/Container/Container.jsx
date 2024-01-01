@@ -5,7 +5,7 @@ function Container({ children, classname, id = "#", style }) {
         <div
             style={style}
             id={id}
-            className={`px-[40px] md:px-[65px] xl:px-[100px]  ${
+            className={`px-[35px] md:px-[65px] xl:px-[100px]  ${
                 classname ? `${classname}` : ""
             }`}
         >
