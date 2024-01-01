@@ -14,6 +14,9 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
+        Post::factory(13)->create();
+        Prestasi::factory(14)->create();
+
         Post::insert([
             [
                 'judul' => 'Lorem ipsum dolor sit amet',
