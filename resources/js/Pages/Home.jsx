@@ -209,7 +209,10 @@ function Home(props) {
                                 gap: "1rem",
                             },
                             1280: {
-                                perPage: 6,
+                                perPage:
+                                    props.ekskul.length >= 6
+                                        ? 6
+                                        : props.ekskul.length,
                                 gap: "2rem",
                             },
                         },
