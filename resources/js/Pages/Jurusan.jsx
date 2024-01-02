@@ -15,7 +15,7 @@ function Jurusan(props) {
             sosmed={props.footer.socialMedia}
         >
             <Container classname="mb-14">
-                <h1 className="font-bold text-primary text-[18px] md:text-[24px] text-center mt-5 md:mt-10">
+                <h1 className="font-bold text-primary text-[18px] md:text-[24px] xl:text-[26px] text-center mt-10 md:mt-16">
                     PROGRAM KEAHLIAN
                 </h1>
 

@@ -1,7 +1,6 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/CardListLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
