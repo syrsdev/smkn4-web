@@ -1,7 +1,6 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/CardListLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -9,6 +8,7 @@ import { FaFilter } from "react-icons/fa6";
 import CardListLayout from "@/Layouts/CardListLayout";
 import ImageModal from "@/Components/Modal/ImageModal";
 import FilterPrestasi from "@/Components/Modal/FilterPrestasi";
+import Pagination from "@/Components/Pagination/Pagination";
 
 function Prestasi(props) {
     const [filter, setFilter] = useState(false);
@@ -18,13 +18,21 @@ function Prestasi(props) {
         setShowModal(true);
     };
 
+    let url = window.location.href
+        .split(`page=${props.allPrestasi.current_page}#paginate`)
+        .join("");
+
+    let urlPost = window.location.href
+        .split(`page=${props.allPrestasi.current_page}#post`)
+        .join("");
+
     let handleSearch = (e) => {
         e.preventDefault();
         router.get(
             `${
                 window.location.href.slice(-5) == "#post"
-                    ? window.location.href
-                    : `${window.location.href}#post`
+                    ? urlPost
+                    : `${url}#post`
             }`,
             {
                 search: search,
@@ -110,6 +118,10 @@ function Prestasi(props) {
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="post"
                 ></div>
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="paginate"
+                ></div>
 
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
@@ -153,12 +165,23 @@ function Prestasi(props) {
 
             <Container classname="my-10 md:mt-5 md:mb-16">
                 <CardListLayout data={props.allPrestasi.data} type="prestasi" />
+
+                <Pagination
+                    firstPageUrl={props.allPrestasi.first_page_url}
+                    lastPageUrl={props.allPrestasi.last_page_url}
+                    nextPage={props.allPrestasi.next_page_url}
+                    prevPage={props.allPrestasi.prev_page_url}
+                    currentPage={props.allPrestasi.current_page}
+                    lastPage={props.allPrestasi.last_page}
+                    links={props.allPrestasi.links}
+                />
             </Container>
 
             <FilterPrestasi
                 active={filter}
                 onClick={() => setFilter(false)}
                 penulis={props.penulis}
+                paginate={props.allPrestasi.current_page}
             />
 
             {showModal && (

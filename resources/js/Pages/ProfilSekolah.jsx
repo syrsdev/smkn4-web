@@ -14,12 +14,12 @@ function ProfilSekolah(props) {
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
         >
-            <Container classname="my-10 md:my-16">
-                <h1 className="my-7 md:my-10 text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center text-primary">
+            <Container classname="mt-10 mb-5 md:mt-16 md:mb-10">
+                <h1 className="text-[18px] md:text-[20px] xl:text-[26px] font-bold text-center text-primary">
                     INFORMASI SEKOLAH
                 </h1>
             </Container>
-            <Container classname="flex my-10">
+            <Container classname="flex">
                 <MadingLayout
                     title={props.mading.title}
                     listPost={props.mading.list}
