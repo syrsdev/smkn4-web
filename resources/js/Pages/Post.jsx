@@ -8,8 +8,10 @@ import { FaFilter } from "react-icons/fa6";
 import CardListLayout from "@/Layouts/CardListLayout";
 import ImageModal from "@/Components/Modal/ImageModal";
 import FilterPost from "@/Components/Modal/FilterPost";
+import Pagination from "@/Components/Pagination/Pagination";
 
 function Post(props) {
+    console.log(props);
     const [showModal, setShowModal] = useState(false);
     const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");
@@ -18,13 +20,20 @@ function Post(props) {
         setShowModal(true);
     };
 
+    let url = window.location.href
+        .split(`page=${props.allPost.current_page}#paginate`)
+        .join("");
+    let urlPost = window.location.href
+        .split(`page=${props.allPost.current_page}#post`)
+        .join("");
+
     let handleSearch = (e) => {
         e.preventDefault();
         router.get(
             `${
                 window.location.href.slice(-5) == "#post"
-                    ? window.location.href
-                    : `${window.location.href}#post`
+                    ? urlPost
+                    : `${url}#post`
             }`,
             {
                 search: search,
@@ -101,6 +110,10 @@ function Post(props) {
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="post"
                 ></div>
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="paginate"
+                ></div>
 
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
@@ -144,12 +157,23 @@ function Post(props) {
 
             <Container classname="my-10 md:mt-7 md:mb-16">
                 <CardListLayout data={props.allPost.data} />
+
+                <Pagination
+                    firstPageUrl={props.allPost.first_page_url}
+                    lastPageUrl={props.allPost.last_page_url}
+                    nextPage={props.allPost.next_page_url}
+                    prevPage={props.allPost.prev_page_url}
+                    currentPage={props.allPost.current_page}
+                    lastPage={props.allPost.last_page}
+                    links={props.allPost.links}
+                />
             </Container>
 
             <FilterPost
                 active={filter}
                 onClick={() => setFilter(false)}
                 penulis={props.penulis}
+                paginate={props.allPost.current_page}
             />
 
             {showModal && (

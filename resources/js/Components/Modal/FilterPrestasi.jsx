@@ -17,7 +17,7 @@ const orderby = [
     { value: "desc", label: "Z-A" },
 ];
 
-function FilterPrestasi({ active, onClick, penulis }) {
+function FilterPrestasi({ active, onClick, penulis, paginate }) {
     const dataPenulis = penulis.map((item) => {
         return {
             value: `${item.slug}`,
@@ -30,13 +30,17 @@ function FilterPrestasi({ active, onClick, penulis }) {
         penulis: "",
         orderby: "",
     });
+
+    let url = window.location.href.split(`page=${paginate}#paginate`).join("");
+    let urlPost = window.location.href.split(`page=${paginate}#post`).join("");
+
     let handleFilter = (e) => {
         e.preventDefault();
         router.get(
             `${
                 window.location.href.slice(-5) == "#post"
-                    ? window.location.href
-                    : `${window.location.href}#post`
+                    ? urlPost
+                    : `${url}#post`
             }`,
             {
                 kategori: filter.kategori,
