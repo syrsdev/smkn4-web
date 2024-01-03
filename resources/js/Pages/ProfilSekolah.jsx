@@ -19,7 +19,7 @@ function ProfilSekolah(props) {
                     INFORMASI SEKOLAH
                 </h1>
             </Container>
-            <Container classname="flex">
+            <Container classname="flex mb-16">
                 <MadingLayout
                     title={props.mading.title}
                     listPost={props.mading.list}
