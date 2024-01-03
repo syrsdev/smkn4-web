@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KonsentrasiKeahlian;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -26,9 +27,20 @@ class JurusanPageController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
+        $mading = [
+            'title' => 'BERITA SEKOLAH',
+            'kategori' => 'berita',
+            'list' => Post::with('penulis')
+                ->where(['kategori' => 'berita', 'status' => '1'])
+                ->latest()
+                ->limit(4)
+                ->get(),
+        ];
+
         return Inertia::render('DetailJurusan')->with([
             'konsentrasi' => $konsentrasi,
             'jurusan' => $jurusan,
+            'mading' => $mading,
         ]);    
     }
 }
