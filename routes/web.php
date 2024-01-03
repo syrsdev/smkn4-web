@@ -69,11 +69,27 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])
                 ->name('dashboard');
 
-            Route::resource('/post', PostController::class);
-
             Route::prefix('post')->group(function () {
                 Route::get('/kategori/{kategori}', [PostController::class, 'index'])
                     ->name('post.index');
+
+                Route::get('/create', [PostController::class, 'create'])
+                    ->name('post.create');
+
+                Route::post('/', [PostController::class, 'store'])
+                    ->name('post.store');
+
+                Route::get('/{post}', [PostController::class, 'show'])
+                    ->name('post.show');
+
+                Route::get('/{post}/edit', [PostController::class, 'edit'])
+                    ->name('post.edit');
+
+                Route::match(['put', 'patch'], '/{post}', [PostController::class, 'update'])
+                    ->name('post.update');
+
+                Route::delete('/{post}', [PostController::class, 'destroy'])
+                    ->name('post.destroy');
 
                 Route::get('/{post}/status', [PostController::class, 'update_status'])
                     ->name('post.status');
