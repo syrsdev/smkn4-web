@@ -7,6 +7,7 @@ use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class PrestasiController extends Controller
 {
@@ -49,25 +50,24 @@ class PrestasiController extends Controller
     {
         Session::flash('judul', $request->input('judul'));
         Session::flash('konten', $request->input('konten'));
-        Session::flash('pemenang', $request->input('pemenang'));
+        Session::flash('peserta', $request->input('peserta'));
 
         $request->validate([
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'pemenang' => 'required',
+            'peserta' => 'required',
             'id_penulis' => 'required',
         ]);
 
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));        
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $prestasi = [
             'slug' => $slug,
             'judul' => $request->input('judul'),
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
-            'pemenang' => $request->input('pemenang'),
+            'peserta' => $request->input('peserta'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 
@@ -140,19 +140,18 @@ class PrestasiController extends Controller
             'judul' => 'required',
             'kategori' => 'required',
             'konten' => 'required',
-            'pemenang' => 'required',
+            'peserta' => 'required',
             'id_penulis' => 'required',
         ]);
 
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));        
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));        
 
         $updatedPrestasi = [
             'slug' => $slug,
             'judul' => $request->input('judul'),
             'kategori' => $request->input('kategori'),
             'konten' => $request->input('konten'),
-            'pemenang' => $request->input('pemenang'),
+            'peserta' => $request->input('peserta'),
             'id_penulis' => $request->input('id_penulis'),
         ];
 
@@ -164,12 +163,11 @@ class PrestasiController extends Controller
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
 
-            if (!str_contains($prestasi->gambar, 'no-image-43.png')) {
+            if ($prestasi->gambar !== '/images/default/no-image-43.png') {
                 File::delete(public_path($prestasi->gambar));
             }
 
             $file->move(public_path('storage/prestasi'), $gambar);
-
             $updatedPrestasi['gambar'] = '/storage/prestasi/' . $gambar;
         }
         
@@ -191,7 +189,7 @@ class PrestasiController extends Controller
      */
     public function destroy(Prestasi $prestasi)
     {
-        if (!str_contains($prestasi->gambar, 'no-image-43.png')) {
+        if ($prestasi->gambar !== '/images/default/no-image-43.png') {
             File::delete(public_path($prestasi->gambar));
         }
 

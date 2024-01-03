@@ -1,12 +1,13 @@
 import "./bootstrap";
 import "../css/app.css";
+import "@splidejs/react-splide/css";
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
 createInertiaApp({
-    title: () => `SMKN 4 Kota Tangerang`,
+    title: (e) => e,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.jsx`,

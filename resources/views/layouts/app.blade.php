@@ -6,8 +6,8 @@
     <title>{{ $title }} as {{ ucfirst(Auth::user()->level) }} | Website {{ $sekolah['nama_sekolah'] }}</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/'.$sekolah['favicon']) }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset($sekolah['favicon']) }}" type="image/png">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -25,6 +25,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <style>
+        .custom-switch {
+            cursor: pointer;
+        }
+
+        .tox-promotion {
+			display: none !important;
+		}
+    </style>
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>

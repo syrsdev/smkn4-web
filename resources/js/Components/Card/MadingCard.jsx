@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
 
-function MadingCard({ item }) {
+function MadingCard({ item, prestasi = false }) {
     return (
         <div className="flex w-full gap-3 overflow-hidden md:w-2/5 lg:w-full">
             <img
@@ -20,7 +20,11 @@ function MadingCard({ item }) {
                 ></div>
                 <Link
                     className="text-[12px] border-b text-slate-300 border-slate-300"
-                    href={`/post/${item.kategori}/${item.slug}`}
+                    href={`${
+                        prestasi == true
+                            ? `/prestasi/${item.slug}`
+                            : `/post/${item.kategori}/${item.slug}`
+                    }`}
                 >
                     Read More...
                 </Link>

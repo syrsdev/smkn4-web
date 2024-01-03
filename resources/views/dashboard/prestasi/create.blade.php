@@ -2,12 +2,6 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
-
-    <style>
-        .tox-promotion {
-            display: none !important;
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -34,7 +28,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }} Baru</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda {{ $title }}.
+                    Di halaman ini Anda dapat {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -71,9 +65,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pemenang</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Peserta</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="pemenang" value="{{ Session::get('pemenang') }}" required>
+                                            <input type="text" class="form-control" name="peserta" value="{{ Session::get('peserta') }}" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">

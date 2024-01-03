@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Mapel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MapelController extends Controller
 {
@@ -45,12 +46,9 @@ class MapelController extends Controller
             'nama' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
-
         try {
             Mapel::create([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('nama')),
                 'nama' => $request->input('nama'),
             ]);
 
@@ -87,12 +85,9 @@ class MapelController extends Controller
             'nama' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
-
         try {
             $mapel->update([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('nama')),
                 'nama' => $request->input('nama'),
             ]);
 

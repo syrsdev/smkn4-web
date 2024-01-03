@@ -1,33 +1,50 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/PostLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
+import CardListLayout from "@/Layouts/CardListLayout";
+import ImageModal from "@/Components/Modal/ImageModal";
+import FilterPost from "@/Components/Modal/FilterPost";
+import Pagination from "@/Components/Pagination/Pagination";
 
 function Post(props) {
+    console.log(props);
     const [showModal, setShowModal] = useState(false);
+    const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");
 
     const openModal = () => {
         setShowModal(true);
     };
 
-    const closeModal = () => {
-        setShowModal(false);
-    };
+    let url = window.location.href
+        .split(`page=${props.allPost.current_page}#paginate`)
+        .join("");
+    let urlPost = window.location.href
+        .split(`page=${props.allPost.current_page}#post`)
+        .join("");
 
     let handleSearch = (e) => {
         e.preventDefault();
-        router.get(`${window.location.pathname}#post`, {
-            search: search,
-        });
+        router.get(
+            `${
+                window.location.href.slice(-5) == "#post"
+                    ? urlPost
+                    : `${url}#post`
+            }`,
+            {
+                search: search,
+            }
+        );
     };
     return (
         <LandingLayout
+            namaSekolah={props.sekolah.nama_sekolah}
             logo={props.sekolah.logo_sekolah}
+            favicon={props.sekolah.favicon}
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
@@ -88,14 +105,26 @@ function Post(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10 md:mt-16" id="post">
+            <Container classname="relative my-12 md:mt-20">
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="post"
+                ></div>
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="paginate"
+                ></div>
+
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
                         Postingan Lainnya
                     </h3>
 
                     <div className="flex items-center gap-2 md:gap-3">
-                        <button className="p-2 border-2 rounded-md border-slate-300">
+                        <button
+                            className="p-2 border-2 rounded-md border-slate-300"
+                            onClick={() => setFilter(true)}
+                        >
                             <FaFilter />
                         </button>
 
@@ -127,29 +156,32 @@ function Post(props) {
             </Container>
 
             <Container classname="my-10 md:mt-7 md:mb-16">
-                <PostLayout data={props.allPost.data} />
+                <CardListLayout data={props.allPost.data} />
+
+                <Pagination
+                    firstPageUrl={props.allPost.first_page_url}
+                    lastPageUrl={props.allPost.last_page_url}
+                    nextPage={props.allPost.next_page_url}
+                    prevPage={props.allPost.prev_page_url}
+                    currentPage={props.allPost.current_page}
+                    lastPage={props.allPost.last_page}
+                    links={props.allPost.links}
+                />
             </Container>
 
+            <FilterPost
+                active={filter}
+                onClick={() => setFilter(false)}
+                penulis={props.penulis}
+                paginate={props.allPost.current_page}
+            />
+
             {showModal && (
-                <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full">
-                    <div
-                        className="fixed top-0 left-0 w-full h-full opacity-75 modal-overlay"
-                        onClick={closeModal}
-                    ></div>
-                    <div className="flex justify-center object-contain w-full p-4 bg-white rounded-lg shadow-lg modal-content">
-                        <img
-                            src={`${props.post.gambar}`}
-                            alt="Preview"
-                            className="object-contain w-1/2 max-h-1/2 z-[55]"
-                        />
-                        <button
-                            onClick={closeModal}
-                            className="px-4 py-2 mt-2 text-white rounded-md bg-primary"
-                        >
-                            Tutup
-                        </button>
-                    </div>
-                </div>
+                <ImageModal
+                    src={props.post.gambar}
+                    active={showModal}
+                    onClick={() => setShowModal(false)}
+                />
             )}
         </LandingLayout>
     );

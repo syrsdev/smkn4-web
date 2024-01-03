@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import { FaArrowUp } from "react-icons/fa";
+import { Head } from "@inertiajs/react";
 
-function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
+function LandingLayout({
+    children,
+    subnav,
+    logo,
+    alamat,
+    sosmed,
+    favicon,
+    namaSekolah,
+}) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -27,10 +36,13 @@ function LandingLayout({ children, subnav, logo, alamat, sosmed }) {
     };
     return (
         <>
+            <Head title={namaSekolah}>
+                <link rel="icon" type="image/x-icon" href={favicon} />
+            </Head>
             <Navbar subnav={subnav} logo={logo} />
             {children}
             <div
-                className={`fixed justify-center items-center z-50 p-3 cursor-pointer  shadow-xl rounded-full bg-primary ring-2 ring-yellow-300 border-slate-300 bottom-8 right-5 ${
+                className={`fixed z-[49] justify-center items-center p-3 cursor-pointer shadow-xl rounded-full bg-primary ring-2 ring-yellow-300 border-slate-300 bottom-8 right-5 ${
                     isVisible ? "flex" : "hidden"
                 }`}
                 onClick={scrollToTop}

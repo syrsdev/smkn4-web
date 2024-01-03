@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -76,8 +77,7 @@ class PostController extends Controller
         ]);
 
         $kategori = $request->input('kategori');
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $post = [
             'slug' => $slug,
@@ -165,8 +165,7 @@ class PostController extends Controller
         ]);
 
         $kategori = $request->input('kategori');
-        $judul = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('judul'));
-        $slug = strtolower(str_replace(' ', '-', $judul));
+        $slug = Str::slug($request->input('judul'));
 
         $updatedPost = [
             'slug' => $slug,
@@ -183,12 +182,12 @@ class PostController extends Controller
 
             $file = $request->file('gambar');
             $gambar = $slug . '.' . $file->extension();
-            $file->move(public_path('storage/' . $kategori), $gambar);
 
-            if (!str_contains($post->gambar, 'no-image-43.png')) {
+            if ($post->gambar !== '/images/default/no-image-43.png') {
                 File::delete(public_path($post->gambar));
             }
-
+            
+            $file->move(public_path('storage/' . $kategori), $gambar);
             $updatedPost['gambar'] = '/storage/' . $kategori . '/' . $gambar;
         }
 
@@ -210,7 +209,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (!str_contains($post->gambar, 'no-image-43.png')) {
+        if ($post->gambar !== '/images/default/no-image-43.png') {
             File::delete(public_path($post->gambar));
         }
 

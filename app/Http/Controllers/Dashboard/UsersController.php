@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -68,12 +69,9 @@ class UsersController extends Controller
             'level' => 'required',
         ]);
 
-        $name = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('name'));
-        $slug = strtolower(str_replace(' ', '-', $name));
-
         try {
             User::create([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('name')),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
@@ -121,12 +119,9 @@ class UsersController extends Controller
             'level' => 'required',
         ]);
 
-        $name = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('name'));
-        $slug = strtolower(str_replace(' ', '-', $name));
-
         try {
             $user->update([
-                'slug' => $slug,
+                'slug' => Str::slug($request->input('name')),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'level' => $request->input('level'),

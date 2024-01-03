@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-sm btn-primary">Edit Link</button>
                     </div>
                 </form>

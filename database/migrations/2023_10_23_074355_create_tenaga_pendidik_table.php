@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('slug')
                 ->unique();
             $table->string('nama');
-            $table->enum('bagian', ['pendidik', 'pegawai'])
+            $table->enum('bagian', ['pendidik', 'kependidikan'])
                 ->nullable();
             $table->enum('sub_bagian', ['guru', 'staff'])
                 ->nullable();

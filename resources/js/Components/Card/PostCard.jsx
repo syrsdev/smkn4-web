@@ -3,7 +3,10 @@ import React from "react";
 
 function PostCard({ data }) {
     return (
-        <div className="flex flex-col gap-2 thumbnail">
+        <Link
+            href={`/post/${data.kategori}/${data.slug}`}
+            className="flex flex-col gap-2 thumbnail"
+        >
             <div className="h-[120px] overflow-hidden md:h-[168px] xl:h-[200px]">
                 <img
                     src={`${data.gambar}`}
@@ -21,16 +24,13 @@ function PostCard({ data }) {
                 </p>
             </div>
             <p
-                className="line-clamp-3 konten-card"
+                className="line-clamp-2 xl:line-clamp-3 konten-card"
                 dangerouslySetInnerHTML={{ __html: data.konten }}
             ></p>
-            <Link
-                className="text-[14px] text-primary underline underline-offset-8 pb-7"
-                href={`/post/${data.kategori}/${data.slug}`}
-            >
+            <span className="text-[14px] text-primary underline underline-offset-8 pb-7">
                 Read More...
-            </Link>
-        </div>
+            </span>
+        </Link>
     );
 }
 

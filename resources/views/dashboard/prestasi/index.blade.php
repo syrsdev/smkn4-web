@@ -22,7 +22,7 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -44,7 +44,7 @@
                                                 <th>#</th>
                                                 <th>Judul</th>
                                                 <th>Kategori</th>
-                                                <th>Pemenang</th>
+                                                <th>Pesert</th>
                                                 <th>Views</th>
                                                 <th>Publish</th>
                                                 <th>Status</th>
@@ -57,7 +57,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->judul}}</td>
                                                     <td>{{ ucfirst($item->kategori) }}</td>
-                                                    <td>{{ $item->pemenang }}</td>
+                                                    <td>{{ $item->peserta }}</td>
                                                     <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
 														<label class="custom-switch mt-1">
@@ -71,7 +71,7 @@
                                                         </div>
 													</td>
                                                     <td>
-                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat Prestasi">
+                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat Prestasi">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
                                                         <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Prestasi">

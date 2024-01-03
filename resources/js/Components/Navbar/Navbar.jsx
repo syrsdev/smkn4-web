@@ -8,9 +8,11 @@ import Sidebar from "../Sidebar/Sidebar";
 
 export default function Navbar({ subnav, logo }) {
     const [sidebar, setSidebar] = useState(false);
-    const [hoverDropdown, setHoverDropdown] = useState(false);
-    const [hoverDropdown2, setHoverDropdown2] = useState(false);
-    const [hoverDropdown3, setHoverDropdown3] = useState(false);
+    const [hoverDropdown, setHoverDropdown] = useState({
+        dropdown1: false,
+        dropdown2: false,
+        dropdown3: false,
+    });
 
     return (
         <>
@@ -18,7 +20,7 @@ export default function Navbar({ subnav, logo }) {
                 <div className="flex items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
                     <Link href="/" className="w-full lg:w-fit">
                         <img
-                            src={`/images/${logo}`}
+                            src={`${logo}`}
                             alt="Logo Smkn 4"
                             className="object-contain py-5"
                         />
@@ -33,7 +35,8 @@ export default function Navbar({ subnav, logo }) {
                                     <input
                                         type="checkbox"
                                         id="burger"
-                                        onClick={() => setSidebar(!sidebar)}
+                                        onChange={() => setSidebar(!sidebar)}
+                                        checked={sidebar}
                                     />
                                     <span
                                         className={`${
@@ -67,48 +70,61 @@ export default function Navbar({ subnav, logo }) {
                                     <li
                                         className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
                                         onMouseEnter={() => {
-                                            setHoverDropdown(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown1: true,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown1: false,
+                                            });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             PROFIL SEKOLAH{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
-                                        <Dropdown shown={hoverDropdown}>
-                                            <DropLink href="#">
+                                        </div>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown1}
+                                        >
+                                            <DropLink href="/profil-sekolah">
                                                 TENTANG SEKOLAH
                                             </DropLink>
-                                            <DropLink href="#">
+                                            <DropLink href="/pegawai">
                                                 GURU DAN STAF
                                             </DropLink>
                                         </Dropdown>
                                     </li>
                                     <li className="duration-150 hover-link before:bg-tertiary">
-                                        <Link href="#">PROGRAM KEAHLIAN</Link>
+                                        <Link href="/jurusan">
+                                            PROGRAM KEAHLIAN
+                                        </Link>
                                     </li>
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
                                         onMouseEnter={() => {
-                                            setHoverDropdown2(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown2: true,
+                                                dropdown3: false,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown2(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown2: false,
+                                            });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             BERITA{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
-                                        <Dropdown shown={hoverDropdown2}>
+                                        </div>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown2}
+                                        >
                                             <DropLink href="/post/artikel">
                                                 ARTIKEL
                                             </DropLink>
@@ -126,20 +142,26 @@ export default function Navbar({ subnav, logo }) {
                                     <li
                                         className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
                                         onMouseEnter={() => {
-                                            setHoverDropdown3(true);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown2: false,
+                                                dropdown3: true,
+                                            });
                                         }}
                                         onMouseLeave={() => {
-                                            setHoverDropdown3(false);
+                                            setHoverDropdown({
+                                                ...hoverDropdown,
+                                                dropdown3: false,
+                                            });
                                         }}
                                     >
-                                        <Link
-                                            href="#"
-                                            className="flex items-center gap-2"
-                                        >
+                                        <div className="flex items-center gap-2 cursor-default">
                                             KESISWAAN{" "}
                                             <IoChevronDown className="duration-150 rotate" />
-                                        </Link>
-                                        <Dropdown shown={hoverDropdown3}>
+                                        </div>
+                                        <Dropdown
+                                            shown={hoverDropdown.dropdown3}
+                                        >
                                             <DropLink href="/prestasi">
                                                 PRESTASI
                                             </DropLink>
@@ -155,6 +177,14 @@ export default function Navbar({ subnav, logo }) {
                 </div>
                 <SubNavbar subnav={subnav} />
                 <Sidebar isActive={sidebar} />
+                <div
+                    onClick={() => setSidebar(false)}
+                    className={`w-full min-h-screen fixed top-0 lg:hidden ${
+                        sidebar == false
+                            ? "opacity-0 bg-transparent duration-500 invisible"
+                            : "opacity-50 bg-black delay-300 duration-700 block"
+                    }`}
+                ></div>
             </nav>
         </>
     );

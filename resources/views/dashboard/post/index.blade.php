@@ -22,7 +22,7 @@
 			<div class="section-body">
 				<h2 class="section-title">Kelola {{ $title }}</h2>
 				<p class="section-lead">
-					Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+					Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
 				</p>
 				<div class="row">
 					<div class="col-12">
@@ -101,11 +101,11 @@
                                                         </div>
 													</td>
 													<td>
-														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Lihat {{ $kategori }}">
+														<a href="{{ route('post.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat {{ $kategori }}">
 															<i class="fas fa-eye"></i>
 														</a>
 														<a href="{{ route('post.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit {{ $kategori }}">
-															<i class="fas fa-edit"></i>
+															<i class="fas fa-pen"></i>
 														</a>
 														<a href="{{ route('post.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true"  data-toggle="tooltip" title="Hapus {{ $kategori }}">
 															<i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>

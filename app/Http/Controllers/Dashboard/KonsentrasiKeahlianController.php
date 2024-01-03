@@ -7,6 +7,7 @@ use App\Models\KonsentrasiKeahlian;
 use App\Models\ProgramKeahlian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class KonsentrasiKeahlianController extends Controller
 {
@@ -58,8 +59,7 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $konsentrasi = [
             'slug' => $slug,
@@ -80,6 +80,18 @@ class KonsentrasiKeahlianController extends Controller
             $konsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
         }
 
+        if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+            ]);
+
+            $file = $request->file('gambar');
+            $gambar = $slug . '.' . $file->extension();
+            $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
+
+            $konsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
+        }
+
         try {
             KonsentrasiKeahlian::create($konsentrasi);
 
@@ -98,7 +110,17 @@ class KonsentrasiKeahlianController extends Controller
      */
     public function show(KonsentrasiKeahlian $konsentrasi)
     {
-        //
+        $konsentrasi->load(['program', 'program.bidang', 'galeri']);
+
+        confirmDelete('Hapus Gambar?', 'Yakin ingin hapus gambar dari galeri?');
+
+        return view('dashboard.jurusan.konsentrasi.detail')
+            ->with([
+                'title' => 'Detail Konsentrasi Keahlian',   
+                'active' => 'Jurusan',
+                'subActive' => 'Konsentrasi',
+                'konsentrasi' => $konsentrasi,
+            ]);
     }
 
     /**
@@ -130,8 +152,7 @@ class KonsentrasiKeahlianController extends Controller
             'id_program' => 'required',
         ]);
 
-        $nama = preg_replace('/[^a-z0-9]+/i', ' ', $request->input('nama'));
-        $slug = strtolower(str_replace(' ', '-', $nama));
+        $slug = Str::slug($request->input('nama'));
 
         $newKonsentrasi = [
             'slug' => $slug,
@@ -147,13 +168,29 @@ class KonsentrasiKeahlianController extends Controller
 
             $file = $request->file('icon');
             $icon = 'icon-' . $slug . '.' . $file->extension();
-            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
 
-            if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
+            if ($konsentrasi->icon !== '/images/default/icon-jurusan.png') {
                 File::delete(public_path($konsentrasi->icon));
             }
-
+            
+            $file->move(public_path('storage/jurusan/konsentrasi'), $icon);
             $newKonsentrasi['icon'] = '/storage/jurusan/konsentrasi/' . $icon;
+        }
+
+        if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+            ]);
+
+            $file = $request->file('gambar');
+            $gambar = $slug . '.' . $file->extension();
+
+            if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
+                File::delete(public_path($konsentrasi->gambar));
+            }
+            
+            $file->move(public_path('storage/jurusan/konsentrasi'), $gambar);
+            $newKonsentrasi['gambar'] = '/storage/jurusan/konsentrasi/' . $gambar;
         }
 
         try {
@@ -174,17 +211,43 @@ class KonsentrasiKeahlianController extends Controller
      */
     public function destroy(KonsentrasiKeahlian $konsentrasi)
     {
-        if (!str_contains($konsentrasi->icon, 'icon-jurusan.png')) {
+        if ($konsentrasi->icon !== '/images/default/icon-jurusan.png') {
             File::delete(public_path($konsentrasi->icon));
         }
 
-        if (!str_contains($konsentrasi->gambar, 'no-image-169.png')) {
+        if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
             File::delete(public_path($konsentrasi->gambar));
         }
 
         $konsentrasi->delete();
 
         toast('Konsentrasi Keahlian berhasil dihapus!', 'success');
+
+        return redirect()->back();
+    }
+
+    public function update_image(Request $request, KonsentrasiKeahlian $konsentrasi)
+    {
+        $request->validate([
+            'gambar' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg,webp',
+        ]);
+
+        $file = $request->file('gambar');
+        $gambarNama = $konsentrasi->slug . '.' . $file->extension();
+
+        if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
+            File::delete(public_path($konsentrasi->gambar));
+        }
+        
+        $file->move(public_path('storage/jurusan/konsentrasi'), $gambarNama);
+        $gambar = '/storage/jurusan/konsentrasi/' . $gambarNama;
+
+        try {
+            $konsentrasi->update(['gambar' => $gambar,]);
+            toast('Konsentrasi Keahlian berhasil diedit!', 'success');
+        } catch (\Exception $e) {
+            toast('Konsentrasi Keahlian gagal diedit!', 'warning');
+        }
 
         return redirect()->back();
     }

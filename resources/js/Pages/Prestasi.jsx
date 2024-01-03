@@ -1,33 +1,49 @@
 import Container from "@/Components/Container/Container";
 import LandingLayout from "@/Layouts/LandingLayout";
 import MadingLayout from "@/Layouts/MadingLayout";
-import PostLayout from "@/Layouts/PostLayout";
 import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
+import CardListLayout from "@/Layouts/CardListLayout";
+import ImageModal from "@/Components/Modal/ImageModal";
+import FilterPrestasi from "@/Components/Modal/FilterPrestasi";
+import Pagination from "@/Components/Pagination/Pagination";
 
 function Prestasi(props) {
+    const [filter, setFilter] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState("");
-    console.log(props);
     const openModal = () => {
         setShowModal(true);
     };
 
-    const closeModal = () => {
-        setShowModal(false);
-    };
+    let url = window.location.href
+        .split(`page=${props.allPrestasi.current_page}#paginate`)
+        .join("");
+
+    let urlPost = window.location.href
+        .split(`page=${props.allPrestasi.current_page}#post`)
+        .join("");
 
     let handleSearch = (e) => {
         e.preventDefault();
-        router.get(`${window.location.pathname}#post`, {
-            search: search,
-        });
+        router.get(
+            `${
+                window.location.href.slice(-5) == "#post"
+                    ? urlPost
+                    : `${url}#post`
+            }`,
+            {
+                search: search,
+            }
+        );
     };
     return (
         <LandingLayout
+            namaSekolah={props.sekolah.nama_sekolah}
             logo={props.sekolah.logo_sekolah}
+            favicon={props.sekolah.favicon}
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
@@ -40,18 +56,23 @@ function Prestasi(props) {
                 >
                     {props.post !== null ? (
                         <>
-                            {/* <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
-                                {window.location.pathname.split("/").length < 4
-                                    ? `${props.post.kategori} TERBARU`
-                                    : `DETAIL ${props.post.kategori}`}
-                            </h1> */}
+                            <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
+                                {window.location.pathname.split("/").length < 3
+                                    ? `PRESTASI TERBARU`
+                                    : `DETAIL PRESTASI`}
+                            </h1>
                             <div className="flex flex-col gap-2 md:flex-row xl:flex-col md:gap-4">
-                                <img
-                                    onClick={openModal}
-                                    src={`${props.prestasi.gambar}`}
-                                    alt="thumbnail post"
-                                    className="max-h-[200px] object-cover xl:max-h-[380px] cursor-zoom-in md:w-1/2 xl:w-full"
-                                />
+                                <div className="relative md:w-1/2 xl:w-full">
+                                    <img
+                                        onClick={openModal}
+                                        src={`${props.prestasi.gambar}`}
+                                        alt="thumbnail post"
+                                        className="max-h-[200px] w-full object-cover xl:max-h-[380px] cursor-zoom-in "
+                                    />
+                                    <div className="absolute top-0 right-0 px-4 py-2 capitalize xl:px-6 rounded-bl-2xl bg-primary text-secondary">
+                                        {props.prestasi.kategori}
+                                    </div>
+                                </div>
                                 <div className="flex flex-col">
                                     <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
                                         {props.prestasi.judul}
@@ -65,13 +86,9 @@ function Prestasi(props) {
                                             props.prestasi.created_at
                                         ).toLocaleDateString("id-ID")}
                                     </p>
-                                    <div className="flex flex-wrap items-center justify-between mt-2 font-semibold text-primary">
-                                        <figure>
-                                            Peserta Lomba:{" "}
-                                            {props.prestasi.pemenang}
-                                        </figure>
-                                        <p>Tingkat {props.prestasi.kategori}</p>
-                                    </div>
+                                    <figure className="mt-2 font-semibold text-primary">
+                                        Peserta Lomba: {props.prestasi.peserta}
+                                    </figure>
                                     <p
                                         dangerouslySetInnerHTML={{
                                             __html: props.prestasi.konten,
@@ -96,14 +113,26 @@ function Prestasi(props) {
                 </MadingLayout>
             </Container>
 
-            <Container classname="my-10 md:mt-16" id="post">
+            <Container classname="relative my-12 md:mt-20">
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="post"
+                ></div>
+                <div
+                    className="absolute h-20 bg-transparent -top-44 -z-10"
+                    id="paginate"
+                ></div>
+
                 <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
-                        Postingan Lainnya
+                        Prestasi Lainnya
                     </h3>
 
                     <div className="flex items-center gap-2 md:gap-3">
-                        <button className="p-2 border-2 rounded-md border-slate-300">
+                        <button
+                            className="p-2 border-2 rounded-md border-slate-300"
+                            onClick={() => setFilter(true)}
+                        >
                             <FaFilter />
                         </button>
 
@@ -134,30 +163,33 @@ function Prestasi(props) {
                 </div>
             </Container>
 
-            <Container classname="my-10 md:mt-7 md:mb-16">
-                <PostLayout data={props.allPrestasi.data} />
+            <Container classname="my-10 md:mt-5 md:mb-16">
+                <CardListLayout data={props.allPrestasi.data} type="prestasi" />
+
+                <Pagination
+                    firstPageUrl={props.allPrestasi.first_page_url}
+                    lastPageUrl={props.allPrestasi.last_page_url}
+                    nextPage={props.allPrestasi.next_page_url}
+                    prevPage={props.allPrestasi.prev_page_url}
+                    currentPage={props.allPrestasi.current_page}
+                    lastPage={props.allPrestasi.last_page}
+                    links={props.allPrestasi.links}
+                />
             </Container>
 
+            <FilterPrestasi
+                active={filter}
+                onClick={() => setFilter(false)}
+                penulis={props.penulis}
+                paginate={props.allPrestasi.current_page}
+            />
+
             {showModal && (
-                <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full">
-                    <div
-                        className="fixed top-0 left-0 w-full h-full opacity-75 modal-overlay"
-                        onClick={closeModal}
-                    ></div>
-                    <div className="flex justify-center object-contain w-full p-4 bg-white rounded-lg shadow-lg modal-content">
-                        <img
-                            src={`${props.post.gambar}`}
-                            alt="Preview"
-                            className="object-contain w-1/2 max-h-1/2 z-[55]"
-                        />
-                        <button
-                            onClick={closeModal}
-                            className="px-4 py-2 mt-2 text-white rounded-md bg-primary"
-                        >
-                            Tutup
-                        </button>
-                    </div>
-                </div>
+                <ImageModal
+                    src={props.prestasi.gambar}
+                    active={showModal}
+                    onClick={() => setShowModal(false)}
+                />
             )}
         </LandingLayout>
     );

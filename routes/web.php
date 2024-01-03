@@ -1,18 +1,24 @@
 <?php
 
+use App\Http\Controllers\Dashboard\SekolahController;
+use App\Http\Controllers\Dashboard\TentangSekolahController;
 use App\Http\Controllers\Dashboard\BidangKeahlianController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\EkskulController;
+use App\Http\Controllers\Dashboard\GaleriKonsentrasiController;
+use App\Http\Controllers\Dashboard\HeroSectionController;
 use App\Http\Controllers\Dashboard\KonsentrasiKeahlianController;
 use App\Http\Controllers\Dashboard\MapelController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\PrestasiController;
 use App\Http\Controllers\Dashboard\ProgramKeahlianController;
+use App\Http\Controllers\Dashboard\SambutanKepsekController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
+use App\Http\Controllers\JurusanPageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PostPageController;
 use App\Http\Controllers\PrestasiPageController;
@@ -39,14 +45,23 @@ Route::get('/post/{kategori}', [PostPageController::class, 'index'])
 Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
     ->name('landing.post.show');
 
-Route::get('/guru', [GuruPageController::class, 'index'])
-    ->name('landing.guru');
+Route::get('/pegawai', [GuruPageController::class, 'index'])
+    ->name('landing.pegawai');
 
 Route::get('/prestasi', [PrestasiPageController::class, 'index'])
     ->name('landing.prestasi.index');
 
 Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
     ->name('landing.prestasi.show');
+
+Route::get('/jurusan', [JurusanPageController::class, 'index'])
+    ->name('landing.jurusan.index');
+
+Route::get('/jurusan/{konsentrasi}', [JurusanPageController::class, 'show'])
+    ->name('landing.jurusan.show');
+
+Route::get('/profil-sekolah', [TentangSekolahController::class, 'index'])
+    ->name('landing.sekolah');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('checkLevel:admin,author')->group(function () {
@@ -81,25 +96,25 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('checkLevel:admin')->group(function () {
-        Route::prefix('dashboard')->group(function() {
+        Route::prefix('dashboard')->group(function () {
             Route::prefix('kesiswaan')->group(function () {
                 Route::resource('/ekskul', EkskulController::class);
             });
-    
+
             Route::resource('/guru', TenagaPendidikController::class);
-    
+
             Route::prefix('guru')->group(function () {
                 Route::post('/import', [TenagaPendidikController::class, 'import'])
                     ->name('guru.import');
-    
+
                 Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
                     ->name('guru.export');
             });
 
             Route::resource('/mapel', MapelController::class);
-    
+
             Route::resource('/user', UsersController::class);
-    
+
             Route::resource('/sosmed', SocialMediaController::class);
 
             Route::resource('/sub-navbar', SubNavbarController::class);
@@ -113,7 +128,36 @@ Route::middleware('auth')->group(function () {
                 Route::resource('/program', ProgramKeahlianController::class);
 
                 Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
+
+                Route::patch('/konsentrasi/{konsentrasi}/gambar', [KonsentrasiKeahlianController::class, 'update_image'])
+                    ->name('konsentrasi.gambar');
+
+                Route::resource('/galeri', GaleriKonsentrasiController::class);
             });
+
+            Route::get('/hero', [HeroSectionController::class, 'edit'])
+                ->name('hero.edit');
+
+            Route::patch('/hero', [HeroSectionController::class, 'update'])
+                ->name('hero.update');
+
+            Route::get('/sambutan', [SambutanKepsekController::class, 'edit'])
+                ->name('sambutan.edit');
+
+            Route::patch('/sambutan', [SambutanKepsekController::class, 'update'])
+                ->name('sambutan.update');
+
+            Route::get('/tentang', [TentangSekolahController::class, 'edit'])
+                ->name('tentang.edit');
+
+            Route::patch('/tentang', [TentangSekolahController::class, 'update'])
+                ->name('tentang.update');
+
+            Route::get('/sekolah', [SekolahController::class, 'edit'])
+                ->name('sekolah.edit');
+
+            Route::patch('/sekolah', [SekolahController::class, 'update'])
+                ->name('sekolah.update');
         });
     });
 });

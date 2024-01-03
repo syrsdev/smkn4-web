@@ -14,6 +14,9 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
+        Post::factory(13)->create();
+        Prestasi::factory(14)->create();
+
         Post::insert([
             [
                 'judul' => 'Lorem ipsum dolor sit amet',
@@ -31,7 +34,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 3',
@@ -40,7 +43,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 4',
@@ -49,7 +52,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 5',
@@ -58,7 +61,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 6',
@@ -67,7 +70,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 2,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
             ],
             [
                 'judul' => 'Lorem ipsum dolor sit amet 7',
@@ -76,7 +79,7 @@ class PostSeeder extends Seeder
                 'konten' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eos quisquam, excepturi eius ab vero porro nostrum debitis rem hic.',
                 'status' => '1',
                 'id_penulis' => 1,
-                'created_at' => now(),
+                'created_at' => date('Y-m-d H:i:s', strtotime('-3 days')),
             ],
         ]);
 
@@ -86,7 +89,7 @@ class PostSeeder extends Seeder
                 'slug' => 'machine-learning-se-asia',
                 'kategori' => 'internasional',
                 'konten' => 'Machine Learning Se-Asia',
-                'pemenang' => 'Yasser Aziz Alfalah',
+                'peserta' => 'Yasser Aziz Alfalah',
                 'status' => '1',
                 'id_penulis' => 1,
                 'created_at' => now(),
@@ -96,7 +99,7 @@ class PostSeeder extends Seeder
                 'slug' => 'membuat-aplikasi-flutter',
                 'kategori' => 'nasional',
                 'konten' => 'Membuat Aplikasi Flutter',
-                'pemenang' => 'Surya Nata Ardhana',
+                'peserta' => 'Surya Nata Ardhana',
                 'status' => '1',
                 'id_penulis' => 1,
                 'created_at' => now(),
@@ -106,7 +109,7 @@ class PostSeeder extends Seeder
                 'slug' => 'web-design-se-provinsi-banten',
                 'kategori' => 'provinsi',
                 'konten' => 'Web Design Se-Provinsi Banten',
-                'pemenang' => 'Arnold Darmawan',
+                'peserta' => 'Arnold Darmawan',
                 'status' => '1',
                 'id_penulis' => 1,
                 'created_at' => now(),
@@ -116,7 +119,27 @@ class PostSeeder extends Seeder
                 'slug' => 'back-end-with-laravel',
                 'kategori' => 'kota',
                 'konten' => 'Back-End with Laravel',
-                'pemenang' => 'Muhamad Citra Hidayat',
+                'peserta' => 'Muhamad Citra Hidayat',
+                'status' => '1',
+                'id_penulis' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'judul' => 'Back-End with Express',
+                'slug' => 'back-end-with-Express',
+                'kategori' => 'provinsi',
+                'konten' => 'Back-End with Express',
+                'peserta' => 'Muhamad Citra Hidayat',
+                'status' => '1',
+                'id_penulis' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'judul' => 'IoT Expert',
+                'slug' => 'iot-expert',
+                'kategori' => 'internasional',
+                'konten' => 'IoT Expert',
+                'peserta' => 'Surya Nata Ardhana',
                 'status' => '1',
                 'id_penulis' => 1,
                 'created_at' => now(),

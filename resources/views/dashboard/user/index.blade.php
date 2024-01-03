@@ -24,7 +24,7 @@
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa menambah, mengedit dan menghapus {{ $title }}.
+                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
                 </p>
                 @include('dashboard.user.create')
                 <div class="row">
@@ -53,7 +53,7 @@
                                         </div>
                                         @if ($item->id !== Auth::id())
                                             <button class="btn btn-sm btn-warning" data-toggle="collapse" data-target="#edit{{ $item->slug }}">
-                                                <i class="fas fa-edit"></i>
+                                                <i class="fas fa-pen"></i>
                                             </button>
                                             <a href="{{ route('user.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">
                                                 <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
