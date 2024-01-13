@@ -65,15 +65,7 @@
                                                         <img src="{{ asset($item->gambar) }}" alt="{{ $item->nama }}" style="width: 100px">
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
-                                                    <td>
-                                                        @if ($item->bagian === 'pendidik')
-                                                            Tenaga Pendidik
-                                                        @elseif ($item->bagian === 'kependidikan')
-                                                            Tenaga Kepegawaian
-                                                        @else
-                                                            -
-                                                        @endif
-                                                    </td>
+                                                    <td>Tenaga {{ ucfirst($item->bagian) }}</td>
                                                     <td>
                                                         @if ($item->sub_bagian === 'guru')
                                                             Guru Produktif
