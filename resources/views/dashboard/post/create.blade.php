@@ -34,21 +34,24 @@
                                 <h4>Tulis Post</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                                <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     @csrf
-                                    <input type="hidden" name="id_penulis" value="{{ Auth::id() }}">
+                                    <input type="hidden" name="penulis" value="{{ Auth::id() }}">
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="judul"
-                                                value="{{ Session::get('judul') }}" autofocus>
+                                        <label for="judul" class="col-form-label text-md-right col-12 col-md-3">Judul</label>
+                                        <div class="col-12 col-md-7">
+                                            <input type="text" class="form-control" id="judul" name="judul" value="{{ old('judul') }}" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label
-                                            class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" name="kategori">
+                                        <label for="kategori" class="col-form-label text-md-right col-12 col-md-3">Kategori</label>
+                                        <div class="col-12 col-md-7">
+                                            <select class="form-control selectric" id="kategori" name="kategori" required>
                                                 <option disabled selected>Kategori</option>
                                                 <option value="agenda">Agenda</option>
                                                 <option value="artikel">Artikel</option>
@@ -58,14 +61,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <textarea class="form-control" name="konten">{{ Session::get('konten') }}</textarea>
+                                        <label for="konten" class="col-form-label text-md-right col-12 col-md-3">Konten</label>
+                                        <div class="col-12 col-md-7">
+                                            <textarea class="form-control" id="konten" name="konten" required>{{ old('konten') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Gambar</label>
+                                        <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
                                                 <input type="file" class="form-control" name="gambar" id="image-upload">
@@ -73,8 +76,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3"></label>
+                                        <div class="col-12 col-md-7">
                                             <button type="submit" class="btn btn-primary">Tambah Post</button>
                                         </div>
                                     </div>

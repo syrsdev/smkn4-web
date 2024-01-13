@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class PrestasiController extends Controller
@@ -22,12 +21,13 @@ class PrestasiController extends Controller
 
         confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Prestasi?');
 
-        return view('dashboard.prestasi.index')->with([
-            'title' => 'Data Prestasi',
-            'active' => 'Kesiswaan',
-            'subActive' => 'Prestasi',
-            'prestasi' => $prestasi,
-        ]);
+        return view('dashboard.prestasi.index')
+            ->with([
+                'title'     => 'Data Prestasi',
+                'active'    => 'Kesiswaan',
+                'subActive' => 'Prestasi',
+                'prestasi'  => $prestasi,
+            ]);
     }
 
     /**
@@ -37,8 +37,8 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.create')
             ->with([
-                'title' => 'Tambah Prestasi', 
-                'active' => 'Kesiswaan', 
+                'title'     => 'Tambah Prestasi', 
+                'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi'
             ]);
     }
@@ -48,32 +48,28 @@ class PrestasiController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('judul', $request->input('judul'));
-        Session::flash('konten', $request->input('konten'));
-        Session::flash('peserta', $request->input('peserta'));
-
         $request->validate([
-            'judul' => 'required',
-            'kategori' => 'required',
-            'konten' => 'required',
-            'peserta' => 'required',
-            'id_penulis' => 'required',
+            'judul'    => ['required', 'string', 'unique:prestasi,judul', 'max:255'],
+            'kategori' => ['required'],
+            'konten'   => ['required', 'string'],
+            'peserta'  => ['required', 'string', 'max:255'],
+            'penulis'  => ['required'],
         ]);
 
         $slug = Str::slug($request->input('judul'));
 
         $prestasi = [
-            'slug' => $slug,
-            'judul' => $request->input('judul'),
-            'kategori' => $request->input('kategori'),
-            'konten' => $request->input('konten'),
-            'peserta' => $request->input('peserta'),
-            'id_penulis' => $request->input('id_penulis'),
+            'slug'       => $slug,
+            'judul'      => $request->input('judul'),
+            'kategori'   => $request->input('kategori'),
+            'konten'     => $request->input('konten'),
+            'peserta'    => $request->input('peserta'),
+            'id_penulis' => $request->input('penulis'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'] 
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'] 
             ]);
 
             $file = $request->file('gambar');
@@ -109,11 +105,11 @@ class PrestasiController extends Controller
 
         return view('dashboard.prestasi.detail')
             ->with([
-                'title' => 'Detail Prestasi', 
-                'active' => 'Kesiswaan', 
+                'title'     => 'Detail Prestasi', 
+                'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi', 
-                'prestasi' => $prestasi,
-                'other' => $other,
+                'prestasi'  => $prestasi,
+                'other'     => $other,
             ]);
     }
 
@@ -124,10 +120,10 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.edit')
             ->with([
-                'title' => 'Edit Prestasi', 
-                'active' => 'Kesiswaan', 
+                'title'     => 'Edit Prestasi', 
+                'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi', 
-                'prestasi' => $prestasi,
+                'prestasi'  => $prestasi,
             ]);
     }
 
@@ -137,27 +133,27 @@ class PrestasiController extends Controller
     public function update(Request $request, Prestasi $prestasi)
     {
         $request->validate([
-            'judul' => 'required',
-            'kategori' => 'required',
-            'konten' => 'required',
-            'peserta' => 'required',
-            'id_penulis' => 'required',
+            'judul'    => ['required', 'string', 'unique:prestasi,judul,'.$prestasi->id, 'max:255'],
+            'kategori' => ['required'],
+            'konten'   => ['required', 'string'],
+            'peserta'  => ['required', 'string', 'max:255'],
+            'penulis'  => ['required'],
         ]);
 
         $slug = Str::slug($request->input('judul'));        
 
         $updatedPrestasi = [
-            'slug' => $slug,
-            'judul' => $request->input('judul'),
-            'kategori' => $request->input('kategori'),
-            'konten' => $request->input('konten'),
-            'peserta' => $request->input('peserta'),
-            'id_penulis' => $request->input('id_penulis'),
+            'slug'       => $slug,
+            'judul'      => $request->input('judul'),
+            'kategori'   => $request->input('kategori'),
+            'konten'     => $request->input('konten'),
+            'peserta'    => $request->input('peserta'),
+            'id_penulis' => $request->input('penulis'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'] 
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'] 
             ]);
 
             $file = $request->file('gambar');
