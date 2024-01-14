@@ -8,7 +8,6 @@ use App\Models\Prestasi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class UsersController extends Controller
@@ -25,7 +24,7 @@ class UsersController extends Controller
 
         $users->each(function ($user) {
             $user->views = [
-                'post' => Post::where('id_penulis', $user->id)->sum('views'),
+                'post'     => Post::where('id_penulis', $user->id)->sum('views'),
                 'prestasi' => Prestasi::where('id_penulis', $user->id)->sum('views'),
             ];
         });
@@ -34,10 +33,10 @@ class UsersController extends Controller
 
         return view('dashboard.user.index')
             ->with([
-                'title' => 'Data User',
-                'active' => 'User',
+                'title'     => 'Data User',
+                'active'    => 'User',
                 'subActive' => null,
-                'users' => $users,
+                'users'     => $users,
             ]);
     }
 
@@ -48,8 +47,8 @@ class UsersController extends Controller
     {
         return view('dashboard.user.create')
             ->with([
-                'title' => 'Tambah User',
-                'active' => 'User',
+                'title'     => 'Tambah User',
+                'active'    => 'User',
                 'subActive' => null,
             ]);
     }
@@ -59,23 +58,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('name', $request->input('name'));
-        Session::flash('email', $request->input('email'));
-
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'level' => 'required',
+            'nama'     => ['required', 'string', 'unique:users,name', 'max:255'],
+            'email'    => ['required', 'email', 'unique:users,email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
+            'level'    => ['required'],
         ]);
 
         try {
             User::create([
-                'slug' => Str::slug($request->input('name')),
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
+                'slug'     => Str::slug($request->input('nama')),
+                'name'     => $request->input('nama'),
+                'email'    => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
-                'level' => $request->input('level'),
+                'level'    => $request->input('level'),
             ]);
 
             toast('User berhasil dibuat!', 'success');
@@ -87,24 +83,16 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(User $user)
     {
         return view('dashboard.user.edit')
             ->with([
-                'title' => 'Edit User',
-                'active' => 'User',
+                'title'     => 'Edit User',
+                'active'    => 'User',
                 'subActive' => null,
-                'user' => $user,
+                'user'      => $user,
             ]);
     }
 
@@ -114,15 +102,15 @@ class UsersController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'level' => 'required',
+            'nama'     => ['required', 'string', 'unique:users,name,'.$user->id, 'max:255'],
+            'email'    => ['required', 'email', 'unique:users,email,'.$user->id, 'max:255'],
+            'level'    => ['required'],
         ]);
 
         try {
             $user->update([
-                'slug' => Str::slug($request->input('name')),
-                'name' => $request->input('name'),
+                'slug'  => Str::slug($request->input('nama')),
+                'name'  => $request->input('nama'),
                 'email' => $request->input('email'),
                 'level' => $request->input('level'),
             ]);

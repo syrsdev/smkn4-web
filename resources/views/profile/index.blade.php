@@ -20,6 +20,11 @@
                 <p class="section-lead">
                     Ubah informasi tentang diri Anda di halaman ini.
                 </p>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
+                @endif
                 <div class="row mt-sm-4">
                     <div class="col-12 col-md-12 col-lg-6">
                         <div class="card profile-widget">
@@ -92,7 +97,7 @@
                     </div>
                     <div class="col-12 col-md-12 col-lg-6">
                         <div class="card">
-                            <form action="{{ route('profile.update') }}" method="post" class="needs-validation" novalidate="">
+                            <form action="{{ route('profile.update') }}" method="post" class="needs-validation" novalidate>
                                 @csrf
                                 @method('PATCH')
                                 <div class="card-header">
@@ -102,8 +107,8 @@
                                     <p>Perbarui informasi profil dan alamat email akun Anda.</p>
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required>
+                                            <label for="nama">Nama</label>
+                                            <input type="text" class="form-control" id="nama" name="name" value="{{ Auth::user()->name }}" required>
                                             <div class="invalid-feedback">
                                                 Silakan isi nama lengkap Anda
                                             </div>
@@ -111,8 +116,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" required>
                                             <div class="invalid-feedback">
                                                 Silakan isi email Anda
                                             </div>
@@ -125,7 +130,7 @@
                             </form>
                         </div>
                         <div class="card">
-                            <form action="{{ route('password.update') }}" method="post" class="needs-validation" novalidate="">
+                            <form action="{{ route('password.update') }}" method="post" class="needs-validation" novalidate>
                                 @csrf
                                 @method('PUT')
                                 <div class="card-header">
@@ -135,20 +140,20 @@
                                     <p>Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.</p>
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <label>Password Saat Ini</label>
-                                            <input type="password" class="form-control" name="current_password" required>
+                                            <label for="current_password">Password Saat Ini</label>
+                                            <input type="password" class="form-control" id="current_password" name="current_password" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <label>Password Baru</label>
-                                            <input type="password" class="form-control" name="password" required>
+                                            <label for="password">Password Baru</label>
+                                            <input type="password" class="form-control" id="password" name="password" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-12">
-                                            <label>Konfirmasi Password</label>
-                                            <input type="password" class="form-control" name="password_confirmation" required>
+                                            <label for="password_confirmation">Konfirmasi Password</label>
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                                         </div>
                                     </div>
                                 </div>

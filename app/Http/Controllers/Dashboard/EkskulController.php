@@ -105,7 +105,7 @@ class EkskulController extends Controller
     public function update(Request $request, Ekskul $ekskul)
     {
         $request->validate([
-            'nama'        => ['required', 'string', 'unique:ekskul,nama', 'max:255'],
+            'nama'        => ['required', 'string', 'unique:ekskul,nama,'.$ekskul->id, 'max:255'],
             'link_sosmed' => ['nullable'],
         ]);
 
