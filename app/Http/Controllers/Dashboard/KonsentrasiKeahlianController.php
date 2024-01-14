@@ -24,9 +24,9 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.index')
             ->with([
-                'title' => 'Konsentrasi Keahlian',
-                'active' => 'Jurusan',
-                'subActive' => 'Konsentrasi',
+                'title'       => 'Konsentrasi Keahlian',
+                'active'      => 'Jurusan',
+                'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
             ]);
     }
@@ -41,10 +41,10 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.create')
             ->with([
-                'title' => 'Tambah Konsentrasi Keahlian',
-                'active' => 'Jurusan',
+                'title'     => 'Tambah Konsentrasi Keahlian',
+                'active'    => 'Jurusan',
                 'subActive' => 'Konsentrasi',
-                'program' => $program,
+                'program'   => $program,
             ]);
     }
 
@@ -54,23 +54,23 @@ class KonsentrasiKeahlianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'id_program' => 'required',
+            'nama'      => ['required', 'string', 'unique:konsentrasi_keahlian,nama', 'max:255'],
+            'deskripsi' => ['required', 'string'],
+            'program'   => ['required'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $konsentrasi = [
-            'slug' => $slug,
-            'nama' => $request->input('nama'),
-            'deskripsi' => $request->input('deskripsi'),
-            'id_program' => $request->input('id_program'),
+            'slug'       => $slug,
+            'nama'       => $request->input('nama'),
+            'deskripsi'  => $request->input('deskripsi'),
+            'id_program' => $request->input('program'),
         ];
 
         if ($request->hasFile('icon')) {
             $request->validate([
-                'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+                'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'],
             ]);
 
             $file = $request->file('icon');
@@ -82,7 +82,7 @@ class KonsentrasiKeahlianController extends Controller
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'],
             ]);
 
             $file = $request->file('gambar');
@@ -116,9 +116,9 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.detail')
             ->with([
-                'title' => 'Detail Konsentrasi Keahlian',   
-                'active' => 'Jurusan',
-                'subActive' => 'Konsentrasi',
+                'title'       => 'Detail Konsentrasi Keahlian',   
+                'active'      => 'Jurusan',
+                'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
             ]);
     }
@@ -133,11 +133,11 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.edit')
             ->with([
-                'title' => 'Edit Konsentrasi Keahlian',
-                'active' => 'Jurusan',
-                'subActive' => 'Konsentrasi',
+                'title'       => 'Edit Konsentrasi Keahlian',
+                'active'      => 'Jurusan',
+                'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
-                'program' => $program,
+                'program'     => $program,
             ]);
     }
 
@@ -147,23 +147,23 @@ class KonsentrasiKeahlianController extends Controller
     public function update(Request $request, KonsentrasiKeahlian $konsentrasi)
     {
         $request->validate([
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'id_program' => 'required',
+            'nama'      => ['required', 'string', 'unique:konsentrasi_keahlian,nama,'.$konsentrasi->id, 'max:255'],
+            'deskripsi' => ['required', 'string'],
+            'program'   => ['required'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $newKonsentrasi = [
-            'slug' => $slug,
-            'nama' => $request->input('nama'),
-            'deskripsi' => $request->input('deskripsi'),
-            'id_program' => $request->input('id_program'),
+            'slug'       => $slug,
+            'nama'       => $request->input('nama'),
+            'deskripsi'  => $request->input('deskripsi'),
+            'id_program' => $request->input('program'),
         ];
 
         if ($request->hasFile('icon')) {
             $request->validate([
-                'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+                'icon' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'],
             ]);
 
             $file = $request->file('icon');
@@ -179,7 +179,7 @@ class KonsentrasiKeahlianController extends Controller
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg'],
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp'],
             ]);
 
             $file = $request->file('gambar');
@@ -222,32 +222,6 @@ class KonsentrasiKeahlianController extends Controller
         $konsentrasi->delete();
 
         toast('Konsentrasi Keahlian berhasil dihapus!', 'success');
-
-        return redirect()->back();
-    }
-
-    public function update_image(Request $request, KonsentrasiKeahlian $konsentrasi)
-    {
-        $request->validate([
-            'gambar' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg,webp',
-        ]);
-
-        $file = $request->file('gambar');
-        $gambarNama = $konsentrasi->slug . '.' . $file->extension();
-
-        if ($konsentrasi->gambar !== '/images/default/no-image-169.png') {
-            File::delete(public_path($konsentrasi->gambar));
-        }
-        
-        $file->move(public_path('storage/jurusan/konsentrasi'), $gambarNama);
-        $gambar = '/storage/jurusan/konsentrasi/' . $gambarNama;
-
-        try {
-            $konsentrasi->update(['gambar' => $gambar,]);
-            toast('Konsentrasi Keahlian berhasil diedit!', 'success');
-        } catch (\Exception $e) {
-            toast('Konsentrasi Keahlian gagal diedit!', 'warning');
-        }
 
         return redirect()->back();
     }

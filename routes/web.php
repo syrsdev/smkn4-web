@@ -145,9 +145,6 @@ Route::middleware('auth')->group(function () {
 
                 Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
 
-                Route::patch('/konsentrasi/{konsentrasi}/gambar', [KonsentrasiKeahlianController::class, 'update_image'])
-                    ->name('konsentrasi.gambar');
-
                 Route::resource('/galeri', GaleriKonsentrasiController::class);
             });
 
