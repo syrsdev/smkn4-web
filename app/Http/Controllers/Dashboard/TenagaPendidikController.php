@@ -9,7 +9,6 @@ use App\Models\Mapel;
 use App\Models\Pendidik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -57,8 +56,6 @@ class TenagaPendidikController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('nama', $request->input('nama'));
-
         $request->validate([
             'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama', 'max:255'],
             'bagian'     => ['required'],
@@ -73,7 +70,7 @@ class TenagaPendidikController extends Controller
             'nama'       => $request->input('nama'),
             'bagian'     => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
-            'mapel'      => $request->input('mapel'),
+            'id_mapel'   => $request->input('mapel'),
         ];
 
         if ($request->hasFile('gambar')) {
@@ -138,7 +135,7 @@ class TenagaPendidikController extends Controller
             'nama'       => $request->input('nama'),
             'bagian'     => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
-            'mapel'      => $request->input('mapel'),
+            'id_mapel'   => $request->input('mapel'),
         ];
 
         if ($request->hasFile('gambar')) {
