@@ -21,7 +21,7 @@
                 <p class="section-lead">
                     Anda bisa mengedit informasi Hero Konten disini. Mulai dari selamat datang, nama sekolah, deskripsi, dan gambar.
                 </p>
-                <form action="{{ route('hero.update') }}" method="post" enctype="multipart/form-data" class="needs-validation">
+                <form action="{{ route('hero.update') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
                     <div class="card" id="settings-card">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi" class="form-control-label">Deskripsi</label>
-                                <textarea class="form-control" name="deskripsi" style="height: 100px">{{ $heroSection['deskripsi'] }}</textarea>
+                                <textarea class="form-control" name="deskripsi" style="height: 100px" required>{{ $heroSection['deskripsi'] }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="form-group col-12 col-lg-4">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group col-12 col-md-6 col-lg-4">
                                     <label for="image_position" class="form-control-label">Posisi Gambar</label>
-                                    <select class="form-control selectric" id="image_position" name="image_position">
+                                    <select class="form-control selectric" id="image_position" name="image_position" required>
                                         <option value="top" {{ $heroSection['image_position'] === 'top' ? 'selected' : '' }}>Atas</option>
                                         <option value="center" {{ $heroSection['image_position'] === 'center' ? 'selected' : '' }}>Tengah</option>
                                         <option value="bottom" {{ $heroSection['image_position'] === 'bottom' ? 'selected' : '' }}>Bawah</option>

@@ -7,11 +7,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('mapel.store') }}" method="post">
+            <form action="{{ route('mapel.store') }}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body">
-                    <label>Nama Mata Pelajaran</label>
-                    <input type="text" class="form-control" name="nama" value="{{ Session::get('nama') }}">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">{{ $error }}</div>
+                        @endforeach
+                    @endif
+                    <div class="form-group">
+                        <label for="mapel">Nama Mata Pelajaran</label>
+                        <input type="text" class="form-control" id="mapel" name="mapel" value="{{ old('mapel') }}" required>
+                    </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

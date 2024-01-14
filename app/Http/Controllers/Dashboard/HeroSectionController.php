@@ -22,9 +22,9 @@ class HeroSectionController extends Controller
     {
         return view('dashboard.cms.hero.edit')
             ->with([
-                'title' => 'Hero Konten',
-                'active' => 'Hero',
-                'subActive' => null,
+                'title'       => 'Hero Konten',
+                'active'      => 'Hero',
+                'subActive'   => null,
                 'heroSection' => $this->heroSection,
             ]);
     }
@@ -32,8 +32,9 @@ class HeroSectionController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'welcome' => 'required',
-            'deskripsi' => 'required',
+            'welcome'        => ['required'],
+            'deskripsi'      => ['required'],
+            'image_position' => ['required'],
         ]);
 
         try {

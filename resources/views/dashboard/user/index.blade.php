@@ -26,6 +26,11 @@
                 <p class="section-lead">
                     Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
                 </p>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
+                @endif
                 @include('dashboard.user.create')
                 <div class="row">
                     @foreach ($users as $item)

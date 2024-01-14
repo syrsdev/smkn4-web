@@ -22,19 +22,11 @@ class BidangKeahlianController extends Controller
 
         return view('dashboard.jurusan.bidang.index')
             ->with([
-                'title' => 'Bidang Keahlian',
-                'active' => 'Jurusan',
+                'title'     => 'Bidang Keahlian',
+                'active'    => 'Jurusan',
                 'subActive' => 'Bidang',
-                'bidang' => $bidang,
+                'bidang'    => $bidang,
             ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -43,7 +35,7 @@ class BidangKeahlianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => ['required', 'string', 'unique:bidang_keahlian,nama', 'max:255'],
         ]);
 
         try {
@@ -61,28 +53,12 @@ class BidangKeahlianController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(BidangKeahlian $bidang)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(BidangKeahlian $bidang)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, BidangKeahlian $bidang)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => ['required', 'string', 'unique:bidang_keahlian,nama,'.$bidang->id, 'max:255'],
         ]);
 
         try {

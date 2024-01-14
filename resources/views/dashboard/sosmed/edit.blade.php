@@ -8,13 +8,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('sosmed.update', $item->id) }}" method="POST">
+                <form action="{{ route('sosmed.update', $item->id) }}" method="post" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
                         <div class="form-group">
-                            <label for="url">Link</label>
-                            <input type="text" class="form-control" id="url" name="url" value="{{ $item->url }}">
+                            <label for="link">Link</label>
+                            <input type="text" class="form-control" id="link" name="link" value="{{ $item->url }}">
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">

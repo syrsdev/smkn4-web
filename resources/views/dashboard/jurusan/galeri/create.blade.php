@@ -44,7 +44,7 @@
                             <div class="card-body">
                                 <form action="{{ route('galeri.store') }}" method="post" enctype="multipart/form-data" class="dropzone" id="mydropzone">
                                     @csrf
-                                    <input type="hidden" name="id_konsentrasi" id="id_konsentrasi" value="{{ $konsentrasi->id }}">
+                                    <input type="hidden" name="konsentrasi" id="konsentrasi" value="{{ $konsentrasi->id }}">
                                     <div class="fallback">
                                         <input type="file" name="gambar[]" multiple />
                                     </div>
@@ -73,9 +73,9 @@
             autoProcessQueue: false,
             init: function () {
                 this.on("sending", function (file, xhr, formData) {
-                    let id = document.getElementById("id_konsentrasi").value;
+                    let id = document.getElementById("konsentrasi").value;
                     
-                    formData.append("id_konsentrasi", id);
+                    formData.append("konsentrasi", id);
                 });
                 this.on("success", function (file, response) {
                     window.location.href = "{{ route('konsentrasi.show', $konsentrasi->slug) }}";

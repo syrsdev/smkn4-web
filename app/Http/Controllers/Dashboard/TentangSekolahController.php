@@ -22,9 +22,9 @@ class TentangSekolahController extends Controller
     public function index()
     {
         $mading = [
-            'title' => 'PRESTASI SEKOLAH',
+            'title'    => 'PRESTASI SEKOLAH',
             'kategori' => 'prestasi',
-            'list' => Prestasi::with('penulis')
+            'list'     => Prestasi::with('penulis')
                 ->where('status', '1')
                 ->latest()
                 ->limit(4)
@@ -34,7 +34,7 @@ class TentangSekolahController extends Controller
         return Inertia::render('ProfilSekolah')
             ->with([
                 'tentang' => $this->tentang['tentang_sekolah'],
-                'mading' => $mading,
+                'mading'  => $mading,
             ]);
     }
 
@@ -42,17 +42,17 @@ class TentangSekolahController extends Controller
     {
         return view('dashboard.cms.tentang.edit')
             ->with([
-                'title' => 'Tentang Sekolah',
-                'active' => 'Sekolah',
+                'title'     => 'Tentang Sekolah',
+                'active'    => 'Sekolah',
                 'subActive' => 'Tentang',
-                'tentang' => $this->tentang,
+                'tentang'   => $this->tentang,
             ]);
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'tentang_sekolah' => 'required',
+            'tentang_sekolah' => ['required'],
         ]);
 
         $value = $request->input('tentang_sekolah');

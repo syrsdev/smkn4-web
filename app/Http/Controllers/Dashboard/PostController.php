@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -29,22 +28,22 @@ class PostController extends Controller
         $post = $this->getPost($kategori);
 
         $total = [
-            'agenda' => $this->getPost('agenda')->count(), 
+            'agenda'  => $this->getPost('agenda')->count(), 
             'artikel' => $this->getPost('artikel')->count(), 
-            'berita' => $this->getPost('berita')->count(), 
-            'event' => $this->getPost('event')->count(), 
+            'berita'  => $this->getPost('berita')->count(), 
+            'event'   => $this->getPost('event')->count(), 
         ];
 
         confirmDelete('Hapus Data?', 'Yakin ingin hapus Data '. ucfirst($kategori) . '?');
 
         return view('dashboard.post.index')
             ->with([
-                'title' => 'Data ' . ucfirst($kategori),
-                'active' => 'Post',
+                'title'     => 'Data ' . ucfirst($kategori),
+                'active'    => 'Post',
                 'subActive' => ucfirst($kategori),
-                'kategori' => ucfirst($kategori),
-                'post' => $post,
-                'total' => $total,
+                'kategori'  => ucfirst($kategori),
+                'post'      => $post,
+                'total'     => $total,
             ]);
     }
 
@@ -55,8 +54,8 @@ class PostController extends Controller
     {
         return view('dashboard.post.create')
             ->with([
-                'title' => 'Tambah Post',
-                'active' => 'Post',
+                'title'     => 'Tambah Post',
+                'active'    => 'Post',
                 'subActive' => null,
             ]);
     }
@@ -66,30 +65,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('judul', $request->input('judul'));
-        Session::flash('konten', $request->input('konten'));
-
         $request->validate([
-            'judul' => 'required',
-            'kategori' => 'required',
-            'konten' => 'required',
-            'id_penulis' => 'required',
+            'judul'    => ['required', 'string', 'unique:post,judul', 'max:255'],
+            'kategori' => ['required'],
+            'konten'   => ['required', 'string'],
+            'penulis'  => ['required'],
         ]);
 
         $kategori = $request->input('kategori');
         $slug = Str::slug($request->input('judul'));
 
         $post = [
-            'slug' => $slug,
-            'judul' => $request->input('judul'),
-            'kategori' => $kategori,
-            'konten' => $request->input('konten'),
-            'id_penulis' => $request->input('id_penulis'),
+            'slug'       => $slug,
+            'judul'      => $request->input('judul'),
+            'kategori'   => $kategori,
+            'konten'     => $request->input('konten'),
+            'id_penulis' => $request->input('penulis'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp']
             ]);
 
             $file = $request->file('gambar');
@@ -128,11 +124,11 @@ class PostController extends Controller
 
         return view('dashboard.post.detail')
             ->with([
-                'title' => 'Detail ' . ucfirst($kategori),
-                'active' => 'Post',
+                'title'     => 'Detail ' . ucfirst($kategori),
+                'active'    => 'Post',
                 'subActive' => ucfirst($kategori),
-                'post' => $post,
-                'kategori' => $kategori,
+                'post'      => $post,
+                'kategori'  => $kategori,
                 'otherPost' => $otherPost,
             ]);
     }
@@ -144,11 +140,11 @@ class PostController extends Controller
     {
         return view('dashboard.post.edit')
             ->with([
-                'title' => 'Edit Post',
-                'active' => 'Post',
+                'title'     => 'Edit Post',
+                'active'    => 'Post',
                 'subActive' => ucfirst($post->kategori),
-                'post' => $post,
-                'kategori' => $post->kategori,
+                'post'      => $post,
+                'kategori'  => $post->kategori,
             ]);
     }
 
@@ -158,26 +154,26 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'judul' => 'required',
-            'kategori' => 'required',
-            'konten' => 'required',
-            'id_penulis' => 'required',
+            'judul'    => ['required', 'string', 'unique:post,judul,'.$post->id, 'max:255'],
+            'kategori' => ['required'],
+            'konten'   => ['required', 'string'],
+            'penulis'  => ['required'],
         ]);
 
         $kategori = $request->input('kategori');
         $slug = Str::slug($request->input('judul'));
 
         $updatedPost = [
-            'slug' => $slug,
-            'judul' => $request->input('judul'),
-            'kategori' => $kategori,
-            'konten' => $request->input('konten'),
-            'id_penulis' => $request->input('id_penulis'),
+            'slug'       => $slug,
+            'judul'      => $request->input('judul'),
+            'kategori'   => $kategori,
+            'konten'     => $request->input('konten'),
+            'id_penulis' => $request->input('penulis'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp']
             ]);
 
             $file = $request->file('gambar');
@@ -232,7 +228,7 @@ class PostController extends Controller
         try {
             if ($request->hasFile('file')) {
                 $request->validate([
-                    'file' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                    'file' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp']
                 ]);
     
                 $file = $request->file('file');

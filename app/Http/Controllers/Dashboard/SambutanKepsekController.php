@@ -17,20 +17,20 @@ class SambutanKepsekController extends Controller
 
         return view('dashboard.cms.sambutan.edit')
             ->with([
-                'title' => 'Sambutan Kepala Sekolah',
-                'active' => 'Sambutan',
-                'subActive' => null,
-                'sambutan' => $sambutan,
-                'guru' => $guru,
+                'title'     => 'Sambutan Kepala Sekolah',
+                'active'    => 'Sekolah',
+                'subActive' => 'Sambutan',
+                'sambutan'  => $sambutan,
+                'guru'      => $guru,
             ]);
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'judul_sambutan' => 'required',
-            'sambutan'       => 'required',
-            'kepala_sekolah' => 'required',
+            'judul_sambutan' => ['required'],
+            'sambutan'       => ['required'],
+            'kepala_sekolah' => ['required'],
         ]);
 
         $sambutan = [
