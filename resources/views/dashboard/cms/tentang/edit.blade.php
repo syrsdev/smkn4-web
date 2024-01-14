@@ -21,14 +21,14 @@
                 <p class="section-lead">
                     Anda bisa menambahkan informasi tentang sekolah disini. Mulai dari sejarah sekolah, visi, misi, dan tujuan sekolah.
                 </p>
-                <form action="{{ route('tentang.update') }}" method="post">
+                <form action="{{ route('tentang.update') }}" method="post" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
                     <div class="card" id="settings-card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-group col-12">
-                                    <textarea class="form-control" name="tentang_sekolah" id="tentang_sekolah" style="height: 500px">{{ $tentang['tentang_sekolah'] }}</textarea>
+                                    <textarea class="form-control" name="tentang_sekolah" id="tentang_sekolah" style="height: 500px" required>{{ $tentang['tentang_sekolah'] }}</textarea>
                                 </div>
                             </div>
                         </div>

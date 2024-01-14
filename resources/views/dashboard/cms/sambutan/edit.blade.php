@@ -22,7 +22,7 @@
                 <p class="section-lead">
                     Anda bisa menambahkan sambutan kepala sekolah disini
                 </p>
-                <form action="{{ route('sambutan.update') }}" method="post" class="needs-validation">
+                <form action="{{ route('sambutan.update') }}" method="post" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
                     <div class="card" id="settings-card">
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="kepala_sekolah" class="form-control-label">Kepala Sekolah</label>
-                                    <select class="form-control choices" name="kepala_sekolah" id="kepala_sekolah">
+                                    <select class="form-control choices" name="kepala_sekolah" id="kepala_sekolah" required>
                                         @foreach ($guru as $item)
                                             <option value="{{ $item->id }}" {{ $sambutan->id_kepsek == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                                         @endforeach
@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sambutan" class="form-control-label">Sambutan</label>
-                                <textarea class="form-control" name="sambutan" style="height: 200px">{{ $sambutan->konten }}</textarea>
+                                <textarea class="form-control" name="sambutan" style="height: 200px" required>{{ $sambutan->konten }}</textarea>
                             </div>
                         </div>
                         <div class="card-footer bg-whitesmoke text-md-right">

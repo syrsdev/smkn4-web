@@ -20,7 +20,7 @@
                 <p class="section-lead">
                     Disini anda dapat mengedit {{ $title }}
                 </p>
-                <form action="{{ route('sekolah.update') }}" method="post" enctype="multipart/form-data" class="needs-validation">
+                <form action="{{ route('sekolah.update') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
                     <div class="card" id="settings-card">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="alamat_sekolah" class="form-control-label">Alamat Sekolah</label>
-                                <textarea class="form-control" name="alamat_sekolah" style="height: 100px">{{ $sekolah['alamat_sekolah'] }}</textarea>
+                                <textarea class="form-control" name="alamat_sekolah" style="height: 100px" required>{{ $sekolah['alamat_sekolah'] }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="sematkan_peta" class="form-control-label">Sematkan Peta</label>
