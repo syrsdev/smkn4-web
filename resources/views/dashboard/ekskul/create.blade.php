@@ -37,23 +37,28 @@
                                 <h4>Tulis Ekstrakurikuler</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('ekskul.store') }}" method="post" enctype="multipart/form-data">
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                                <form action="{{ route('ekskul.store') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     @csrf
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Ekstrakurikuler</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama" value="{{ Session::get('nama') }}" autofocus>
+                                        <label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Ekstrakurikuler</label>
+                                        <div class="col-12 col-md-7">
+                                            <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link Sosmed</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="link_sosmed" value="{{ Session::get('link_sosmed') }}" autofocus>
+                                        <label for="link_sosmed" class="col-form-label text-md-right col-12 col-md-3">Link Sosmed</label>
+                                        <div class="col-12 col-md-7">
+                                            <input type="text" class="form-control" id="link_sosmed" name="link_sosmed" value="{{ old('link_sosmed') }}">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Logo Ekstrakurikuler</label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Logo Ekstrakurikuler</label>
+                                        <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
                                                 <input type="file" class="form-control" name="gambar" id="image-upload">
@@ -61,8 +66,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3"></label>
+                                        <div class="col-12 col-md-7">
                                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                                         </div>
                                     </div>
