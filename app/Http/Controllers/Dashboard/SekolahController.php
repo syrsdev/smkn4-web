@@ -32,12 +32,12 @@ class SekolahController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'nama_sekolah'    => 'required',
-            'alamat_sekolah'  => 'required',
-            'sematkan_peta'   => 'required',
-            'fax_sekolah'     => 'required',
-            'telepon_sekolah' => 'required',
-            'email_sekolah'   => 'required',
+            'nama_sekolah'    => ['required'],
+            'alamat_sekolah'  => ['required'],
+            'sematkan_peta'   => ['required'],
+            'fax_sekolah'     => ['required'],
+            'telepon_sekolah' => ['required'],
+            'email_sekolah'   => ['required'],
         ]);
 
         try {
@@ -56,7 +56,7 @@ class SekolahController extends Controller
 
                         $oldImage = Sekolah::where('key', $key)->value('value');
                         if ($oldImage !== $value && File::exists(public_path($oldImage))) {
-                            // File::delete(public_path($oldImage));
+                            File::delete(public_path($oldImage));
                         }
                     }
                 }

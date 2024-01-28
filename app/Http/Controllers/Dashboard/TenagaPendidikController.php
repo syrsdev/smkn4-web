@@ -9,7 +9,6 @@ use App\Models\Mapel;
 use App\Models\Pendidik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -28,10 +27,10 @@ class TenagaPendidikController extends Controller
 
         return view('dashboard.pendidik.index')
             ->with([
-                'title' => 'Data Tenaga Pendidik',
-                'active' => 'Guru',
+                'title'     => 'Data Tenaga Pendidik',
+                'active'    => 'Guru',
                 'subActive' => null,
-                'guru' => $guru,
+                'guru'      => $guru,
             ]);
     }
 
@@ -45,10 +44,10 @@ class TenagaPendidikController extends Controller
 
         return view('dashboard.pendidik.create')
             ->with([
-                'title' => 'Tambah Data Pendidik',
-                'active' => 'Guru',
+                'title'     => 'Tambah Data Pendidik',
+                'active'    => 'Guru',
                 'subActive' => null,
-                'mapel' => $mapel,
+                'mapel'     => $mapel,
             ]);
     }
 
@@ -57,28 +56,26 @@ class TenagaPendidikController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('nama', $request->input('nama'));
-
         $request->validate([
-            'nama'=> 'required',
-            'bagian' => 'required',
-            'sub_bagian' => 'required',
-            'id_mapel' => 'nullable',
+            'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama', 'max:255'],
+            'bagian'     => ['required'],
+            'sub_bagian' => ['required'],
+            'mapel'      => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $guru = [
-            'slug' => $slug,
-            'nama' => $request->input('nama'),
-            'bagian' => $request->input('bagian'),
+            'slug'       => $slug,
+            'nama'       => $request->input('nama'),
+            'bagian'     => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
-            'id_mapel' => $request->input('id_mapel'),
+            'id_mapel'   => $request->input('mapel'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp']
             ]);
 
             $file = $request->file('gambar');
@@ -102,14 +99,6 @@ class TenagaPendidikController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Pendidik $guru)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Pendidik $guru)
@@ -119,11 +108,11 @@ class TenagaPendidikController extends Controller
 
         return view('dashboard.pendidik.edit')
             ->with([
-                'title' => 'Edit Data Pendidik',
-                'active' => 'Guru',
+                'title'     => 'Edit Data Pendidik',
+                'active'    => 'Guru',
                 'subActive' => null,
-                'mapel' => $mapel,
-                'guru' => $guru,
+                'mapel'     => $mapel,
+                'guru'      => $guru,
             ]);
     }
 
@@ -133,25 +122,25 @@ class TenagaPendidikController extends Controller
     public function update(Request $request, Pendidik $guru)
     {
         $request->validate([
-            'nama'=> 'required',
-            'bagian' => 'required',
-            'sub_bagian' => 'required',
-            'id_mapel' => 'nullable',
+            'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama,'.$guru->id, 'max:255'],
+            'bagian'     => ['required'],
+            'sub_bagian' => ['required'],
+            'mapel'      => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $updateGuru = [
-            'slug' => $slug,
-            'nama' => $request->input('nama'),
-            'bagian' => $request->input('bagian'),
+            'slug'       => $slug,
+            'nama'       => $request->input('nama'),
+            'bagian'     => $request->input('bagian'),
             'sub_bagian' => $request->input('sub_bagian'),
-            'id_mapel' => $request->input('id_mapel'),
+            'id_mapel'   => $request->input('mapel'),
         ];
 
         if ($request->hasFile('gambar')) {
             $request->validate([
-                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg']
+                'gambar' => ['nullable', 'file', 'image', 'mimes:png,jpg,jpeg,gif,webp']
             ]);
 
             $file = $request->file('gambar');
@@ -197,7 +186,7 @@ class TenagaPendidikController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:csv,xls,xlsx'
+            'file' => ['required', 'file', 'mimes:csv,xls,xlsx'],
         ]);
 
         try {

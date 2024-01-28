@@ -37,19 +37,24 @@
 								<h4>{{ $title }}</h4>
 							</div>
 							<div class="card-body">
-								<form action="{{ route('konsentrasi.update', $konsentrasi->slug) }}" method="post" enctype="multipart/form-data">
+								@if ($errors->any())
+									@foreach ($errors->all() as $error)
+										<div class="alert alert-danger">{{ $error }}</div>
+									@endforeach
+								@endif
+								<form action="{{ route('konsentrasi.update', $konsentrasi->slug) }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 									@csrf
 									@method('PUT')
 									<div class="form-group row mb-4">
-										<label for="nama" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Konsentrasi Keahlian</label>
-										<div class="col-sm-12 col-md-7">
-											<input type="text" class="form-control" id="nama" name="nama" value="{{ $konsentrasi->nama }}">
+										<label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Konsentrasi Keahlian</label>
+										<div class="col-12 col-md-7">
+											<input type="text" class="form-control" id="nama" name="nama" value="{{ $konsentrasi->nama }}" required autofocus>
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label for="id_program" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Program Keahlian</label>
-										<div class="col-sm-12 col-md-7">
-											<select class="form-control choices" id="id_program" name="id_program">
+										<label for="program" class="col-form-label text-md-right col-12 col-md-3">Program Keahlian</label>
+										<div class="col-12 col-md-7">
+											<select class="form-control choices" id="program" name="program" required>
                                                 @foreach ($program as $item)
 												    <option value="{{ $item->id }}" {{ $konsentrasi->id_program === $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
@@ -57,38 +62,38 @@
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label for="deskripsi" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Deskripsi Konsentrasi Keahlian</label>
-										<div class="col-sm-12 col-md-7">
-											<textarea class="form-control" id="deskripsi" name="deskripsi">{{ $konsentrasi->deskripsi }}</textarea>
+										<label for="deskripsi" class="col-form-label text-md-right col-12 col-md-3">Deskripsi Konsentrasi Keahlian</label>
+										<div class="col-12 col-md-7">
+											<textarea class="form-control" id="deskripsi" name="deskripsi" required>{{ $konsentrasi->deskripsi }}</textarea>
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
-										<div class="col-sm-12 col-md-7">
+										<label class="col-form-label text-md-right col-12 col-md-3">Icon</label>
+										<div class="col-12 col-md-7">
 											<img src="{{ asset($konsentrasi->icon) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px">
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label for="icon" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon Baru (Opsional)</label>
-										<div class="col-sm-12 col-md-7">
-											<input type="file" class="form-control image-preview-filepond" name="icon" id="icon" />
+										<label for="icon" class="col-form-label text-md-right col-12 col-md-3">Icon Baru (Opsional)</label>
+										<div class="col-12 col-md-7">
+											<input type="file" class="form-control" name="icon" id="icon">
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
-										<div class="col-sm-12 col-md-7">
+										<label class="col-form-label text-md-right col-12 col-md-3">Thumbnail</label>
+										<div class="col-12 col-md-7">
 											<img src="{{ asset($konsentrasi->gambar) }}" alt="{{ $konsentrasi->nama }}" style="width: 250px">
 										</div>
-									</div>
+									</div>x	
 									<div class="form-group row mb-4">
-										<label for="gambar" class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail Baru (Opsional)</label>
-										<div class="col-sm-12 col-md-7">
-											<input type="file" class="form-control image-preview-filepond" name="gambar" id="gambar" />
+										<label for="gambar" class="col-form-label text-md-right col-12 col-md-3">Thumbnail Baru (Opsional)</label>
+										<div class="col-12 col-md-7">
+											<input type="file" class="form-control" name="gambar" id="gambar">
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-										<div class="col-sm-12 col-md-7">
+										<label class="col-form-label text-md-right col-12 col-md-3"></label>
+										<div class="col-12 col-md-7">
 											<button type="submit" class="btn btn-primary">Edit Data</button>
 										</div>
 									</div>

@@ -8,13 +8,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('bidang.update', $item->slug) }}" method="post">
+                <form action="{{ route('bidang.update', $item->slug) }}" method="post" class="needs-validation" novalidate>
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $item)
+                                <div class="alert alert-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
                         <div class="form-group">
                             <label for="nama">Nama Bidang Keahlian</label>
-                            <input type="text" class="form-control" id="nama" name="nama" value="{{ $item->nama }}">
+                            <input type="text" class="form-control" id="nama" name="nama" value="{{ $item->nama }}" required>
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">

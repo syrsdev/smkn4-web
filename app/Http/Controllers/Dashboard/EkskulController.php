@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Ekskul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class EkskulController extends Controller
@@ -21,12 +20,13 @@ class EkskulController extends Controller
 
         confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Ekstrakurikuler?');
 
-        return view('dashboard.ekskul.index')->with([
-            'title' => 'Ekstrakurikuler',
-            'active' => 'Kesiswaan',
-            'subActive' => 'Ekstrakurikuler',
-            'ekskul' => $ekskul,
-        ]);
+        return view('dashboard.ekskul.index')
+            ->with([
+                'title'     => 'Ekstrakurikuler',
+                'active'    => 'Kesiswaan',
+                'subActive' => 'Ekstrakurikuler',
+                'ekskul'    => $ekskul,
+            ]);
     }
 
     /**
@@ -34,11 +34,12 @@ class EkskulController extends Controller
      */
     public function create()
     {
-        return view('dashboard.ekskul.create')->with([
-            'title' => 'Tambah Ekstrakurikuler',
-            'active' => 'Kesiswaan',
-            'subActive' => 'Ekstrakurikuler',
-        ]);
+        return view('dashboard.ekskul.create')
+            ->with([
+                'title'     => 'Tambah Ekstrakurikuler',
+                'active'    => 'Kesiswaan',
+                'subActive' => 'Ekstrakurikuler',
+            ]);
     }
 
     /**
@@ -46,19 +47,16 @@ class EkskulController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('nama', $request->input('nama'));
-        Session::flash('link_sosmed', $request->input('link_sosmed'));
-
         $request->validate([
-            'nama' => 'required',
-            'link_sosmed' => 'nullable',
+            'nama'        => ['required', 'string', 'unique:ekskul,nama', 'max:255'],
+            'link_sosmed' => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $ekskul = [
-            'slug' => $slug,
-            'nama' => strtoupper($request->input('nama')),
+            'slug'        => $slug,
+            'nama'        => strtoupper($request->input('nama')),
             'link_sosmed' => $request->input('link_sosmed'),
         ];
 
@@ -88,24 +86,17 @@ class EkskulController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Ekskul $ekskul)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Ekskul $ekskul)
     {
-        return view('dashboard.ekskul.edit')->with([
-            'title' => 'Edit Ekstrakurikuler',
-            'active' => 'Kesiswaan',
-            'subActive' => 'Ekstrakurikuler',
-            'ekskul' => $ekskul,
-        ]);
+        return view('dashboard.ekskul.edit')
+            ->with([
+                'title'     => 'Edit Ekstrakurikuler',
+                'active'    => 'Kesiswaan',
+                'subActive' => 'Ekstrakurikuler',
+                'ekskul'    => $ekskul,
+            ]);
     }
 
     /**
@@ -114,15 +105,15 @@ class EkskulController extends Controller
     public function update(Request $request, Ekskul $ekskul)
     {
         $request->validate([
-            'nama' => 'required',
-            'link_sosmed' => 'nullable',
+            'nama'        => ['required', 'string', 'unique:ekskul,nama,'.$ekskul->id, 'max:255'],
+            'link_sosmed' => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $updatedEkskul = [
-            'slug' => $slug,
-            'nama' => strtoupper($request->input('nama')),
+            'slug'        => $slug,
+            'nama'        => strtoupper($request->input('nama')),
             'link_sosmed' => $request->input('link_sosmed'),
         ];
 

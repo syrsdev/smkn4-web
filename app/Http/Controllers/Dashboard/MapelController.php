@@ -22,19 +22,11 @@ class MapelController extends Controller
 
         return view('dashboard.mapel.index')
             ->with([
-                'title' => 'Data Mata Pelajaran',
-                'active' => 'Guru',
+                'title'     => 'Data Mata Pelajaran',
+                'active'    => 'Guru',
                 'subActive' => null,
-                'mapel' => $mapel,
+                'mapel'     => $mapel,
             ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -43,13 +35,13 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'mapel' => ['required', 'string', 'unique:mapel,nama', 'max:255'],
         ]);
 
         try {
             Mapel::create([
-                'slug' => Str::slug($request->input('nama')),
-                'nama' => $request->input('nama'),
+                'slug' => Str::slug($request->input('mapel')),
+                'nama' => $request->input('mapel'),
             ]);
 
             toast('Mata Pelajaran berhasil dibuat!', 'success');
@@ -61,34 +53,18 @@ class MapelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Mapel $mapel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mapel $mapel)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Mapel $mapel)
     {
         $request->validate([
-            'nama' => 'required',
+            'mapel' => ['required', 'string', 'unique:mapel,nama,'.$mapel->id, 'max:255'],
         ]);
 
         try {
             $mapel->update([
-                'slug' => Str::slug($request->input('nama')),
-                'nama' => $request->input('nama'),
+                'slug' => Str::slug($request->input('mapel')),
+                'nama' => $request->input('mapel'),
             ]);
 
             toast('Mata Pelajaran berhasil diedit!', 'success');

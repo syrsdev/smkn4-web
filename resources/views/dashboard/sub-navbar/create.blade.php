@@ -7,16 +7,21 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('sub-navbar.store') }}" method="post">
+            <form action="{{ route('sub-navbar.store') }}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">{{ $error }}</div>
+                        @endforeach
+                    @endif
                     <div class="form-group">
-                        <label>Nama Sub Navbar</label>
-                        <input type="text" class="form-control" name="name">
+                        <label for="nama">Nama Sub Navbar</label>
+                        <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="form-group">
-                        <label>Link</label>
-                        <input type="text" class="form-control" name="url">
+                        <label for="link">Link</label>
+                        <input type="text" class="form-control" id="link" name="link" required>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">

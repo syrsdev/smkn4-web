@@ -19,19 +19,11 @@ class SubNavbarController extends Controller
 
         return view('dashboard.sub-navbar.index')
             ->with([
-                'title' => 'Sub Navbar',
-                'active' => 'SubNavbar',
+                'title'     => 'Sub Navbar',
+                'active'    => 'SubNavbar',
                 'subActive' => null,
                 'subNavbar' => $subNavbar,
             ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -40,14 +32,14 @@ class SubNavbarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'url' => 'required',
+            'nama' => ['required', 'string', 'max:255'],
+            'link' => ['required', 'string', 'max:255'],
         ]);
 
         try {
             SubNavbar::create([
-                'name' => strtoupper($request->input('name')),
-                'url' => $request->input('url'),
+                'name' => strtoupper($request->input('nama')),
+                'url'  => $request->input('link'),
             ]);
 
             toast('Sub Navbar berhasil dibuat!', 'success');
@@ -59,35 +51,19 @@ class SubNavbarController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(SubNavbar $subNavbar)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SubNavbar $subNavbar)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, SubNavbar $subNavbar)
     {
         $request->validate([
-            'name' => 'required',
-            'url' => 'required',
+            'nama' => ['required', 'string', 'max:255'],
+            'link' => ['required', 'string', 'max:255'],
         ]);
 
         try {
             $subNavbar->update([
-                'name' => strtoupper($request->input('name')),
-                'url' => $request->input('url'),
+                'name' => strtoupper($request->input('nama')),
+                'url'  => $request->input('link'),
             ]);
 
             toast('Sub Navbar berhasil diedit!', 'success');

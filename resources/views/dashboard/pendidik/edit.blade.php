@@ -37,43 +37,48 @@
                                 <h4>Tulis Post</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('guru.update', $guru->slug) }}" method="post" enctype="multipart/form-data">
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                                <form action="{{ route('guru.update', $guru->slug) }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group row mb-4">
-										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
-										<div class="col-sm-12 col-md-7">
+										<label class="col-form-label text-md-right col-12 col-md-3">Foto</label>
+										<div class="col-12 col-md-7">
 											<img src="{{ asset($guru->gambar) }}" alt="{{ $guru->nama }}" style="width: 250px">
 										</div>
 									</div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pendidik</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama" value="{{ $guru->nama }}" autofocus>
+                                        <label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Pendidik</label>
+                                        <div class="col-12 col-md-7">
+                                            <input type="text" class="form-control" id="nama" name="nama" value="{{ $guru->nama }}" required autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" id="bagian" name="bagian" onchange="updateSelectOptions()">
+                                        <label for="bagian" class="col-form-label text-md-right col-12 col-md-3">Bagian</label>
+                                        <div class="col-12 col-md-7">
+                                            <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
                                                 <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
                                                 <option value="kependidikan" {{ $guru->bagian === 'kependidikan' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" onchange="updateSelectOptions()">
+                                        <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
+                                        <div class="col-12 col-md-7">
+                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
                                                 <option value="guru" {{ $guru->sub_bagian === 'guru' ? 'selected' : '' }}>Guru</option>
                                                 <option value="staff" {{ $guru->sub_bagian === 'staff' ? 'selected' : '' }}>Staff</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4" id="form_mapel">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
+                                        <label for="mapel" class="col-form-label text-md-right col-12 col-md-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
-                                            <select class="form-control choices" id="mapel" name="id_mapel">
+                                            <select class="form-control choices" id="mapel" name="mapel">
                                                 @foreach ($mapel as $item)
                                                     <option value="{{ $item->id }}" {{ $item->id === ($guru->mapel->id ?? null) ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                 @endforeach
@@ -81,8 +86,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto Baru (Opsional)</label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Foto Baru (Opsional)</label>
+                                        <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
                                                 <input type="file" name="gambar" id="image-upload">
@@ -90,8 +95,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3"></label>
+                                        <div class="col-12 col-md-7">
                                             <button type="submit" class="btn btn-primary">Edit Data</button>
                                         </div>
                                     </div>

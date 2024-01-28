@@ -12,14 +12,6 @@ use Illuminate\Support\Str;
 class GaleriKonsentrasiController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
@@ -29,9 +21,9 @@ class GaleriKonsentrasiController extends Controller
 
         return view('dashboard.jurusan.galeri.create')
             ->with([
-                'title' => 'Galeri Konsentrasi',
-                'active' => 'Jurusan',
-                'subActive' => 'Konsentrasi',
+                'title'       => 'Galeri Konsentrasi',
+                'active'      => 'Jurusan',
+                'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
             ]);
     }
@@ -42,12 +34,12 @@ class GaleriKonsentrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_konsentrasi' => 'required',
-            'gambar' => 'required|array',
-            'gambar.*' => 'file|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'konsentrasi' => ['required'],
+            'gambar'      => ['required', 'array'],
+            'gambar.*'    => ['file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp'],
         ]);
 
-        $konsentrasi = KonsentrasiKeahlian::where('id', $request->id_konsentrasi)
+        $konsentrasi = KonsentrasiKeahlian::where('id', $request->konsentrasi)
             ->first();
 
         foreach ($request->file('gambar.*') as $file) {
@@ -55,8 +47,8 @@ class GaleriKonsentrasiController extends Controller
             $file->move(public_path('/storage/jurusan/galeri'), $gambar);
 
             $galeri = [
-                'id_konsentrasi' => $request->id_konsentrasi,
-                'gambar' => '/storage/jurusan/galeri/'. $gambar,
+                'id_konsentrasi' => $request->konsentrasi,
+                'gambar'         => '/storage/jurusan/galeri/'. $gambar,
             ];
 
             Galeri::create($galeri);
@@ -65,14 +57,6 @@ class GaleriKonsentrasiController extends Controller
         toast('Galeri Konsentrasi berhasil ditambahkan!', 'success');
 
         return redirect()->route('konsentrasi.show', $konsentrasi->slug);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Galeri $galeri)
-    {
-        //
     }
 
     /**
@@ -85,11 +69,11 @@ class GaleriKonsentrasiController extends Controller
 
         return view('dashboard.jurusan.galeri.edit')
             ->with([
-                'title' => 'Galeri Konsentrasi',
-                'active' => 'Jurusan',
-                'subActive' => 'Konsentrasi',
+                'title'       => 'Galeri Konsentrasi',
+                'active'      => 'Jurusan',
+                'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
-                'galeri' => $galeri,
+                'galeri'      => $galeri,
             ]);
     }
 
@@ -99,8 +83,8 @@ class GaleriKonsentrasiController extends Controller
     public function update(Request $request, Galeri $galeri)
     {
         $request->validate([
-            'id_konsentrasi' => 'required',
-            'keterangan' => 'nullable',
+            'id_konsentrasi' => ['required'],
+            'keterangan'     => ['nullable'],
         ]);
 
         $konsentrasi = KonsentrasiKeahlian::where('id', $request->input('id_konsentrasi'))
@@ -108,7 +92,7 @@ class GaleriKonsentrasiController extends Controller
 
         $update = [
             'id_konsentrasi' => $request->input('id_konsentrasi'),
-            'keterangan' => $request->input('keterangan') ?? 'Tidak ada keterangan',
+            'keterangan'     => $request->input('keterangan') ?? 'Tidak ada keterangan',
         ];
 
         if ($request->hasFile('gambar')) {

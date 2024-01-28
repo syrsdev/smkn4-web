@@ -37,18 +37,23 @@
                                 <h4>Tulis Tenaga Pendidik</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data">
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                                <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     @csrf
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Pendidik</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="nama" value="{{ Session::get('nama') }}" autofocus>
+                                        <label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Pendidik</label>
+                                        <div class="col-12 col-md-7">
+                                            <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bagian</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" id="bagian" name="bagian" onchange="updateSelectOptions()">
+                                        <label for="bagian" class="col-form-label text-md-right col-12 col-md-3">Bagian</label>
+                                        <div class="col-12 col-md-7">
+                                            <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
                                                 <option disabled selected>Bagian</option>
                                                 <option value="pendidik">Tenaga Pendidik</option>
                                                 <option value="kependidikan">Tenaga Kepegawaian</option>
@@ -56,9 +61,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Bagian</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" onchange="updateSelectOptions()">
+                                        <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
+                                        <div class="col-12 col-md-7">
+                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
                                                 <option disabled selected>Sub Bagian</option>
                                                 <option value="guru">Guru</option>
                                                 <option value="staff">Staff</option>
@@ -66,9 +71,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4" id="form_mapel">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mata Pelajaran</label>
+                                        <label for="mapel" class="col-form-label text-md-right col-12 col-md-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
-                                            <select class="form-control choices" id="mapel" name="id_mapel">
+                                            <select class="form-control choices" id="mapel" name="mapel">
                                                 <option value="null" disabled selected>Mata Pelajaran</option>
                                                 @foreach ($mapel as $item)
                                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
@@ -77,8 +82,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Foto</label>
+                                        <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
                                                 <input type="file" name="gambar" id="image-upload">
@@ -86,8 +91,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                        <div class="col-sm-12 col-md-7">
+                                        <label class="col-form-label text-md-right col-12 col-md-3"></label>
+                                        <div class="col-12 col-md-7">
                                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                                         </div>
                                     </div>

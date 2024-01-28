@@ -17,10 +17,10 @@ class SocialMediaController extends Controller
 
         return view('dashboard.sosmed.index')
             ->with([
-                'title' => 'Sosial Media',
-                'active' => 'Sosmed',
+                'title'     => 'Sosial Media',
+                'active'    => 'Sosmed',
                 'subActive' => null,
-                'sosmed' => $sosmed,
+                'sosmed'    => $sosmed,
             ]);
     }
 
@@ -30,12 +30,12 @@ class SocialMediaController extends Controller
     public function update(Request $request, SocialMedia $sosmed)
     {
         $request->validate([
-            'url' => 'nullable',
+            'link' => ['nullable'],
         ]);
 
         try {
             $sosmed->update([
-                'url' => $request->input('url'),
+                'url' => $request->input('link'),
             ]);
 
             toast('Sosial Media berhasil diedit!', 'success');
