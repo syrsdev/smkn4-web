@@ -3,6 +3,7 @@ import Carousel from "@/Components/Carousel/Carousel";
 import Container from "@/Components/Container/Container";
 import ImageModal from "@/Components/Modal/ImageModal";
 import LandingLayout from "@/Layouts/LandingLayout";
+import MadingLayout from "@/Layouts/MadingLayout";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import React, { useState } from "react";
 
@@ -30,20 +31,26 @@ function DetailJurusan(props) {
                 <h1 className="font-bold uppercase text-center text-primary text-[18px] md:text-[20px] xl:text-[24px]">
                     {props.konsentrasi.nama}
                 </h1>
-
                 <img
                     src={props.konsentrasi.gambar}
                     alt="thumbnail jurusan"
-                    className="w-full max-h-[160px] md:max-h-[250px] xl:max-h-[400px] object-cover mt-5 rounded-2xl"
+                    className="w-full max-h-[160px] md:max-h-[250px] xl:max-h-[400px] object-cover mt-5 rounded-2xl mb-6 xl:mb-10"
                 />
 
-                <p
-                    className="w-full xl:w-[70%] mt-6 xl:mt-10"
-                    dangerouslySetInnerHTML={{
-                        __html: props.konsentrasi.deskripsi,
-                    }}
-                ></p>
+                <MadingLayout
+                    title={props.mading.title}
+                    listPost={props.mading.list}
+                    href={props.mading.kategori}
+                >
+                    <p
+                        className="w-full konten-list"
+                        dangerouslySetInnerHTML={{
+                            __html: props.konsentrasi.deskripsi,
+                        }}
+                    ></p>
+                </MadingLayout>
             </Container>
+
             {props.konsentrasi.galeri.length > 0 && (
                 <Container classname="my-12">
                     <h2 className="text-primary text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7">

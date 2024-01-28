@@ -93,7 +93,7 @@ function Prestasi(props) {
                                         dangerouslySetInnerHTML={{
                                             __html: props.prestasi.konten,
                                         }}
-                                        className="text-[14px] mt-1"
+                                        className="text-[14px] mt-1 konten-list"
                                     ></p>
                                 </div>
                             </div>
