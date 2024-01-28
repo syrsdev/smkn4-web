@@ -5,6 +5,7 @@ function IconLayout({ children, href = "#", name }) {
     return (
         <>
             <a
+                aria-label={`Lihat ${name}`}
                 data-tooltip-id="tooltip"
                 data-tooltip-content={name}
                 href={href}
