@@ -25,7 +25,7 @@ function ProfilSekolah(props) {
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    <div className="relative overflow-x-auto">
+                    <div className="relative overflow-x-auto konten-list">
                         <p
                             dangerouslySetInnerHTML={{ __html: props.tentang }}
                         ></p>
