@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    .konten-list ul,
+    .konten-list ol,
+    .konten-list menu {
+        list-style: revert;
+        margin: revert;
+        padding: revert;
+    }
+
+    .konten-list h1,
+    .konten-list h2,
+    .konten-list h3,
+    .konten-list h4,
+    .konten-list h5,
+    .konten-list h6 {
+        font-size: revert;
+        font-weight: revert;
+    }
+}
+
 .hero-img {
     background-repeat: no-repeat;
     background-attachment: fixed;

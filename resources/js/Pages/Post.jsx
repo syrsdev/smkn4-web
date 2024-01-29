@@ -85,7 +85,7 @@ function Post(props) {
                                         dangerouslySetInnerHTML={{
                                             __html: props.post.konten,
                                         }}
-                                        className="text-[14px] mt-2"
+                                        className="text-[14px] mt-2 konten-list"
                                     ></p>
                                 </div>
                             </div>
