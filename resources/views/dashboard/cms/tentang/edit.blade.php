@@ -46,6 +46,5 @@
     <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <script src="{{ asset('assets/js/page/modules-tinymce.js') }}"></script>
 @endsection
