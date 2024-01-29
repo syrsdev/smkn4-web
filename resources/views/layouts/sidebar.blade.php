@@ -136,6 +136,12 @@
                         <span>Sosial Media</span>
                     </a>
                 </li>
+                <li class="dropdown {{ $active === 'Tema' ? 'active' : '' }}">
+                    <a href="{{ route('tema.edit') }}" class="nav-link">
+                        <i class="fas fa-palette"></i>
+                        <span>Tema Website</span>
+                    </a>
+                </li>
                 <li class="menu-header">Users</li>
                 <li class="dropdown {{ $active === 'User' ? 'active' : '' }}">
                     <a href="{{ route('user.index') }}" class="nav-link">

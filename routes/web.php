@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\SambutanKepsekController;
 use App\Http\Controllers\Dashboard\SocialMediaController;
 use App\Http\Controllers\Dashboard\SubNavbarController;
 use App\Http\Controllers\Dashboard\TenagaPendidikController;
+use App\Http\Controllers\Dashboard\ThemeSettingController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\GuruPageController;
 use App\Http\Controllers\JurusanPageController;
@@ -171,6 +172,12 @@ Route::middleware('auth')->group(function () {
 
             Route::patch('/sekolah', [SekolahController::class, 'update'])
                 ->name('sekolah.update');
+
+            Route::get('/tema-website', [ThemeSettingController::class, 'edit'])
+                ->name('tema.edit');
+
+            Route::patch('/tema-website', [ThemeSettingController::class, 'update'])
+                ->name('tema.update');
         });
     });
 });
