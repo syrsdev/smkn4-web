@@ -23,7 +23,10 @@ class SekolahSeeder extends Seeder
             ['key' => 'fax_sekolah', 'value' => '-'],
             ['key' => 'telepon_sekolah', 'value' => '021-5523429'],
             ['key' => 'email_sekolah', 'value' => 'smkn4kotatng@yahoo.co.id'],
-            ['key' => 'key', 'value' => 'value'], // todo Lanjutin dibawah pake format ini
+            ['key' => 'warna_primer', 'value' => '#1A274D'],
+            ['key' => 'warna_sekunder', 'value' => '#233154'],
+            ['key' => 'warna_aksen', 'value' => '#FFD600'],
+            // ['key' => 'key', 'value' => 'value'], // todo Lanjutin dibawah pake format ini
         ]);
     }
 }
