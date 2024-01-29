@@ -61,7 +61,9 @@
 
 @section('script')
     <script src="{{ asset('assets/modules/choices.js/public/assets/scripts/choices.js') }}"></script>\
+    <script src="{{ asset('assets/modules/tinymce/tinymce.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-choices.js')}}"></script>
+    <script src="{{ asset('assets/js/page/modules-tinymce.js') }}"></script>
 @endsection
