@@ -27,8 +27,8 @@ class TenagaPendidikSeeder extends Seeder
             [
                 'slug' => 'endah-resmiati-s-pd-m-si',
                 'nama' => 'Endah Resmiati, S.Pd. M.Si.',
-                'bagian' => 'kependidikan',
-                'sub_bagian' => 'staff',
+                'bagian' => 'kepsek',
+                'sub_bagian' => 'kepsek',
                 'id_mapel' => null,
             ],
             [

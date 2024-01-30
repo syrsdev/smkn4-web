@@ -25,7 +25,7 @@ class SambutanKepsekController extends Controller
             ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Sambutan $sambutan)
     {
         $request->validate([
             'judul_sambutan' => ['required'],
@@ -33,14 +33,26 @@ class SambutanKepsekController extends Controller
             'kepala_sekolah' => ['required'],
         ]);
 
-        $sambutan = [
-            'judul'     => $request->input('judul_sambutan'),
-            'konten'    => $request->input('sambutan'),
-            'id_kepsek' => $request->input('kepala_sekolah'),
-        ];
-
         try {
-            Sambutan::first()->update($sambutan);
+            Pendidik::where('id', $sambutan->id_kepsek)
+                ->update([
+                    'bagian' => 'kependidikan',
+                    'sub_bagian' => 'staff',
+                    'id_mapel' => null,
+                ]);
+            
+            Pendidik::where('id', $request->input('kepala_sekolah'))
+                ->update([
+                    'bagian' => 'kepsek',
+                    'sub_bagian' => 'kepsek',
+                    'id_mapel' => null,
+                ]);
+
+            $sambutan->update([
+                'judul'     => $request->input('judul_sambutan'),
+                'konten'    => $request->input('sambutan'),
+                'id_kepsek' => $request->input('kepala_sekolah'),
+            ]);
 
             toast('Sambutan Kepala Sekolah berhasil diperbarui!', 'success');
         } catch (\Exception $e) {
