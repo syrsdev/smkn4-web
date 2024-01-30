@@ -158,7 +158,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/sambutan', [SambutanKepsekController::class, 'edit'])
                 ->name('sambutan.edit');
 
-            Route::patch('/sambutan', [SambutanKepsekController::class, 'update'])
+            Route::patch('/sambutan/{sambutan}', [SambutanKepsekController::class, 'update'])
                 ->name('sambutan.update');
 
             Route::get('/tentang', [TentangSekolahController::class, 'edit'])

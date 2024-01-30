@@ -22,7 +22,7 @@
                 <p class="section-lead">
                     Anda bisa menambahkan sambutan kepala sekolah disini
                 </p>
-                <form action="{{ route('sambutan.update') }}" method="post" class="needs-validation" novalidate>
+                <form action="{{ route('sambutan.update', $sambutan->id) }}" method="post" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
                     <div class="card" id="settings-card">
@@ -35,7 +35,7 @@
                                     <label for="judul_sambutan" class="form-control-label">Judul Sambutan</label>
                                     <input type="text" name="judul_sambutan" class="form-control" id="judul_sambutan" value="{{ $sambutan->judul }}" required autofocus>
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-6" style="z-index: 999">
                                     <label for="kepala_sekolah" class="form-control-label">Kepala Sekolah</label>
                                     <select class="form-control choices" name="kepala_sekolah" id="kepala_sekolah" required>
                                         @foreach ($guru as $item)
