@@ -26,6 +26,8 @@ class SekolahSeeder extends Seeder
             ['key' => 'warna_primer', 'value' => '#1A274D'],
             ['key' => 'warna_sekunder', 'value' => '#233154'],
             ['key' => 'warna_aksen', 'value' => '#FFD600'],
+            ['key' => 'font_primer', 'value' => '#1A274D'],
+            ['key' => 'font_sekunder', 'value' => '#FFFFFF'],
             // ['key' => 'key', 'value' => 'value'], // todo Lanjutin dibawah pake format ini
         ]);
     }

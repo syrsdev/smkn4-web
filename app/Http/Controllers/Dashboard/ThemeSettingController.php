@@ -12,7 +12,7 @@ class ThemeSettingController extends Controller
 
     public function __construct()
     {
-        $this->tema = Sekolah::whereIn('key', ['warna_primer', 'warna_sekunder', 'warna_aksen'])
+        $this->tema = Sekolah::whereIn('key', ['warna_primer', 'warna_sekunder', 'warna_aksen', 'font_primer', 'font_sekunder'])
             ->pluck('value', 'key')
             ->toArray();
     }
@@ -31,9 +31,7 @@ class ThemeSettingController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'warna_primer'   => ['required'],
-            'warna_sekunder' => ['required'],
-            'warna_aksen'    => ['required'],
+            '*'   => ['required']
         ]);
 
         try {
