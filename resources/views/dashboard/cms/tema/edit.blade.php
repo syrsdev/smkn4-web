@@ -42,6 +42,16 @@
                                     <input type="color" name="warna_aksen" class="form-control" id="warna_aksen" value="{{ $tema['warna_aksen'] }}" required>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="font_primer" class="form-control-label">Font Primer</label>
+                                    <input type="color" name="font_primer" class="form-control" id="font_primer" value="{{ $tema['font_primer'] }}" required>
+                                </div>
+                                <div class="form-group col-12 col-lg-6">
+                                    <label for="font_sekunder" class="form-control-label">Font Sekunder</label>
+                                    <input type="color" name="font_sekunder" class="form-control" id="font_sekunder" value="{{ $tema['font_sekunder'] }}" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer bg-whitesmoke text-md-right">
                             <button type="submit" class="btn btn-primary" onclick="$.cardProgress('#settings-card');">Simpan</button>
