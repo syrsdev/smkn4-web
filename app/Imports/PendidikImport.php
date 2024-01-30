@@ -22,6 +22,9 @@ class PendidikImport implements ToCollection, WithHeadingRow
                 case 'Tenaga Kependidikan':
                     $bagian = 'kependidikan';
                     break;
+                case 'Kepala Sekolah':
+                    $bagian = 'kepsek';
+                    break;
                 default:
                     $bagian = null;
             }
@@ -32,6 +35,9 @@ class PendidikImport implements ToCollection, WithHeadingRow
                     break;
                 case 'Staff Kurikulum':
                     $subBagian = 'staff';
+                    break;
+                case 'Kepala Sekolah':
+                    $subBagian = 'kepsek';
                     break;
                 default:
                     $subBagian = null;

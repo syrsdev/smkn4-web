@@ -65,15 +65,35 @@
                                                         <img src="{{ asset($item->gambar) }}" alt="{{ $item->nama }}" style="width: 100px">
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
-                                                    <td>Tenaga {{ ucfirst($item->bagian) }}</td>
                                                     <td>
-                                                        @if ($item->sub_bagian === 'guru')
-                                                            Guru Produktif
-                                                        @elseif ($item->sub_bagian === 'staff')
-                                                            Staff Kurikulum
-                                                        @else
-                                                            -
-                                                        @endif
+                                                        @switch($item->bagian)
+                                                            @case('pendidik')
+                                                                Tenaga Pendidik
+                                                                @break
+                                                            @case('kependidikan')
+                                                                Tenaga Kependidikan
+                                                                @break
+                                                            @case('kepsek')
+                                                                Kepala Sekolah
+                                                                @break
+                                                            @default
+                                                                -
+                                                        @endswitch
+                                                    </td>
+                                                    <td>
+                                                        @switch($item->sub_bagian)
+                                                            @case('guru')
+                                                                Guru Produktif
+                                                                @break
+                                                            @case('staff')
+                                                                Staff Kurukulum
+                                                                @break
+                                                            @case('kepsek')
+                                                                Kepala Sekolah
+                                                                @break
+                                                            @default
+                                                                -
+                                                        @endswitch
                                                     <td>
                                                         {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
                                                     </td>
