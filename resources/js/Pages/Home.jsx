@@ -61,11 +61,11 @@ function Home(props) {
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    <h2 className="text-primary text-[18px] font-bold mb-6 lg:hidden block text-center xl:text-left">
+                    <h2 className="text-primary text-[18px] font-bold mb-6 md:hidden block text-center xl:text-left">
                         {props.sambutan.judul}
                     </h2>
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
-                        <div className="flex flex-col items-center md:items-start lg:w-7/12">
+                        <div className="flex flex-col items-center md:items-start lg:w-fit">
                             <img
                                 src={props.sambutan.kepsek.gambar}
                                 alt="foto kepala sekolah"
@@ -78,13 +78,16 @@ function Home(props) {
                                 <p>Plt. Kepala Sekolah</p>
                             </div>
                         </div>
-                        <div className="flex flex-col text-center md:text-left">
-                            <h2 className="text-primary text-[18px] xl:text-[24px] font-bold mb-3 hidden lg:block">
+                        <div className="flex flex-col w-full text-center md:text-left">
+                            <h2 className="text-primary text-[18px] xl:text-[24px] font-bold mb-3 hidden md:block">
                                 {props.sambutan.judul}
                             </h2>
-                            <p className="text-[14px]">
-                                {props.sambutan.konten}
-                            </p>
+                            <p
+                                dangerouslySetInnerHTML={{
+                                    __html: props.sambutan.konten,
+                                }}
+                                className="text-[14px] konten-list"
+                            ></p>
                         </div>
                     </div>
                 </MadingLayout>
