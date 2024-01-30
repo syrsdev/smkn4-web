@@ -19,7 +19,7 @@ class PendidikImport implements ToCollection, WithHeadingRow
                 case 'Tenaga Pendidik':
                     $bagian = 'pendidik';
                     break;
-                case 'Tenaga Kepegawaian':
+                case 'Tenaga Kependidikan':
                     $bagian = 'kependidikan';
                     break;
                 default:
