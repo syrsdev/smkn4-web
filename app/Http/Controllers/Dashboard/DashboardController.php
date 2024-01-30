@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'pendidik' => Pendidik::where('bagian', 'pendidik')
                 ->limit(3)
                 ->get(),
-            'kependidikan' => Pendidik::where('bagian', 'kependidikan')
+            'kependidikan' => Pendidik::whereIn('bagian', ['kepsek', 'kependidikan'])
                 ->limit(3)
                 ->get(),
         ];

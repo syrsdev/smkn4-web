@@ -1,7 +1,7 @@
 <div class="col-12 col-md-6">
     <div class="card">
         <div class="card-header">
-            <h4>Tenaga Pendidik dan Kepegawaian</h4>
+            <h4>Tenaga Pendidik dan Kependidikan</h4>
             <div class="card-header-action">
                 <a href="{{ route('guru.index') }}" class="btn btn-sm btn-primary">
                     Lihat Semua
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-6 mt-sm-0 mt-4">
-                    <div class="text-title mb-2">Tenaga Kepegawaian</div>
+                    <div class="text-title mb-2">Tenaga Kependidikan</div>
                     <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
                         @foreach ($guru['kependidikan'] as $item)
                             <li class="media">
@@ -53,7 +53,13 @@
                                             </a>    
                                         @endif
                                     </div>
-                                    <div class="text-small text-muted">Staff Kurikulum</div>
+                                    <div class="text-small text-muted">
+                                        @if ($item->sub_bagian === 'kepsek')
+                                            Kepala Sekolah
+                                        @else
+                                            Staff Kurikulum
+                                        @endif
+                                    </div>
                                 </div>
                             </li>
                         @endforeach
