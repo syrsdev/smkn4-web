@@ -61,8 +61,8 @@
                                         <label for="bagian" class="col-form-label text-md-right col-12 col-md-3">Bagian</label>
                                         <div class="col-12 col-md-7">
                                             <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
-                                                <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
-                                                <option value="kependidikan" {{ $guru->bagian === 'kependidikan' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
+                                                <option value="Pendidik" {{ $guru->bagian === 'Pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
+                                                <option value="Kependidikan" {{ $guru->bagian === 'Kependidikan' ? 'selected' : '' }}>Tenaga Kependidikan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -70,8 +70,8 @@
                                         <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
                                         <div class="col-12 col-md-7">
                                             <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
-                                                <option value="guru" {{ $guru->sub_bagian === 'guru' ? 'selected' : '' }}>Guru</option>
-                                                <option value="staff" {{ $guru->sub_bagian === 'staff' ? 'selected' : '' }}>Staff</option>
+                                                <option value="Guru" {{ $guru->sub_bagian === 'Guru' ? 'selected' : '' }}>Guru Produktif</option>
+                                                <option value="Staff" {{ $guru->sub_bagian === 'Staff' ? 'selected' : '' }}>Staff Kurikulum</option>
                                             </select>
                                         </div>
                                     </div>
@@ -126,9 +126,9 @@
             let formMapel = document.getElementById("form_mapel");
             let mapel = document.getElementById("mapel");
 
-            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+            if (bagian.value === "Pendidik" && subBagian.value === "Guru") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "kependidikan" && subBagian.value === "staff") {
+            } else if (bagian.value === "Kependidikan" && subBagian.value === "Staff") {
                 mapel.value = null;
                 formMapel.style.display = "none";
             } else {

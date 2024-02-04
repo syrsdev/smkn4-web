@@ -17,13 +17,13 @@ class PendidikImport implements ToCollection, WithHeadingRow
         {
             switch ($row['bagian']) {
                 case 'Tenaga Pendidik':
-                    $bagian = 'pendidik';
+                    $bagian = 'Pendidik';
                     break;
                 case 'Tenaga Kependidikan':
-                    $bagian = 'kependidikan';
+                    $bagian = 'Kependidikan';
                     break;
                 case 'Kepala Sekolah':
-                    $bagian = 'kepsek';
+                    $bagian = 'Kepala Sekolah';
                     break;
                 default:
                     $bagian = null;
@@ -31,13 +31,13 @@ class PendidikImport implements ToCollection, WithHeadingRow
 
             switch ($row['sub_bagian']) {
                 case 'Guru Produktif':
-                    $subBagian = 'guru';
+                    $subBagian = 'Guru';
                     break;
                 case 'Staff Kurikulum':
-                    $subBagian = 'staff';
+                    $subBagian = 'Staff';
                     break;
                 case 'Kepala Sekolah':
-                    $subBagian = 'kepsek';
+                    $subBagian = 'Kepala Sekolah';
                     break;
                 default:
                     $subBagian = null;

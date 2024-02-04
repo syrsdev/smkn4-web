@@ -6,8 +6,8 @@ import { useState } from "react";
 import { router } from "@inertiajs/react";
 
 const bagian = [
-    { value: "pendidik", label: "Pendidik" },
-    { value: "kependidikan", label: "Kependidikan" },
+    { value: "Pendidik", label: "Pendidik" },
+    { value: "Kependidikan", label: "Kependidikan" },
 ];
 
 const orderby = [

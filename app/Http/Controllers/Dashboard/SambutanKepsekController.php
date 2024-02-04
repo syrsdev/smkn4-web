@@ -36,15 +36,15 @@ class SambutanKepsekController extends Controller
         try {
             Pendidik::where('id', $sambutan->id_kepsek)
                 ->update([
-                    'bagian' => 'kependidikan',
-                    'sub_bagian' => 'staff',
+                    'bagian' => 'Kependidikan',
+                    'sub_bagian' => 'Staff',
                     'id_mapel' => null,
                 ]);
             
             Pendidik::where('id', $request->input('kepala_sekolah'))
                 ->update([
-                    'bagian' => 'kepsek',
-                    'sub_bagian' => 'kepsek',
+                    'bagian' => 'Kepala Sekolah',
+                    'sub_bagian' => 'Kepala Sekolah',
                     'id_mapel' => null,
                 ]);
 

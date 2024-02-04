@@ -55,8 +55,8 @@
                                         <div class="col-12 col-md-7">
                                             <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
                                                 <option disabled selected>Bagian</option>
-                                                <option value="pendidik">Tenaga Pendidik</option>
-                                                <option value="kependidikan">Tenaga Kepegawaian</option>
+                                                <option value="Pendidik">Tenaga Pendidik</option>
+                                                <option value="Kependidikan">Tenaga Kependidikan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -65,8 +65,8 @@
                                         <div class="col-12 col-md-7">
                                             <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
                                                 <option disabled selected>Sub Bagian</option>
-                                                <option value="guru">Guru</option>
-                                                <option value="staff">Staff</option>
+                                                <option value="Guru">Guru Produktif</option>
+                                                <option value="Staff">Staff Kurikulum</option>
                                             </select>
                                         </div>
                                     </div>
@@ -122,9 +122,9 @@
             let formMapel = document.getElementById("form_mapel");
             let mapel = document.getElementById("mapel");
 
-            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+            if (bagian.value === "Pendidik" && subBagian.value === "Guru") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "kependidikan" && subBagian.value === "staff") {
+            } else if (bagian.value === "Kependidikan" && subBagian.value === "Staff") {
                 mapel.value = null;
                 formMapel.style.display = "none";
             } else {
