@@ -60,16 +60,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-4">
-                                        <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
-                                        <div class="col-12 col-md-7">
-                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
-                                                <option disabled selected>Sub Bagian</option>
-                                                <option value="Guru">Guru Produktif</option>
-                                                <option value="Staff">Staff Kurikulum</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="form-group row mb-4" id="form_mapel">
                                         <label for="mapel" class="col-form-label text-md-right col-12 col-md-3">Mata Pelajaran</label>
                                         <div class="col-sm-12 col-md-7" style="z-index: 99">
@@ -118,14 +108,12 @@
     <script>
         function updateSelectOptions() {
             let bagian = document.getElementById("bagian");
-            let subBagian = document.getElementById("sub_bagian");
             let formMapel = document.getElementById("form_mapel");
             let mapel = document.getElementById("mapel");
 
-            if (bagian.value === "Pendidik" && subBagian.value === "Guru") {
+            if (bagian.value === "Pendidik") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "Kependidikan" && subBagian.value === "Staff") {
-                mapel.value = null;
+            } else if (bagian.value === "Kependidikan") {
                 formMapel.style.display = "none";
             } else {
                 formMapel.style.display = "flex";

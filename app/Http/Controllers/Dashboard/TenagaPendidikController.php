@@ -59,7 +59,6 @@ class TenagaPendidikController extends Controller
         $request->validate([
             'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama', 'max:255'],
             'bagian'     => ['required'],
-            'sub_bagian' => ['required'],
             'mapel'      => ['nullable'],
         ]);
 
@@ -69,9 +68,14 @@ class TenagaPendidikController extends Controller
             'slug'       => $slug,
             'nama'       => $request->input('nama'),
             'bagian'     => $request->input('bagian'),
-            'sub_bagian' => $request->input('sub_bagian'),
-            'id_mapel'   => $request->input('mapel'),
         ];
+
+        if ($request->input('bagian') === 'Pendidik') {
+            $guru['sub_bagian'] = 'Guru';
+            $guru['id_mapel'] = $request->input('mapel');
+        } else if ($request->input('bagian' === 'Kependidikan')) {
+            $guru['sub_bagian'] = 'Staff';
+        }
 
         if ($request->hasFile('gambar')) {
             $request->validate([
@@ -91,7 +95,7 @@ class TenagaPendidikController extends Controller
             toast('Tenaga Pendidik berhasil dibuat!', 'success');
 
             return redirect()->route('guru.index');
-        } catch (\Exception) {
+        } catch (\Exception $e) {
             toast('Tenaga Pendidik gagal dibuat.', 'warning');
 
             return redirect()->back();
@@ -124,7 +128,6 @@ class TenagaPendidikController extends Controller
         $request->validate([
             'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama,'.$guru->id, 'max:255'],
             'bagian'     => ['required'],
-            'sub_bagian' => ['required'],
             'mapel'      => ['nullable'],
         ]);
 
@@ -134,9 +137,15 @@ class TenagaPendidikController extends Controller
             'slug'       => $slug,
             'nama'       => $request->input('nama'),
             'bagian'     => $request->input('bagian'),
-            'sub_bagian' => $request->input('sub_bagian'),
-            'id_mapel'   => $request->input('mapel'),
         ];
+
+        if ($request->input('bagian') === 'Pendidik') {
+            $updateGuru['sub_bagian'] = 'Guru';
+            $updateGuru['id_mapel'] = $request->input('mapel');
+        } else if ($request->input('bagian' === 'Kependidikan')) {
+            $updateGuru['sub_bagian'] = 'Staff';
+            $updateGuru['id_mapel'] = null;
+        }
 
         if ($request->hasFile('gambar')) {
             $request->validate([
@@ -160,7 +169,7 @@ class TenagaPendidikController extends Controller
             toast('Tenaga Pendidik berhasil diedit!', 'success');
 
             return redirect()->route('guru.index');
-        } catch (\Exception) {
+        } catch (\Exception $e) {
             toast('Tenaga Pendidik gagal diedit.', 'warning');
 
             return redirect()->back();
