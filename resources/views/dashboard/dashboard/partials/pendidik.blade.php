@@ -54,7 +54,7 @@
                                         @endif
                                     </div>
                                     <div class="text-small text-muted">
-                                        @if ($item->sub_bagian === 'kepsek')
+                                        @if ($item->sub_bagian === 'Kepala Sekolah')
                                             Kepala Sekolah
                                         @else
                                             Staff Kurikulum

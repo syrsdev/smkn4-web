@@ -60,19 +60,16 @@
                                     <div class="form-group row mb-4">
                                         <label for="bagian" class="col-form-label text-md-right col-12 col-md-3">Bagian</label>
                                         <div class="col-12 col-md-7">
-                                            <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
-                                                <option value="pendidik" {{ $guru->bagian === 'pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
-                                                <option value="kependidikan" {{ $guru->bagian === 'kependidikan' ? 'selected' : '' }}>Tenaga Kepegawaian</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-4">
-                                        <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
-                                        <div class="col-12 col-md-7">
-                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
-                                                <option value="guru" {{ $guru->sub_bagian === 'guru' ? 'selected' : '' }}>Guru</option>
-                                                <option value="staff" {{ $guru->sub_bagian === 'staff' ? 'selected' : '' }}>Staff</option>
-                                            </select>
+                                            @if ($guru->bagian === 'Kepala Sekolah')
+                                                <select class="form-control selectric" id="bagian" name="bagian" required>
+                                                    <option value="Kepala Sekolah">Kepala Sekolah</option>
+                                                </select>
+                                            @else
+                                                <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
+                                                    <option value="Pendidik" {{ $guru->bagian === 'Pendidik' ? 'selected' : '' }}>Tenaga Pendidik</option>
+                                                    <option value="Kependidikan" {{ $guru->bagian === 'Kependidikan' ? 'selected' : '' }}>Tenaga Kependidikan</option>
+                                                </select>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4" id="form_mapel">
@@ -122,14 +119,12 @@
     <script>
         function updateSelectOptions() {
             let bagian = document.getElementById("bagian");
-            let subBagian = document.getElementById("sub_bagian");
             let formMapel = document.getElementById("form_mapel");
             let mapel = document.getElementById("mapel");
 
-            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+            if (bagian.value === "Pendidik") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "kependidikan" && subBagian.value === "staff") {
-                mapel.value = null;
+            } else if (bagian.value === "Kependidikan" || bagian.value === "Kepala Sekolah") {
                 formMapel.style.display = "none";
             } else {
                 formMapel.style.display = "flex";

@@ -67,13 +67,13 @@
                                                     <td>{{ $item->nama }}</td>
                                                     <td>
                                                         @switch($item->bagian)
-                                                            @case('pendidik')
+                                                            @case('Pendidik')
                                                                 Tenaga Pendidik
                                                                 @break
-                                                            @case('kependidikan')
+                                                            @case('Kependidikan')
                                                                 Tenaga Kependidikan
                                                                 @break
-                                                            @case('kepsek')
+                                                            @case('Kepala Sekolah')
                                                                 Kepala Sekolah
                                                                 @break
                                                             @default
@@ -82,13 +82,13 @@
                                                     </td>
                                                     <td>
                                                         @switch($item->sub_bagian)
-                                                            @case('guru')
+                                                            @case('Guru')
                                                                 Guru Produktif
                                                                 @break
-                                                            @case('staff')
+                                                            @case('Staff')
                                                                 Staff Kurukulum
                                                                 @break
-                                                            @case('kepsek')
+                                                            @case('Kepala Sekolah')
                                                                 Kepala Sekolah
                                                                 @break
                                                             @default

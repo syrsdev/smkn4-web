@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'super-admin',
                 'name' => 'Super Admin',
                 'email' => 'admin@example.com',
-                'password' => bcrypt('password'),
+                'password' => bcrypt('passwordadmin'),
                 'level' => 'admin'
             ], [
                 'slug' => 'author',
                 'name' => 'Author',
                 'email' => 'author@example.com',
-                'password' => bcrypt('password'),
+                'password' => bcrypt('passwordauthor'),
                 'level' => 'author'
             ]
         ]);

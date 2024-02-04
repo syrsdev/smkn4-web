@@ -55,18 +55,8 @@
                                         <div class="col-12 col-md-7">
                                             <select class="form-control selectric" id="bagian" name="bagian" required onchange="updateSelectOptions()">
                                                 <option disabled selected>Bagian</option>
-                                                <option value="pendidik">Tenaga Pendidik</option>
-                                                <option value="kependidikan">Tenaga Kepegawaian</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-4">
-                                        <label for="sub_bagian" class="col-form-label text-md-right col-12 col-md-3">Sub Bagian</label>
-                                        <div class="col-12 col-md-7">
-                                            <select class="form-control selectric" id="sub_bagian" name="sub_bagian" required onchange="updateSelectOptions()">
-                                                <option disabled selected>Sub Bagian</option>
-                                                <option value="guru">Guru</option>
-                                                <option value="staff">Staff</option>
+                                                <option value="Pendidik">Tenaga Pendidik</option>
+                                                <option value="Kependidikan">Tenaga Kependidikan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -118,14 +108,12 @@
     <script>
         function updateSelectOptions() {
             let bagian = document.getElementById("bagian");
-            let subBagian = document.getElementById("sub_bagian");
             let formMapel = document.getElementById("form_mapel");
             let mapel = document.getElementById("mapel");
 
-            if (bagian.value === "pendidik" && subBagian.value === "guru") {
+            if (bagian.value === "Pendidik") {
                 formMapel.style.display = "flex";
-            } else if (bagian.value === "kependidikan" && subBagian.value === "staff") {
-                mapel.value = null;
+            } else if (bagian.value === "Kependidikan") {
                 formMapel.style.display = "none";
             } else {
                 formMapel.style.display = "flex";

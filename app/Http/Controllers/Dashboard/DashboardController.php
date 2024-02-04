@@ -39,10 +39,10 @@ class DashboardController extends Controller
             ->get();
 
         $guru = [
-            'pendidik' => Pendidik::where('bagian', 'pendidik')
+            'pendidik' => Pendidik::where('bagian', 'Pendidik')
                 ->limit(3)
                 ->get(),
-            'kependidikan' => Pendidik::whereIn('bagian', ['kepsek', 'kependidikan'])
+            'kependidikan' => Pendidik::whereIn('bagian', ['Kepala Sekolah', 'Kependidikan'])
                 ->limit(3)
                 ->get(),
         ];
