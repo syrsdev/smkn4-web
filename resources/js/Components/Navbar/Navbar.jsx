@@ -6,7 +6,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import DropLink from "../Dropdown/DropLink";
 import Sidebar from "../Sidebar/Sidebar";
 
-export default function Navbar({ subnav, logo }) {
+export default function Navbar({ subnav, logo, theme }) {
     const [sidebar, setSidebar] = useState(false);
     const [hoverDropdown, setHoverDropdown] = useState({
         dropdown1: false,
@@ -14,10 +14,18 @@ export default function Navbar({ subnav, logo }) {
         dropdown3: false,
     });
 
+    console.log(theme);
+
     return (
         <>
             <nav className="sticky top-0 z-50">
-                <div className="flex items-center bg-primary text-secondary px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]">
+                <div
+                    style={{
+                        background: `${theme.primer}`,
+                        color: `${theme.fontSekunder}`,
+                    }}
+                    className={`flex items-center px-[40px] md:px-[65px] xl:px-[100px] justify-between text-[14px]`}
+                >
                     <Link href="/" className="w-full lg:w-fit">
                         <img
                             src={`${logo}`}
@@ -87,6 +95,7 @@ export default function Navbar({ subnav, logo }) {
                                             <IoChevronDown className="duration-150 rotate" />
                                         </div>
                                         <Dropdown
+                                            theme={theme}
                                             shown={hoverDropdown.dropdown1}
                                         >
                                             <DropLink href="/profil-sekolah">
@@ -123,6 +132,7 @@ export default function Navbar({ subnav, logo }) {
                                             <IoChevronDown className="duration-150 rotate" />
                                         </div>
                                         <Dropdown
+                                            theme={theme}
                                             shown={hoverDropdown.dropdown2}
                                         >
                                             <DropLink href="/post/artikel">
@@ -160,6 +170,7 @@ export default function Navbar({ subnav, logo }) {
                                             <IoChevronDown className="duration-150 rotate" />
                                         </div>
                                         <Dropdown
+                                            theme={theme}
                                             shown={hoverDropdown.dropdown3}
                                         >
                                             <DropLink href="/prestasi">
@@ -175,8 +186,8 @@ export default function Navbar({ subnav, logo }) {
                         )}
                     </div>
                 </div>
-                <SubNavbar subnav={subnav} />
-                <Sidebar isActive={sidebar} />
+                <SubNavbar subnav={subnav} theme={theme} />
+                <Sidebar isActive={sidebar} theme={theme} />
                 <div
                     onClick={() => setSidebar(false)}
                     className={`w-full min-h-screen fixed top-0 lg:hidden ${

@@ -39,6 +39,13 @@ function Prestasi(props) {
             }
         );
     };
+    let webTheme = {
+        primer: props.sekolah.warna_primer,
+        sekunder: props.sekolah.warna_sekunder,
+        aksen: props.sekolah.warna_aksen,
+        fontPrimer: props.sekolah.font_primer,
+        fontSekunder: props.sekolah.font_sekunder,
+    };
     return (
         <LandingLayout
             namaSekolah={props.sekolah.nama_sekolah}
@@ -47,16 +54,23 @@ function Prestasi(props) {
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
+            theme={webTheme}
         >
             <Container classname="my-10 md:my-16">
                 <MadingLayout
+                    theme={webTheme}
                     title={props.mading.title}
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
                     {props.post !== null ? (
                         <>
-                            <h1 className="text-center uppercase text-primary text-[20px] xl:text-[24px] font-bold mb-4">
+                            <h1
+                                style={{
+                                    color: `${props.sekolah.font_primer}`,
+                                }}
+                                className="text-center uppercase text-[20px] xl:text-[24px] font-bold mb-4"
+                            >
                                 {window.location.pathname.split("/").length < 3
                                     ? `PRESTASI TERBARU`
                                     : `DETAIL PRESTASI`}
@@ -69,15 +83,31 @@ function Prestasi(props) {
                                         alt="thumbnail post"
                                         className="max-h-[200px] w-full object-cover xl:max-h-[380px] cursor-zoom-in "
                                     />
-                                    <div className="absolute top-0 right-0 px-4 py-2 capitalize xl:px-6 rounded-bl-2xl bg-primary text-secondary">
+                                    <div
+                                        style={{
+                                            backgroundColor: `${props.sekolah.warna_primer}`,
+                                            color: `${props.sekolah.font_sekunder}`,
+                                        }}
+                                        className="absolute top-0 right-0 px-4 py-2 capitalize xl:px-6 rounded-bl-2xl"
+                                    >
                                         {props.prestasi.kategori}
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <h2 className="font-bold text-primary text-[18px] xl:text-[20px]">
+                                    <h2
+                                        style={{
+                                            color: `${props.sekolah.font_primer}`,
+                                        }}
+                                        className="font-bold text-[18px] xl:text-[20px]"
+                                    >
                                         {props.prestasi.judul}
                                     </h2>
-                                    <p className="text-[14px] font-semibold text-primary flex items-center gap-2">
+                                    <p
+                                        style={{
+                                            color: `${props.sekolah.font_primer}`,
+                                        }}
+                                        className="text-[14px] font-semibold flex items-center gap-2"
+                                    >
                                         <span>
                                             Post by{" "}
                                             {props.prestasi.penulis.name}
@@ -86,7 +116,12 @@ function Prestasi(props) {
                                             props.prestasi.created_at
                                         ).toLocaleDateString("id-ID")}
                                     </p>
-                                    <figure className="mt-2 font-semibold text-primary">
+                                    <figure
+                                        style={{
+                                            color: `${props.sekolah.font_primer}`,
+                                        }}
+                                        className="mt-2 font-semibold"
+                                    >
                                         Peserta Lomba: {props.prestasi.peserta}
                                     </figure>
                                     <p
@@ -105,7 +140,12 @@ function Prestasi(props) {
                                 alt="thumbnail post"
                                 className="max-h-[380px] "
                             />
-                            <h2 className="font-bold text-[20px] text-primary">
+                            <h2
+                                style={{
+                                    color: `${props.sekolah.font_primer}`,
+                                }}
+                                className="font-bold text-[20px]"
+                            >
                                 Belum ada Prestasi di upload
                             </h2>
                         </div>
@@ -123,7 +163,12 @@ function Prestasi(props) {
                     id="paginate"
                 ></div>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 text-primary">
+                <div
+                    style={{
+                        color: `${props.sekolah.font_primer}`,
+                    }}
+                    className="flex flex-wrap items-center justify-between gap-3"
+                >
                     <h3 className="font-bold text-[16px] md:text-[20px] xl:text-[24px]">
                         Prestasi Lainnya
                     </h3>
@@ -137,8 +182,11 @@ function Prestasi(props) {
                         </button>
 
                         <form
+                            style={{
+                                backgroundColor: `${props.sekolah.warna_primer}`,
+                            }}
                             onSubmit={handleSearch}
-                            className="flex items-center border rounded-full md:pe-3 xl:pe-4 bg-primary border-slate-300"
+                            className="flex items-center border rounded-full md:pe-3 xl:pe-4 border-slate-300"
                         >
                             <div className="relative flex items-center">
                                 <input
@@ -153,8 +201,12 @@ function Prestasi(props) {
                                 <FaSearch className="absolute right-4" />
                             </div>
                             <button
+                                style={{
+                                    backgroundColor: `${props.sekolah.warna_primer}`,
+                                    color: `${props.sekolah.font_sekunder}`,
+                                }}
                                 type="submit"
-                                className="px-4 py-2 text-white rounded-full xl:px-4 md:px-3 bg-primary"
+                                className="px-4 py-2 rounded-full xl:px-4 md:px-3"
                             >
                                 Cari
                             </button>
@@ -164,7 +216,11 @@ function Prestasi(props) {
             </Container>
 
             <Container classname="my-10 md:mt-5 md:mb-16">
-                <CardListLayout data={props.allPrestasi.data} type="prestasi" />
+                <CardListLayout
+                    data={props.allPrestasi.data}
+                    type="prestasi"
+                    theme={webTheme}
+                />
 
                 <Pagination
                     firstPageUrl={props.allPrestasi.first_page_url}

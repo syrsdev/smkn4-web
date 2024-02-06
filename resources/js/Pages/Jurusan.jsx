@@ -5,6 +5,13 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 
 function Jurusan(props) {
+    let webTheme = {
+        primer: props.sekolah.warna_primer,
+        sekunder: props.sekolah.warna_sekunder,
+        aksen: props.sekolah.warna_aksen,
+        fontPrimer: props.sekolah.font_primer,
+        fontSekunder: props.sekolah.font_sekunder,
+    };
     return (
         <LandingLayout
             namaSekolah={props.sekolah.nama_sekolah}
@@ -13,6 +20,7 @@ function Jurusan(props) {
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
+            theme={webTheme}
         >
             <Container classname="mb-14">
                 <h1 className="font-bold text-primary text-[18px] md:text-[24px] xl:text-[26px] text-center mt-10 md:mt-16">

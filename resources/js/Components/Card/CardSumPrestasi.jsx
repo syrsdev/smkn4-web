@@ -1,8 +1,11 @@
 import React from "react";
 
-function CardSumPrestasi({ title, sum }) {
+function CardSumPrestasi({ title, sum, theme }) {
     return (
-        <div className="flex flex-col items-center justify-center gap-4 py-8 font-semibold text-white uppercase border-2 border-yellow-400 md:py-10">
+        <div
+            style={{ color: `${theme.fontSekunder}` }}
+            className="flex flex-col items-center justify-center gap-4 py-8 font-semibold uppercase border-2 border-yellow-400 md:py-10"
+        >
             <img
                 src="/images/sum-prestasi.svg"
                 alt="icon prestasi"

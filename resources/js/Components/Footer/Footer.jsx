@@ -8,10 +8,10 @@ import Facebook from "./Icons/Facebook";
 import Youtube from "./Icons/Youtube";
 import IconLayout from "./Icons/IconLayout";
 
-function Footer({ logo, alamat, sosmed }) {
+function Footer({ logo, alamat, sosmed, theme }) {
     return (
         <>
-            <FooterLayout>
+            <FooterLayout theme={theme}>
                 <div className="flex flex-col w-full gap-3 md:w-[300px] lg:w-[380px]">
                     <img
                         src={`${logo}`}
@@ -32,6 +32,7 @@ function Footer({ logo, alamat, sosmed }) {
                                 href={item.url}
                                 name={item.name}
                                 key={index}
+                                theme={theme}
                             >
                                 {item.id == 1 && <Facebook />}
                                 {item.id == 2 && <Instagram />}
@@ -43,7 +44,7 @@ function Footer({ logo, alamat, sosmed }) {
                     </div>
                 </div>
             </FooterLayout>
-            <Copyright />
+            <Copyright theme={theme} />
         </>
     );
 }

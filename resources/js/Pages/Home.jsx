@@ -18,6 +18,13 @@ import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
 
 function Home(props) {
     console.log(props);
+    let webTheme = {
+        primer: props.sekolah.warna_primer,
+        sekunder: props.sekolah.warna_sekunder,
+        aksen: props.sekolah.warna_aksen,
+        fontPrimer: props.sekolah.font_primer,
+        fontSekunder: props.sekolah.font_sekunder,
+    };
     return (
         <LandingLayout
             namaSekolah={props.sekolah.nama_sekolah}
@@ -26,6 +33,7 @@ function Home(props) {
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
+            theme={webTheme}
         >
             <Container
                 style={{
@@ -57,11 +65,17 @@ function Home(props) {
             </Container>
             <Container classname="my-10 md:my-20">
                 <MadingLayout
+                    theme={webTheme}
                     title={props.mading.title}
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    <h2 className="text-primary text-[18px] font-bold mb-6 md:hidden block text-center xl:text-left">
+                    <h2
+                        style={{
+                            color: `${props.sekolah.font_primer}`,
+                        }}
+                        className="text-[18px] font-bold mb-6 md:hidden block text-center xl:text-left"
+                    >
                         {props.sambutan.judul}
                     </h2>
                     <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
@@ -71,7 +85,12 @@ function Home(props) {
                                 alt="foto kepala sekolah"
                                 className="object-contain max-w-[177px] max-h-[350px]"
                             />
-                            <div className="flex flex-col mt-4 text-primary whitespace-nowrap">
+                            <div
+                                style={{
+                                    color: `${props.sekolah.font_primer}`,
+                                }}
+                                className="flex flex-col mt-4 whitespace-nowrap"
+                            >
                                 <p className="font-bold text-[16px] border-b-2 border-primary">
                                     {props.sambutan.kepsek.nama}
                                 </p>
@@ -79,7 +98,12 @@ function Home(props) {
                             </div>
                         </div>
                         <div className="flex flex-col w-full text-center md:text-left">
-                            <h2 className="text-primary text-[18px] xl:text-[24px] font-bold mb-3 hidden md:block">
+                            <h2
+                                style={{
+                                    color: `${props.sekolah.font_primer}`,
+                                }}
+                                className="text-[18px] xl:text-[24px] font-bold mb-3 hidden md:block"
+                            >
                                 {props.sambutan.judul}
                             </h2>
                             <p
@@ -94,12 +118,19 @@ function Home(props) {
             </Container>
 
             <Container classname="my-10 md:my-20">
-                <MadingTitle title="BERITA TERKINI" href="berita" />
-                <CardListLayout data={props.berita} />
+                <MadingTitle
+                    title="BERITA TERKINI"
+                    href="berita"
+                    theme={props.sekolah.font_primer}
+                />
+                <CardListLayout theme={webTheme} data={props.berita} />
             </Container>
 
             <Container classname="my-10 md:my-20">
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
+                <h3
+                    style={{ color: `${props.sekolah.font_primer}` }}
+                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                >
                     KONSENTRASI KEAHLIAN
                 </h3>
 
@@ -110,31 +141,42 @@ function Home(props) {
                 </Carousel>
             </Container>
 
-            <Container classname="py-16 mt-10 bg-primary">
-                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
+            <Container
+                style={{ backgroundColor: `${props.sekolah.warna_primer}` }}
+                classname="py-16 mt-10"
+            >
+                <h3
+                    style={{ color: `${props.sekolah.font_sekunder}` }}
+                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                >
                     PRESTASI
                 </h3>
 
                 <div className="flex flex-col gap-7 xl:flex-row">
                     <div className="grid w-full grid-cols-2 gap-4 md:gap-8 xl:w-3/12 xl:grid-cols-1">
                         <CardSumPrestasi
+                            theme={webTheme}
                             title="INTERNASIONAL"
                             sum={props.kategoriPrestasi.internasional}
                         />
                         <CardSumPrestasi
+                            theme={webTheme}
                             title="NASIONAL"
                             sum={props.kategoriPrestasi.nasional}
                         />
                         <CardSumPrestasi
+                            theme={webTheme}
                             title="PROVINSI"
                             sum={props.kategoriPrestasi.provinsi}
                         />
                         <CardSumPrestasi
+                            theme={webTheme}
                             title="KOTA"
                             sum={props.kategoriPrestasi.kota}
                         />
                     </div>
                     <CardListLayout
+                        theme={webTheme}
                         type="prestasi"
                         data={props.prestasi}
                         dataLength={props.prestasi.length}
@@ -148,7 +190,10 @@ function Home(props) {
             </Container>
 
             <Container classname="my-10 md:my-20">
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
+                <h3
+                    style={{ color: `${props.sekolah.font_primer}` }}
+                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                >
                     TENAGA PENDIDIK DAN KEPENDIDIKAN
                 </h3>
                 <Carousel
@@ -186,7 +231,10 @@ function Home(props) {
                     className="absolute h-20 bg-transparent -top-44 -z-10"
                     id="ekskul"
                 ></div>
-                <h3 className="text-primary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7">
+                <h3
+                    style={{ color: `${props.sekolah.font_primer}` }}
+                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                >
                     EKSTRAKURIKULER
                 </h3>
 
@@ -230,7 +278,8 @@ function Home(props) {
                                     : ""
                             }`}
                             key={index}
-                            className="flex flex-col items-center gap-3 font-semibold text-primary"
+                            style={{ color: `${props.sekolah.font_primer}` }}
+                            className="flex flex-col items-center gap-3 font-semibold"
                         >
                             <a
                                 href={item.link_sosmed}
@@ -248,8 +297,14 @@ function Home(props) {
                     ))}
                 </Splide>
             </Container>
-            <Container classname="py-16 mt-10 bg-primary">
-                <h3 className="text-secondary text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-10">
+            <Container
+                classname="py-16 mt-10"
+                style={{
+                    backgroundColor: `${props.sekolah.warna_primer}`,
+                    color: `${props.sekolah.font_sekunder}`,
+                }}
+            >
+                <h3 className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-10">
                     KONTAK KAMI
                 </h3>
                 <div
@@ -258,7 +313,7 @@ function Home(props) {
                         __html: props.sekolah.sematkan_peta,
                     }}
                 ></div>
-                <div className="flex flex-col items-start my-14 md:flex-wrap gap-7 md:gap-0 md:justify-between md:items-center md:flex-row xl:justify-evenly text-secondary">
+                <div className="flex flex-col items-start my-14 md:flex-wrap gap-7 md:gap-0 md:justify-between md:items-center md:flex-row xl:justify-evenly">
                     <div className="flex gap-5">
                         <BsTelephone className="text-[35px] md:text-[40px]" />
                         <div className="flex flex-col">
