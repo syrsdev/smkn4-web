@@ -1,14 +1,16 @@
 import React from "react";
 import Container from "../Container/Container";
 
-function SubNavbar({ subnav }) {
+function SubNavbar({ subnav, theme }) {
     return (
         <>
             {subnav.length > 0 && (
                 <Container
-                    classname={
-                        " bg-secondary text-secondary py-3 items-center overflow-x-auto shadow-2xl"
-                    }
+                    style={{
+                        background: `${theme.sekunder}`,
+                        color: `${theme.fontSekunder}`,
+                    }}
+                    classname={"py-3 items-center overflow-x-auto shadow-2xl"}
                 >
                     <div className="text-right">
                         {subnav.map((item) => (
@@ -18,6 +20,7 @@ function SubNavbar({ subnav }) {
                                         ? "last:mr-6"
                                         : "last:mr-0"
                                 }`}
+                                target="_blank"
                                 href={item.url}
                                 key={item.id}
                             >

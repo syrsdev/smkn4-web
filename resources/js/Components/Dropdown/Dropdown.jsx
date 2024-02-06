@@ -1,9 +1,12 @@
 import React from "react";
 
-function Dropdown({ children, shown }) {
+function Dropdown({ children, shown, theme }) {
     return (
         <div
-            className={`absolute h-full w-max  text-primary  ${
+            style={{
+                color: `${theme.fontPrimer}`,
+            }}
+            className={`absolute h-full w-max ${
                 shown == false ? "hidden" : "block"
             }`}
         >

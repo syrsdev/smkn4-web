@@ -4,7 +4,7 @@ import SideDropDown from "../Dropdown/SideDropDown";
 import SideDropLink from "../Dropdown/SideDropLink";
 import { Link } from "@inertiajs/react";
 
-function Sidebar({ isActive }) {
+function Sidebar({ isActive, theme }) {
     const [dropdown, setDropdown] = useState({
         dropdown1: false,
         dropdown2: false,
@@ -28,11 +28,20 @@ function Sidebar({ isActive }) {
                             className="object-contain"
                         />
                     </Link>
-                    <ul className="w-full px-8 pt-8 pb-16 md:px-10">
+                    <ul
+                        className="w-full px-8 pt-8 pb-16 md:px-10"
+                        style={{
+                            color: `${theme.fontPrimer}`,
+                            borderColor: `${theme.fontPrimer}`,
+                        }}
+                    >
                         <DropLink href="/" border="border-b-2" pb={true}>
                             BERANDA
                         </DropLink>
                         <span
+                            style={{
+                                borderColor: `${theme.fontPrimer}`,
+                            }}
                             onClick={() =>
                                 setDropdown({
                                     ...dropdown,
@@ -58,6 +67,9 @@ function Sidebar({ isActive }) {
                             JURUSAN
                         </DropLink>
                         <span
+                            style={{
+                                borderColor: `${theme.fontPrimer}`,
+                            }}
                             onClick={() =>
                                 setDropdown({
                                     ...dropdown,
@@ -86,6 +98,9 @@ function Sidebar({ isActive }) {
                             </SideDropDown>
                         </span>
                         <span
+                            style={{
+                                borderColor: `${theme.fontPrimer}`,
+                            }}
                             onClick={() =>
                                 setDropdown({
                                     ...dropdown,
