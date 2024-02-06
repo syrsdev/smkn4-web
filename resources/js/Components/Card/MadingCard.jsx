@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
 
-function MadingCard({ item, prestasi = false }) {
+function MadingCard({ item, prestasi = false, theme }) {
     return (
         <div className="flex w-full gap-3 overflow-hidden md:w-2/5 lg:w-full">
             <img
@@ -19,7 +19,10 @@ function MadingCard({ item, prestasi = false }) {
                     dangerouslySetInnerHTML={{ __html: item.konten }}
                 ></div>
                 <Link
-                    className="text-[12px] border-b text-slate-300 border-slate-300"
+                    style={{
+                        color: `${theme.fontSekunder}`,
+                    }}
+                    className="text-[12px] border-b opacity-80 border-slate-300"
                     href={`${
                         prestasi == true
                             ? `/prestasi/${item.slug}`

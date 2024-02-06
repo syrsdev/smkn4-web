@@ -8,6 +8,7 @@ function CardListLayout({
     gridcols = "3",
     padding,
     dataLength,
+    theme,
 }) {
     return (
         <>
@@ -16,7 +17,11 @@ function CardListLayout({
                     {type == "post" && (
                         <div className="grid grid-cols-2 gap-5 md:gap-7 xl:grid-cols-3">
                             {data.map((item, index) => (
-                                <PostCard key={index} data={item} />
+                                <PostCard
+                                    theme={theme}
+                                    key={index}
+                                    data={item}
+                                />
                             ))}
                         </div>
                     )}
@@ -28,6 +33,7 @@ function CardListLayout({
                         >
                             {data.map((item, index) => (
                                 <PrestasiCard
+                                    theme={theme}
                                     key={index}
                                     data={item}
                                     padding={padding}
