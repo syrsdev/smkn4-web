@@ -15,6 +15,14 @@ function DetailJurusan(props) {
         setShowModal(true);
         setImageSelect(index);
     };
+
+    let webTheme = {
+        primer: props.sekolah.warna_primer,
+        sekunder: props.sekolah.warna_sekunder,
+        aksen: props.sekolah.warna_aksen,
+        fontPrimer: props.sekolah.font_primer,
+        fontSekunder: props.sekolah.font_sekunder,
+    };
     console.log(imageSelect);
 
     console.log(props);
@@ -26,6 +34,7 @@ function DetailJurusan(props) {
             alamat={props.sekolah.alamat_sekolah}
             subnav={props.subNavbar}
             sosmed={props.footer.socialMedia}
+            theme={webTheme}
         >
             <Container classname="my-10">
                 <h1 className="font-bold uppercase text-center text-primary text-[18px] md:text-[20px] xl:text-[24px]">
@@ -38,6 +47,7 @@ function DetailJurusan(props) {
                 />
 
                 <MadingLayout
+                    theme={webTheme}
                     title={props.mading.title}
                     listPost={props.mading.list}
                     href={props.mading.kategori}
