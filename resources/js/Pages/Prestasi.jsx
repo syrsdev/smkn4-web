@@ -238,6 +238,7 @@ function Prestasi(props) {
                 onClick={() => setFilter(false)}
                 penulis={props.penulis}
                 paginate={props.allPrestasi.current_page}
+                theme={webTheme}
             />
 
             {showModal && (

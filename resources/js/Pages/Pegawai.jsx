@@ -34,6 +34,7 @@ function Pegawai(props) {
             theme={webTheme}
         >
             <FilterPegawai
+                theme={webTheme}
                 active={filter}
                 onClick={() => setFilter(false)}
                 mapel={props.mapel}

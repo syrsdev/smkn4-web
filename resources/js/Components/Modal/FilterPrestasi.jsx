@@ -17,7 +17,7 @@ const orderby = [
     { value: "desc", label: "Z-A" },
 ];
 
-function FilterPrestasi({ active, onClick, penulis, paginate }) {
+function FilterPrestasi({ active, onClick, penulis, paginate, theme }) {
     const dataPenulis = penulis.map((item) => {
         return {
             value: `${item.slug}`,
@@ -56,8 +56,14 @@ function FilterPrestasi({ active, onClick, penulis, paginate }) {
             judul={"Prestasi"}
             active={active}
             onClick={onClick}
+            theme={theme}
         >
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Kategori: </h2>
                 <Select
                     defaultValue={filter.kategori}
@@ -67,7 +73,12 @@ function FilterPrestasi({ active, onClick, penulis, paginate }) {
                     }
                 />
             </div>
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Diposting oleh: </h2>
                 <Select
                     defaultValue={filter.penulis}
@@ -75,7 +86,12 @@ function FilterPrestasi({ active, onClick, penulis, paginate }) {
                     onChange={(e) => setFilter({ ...filter, penulis: e.value })}
                 />
             </div>
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Urutan: </h2>
                 <Select
                     defaultValue={filter.orderby}
@@ -84,7 +100,7 @@ function FilterPrestasi({ active, onClick, penulis, paginate }) {
                 />
             </div>
 
-            <ButtonFilter hrefReset={window.location.pathname} />
+            <ButtonFilter theme={theme} hrefReset={window.location.pathname} />
         </ModalLayout>
     );
 }

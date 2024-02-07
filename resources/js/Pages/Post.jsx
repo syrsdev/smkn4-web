@@ -211,6 +211,7 @@ function Post(props) {
             </Container>
 
             <FilterPost
+                theme={webTheme}
                 active={filter}
                 onClick={() => setFilter(false)}
                 penulis={props.penulis}
