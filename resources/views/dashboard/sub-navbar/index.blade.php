@@ -32,14 +32,18 @@
                                 <div class="card-header">
                                     <h4>{{ $item->name }}</h4>
                                     <div class="card-header-action">
-                                        <a data-collapse="#{{ $item->id }}-collapse" class="btn btn-icon btn-info" href="#">
+                                        <a data-collapse="#{{ $item->id }}-collapse" class="btn btn-icon btn-info"
+                                            href="#">
                                             <i class="fas fa-minus"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-warning btn-edit" data-id="{{ $item->id }}" data-toggle="tooltip" title="Edit Sub Navbar">
+                                        <button class="btn btn-sm btn-warning btn-edit" data-id="{{ $item->id }}"
+                                            data-toggle="tooltip" title="Edit Sub Navbar">
                                             <i class="fas fa-pen"></i>
                                         </button>
-                                        <a href="{{ route('sub-navbar.destroy', $item->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Sub Navbar">
-                                            <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                        <a href="{{ route('sub-navbar.destroy', $item->id) }}" class="btn btn-sm btn-danger"
+                                            data-confirm-delete="true" data-toggle="tooltip" title="Hapus Sub Navbar">
+                                            <i class="fas fa-times"
+                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -50,7 +54,8 @@
                                                 <h5 class="mt-0">{{ $item->name }}</h5>
                                                 <p class="mb-0">
                                                     @if ($item->url !== null)
-                                                        <a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a>
+                                                        <a href="{{ $item->url }}"
+                                                            target="_blank">{{ $item->url }}</a>
                                                     @else
                                                         -
                                                     @endif
@@ -60,13 +65,16 @@
                                     </div>
                                     <div class="card-footer row">
                                         <div class="col-6">
-                                            <label class="custom-switch mt-1">
-                                                <input type="checkbox" class="custom-switch-input" data-id="{{ $item->id }}" {{ $item->status === 1 ? 'checked' : '' }}>
+                                            <label class="mt-1 custom-switch">
+                                                <input value="{{ $item->status }}" type="checkbox"
+                                                    class="custom-switch-input" data-id="{{ $item->id }}"
+                                                    {{ $item->status === 1 ? 'checked' : '' }}>
                                                 <span class="custom-switch-indicator"></span>
                                             </label>
                                         </div>
-                                        <div class="col-6 text-right">
-                                            <div class="badge badge-{{ $item->id }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
+                                        <div class="text-right col-6">
+                                            <div
+                                                class="badge badge-{{ $item->id }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
                                                 {{ $item->status === 1 ? 'Published' : 'Draft' }}
                                             </div>
                                         </div>
