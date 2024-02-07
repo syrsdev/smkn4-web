@@ -9,6 +9,7 @@ function ModalLayout({
     submit,
     image = false,
     src,
+    theme,
 }) {
     return (
         <>
@@ -21,13 +22,19 @@ function ModalLayout({
                         onClick={() => onClick()}
                     ></div>
                     {image == false ? (
-                        <div className="w-10/12 xl:w-1/2 h-fit bg-white opacity-100 z-[70] rounded-xl flex flex-col px-10 py-8">
-                            <div className="flex items-center justify-between w-full pb-2 font-bold border-b-2 border-primary">
-                                <h1 className="text-[16px] md:text-[20px] text-primary">
+                        <div
+                            style={{
+                                borderColor: `${theme.fontPrimer}`,
+                                color: `${theme.fontPrimer}`,
+                            }}
+                            className="w-10/12 xl:w-1/2 h-fit bg-white opacity-100 z-[70] rounded-xl flex flex-col px-10 py-8"
+                        >
+                            <div className="flex items-center justify-between w-full pb-2 font-bold border-b-2 border-inherit">
+                                <h1 className="text-[16px] md:text-[20px] text-inherit">
                                     Filter {judul}
                                 </h1>
                                 <IoMdClose
-                                    className="text-2xl cursor-pointer text-primary hover:text-red-500"
+                                    className="text-2xl cursor-pointer text-inherit hover:text-red-500"
                                     onClick={() => onClick()}
                                 />
                             </div>

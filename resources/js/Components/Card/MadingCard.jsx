@@ -21,8 +21,9 @@ function MadingCard({ item, prestasi = false, theme }) {
                 <Link
                     style={{
                         color: `${theme.fontSekunder}`,
+                        borderColor: `${theme.aksen}`,
                     }}
-                    className="text-[12px] border-b opacity-80 border-slate-300"
+                    className="text-[12px] border-b "
                     href={`${
                         prestasi == true
                             ? `/prestasi/${item.slug}`

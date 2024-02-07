@@ -7,11 +7,16 @@ function CarouselCardLayout({
     href = "",
     gap,
     p = "px-3 py-7 md:px-5 xl:px-10 xl:py-14 md:py-9",
+    theme,
 }) {
     return (
         <>
             <SplideSlide
-                className={`duration-500 border-2 rounded-md hover:shadow-xl hover:shadow-[#1A274D]  text-primary border-primary ${p} `}
+                style={{
+                    color: `${theme}`,
+                    borderColor: `${theme}`,
+                }}
+                className={`duration-500 border-2 rounded-md hover:shadow-2xl ${p} `}
             >
                 {href != null ? (
                     <Link

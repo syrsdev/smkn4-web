@@ -34,6 +34,7 @@ function Pegawai(props) {
             theme={webTheme}
         >
             <FilterPegawai
+                theme={webTheme}
                 active={filter}
                 onClick={() => setFilter(false)}
                 mapel={props.mapel}
@@ -95,6 +96,7 @@ function Pegawai(props) {
                     <div className="grid grid-cols-2 gap-5 md:gap-7 mb-14 md:grid-cols-3 xl:grid-cols-5">
                         {props.pegawai.map((item, index) => (
                             <PegawaiCard
+                                theme={webTheme}
                                 carousel={false}
                                 item={item}
                                 key={index}
@@ -108,7 +110,12 @@ function Pegawai(props) {
                             alt="thumbnail post"
                             className="max-h-[380px] "
                         />
-                        <h2 className="font-bold text-[20px] text-primary">
+                        <h2
+                            style={{
+                                color: `${props.sekolah.font_primer}`,
+                            }}
+                            className="font-bold text-[20px]"
+                        >
                             Pegawai tidak ditemukan
                         </h2>
                     </div>

@@ -15,7 +15,7 @@ const orderby = [
     { value: "desc", label: "Z-A" },
 ];
 
-function FilterPegawai({ active, onClick, mapel }) {
+function FilterPegawai({ active, onClick, mapel, theme }) {
     const dataMapel = mapel.map((item) => {
         return {
             value: `${item.slug}`,
@@ -43,8 +43,14 @@ function FilterPegawai({ active, onClick, mapel }) {
             judul={"Pegawai"}
             active={active}
             onClick={onClick}
+            theme={theme}
         >
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Bagian: </h2>
                 <Select
                     defaultValue={filter.bagian}
@@ -52,7 +58,12 @@ function FilterPegawai({ active, onClick, mapel }) {
                     onChange={(e) => setFilter({ ...filter, bagian: e.value })}
                 />
             </div>
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Mata Pelajaran: </h2>
                 <Select
                     defaultValue={filter.mapel}
@@ -60,7 +71,12 @@ function FilterPegawai({ active, onClick, mapel }) {
                     onChange={(e) => setFilter({ ...filter, mapel: e.value })}
                 />
             </div>
-            <div className="flex flex-col gap-2 text-primary">
+            <div
+                style={{
+                    color: `${theme.fontPrimer}`,
+                }}
+                className="flex flex-col gap-2"
+            >
                 <h2>Urutan: </h2>
                 <Select
                     defaultValue={filter.orderby}
@@ -69,7 +85,7 @@ function FilterPegawai({ active, onClick, mapel }) {
                 />
             </div>
 
-            <ButtonFilter hrefReset="/pegawai" />
+            <ButtonFilter hrefReset="/pegawai" theme={theme} />
         </ModalLayout>
     );
 }

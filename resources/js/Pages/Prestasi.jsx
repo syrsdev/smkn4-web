@@ -230,6 +230,7 @@ function Prestasi(props) {
                     currentPage={props.allPrestasi.current_page}
                     lastPage={props.allPrestasi.last_page}
                     links={props.allPrestasi.links}
+                    theme={webTheme}
                 />
             </Container>
 
@@ -238,6 +239,7 @@ function Prestasi(props) {
                 onClick={() => setFilter(false)}
                 penulis={props.penulis}
                 paginate={props.allPrestasi.current_page}
+                theme={webTheme}
             />
 
             {showModal && (

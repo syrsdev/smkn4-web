@@ -37,14 +37,15 @@ function Home(props) {
         >
             <Container
                 style={{
+                    color: `${props.heroSection.text_color}`,
                     backgroundImage: `url('${props.heroSection.hero_image}')`,
                     backgroundPosition: props.heroSection.image_position,
                 }}
-                classname={`flex py-10 lg:items-start text-secondary justify-center flex-col xl:min-h-[530px] hero-img relative`}
+                classname={`flex py-10 lg:items-start justify-center flex-col xl:min-h-[530px] hero-img relative`}
             >
                 <div className="absolute inset-0 bg-black opacity-50 lg:bg-gradient-to-r from-black via-slate-700 to-slate-300"></div>
                 <div className="w-full md:w-10/12 lg:w-1/2">
-                    <h1 className="relative z-20 flex flex-col gap-1 text-2xl font-bold xl:gap-2 xl:text-4xl text-secondary">
+                    <h1 className="relative z-20 flex flex-col gap-1 text-2xl font-bold xl:gap-2 xl:text-4xl">
                         <span className="text-base font-normal xl:text-3xl">
                             {props.heroSection.welcome}
                         </span>{" "}
@@ -88,10 +89,11 @@ function Home(props) {
                             <div
                                 style={{
                                     color: `${props.sekolah.font_primer}`,
+                                    borderColor: `${props.sekolah.font_primer}`,
                                 }}
                                 className="flex flex-col mt-4 whitespace-nowrap"
                             >
-                                <p className="font-bold text-[16px] border-b-2 border-primary">
+                                <p className="font-bold text-[16px] border-b-2 border-inherit">
                                     {props.sambutan.kepsek.nama}
                                 </p>
                                 <p>Plt. Kepala Sekolah</p>
@@ -136,7 +138,7 @@ function Home(props) {
 
                 <Carousel>
                     {props.konsentrasi.map((item, index) => (
-                        <JurusanCard item={item} key={index} />
+                        <JurusanCard theme={webTheme} item={item} key={index} />
                     ))}
                 </Carousel>
             </Container>
@@ -219,7 +221,7 @@ function Home(props) {
                     }
                 >
                     {props.tenagaPendidik.map((item, index) => (
-                        <PegawaiCard item={item} key={index} />
+                        <PegawaiCard item={item} key={index} theme={webTheme} />
                     ))}
                 </Carousel>
                 <ButtonSecondary href="/pegawai">
@@ -282,9 +284,12 @@ function Home(props) {
                             className="flex flex-col items-center gap-3 font-semibold"
                         >
                             <a
+                                style={{
+                                    borderColor: `${props.sekolah.font_primer}`,
+                                }}
                                 href={item.link_sosmed}
                                 target="_blank"
-                                className="flex items-center justify-center p-6 overflow-hidden border-2 rounded-full md:p-7 h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 xl:p-8 border-primary "
+                                className="flex items-center justify-center p-6 overflow-hidden border-2 rounded-full md:p-7 h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 xl:p-8"
                             >
                                 <img
                                     src={item.gambar}

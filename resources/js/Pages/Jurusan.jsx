@@ -23,7 +23,12 @@ function Jurusan(props) {
             theme={webTheme}
         >
             <Container classname="mb-14">
-                <h1 className="font-bold text-primary text-[18px] md:text-[24px] xl:text-[26px] text-center mt-10 md:mt-16">
+                <h1
+                    style={{
+                        color: `${props.sekolah.font_primer}`,
+                    }}
+                    className="font-bold text-[18px] md:text-[24px] xl:text-[26px] text-center mt-10 md:mt-16"
+                >
                     PROGRAM KEAHLIAN
                 </h1>
 
@@ -39,7 +44,12 @@ function Jurusan(props) {
                                 alt="gambar jurusan"
                             />
                         </div>
-                        <div className="flex flex-col items-center w-full gap-2 text-center xl:w-4/12 md:text-start md:items-start text-primary">
+                        <div
+                            style={{
+                                color: `${props.sekolah.font_primer}`,
+                            }}
+                            className="flex flex-col items-center w-full gap-2 text-center xl:w-4/12 md:text-start md:items-start"
+                        >
                             <h2 className="font-bold text-[16px] md:text-[18px] xl:text-[20px]">
                                 {item.nama}
                             </h2>
