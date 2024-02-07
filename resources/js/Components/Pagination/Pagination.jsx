@@ -17,6 +17,7 @@ function Pagination({
     currentPage,
     lastPage,
     links,
+    theme,
 }) {
     const [numberPage, setNumberPage] = useState([]);
     useEffect(() => {
@@ -33,7 +34,10 @@ function Pagination({
     return (
         <>
             {lastPage > 1 && (
-                <div className="flex items-center justify-center mt-10 cursor-pointer md:mt-16 text-primary">
+                <div
+                    style={{ color: `${theme.fontPrimer}` }}
+                    className="flex items-center justify-center mt-10 cursor-pointer md:mt-16"
+                >
                     {currentPage > 1 && (
                         <>
                             <Link
@@ -74,8 +78,8 @@ function Pagination({
                                 }
                                 className={
                                     item.active == true
-                                        ? "bg-primary rounded-full font-medium px-3 py-1 text-white border-2 border-yellow-400"
-                                        : "hover:text-tertiary font-bold"
+                                        ? "paginasi rounded-full font-medium px-3 py-1 border-2"
+                                        : "paginasi-false font-bold"
                                 }
                             >
                                 {item.label}
