@@ -90,10 +90,14 @@
 													<td>{{ $item->created_at->format('j/n/Y') }}</td>
 													<td>{{ $item->views ? $item->views : 0 }}</td>
 													<td>
-														<label class="custom-switch mt-1">
-                                                            <input type="checkbox" class="custom-switch-input" data-slug="{{ $item->slug }}" {{ $item->status === 1 ? 'checked' : '' }}>
-                                                            <span class="custom-switch-indicator"></span>
-                                                        </label>
+														<form action="{{ route('post.status', $item->slug) }}" method="GET">
+															@csrf
+															<input type="hidden" name="status" value="{{ $item->status === 1 ? 0 : 1 }}">
+															<label class="custom-switch mt-1">
+																<input type="checkbox" class="custom-switch-input" {{ $item->status === 1 ? 'checked' : '' }} onclick="this.form.submit()">
+																<span class="custom-switch-indicator"></span>
+															</label>
+														</form>
 													</td>
 													<td>
 														<div class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
@@ -133,34 +137,4 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-
-	<script>
-        $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
-                let slug = $(this).data('slug');
-                let status = $(this).prop('checked') === true ? 1 : 0;
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/dashboard/post/' + slug + '/status',
-                    data: {
-                        'status': status,
-                    },
-                    success: function(response) {
-                        if (response.status === '1') {
-                            badge = `
-                                <div class="badge badge-success badge-${response.slug}">Published</div>
-                            `;
-                        } else if (response.status === '0') {
-                            badge = `
-                                <div class="badge badge-warning badge-${response.slug}">Draft</div>
-                            `;
-                        }
-
-                        $(`.badge-${response.slug}`).replaceWith(badge);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
