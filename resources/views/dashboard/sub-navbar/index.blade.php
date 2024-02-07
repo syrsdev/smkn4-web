@@ -60,14 +60,10 @@
                                     </div>
                                     <div class="card-footer row">
                                         <div class="col-6">
-                                            <form action="{{ route('sub-navbar.status', $item->id) }}" method="GET">
-                                                @csrf
-                                                <input type="hidden" name="status" value="{{ $item->status === 1 ? 0 : 1 }}">
-                                                <label class="custom-switch mt-1">
-                                                    <input type="checkbox" class="custom-switch-input" {{ $item->status === 1 ? 'checked' : '' }} onclick="this.form.submit()">
-                                                    <span class="custom-switch-indicator"></span>
-                                                </label>
-                                            </form>
+                                            <label class="custom-switch mt-1">
+                                                <input type="checkbox" class="custom-switch-input" data-id="{{ $item->id }}" {{ $item->status === 1 ? 'checked' : '' }}>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
                                         </div>
                                         <div class="col-6 text-right">
                                             <div class="badge badge-{{ $item->id }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
@@ -93,6 +89,34 @@
         $('.btn-edit').click(function() {
             let id = $(this).data('id');
             $('#editSubNavbar' + id).modal('show');
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.custom-switch-input').change(function() {
+                let id = $(this).data('id');
+                let status = $(this).prop('checked') === true ? 1 : 0;
+                $.ajax({
+                    type: 'GET',
+                    url: '/dashboard/sub-navbar/' + id + '/status',
+                    data: {
+                        'status': status,
+                    },
+                    success: function(response) {
+                        if (response.status === '1') {
+                            badge = `
+                                <div class="badge badge-success badge-${response.id}">Published</div>
+                            `;
+                        } else if (response.status === '0') {
+                            badge = `
+                                <div class="badge badge-warning badge-${response.id}">Draft</div>
+                            `;
+                        }
+                        $(`.badge-${response.id}`).replaceWith(badge);
+                    }
+                });
+            });
         });
     </script>
 @endsection
