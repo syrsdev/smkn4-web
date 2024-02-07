@@ -1,7 +1,7 @@
 import React from "react";
 import CarouselCardLayout from "@/Layouts/CarouselCardLayout";
 
-function PegawaiCard({ item, carousel = true }) {
+function PegawaiCard({ item, carousel = true, theme }) {
     return (
         <>
             {carousel == true ? (
@@ -9,6 +9,7 @@ function PegawaiCard({ item, carousel = true }) {
                     href={null}
                     p="pb-5 xl:pb-10 pt-2 px-2"
                     gap="gap-1"
+                    theme={theme.fontPrimer}
                 >
                     <img
                         src={item.gambar}
@@ -30,7 +31,11 @@ function PegawaiCard({ item, carousel = true }) {
                 </CarouselCardLayout>
             ) : (
                 <div
-                    className={`duration-500 border-2 rounded-md hover:shadow-xl hover:shadow-[#1A274D]  text-primary border-primary pb-6 pt-2 px-2`}
+                    style={{
+                        color: `${theme.fontPrimer}`,
+                        borderColor: `${theme.fontPrimer}`,
+                    }}
+                    className={`duration-500 border-2 rounded-md hover:shadow-2xl pb-6 pt-2 px-2`}
                 >
                     <div
                         className={`flex flex-col items-center justify-start text-center gap-1`}

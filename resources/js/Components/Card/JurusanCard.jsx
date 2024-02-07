@@ -1,9 +1,12 @@
 import React from "react";
 import CarouselCardLayout from "@/Layouts/CarouselCardLayout";
 
-function JurusanCard({ item }) {
+function JurusanCard({ item, theme }) {
     return (
-        <CarouselCardLayout href={`/jurusan/${item.slug}`}>
+        <CarouselCardLayout
+            theme={theme.fontPrimer}
+            href={`/jurusan/${item.slug}`}
+        >
             <img
                 src={item.icon}
                 alt="Icon Jurusan"

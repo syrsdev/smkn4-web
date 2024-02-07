@@ -72,11 +72,11 @@ export default function Navbar({ subnav, logo, theme }) {
                         ) : (
                             <>
                                 <ul className="items-center hidden gap-6 font-semibold lg:flex">
-                                    <li className="duration-150 hover-link before:bg-tertiary">
+                                    <li className={`duration-150 hover-link`}>
                                         <Link href="/">BERANDA</Link>
                                     </li>
                                     <li
-                                        className={`relative hover-link duration-150 rotate-hover before:bg-tertiary `}
+                                        className={`relative hover-link duration-150 rotate-hover  `}
                                         onMouseEnter={() => {
                                             setHoverDropdown({
                                                 ...hoverDropdown,
@@ -106,13 +106,13 @@ export default function Navbar({ subnav, logo, theme }) {
                                             </DropLink>
                                         </Dropdown>
                                     </li>
-                                    <li className="duration-150 hover-link before:bg-tertiary">
+                                    <li className="duration-150 hover-link ">
                                         <Link href="/jurusan">
                                             PROGRAM KEAHLIAN
                                         </Link>
                                     </li>
                                     <li
-                                        className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
+                                        className="relative duration-150 hover-link rotate-hover "
                                         onMouseEnter={() => {
                                             setHoverDropdown({
                                                 ...hoverDropdown,
@@ -150,7 +150,7 @@ export default function Navbar({ subnav, logo, theme }) {
                                         </Dropdown>
                                     </li>
                                     <li
-                                        className="relative duration-150 hover-link rotate-hover before:bg-tertiary"
+                                        className="relative duration-150 hover-link rotate-hover "
                                         onMouseEnter={() => {
                                             setHoverDropdown({
                                                 ...hoverDropdown,
