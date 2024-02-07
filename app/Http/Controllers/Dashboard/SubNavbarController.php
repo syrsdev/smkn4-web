@@ -90,6 +90,6 @@ class SubNavbarController extends Controller
     {
         $subNavbar->update(['status' => $request->status]);
 
-        return redirect()->back();
+        return response()->json(['id' => $subNavbar->id, 'status' => $request->status]);
     }
 }

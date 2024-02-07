@@ -220,7 +220,7 @@ class PostController extends Controller
     {
         $post->update(['status' => $request->status]);
 
-        return redirect()->back();
+        return response()->json(['slug' => $post->slug, 'status' => $request->status]);
     }
 
     public function upload_image(Request $request)
