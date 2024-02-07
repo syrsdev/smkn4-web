@@ -230,6 +230,7 @@ function Prestasi(props) {
                     currentPage={props.allPrestasi.current_page}
                     lastPage={props.allPrestasi.last_page}
                     links={props.allPrestasi.links}
+                    theme={webTheme}
                 />
             </Container>
 

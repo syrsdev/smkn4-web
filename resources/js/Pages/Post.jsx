@@ -200,6 +200,7 @@ function Post(props) {
                 <CardListLayout data={props.allPost.data} theme={webTheme} />
 
                 <Pagination
+                    theme={webTheme}
                     firstPageUrl={props.allPost.first_page_url}
                     lastPageUrl={props.allPost.last_page_url}
                     nextPage={props.allPost.next_page_url}

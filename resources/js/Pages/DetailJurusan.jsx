@@ -37,7 +37,12 @@ function DetailJurusan(props) {
             theme={webTheme}
         >
             <Container classname="my-10">
-                <h1 className="font-bold uppercase text-center text-primary text-[18px] md:text-[20px] xl:text-[24px]">
+                <h1
+                    style={{
+                        color: `${props.sekolah.font_primer}`,
+                    }}
+                    className="font-bold uppercase text-center text-[18px] md:text-[20px] xl:text-[24px]"
+                >
                     {props.konsentrasi.nama}
                 </h1>
                 <img
@@ -63,7 +68,12 @@ function DetailJurusan(props) {
 
             {props.konsentrasi.galeri.length > 0 && (
                 <Container classname="my-12">
-                    <h2 className="text-primary text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7">
+                    <h2
+                        style={{
+                            color: `${props.sekolah.font_primer}`,
+                        }}
+                        className="text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7"
+                    >
                         GALLERY JURUSAN
                     </h2>
                     <Splide
@@ -112,13 +122,18 @@ function DetailJurusan(props) {
                 </Container>
             )}
             <Container classname="my-10 md:my-20">
-                <h3 className="text-primary text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7">
+                <h3
+                    style={{
+                        color: `${props.sekolah.font_primer}`,
+                    }}
+                    className="text-[16px] md:text-[18px] xl:text-[22px] font-bold text-center mb-5 xl:mb-7"
+                >
                     KONSENTRASI KEAHLIAN LAINNYA
                 </h3>
 
                 <Carousel>
                     {props.jurusan.map((item, index) => (
-                        <JurusanCard item={item} key={index} />
+                        <JurusanCard item={item} key={index} theme={webTheme} />
                     ))}
                 </Carousel>
             </Container>
