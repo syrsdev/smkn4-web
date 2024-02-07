@@ -35,8 +35,8 @@
                                     <input type="text" name="welcome" class="form-control" id="welcome" value="{{ $heroSection['welcome'] }}" required autofocus>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="nama_sekolah" class="form-control-label">Nama Sekolah</label>
-                                    <input type="text" name="nama_sekolah" class="form-control" id="nama_sekolah" value="{{ $sekolah['nama_sekolah'] }}" readonly>
+                                    <label for="text_color" class="form-control-label">Warna Teks</label>
+                                    <input type="color" name="text_color" class="form-control" id="text_color" value="{{ $heroSection['text_color'] }}" required>
                                 </div>
                             </div>
                             <div class="form-group">

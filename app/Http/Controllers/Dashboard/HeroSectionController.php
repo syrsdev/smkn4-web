@@ -33,6 +33,7 @@ class HeroSectionController extends Controller
     {
         $request->validate([
             'welcome'        => ['required'],
+            'text_color'     => ['required'],
             'deskripsi'      => ['required'],
             'image_position' => ['required'],
         ]);
