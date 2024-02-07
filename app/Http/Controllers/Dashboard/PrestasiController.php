@@ -200,6 +200,6 @@ class PrestasiController extends Controller
     {
         $prestasi->update(['status' => $request->status]);
 
-        return response()->json(['slug' => $prestasi->slug, 'status' => $request->status]);
+        return redirect()->back();
     }
 }
