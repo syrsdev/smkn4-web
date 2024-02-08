@@ -10,8 +10,8 @@ function MadingLayout({ children, listPost, title, href = "#", theme }) {
                     <div className="relative w-full lg:mr-7">{children}</div>
                 )}
                 <div
-                    className={`w-full mt-7 lg:w-${
-                        children != false ? "4/12" : "full"
+                    className={`mt-7 ${
+                        children != false ? "w-full lg:w-4/12" : "w-full"
                     } lg:mt-0`}
                 >
                     <MadingTitle
