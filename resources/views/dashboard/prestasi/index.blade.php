@@ -64,14 +64,14 @@
                                                         <label class="mt-1 custom-switch">
                                                             <input value="{{ $item->status }}" type="checkbox"
                                                                 class="custom-switch-input" data-slug="{{ $item->slug }}"
-                                                                {{ $item->status === 1 ? 'checked' : '' }}>
+                                                                {{ $item->status ? 'checked' : '' }}>
                                                             <span class="custom-switch-indicator"></span>
                                                         </label>
                                                     </td>
                                                     <td>
                                                         <div
-                                                            class="badge badge-{{ $item->slug }} {{ $item->status === 1 ? 'badge-success' : 'badge-warning' }}">
-                                                            {{ $item->status === 1 ? 'Published' : 'Draft' }}
+                                                            class="badge badge-{{ $item->slug }} {{ $item->status ? 'badge-success' : 'badge-warning' }}">
+                                                            {{ $item->status ? 'Published' : 'Draft' }}
                                                         </div>
                                                     </td>
                                                     <td>
