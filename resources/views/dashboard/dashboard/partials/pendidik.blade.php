@@ -18,17 +18,7 @@
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
                                 <div class="media-body ml-3">
-                                    <div class="media-title">
-                                        @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.show', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15).'...' }}
-                                            </a>
-                                        @else
-                                            <a href="{{ route('guru.show', $item->slug) }}">
-                                                {{ $item->nama }}
-                                            </a>
-                                        @endif
-                                    </div>
+                                    <div class="media-title">{{ $item->nama }}</div>
                                     <div class="text-small text-muted">Guru Produktif</div>
                                 </div>
                             </li>
@@ -42,17 +32,7 @@
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
                                 <div class="media-body ml-3">
-                                    <div class="media-title">
-                                        @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.show', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15).'...' }}
-                                            </a>
-                                        @else
-                                            <a href="{{ route('guru.show', $item->slug) }}">
-                                                {{ $item->nama }}
-                                            </a>    
-                                        @endif
-                                    </div>
+                                    <div class="media-title">{{ $item->nama }}</div>
                                     <div class="text-small text-muted">
                                         @if ($item->sub_bagian === 'Kepala Sekolah')
                                             Kepala Sekolah
