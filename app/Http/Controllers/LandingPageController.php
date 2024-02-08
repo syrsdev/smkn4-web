@@ -51,13 +51,13 @@ class LandingPageController extends Controller
             ->latest();
 
         $kategoriPrestasi = [
-            'internasional' => Prestasi::where('kategori', 'internasional')
+            'internasional' => Prestasi::where('kategori', 'internasional')->where('status', '1')
                 ->count(),
-            'nasional' => Prestasi::where('kategori', 'nasional')
+            'nasional' => Prestasi::where('kategori', 'nasional')->where('status', '1')
                 ->count(),
-            'provinsi' => Prestasi::where('kategori', 'provinsi')
+            'provinsi' => Prestasi::where('kategori', 'provinsi')->where('status', '1')
                 ->count(),
-            'kota' => Prestasi::where('kategori', 'kota')
+            'kota' => Prestasi::where('kategori', 'kota')->where('status', '1')
                 ->count(),
         ];
 
@@ -69,19 +69,19 @@ class LandingPageController extends Controller
 
         $agent = new Agent();
 
-        if ($agent->isMobile() || $agent->isTablet()) { 
+        if ($agent->isMobile() || $agent->isTablet()) {
             $berita = $berita->limit(2)
                 ->get();
 
             $prestasi = $prestasi->limit(4)
                 ->get();
-            
+
             $pendidik = $pendidik->limit(6)
                 ->get();
         } else {
             $berita = $berita->limit(3)
                 ->get();
-            
+
             $prestasi = $prestasi->limit(6)
                 ->get();
 

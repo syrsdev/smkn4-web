@@ -44,7 +44,7 @@ function CardListLayout({
                     )}
                 </>
             ) : (
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center w-full">
                     <img
                         src="/images/default/no-data-search.svg"
                         alt="search not found"
