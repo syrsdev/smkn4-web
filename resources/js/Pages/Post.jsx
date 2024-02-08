@@ -5,6 +5,7 @@ import { router } from "@inertiajs/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
 import CardListLayout from "@/Layouts/CardListLayout";
 import ImageModal from "@/Components/Modal/ImageModal";
 import FilterPost from "@/Components/Modal/FilterPost";
@@ -92,19 +93,27 @@ function Post(props) {
                                     >
                                         {props.post.judul}
                                     </h2>
-                                    <p
+                                    <div
+                                        className="flex text-[14px] font-semibold justify-between flex-wrap items-center"
                                         style={{
                                             color: `${props.sekolah.font_primer}`,
                                         }}
-                                        className="text-[14px] font-semibold flex items-center gap-2"
                                     >
-                                        <span>
-                                            Post by {props.post.penulis.name}
-                                        </span>
-                                        {new Date(
-                                            props.post.created_at
-                                        ).toLocaleDateString("id-ID")}
-                                    </p>
+                                        <p className="flex items-center gap-2 ">
+                                            <span>
+                                                Post by{" "}
+                                                {props.post.penulis.name}
+                                            </span>
+                                            {new Date(
+                                                props.post.created_at
+                                            ).toLocaleDateString("id-ID")}
+                                        </p>
+
+                                        <p className="flex items-center gap-2">
+                                            <FaEye /> Dilihat {props.post.views}{" "}
+                                            kali.
+                                        </p>
+                                    </div>
                                     <p
                                         dangerouslySetInnerHTML={{
                                             __html: props.post.konten,
