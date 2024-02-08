@@ -68,24 +68,78 @@ class DashboardController extends Controller
 
     public function statistic()
     {
-        $postDates = Post::selectRaw('DATE(created_at) as date')
-            ->orderBy('date', 'asc')
-            ->groupBy('date')
-            ->get()
-            ->pluck('date');
+        $post = [
+            'all' => Post::selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+            'week' => Post::whereBetween('created_at', [now()->subDays(7), now()])
+                ->selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+            'month' => Post::whereBetween('created_at', [now()->subDays(30), now()])
+                ->selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+        ];
 
-        $prestasiDates = Prestasi::selectRaw('DATE(created_at) as date')
-            ->orderBy('date', 'asc')
-            ->groupBy('date')
-            ->get()
-            ->pluck('date');
+        $prestasi = [
+            'all' => Prestasi::selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+            'week' => Prestasi::whereBetween('created_at', [now()->subDays(7), now()])
+                ->selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+            'month' => Prestasi::whereBetween('created_at', [now()->subDays(30), now()])
+                ->selectRaw('DATE(created_at) as date')
+                ->groupBy('date')
+                ->orderBy('date', 'asc')
+                ->get()
+                ->pluck('date'),
+        ];
 
-        $allDates = $postDates->merge($prestasiDates)->unique();
+        $dates = [
+            'all' => collect(array_merge($post['all']->toArray(), $prestasi['all']->toArray()))
+                ->unique()
+                ->sort(),
+            'week' => collect(array_merge($post['week']->toArray(), $prestasi['week']->toArray()))
+                ->unique()
+                ->sort(),
+            'month' => collect(array_merge($post['month']->toArray(), $prestasi['month']->toArray()))
+                ->unique()
+                ->sort(),
+        ];        
 
         $statistics = [];
 
-        foreach ($allDates as $date) {
-            $statistics[] = [
+        foreach ($dates['all'] as $date) {
+            $statistics['all'][] = [
+                'date' => $date,
+                'post' => Post::whereDate('created_at', $date)->count(),
+                'prestasi' => Prestasi::whereDate('created_at', $date)->count(),
+            ];
+        }
+
+        foreach ($dates['week'] as $date) {
+            $statistics['week'][] = [
+                'date' => $date,
+                'post' => Post::whereDate('created_at', $date)->count(),
+                'prestasi' => Prestasi::whereDate('created_at', $date)->count(),
+            ];
+        }
+
+        foreach ($dates['month'] as $date) {
+            $statistics['month'][] = [
                 'date' => $date,
                 'post' => Post::whereDate('created_at', $date)->count(),
                 'prestasi' => Prestasi::whereDate('created_at', $date)->count(),
