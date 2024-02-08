@@ -71,51 +71,59 @@ function Home(props) {
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    <h2
-                        style={{
-                            color: `${props.sekolah.font_primer}`,
-                        }}
-                        className="text-[18px] font-bold mb-6 md:hidden block text-center xl:text-left"
-                    >
-                        {props.sambutan.judul}
-                    </h2>
-                    <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
-                        <div className="flex flex-col items-center md:items-start lg:w-fit">
-                            <img
-                                src={props.sambutan.kepsek.gambar}
-                                alt="foto kepala sekolah"
-                                className="object-contain max-w-[177px] max-h-[350px]"
-                            />
-                            <div
-                                style={{
-                                    color: `${props.sekolah.font_primer}`,
-                                    borderColor: `${props.sekolah.font_primer}`,
-                                }}
-                                className="flex flex-col mt-4 whitespace-nowrap"
-                            >
-                                <p className="font-bold text-[16px] border-b-2 border-inherit">
-                                    {props.sambutan.kepsek.nama}
-                                </p>
-                                <p>Plt. Kepala Sekolah</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col w-full text-center md:text-left">
+                    {props.sambutan != null && (
+                        <>
                             <h2
                                 style={{
                                     color: `${props.sekolah.font_primer}`,
                                 }}
-                                className="text-[18px] xl:text-[24px] font-bold mb-3 hidden md:block"
+                                className="text-[18px] font-bold mb-6 md:hidden block text-center xl:text-left"
                             >
-                                {props.sambutan.judul}
+                                {props.sambutan.judul != null
+                                    ? props.sambutan.judul
+                                    : ""}
                             </h2>
-                            <p
-                                dangerouslySetInnerHTML={{
-                                    __html: props.sambutan.konten,
-                                }}
-                                className="text-[14px] konten-list"
-                            ></p>
-                        </div>
-                    </div>
+                            <div className="flex flex-col gap-3 md:gap-7 md:flex-row">
+                                <div className="flex flex-col items-center md:items-start lg:w-fit">
+                                    <img
+                                        src={props.sambutan.kepsek.gambar}
+                                        alt="foto kepala sekolah"
+                                        className="object-contain max-w-[177px] max-h-[350px]"
+                                    />
+                                    <div
+                                        style={{
+                                            color: `${props.sekolah.font_primer}`,
+                                            borderColor: `${props.sekolah.font_primer}`,
+                                        }}
+                                        className="flex flex-col mt-4 whitespace-nowrap"
+                                    >
+                                        <p className="font-bold text-[16px] border-b-2 border-inherit">
+                                            {props.sambutan.kepsek.nama}
+                                        </p>
+                                        <p>Plt. Kepala Sekolah</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col w-full text-center md:text-left">
+                                    <h2
+                                        style={{
+                                            color: `${props.sekolah.font_primer}`,
+                                        }}
+                                        className="text-[18px] xl:text-[24px] font-bold mb-3 hidden md:block"
+                                    >
+                                        {props.sambutan.judul != null
+                                            ? props.sambutan.judul
+                                            : ""}
+                                    </h2>
+                                    <p
+                                        dangerouslySetInnerHTML={{
+                                            __html: props.sambutan.konten,
+                                        }}
+                                        className="text-[14px] konten-list"
+                                    ></p>
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </MadingLayout>
             </Container>
 
@@ -128,20 +136,26 @@ function Home(props) {
                 <CardListLayout theme={webTheme} data={props.berita} />
             </Container>
 
-            <Container classname="my-10 md:my-20">
-                <h3
-                    style={{ color: `${props.sekolah.font_primer}` }}
-                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
-                >
-                    KONSENTRASI KEAHLIAN
-                </h3>
+            {props.konsentrasi.length > 0 && (
+                <Container classname="my-10 md:my-20">
+                    <h3
+                        style={{ color: `${props.sekolah.font_primer}` }}
+                        className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                    >
+                        KONSENTRASI KEAHLIAN
+                    </h3>
 
-                <Carousel>
-                    {props.konsentrasi.map((item, index) => (
-                        <JurusanCard theme={webTheme} item={item} key={index} />
-                    ))}
-                </Carousel>
-            </Container>
+                    <Carousel>
+                        {props.konsentrasi.map((item, index) => (
+                            <JurusanCard
+                                theme={webTheme}
+                                item={item}
+                                key={index}
+                            />
+                        ))}
+                    </Carousel>
+                </Container>
+            )}
 
             <Container
                 style={{ backgroundColor: `${props.sekolah.warna_primer}` }}
@@ -191,43 +205,50 @@ function Home(props) {
                 </ButtonSecondary>
             </Container>
 
-            <Container classname="my-10 md:my-20">
-                <h3
-                    style={{ color: `${props.sekolah.font_primer}` }}
-                    className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
-                >
-                    TENAGA PENDIDIK DAN KEPENDIDIKAN
-                </h3>
-                <Carousel
-                    perpageXl={
-                        props.tenagaPendidik.length >= 5
-                            ? 5
-                            : props.tenagaPendidik.length
-                    }
-                    perpageLG={
-                        props.tenagaPendidik.length >= 4
-                            ? 4
-                            : props.tenagaPendidik.length
-                    }
-                    perpageMD={
-                        props.tenagaPendidik.length >= 3
-                            ? 3
-                            : props.tenagaPendidik.length
-                    }
-                    perpageSM={
-                        props.tenagaPendidik.length >= 2
-                            ? 2
-                            : props.tenagaPendidik.length
-                    }
-                >
-                    {props.tenagaPendidik.map((item, index) => (
-                        <PegawaiCard item={item} key={index} theme={webTheme} />
-                    ))}
-                </Carousel>
-                <ButtonSecondary href="/pegawai">
-                    LIHAT SELENGKAPNYA
-                </ButtonSecondary>
-            </Container>
+            {props.tenagaPendidik.length > 0 && (
+                <Container classname="my-10 md:my-20">
+                    <h3
+                        style={{ color: `${props.sekolah.font_primer}` }}
+                        className="text-[18px] md:text-[20px] xl:text-[24px] font-bold text-center mb-5 xl:mb-7"
+                    >
+                        TENAGA PENDIDIK DAN KEPENDIDIKAN
+                    </h3>
+                    <Carousel
+                        perpageXl={
+                            props.tenagaPendidik.length >= 5
+                                ? 5
+                                : props.tenagaPendidik.length
+                        }
+                        perpageLG={
+                            props.tenagaPendidik.length >= 4
+                                ? 4
+                                : props.tenagaPendidik.length
+                        }
+                        perpageMD={
+                            props.tenagaPendidik.length >= 3
+                                ? 3
+                                : props.tenagaPendidik.length
+                        }
+                        perpageSM={
+                            props.tenagaPendidik.length >= 2
+                                ? 2
+                                : props.tenagaPendidik.length
+                        }
+                    >
+                        {props.tenagaPendidik.map((item, index) => (
+                            <PegawaiCard
+                                item={item}
+                                key={index}
+                                theme={webTheme}
+                            />
+                        ))}
+                    </Carousel>
+                    <ButtonSecondary href="/pegawai">
+                        LIHAT SELENGKAPNYA
+                    </ButtonSecondary>
+                </Container>
+            )}
+
             <Container classname="relative my-10 md:my-20">
                 <div
                     className="absolute h-20 bg-transparent -top-44 -z-10"
@@ -239,68 +260,80 @@ function Home(props) {
                 >
                     EKSTRAKURIKULER
                 </h3>
-
-                <Splide
-                    aria-label="EKSKUL"
-                    className={`flex visible justify-center ${
-                        props.ekskul.length < 6 && "ekskul"
-                    } ${props.ekskul.length < 4 && "ekskul_tablet"} ${
-                        props.ekskul.length < 2 && "ekskul_mobile"
-                    }`}
-                    options={{
-                        rewind: true,
-                        autoplay: true,
-                        perPage: 6,
-                        gap: "2rem",
-                        breakpoints: {
-                            767: {
-                                perPage: 2,
-                                gap: "0.5rem",
+                {props.ekskul.length > 0 ? (
+                    <Splide
+                        aria-label="EKSKUL"
+                        className={`flex visible justify-center ${
+                            props.ekskul.length < 6 && "ekskul"
+                        } ${props.ekskul.length < 4 && "ekskul_tablet"} ${
+                            props.ekskul.length < 2 && "ekskul_mobile"
+                        }`}
+                        options={{
+                            rewind: true,
+                            autoplay: true,
+                            perPage: 6,
+                            gap: "2rem",
+                            breakpoints: {
+                                767: {
+                                    perPage: 2,
+                                    gap: "0.5rem",
+                                },
+                                1024: {
+                                    perPage: 4,
+                                    gap: "1rem",
+                                },
+                                1280: {
+                                    perPage:
+                                        props.ekskul.length >= 6
+                                            ? 6
+                                            : props.ekskul.length,
+                                    gap: "2rem",
+                                },
                             },
-                            1024: {
-                                perPage: 4,
-                                gap: "1rem",
-                            },
-                            1280: {
-                                perPage:
-                                    props.ekskul.length >= 6
-                                        ? 6
-                                        : props.ekskul.length,
-                                gap: "2rem",
-                            },
-                        },
-                    }}
-                >
-                    {props.ekskul.map((item, index) => (
-                        <SplideSlide
-                            data-tooltip-id="tooltip"
-                            data-tooltip-content={`${
-                                item.link_sosmed != null
-                                    ? "Lihat Sosial Media"
-                                    : ""
-                            }`}
-                            key={index}
-                            style={{ color: `${props.sekolah.font_primer}` }}
-                            className="flex flex-col items-center gap-3 font-semibold"
-                        >
-                            <a
+                        }}
+                    >
+                        {props.ekskul.map((item, index) => (
+                            <SplideSlide
+                                data-tooltip-id="tooltip"
+                                data-tooltip-content={`${
+                                    item.link_sosmed != null
+                                        ? "Lihat Sosial Media"
+                                        : ""
+                                }`}
+                                key={index}
                                 style={{
-                                    borderColor: `${props.sekolah.font_primer}`,
+                                    color: `${props.sekolah.font_primer}`,
                                 }}
-                                href={item.link_sosmed}
-                                target="_blank"
-                                className="flex items-center justify-center p-6 overflow-hidden border-2 rounded-full md:p-7 h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 xl:p-8"
+                                className="flex flex-col items-center gap-3 font-semibold"
                             >
-                                <img
-                                    src={item.gambar}
-                                    alt="Logo Ekskul"
-                                    className="object-contain"
-                                />
-                            </a>
-                            <h6>{item.nama}</h6>
-                        </SplideSlide>
-                    ))}
-                </Splide>
+                                <a
+                                    style={{
+                                        borderColor: `${props.sekolah.font_primer}`,
+                                    }}
+                                    href={item.link_sosmed}
+                                    target="_blank"
+                                    className="flex items-center justify-center p-6 overflow-hidden border-2 rounded-full md:p-7 h-28 w-28 md:h-32 md:w-32 xl:h-36 xl:w-36 xl:p-8"
+                                >
+                                    <img
+                                        src={item.gambar}
+                                        alt="Logo Ekskul"
+                                        className="object-contain"
+                                    />
+                                </a>
+                                <h6>{item.nama}</h6>
+                            </SplideSlide>
+                        ))}
+                    </Splide>
+                ) : (
+                    <div className="flex flex-col items-center justify-center w-full gap-2">
+                        <img
+                            src="/images/default/no-data-search.svg"
+                            alt="search not found"
+                            className="object-contain w-8/12 xl:w-4/12"
+                        />
+                        <p className="text-xl font-bold">Tidak ada ekskul</p>
+                    </div>
+                )}
             </Container>
             <Container
                 classname="py-16 mt-10"

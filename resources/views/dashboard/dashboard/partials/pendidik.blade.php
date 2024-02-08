@@ -12,19 +12,20 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="text-title mb-2">Tenaga Pendidik</div>
-                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                    <div class="mb-2 text-title">Tenaga Pendidik</div>
+                    <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['pendidik'] as $item)
                             <li class="media">
-                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
-                                <div class="media-body ml-3">
+                                <img class="mt-1 img-fluid img-shadow" src="{{ $item->gambar }}"
+                                    alt="{{ $item->nama }}" width="40">
+                                <div class="ml-3 media-body">
                                     <div class="media-title">
                                         @if (strlen($item->nama) > 15)
                                             <a href="{{ route('guru.edit', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15).'...' }}
+                                                {{ substr($item->nama, 0, 15) . '...' }}
                                             </a>
                                         @else
-                                            <a href="{{ route('guru.index', $item->slug) }}">
+                                            <a href="{{ route('guru.edit', $item->slug) }}">
                                                 {{ $item->nama }}
                                             </a>
                                         @endif
@@ -35,22 +36,23 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-sm-6 mt-sm-0 mt-4">
-                    <div class="text-title mb-2">Tenaga Kependidikan</div>
-                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                <div class="mt-4 col-sm-6 mt-sm-0">
+                    <div class="mb-2 text-title">Tenaga Kependidikan</div>
+                    <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['kependidikan'] as $item)
                             <li class="media">
-                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
-                                <div class="media-body ml-3">
+                                <img class="mt-1 img-fluid img-shadow" src="{{ $item->gambar }}"
+                                    alt="{{ $item->nama }}" width="40">
+                                <div class="ml-3 media-body">
                                     <div class="media-title">
                                         @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.show', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15).'...' }}
+                                            <a href="{{ route('guru.edit', $item->slug) }}">
+                                                {{ substr($item->nama, 0, 15) . '...' }}
                                             </a>
                                         @else
-                                            <a href="{{ route('guru.show', $item->slug) }}">
+                                            <a href="{{ route('guru.edit', $item->slug) }}">
                                                 {{ $item->nama }}
-                                            </a>    
+                                            </a>
                                         @endif
                                     </div>
                                     <div class="text-small text-muted">
