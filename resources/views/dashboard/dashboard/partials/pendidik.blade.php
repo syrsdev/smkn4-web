@@ -20,11 +20,11 @@
                                 <div class="media-body ml-3">
                                     <div class="media-title">
                                         @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.show', $item->slug) }}">
+                                            <a href="{{ route('guru.edit', $item->slug) }}">
                                                 {{ substr($item->nama, 0, 15).'...' }}
                                             </a>
                                         @else
-                                            <a href="{{ route('guru.show', $item->slug) }}">
+                                            <a href="{{ route('guru.index', $item->slug) }}">
                                                 {{ $item->nama }}
                                             </a>
                                         @endif
