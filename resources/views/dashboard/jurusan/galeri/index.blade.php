@@ -1,7 +1,4 @@
 <h2 class="section-title">Galeri Konsentrasi Keahlian</h2>
-<p class="section-lead">
-    Berikut galeri-galeri selama pelaksanaan kegiatan kejurusan
-</p>
 <div class="row">
     <div class="col-12">
         <div class="card">

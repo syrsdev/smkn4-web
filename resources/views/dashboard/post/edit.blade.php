@@ -13,7 +13,7 @@
 						<i class="fas fa-arrow-left"></i>
 					</a>
 				</div>
-				<h1>Edit {{ ucfirst($kategori) }}</h1>
+				<h1>{{ $title }}</h1>
 				<div class="section-header-breadcrumb">
 					<div class="breadcrumb-item active">
 						<a href="{{ route('dashboard') }}">Dashboard</a>
@@ -22,19 +22,19 @@
 					<div class="breadcrumb-item active">
 						<a href="{{ route('post.index', $kategori) }}">{{ ucfirst($kategori) }}</a>
 					</div>
-					<div class="breadcrumb-item">Edit {{ ucfirst($kategori) }}</div>
+					<div class="breadcrumb-item">Edit Data</div>
 				</div>
 			</div>
 			<div class="section-body">
-				<h2 class="section-title">Edit {{ ucfirst($kategori) }}</h2>
+				<h2 class="section-title">{{ $title }}</h2>
 				<p class="section-lead">
-					Di halaman ini Anda dapat {{ $title }}.
+                    Di halaman ini Anda dapat mengedit Data {{ ucfirst($kategori) }} dengan mengisi semua kolom.
 				</p>
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4>Edit {{ ucfirst($kategori) }}</h4>
+								<h4>Edit Data</h4>
 							</div>
 							<div class="card-body">
 								@if ($errors->any())

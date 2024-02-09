@@ -19,14 +19,16 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Kesiswaan</div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item active">
+                        <a href="{{ route('prestasi.index') }}">
+                            Prestasi
+                        </a>
+                    </div>
+                    <div class="breadcrumb-item">Detail Data</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
-                <p class="section-lead">
-                    Di halaman ini Anda dapat melihat {{ $title }}.
-                </p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -76,20 +78,15 @@
                                             <div class="gallery gallery-fw" data-item-height="300">
                                                 <div class="gallery-item" data-image="{{ asset($prestasi->gambar) }}" data-title="{{ $prestasi->judul }}"></div>
                                             </div>
-
                                             {!! $prestasi->konten !!}
-
-                                            <div class="ticket-divider"></div>
-                                            <div class="ticket-form">
-                                                <div class="form-group text-right">
-                                                    <a href="{{ route('prestasi.edit', $prestasi->slug) }}" class="btn btn-primary">
-                                                        Edit Prestasi
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-footer bg-whitesmoke text-right">
+                                <a href="{{ route('prestasi.edit', $prestasi->slug) }}" class="btn btn-primary">
+                                    Edit Prestasi
+                                </a>
                             </div>
                         </div>
                     </div>

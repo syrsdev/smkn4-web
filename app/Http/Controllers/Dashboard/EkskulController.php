@@ -22,7 +22,7 @@ class EkskulController extends Controller
 
         return view('dashboard.ekskul.index')
             ->with([
-                'title'     => 'Ekstrakurikuler',
+                'title'     => 'Data Ekstrakurikuler',
                 'active'    => 'Kesiswaan',
                 'subActive' => 'Ekstrakurikuler',
                 'ekskul'    => $ekskul,
@@ -36,7 +36,7 @@ class EkskulController extends Controller
     {
         return view('dashboard.ekskul.create')
             ->with([
-                'title'     => 'Tambah Ekstrakurikuler',
+                'title'     => 'Tambah Data Ekstrakurikuler',
                 'active'    => 'Kesiswaan',
                 'subActive' => 'Ekstrakurikuler',
             ]);
@@ -75,11 +75,11 @@ class EkskulController extends Controller
         try {
             Ekskul::create($ekskul);
 
-            toast('Ekstrakurikuler berhasil dibuat!', 'success');
+            toast('Data Ekstrakurikuler berhasil dibuat!', 'success');
 
             return redirect()->route('ekskul.index');
         } catch (\Exception $e) {
-            toast('Ekstrakurikuler gagal dibuat.', 'warning');
+            toast('Data Ekstrakurikuler gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -92,7 +92,7 @@ class EkskulController extends Controller
     {
         return view('dashboard.ekskul.edit')
             ->with([
-                'title'     => 'Edit Ekstrakurikuler',
+                'title'     => 'Edit Data Ekstrakurikuler',
                 'active'    => 'Kesiswaan',
                 'subActive' => 'Ekstrakurikuler',
                 'ekskul'    => $ekskul,
@@ -136,11 +136,11 @@ class EkskulController extends Controller
         try {
             $ekskul->update($updatedEkskul);
     
-            toast('Ekstrakurikuler berhasil diedit!', 'success');
+            toast('Data Ekstrakurikuler berhasil diedit!', 'success');
 
             return redirect()->route('ekskul.index');
         } catch (\Exception $e) {
-            toast('Ekstrakurikuler gagal diedit!', 'warning');
+            toast('Data Ekstrakurikuler gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -157,7 +157,7 @@ class EkskulController extends Controller
 
         $ekskul->delete();
 
-        toast('Ekstrakurikuler berhasil dihapus.', 'success');
+        toast('Data Ekstrakurikuler berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

@@ -23,7 +23,7 @@ class TenagaPendidikController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
             
-        confirmDelete('Hapus Tenaga Pendidik?', 'Yakin ingin hapus Tenaga Pendidik?');
+        confirmDelete('Hapus Tenaga Pendidik?', 'Yakin ingin hapus Data Tenaga Pendidik?');
 
         return view('dashboard.pendidik.index')
             ->with([
@@ -44,7 +44,7 @@ class TenagaPendidikController extends Controller
 
         return view('dashboard.pendidik.create')
             ->with([
-                'title'     => 'Tambah Data Pendidik',
+                'title'     => 'Tambah Data Tenaga Pendidik',
                 'active'    => 'Guru',
                 'subActive' => null,
                 'mapel'     => $mapel,
@@ -92,11 +92,11 @@ class TenagaPendidikController extends Controller
         try {
             Pendidik::create($guru);
 
-            toast('Tenaga Pendidik berhasil dibuat!', 'success');
+            toast('Data Tenaga Pendidik berhasil dibuat!', 'success');
 
             return redirect()->route('guru.index');
         } catch (\Exception $e) {
-            toast('Tenaga Pendidik gagal dibuat.', 'warning');
+            toast('Data Tenaga Pendidik gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -112,7 +112,7 @@ class TenagaPendidikController extends Controller
 
         return view('dashboard.pendidik.edit')
             ->with([
-                'title'     => 'Edit Data Pendidik',
+                'title'     => 'Edit Data Tenaga Pendidik',
                 'active'    => 'Guru',
                 'subActive' => null,
                 'mapel'     => $mapel,
@@ -166,11 +166,11 @@ class TenagaPendidikController extends Controller
         try {
             $guru->update($updateGuru);
 
-            toast('Tenaga Pendidik berhasil diedit!', 'success');
+            toast('Data Tenaga Pendidik berhasil diedit!', 'success');
 
             return redirect()->route('guru.index');
         } catch (\Exception $e) {
-            toast('Tenaga Pendidik gagal diedit.', 'warning');
+            toast('Data Tenaga Pendidik gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -187,7 +187,7 @@ class TenagaPendidikController extends Controller
 
         $guru->delete();
 
-        toast('Tenaga Pendidik berhasil dihapus.', 'success');
+        toast('Data Tenaga Pendidik berhasil dihapus.', 'success');
         
         return redirect()->back();
     }

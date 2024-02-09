@@ -18,11 +18,11 @@ class BidangKeahlianController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Bidang Keahlian?');
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Bidang Keahlian?');
 
         return view('dashboard.jurusan.bidang.index')
             ->with([
-                'title'     => 'Bidang Keahlian',
+                'title'     => 'Data Bidang Keahlian',
                 'active'    => 'Jurusan',
                 'subActive' => 'Bidang',
                 'bidang'    => $bidang,
@@ -44,9 +44,9 @@ class BidangKeahlianController extends Controller
                 'nama' => $request->input('nama'),
             ]);
 
-            toast('Bidang Keahlian berhasil dibuat!', 'success');
+            toast('Data Bidang Keahlian berhasil dibuat!', 'success');
         } catch (\Exception $e) {
-            toast('Bidang Keahlian gagal dibuat!', 'warning');
+            toast('Data Bidang Keahlian gagal dibuat.', 'warning');
         }
 
         return redirect()->back();
@@ -67,9 +67,9 @@ class BidangKeahlianController extends Controller
                 'nama' => $request->input('nama'),
             ]);
 
-            toast('Bidang Keahlian berhasil diedit!', 'success');
+            toast('Data Bidang Keahlian berhasil diedit!', 'success');
         } catch (\Exception $e) {
-            toast('Bidang Keahlian gagal diedit!', 'warning');
+            toast('Data Bidang Keahlian gagal diedit.', 'warning');
         }
 
         return redirect()->back();
@@ -82,7 +82,7 @@ class BidangKeahlianController extends Controller
     {
         $bidang->delete();
 
-        toast('Bidang Keahlian berhasil dihapus.', 'success');
+        toast('Data Bidang Keahlian berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

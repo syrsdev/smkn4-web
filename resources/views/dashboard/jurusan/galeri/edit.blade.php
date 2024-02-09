@@ -22,13 +22,13 @@
                     <div class="breadcrumb-item">
                         <a href="{{ route('konsentrasi.index') }}">Konsentrasi Keahlian</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Edit Gambar</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat mengedit keterangan dan gambar untuk Galeri {{ $konsentrasi->nama }}.
+                    Di halaman ini Anda dapat mengedit Gambar untuk Galeri {{ $konsentrasi->nama }} dengan mengisi semua kolom.
                 </p>
                 <div class="row">
                     <div class="col-12">

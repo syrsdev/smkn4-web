@@ -71,7 +71,7 @@
                 <li class="dropdown {{ $active === 'Guru' ? 'active' : '' }}">
                     <a href="{{ route('guru.index') }}" class="nav-link">
                         <i class="fas fa-users-cog"></i>
-                        <span>Guru dan Staff</span>
+                        <span>Tenaga Pendidik</span>
                     </a>
                 </li>
                 <li class="dropdown {{ $active === 'Jurusan' ? 'active' : '' }}">
@@ -105,12 +105,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="dropdown {{ $active === 'Alumni' ? 'active' : '' }}">
-                    <a href="#" class="nav-link" data-toggle="dropdown">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Profil Alumni</span>
-                    </a>
-                </li> --}}
                 <li class="menu-header">Website</li>
                 <li class="dropdown {{ $active === 'Identitas' ? 'active' : '' }}">
                     <a href="{{ route('sekolah.edit') }}" class="nav-link">
@@ -142,7 +136,7 @@
                         <span>Tema Website</span>
                     </a>
                 </li>
-                <li class="menu-header">Users</li>
+                <li class="menu-header">User</li>
                 <li class="dropdown {{ $active === 'User' ? 'active' : '' }}">
                     <a href="{{ route('user.index') }}" class="nav-link">
                         <i class="fas fa-user-cog"></i>

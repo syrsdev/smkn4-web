@@ -29,27 +29,14 @@ class UsersController extends Controller
             ];
         });
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data User?');
+        confirmDelete('Hapus Data?', 'Yakin ingin hapus User?');
 
         return view('dashboard.user.index')
             ->with([
-                'title'     => 'Data User',
+                'title'     => 'Kelola User',
                 'active'    => 'User',
                 'subActive' => null,
                 'users'     => $users,
-            ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('dashboard.user.create')
-            ->with([
-                'title'     => 'Tambah User',
-                'active'    => 'User',
-                'subActive' => null,
             ]);
     }
 
@@ -76,24 +63,10 @@ class UsersController extends Controller
 
             toast('User berhasil dibuat!', 'success');
         } catch (\Exception $e) {
-            toast('User gagal dibuat!', 'warning');            
+            toast('User gagal dibuat.', 'warning');            
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        return view('dashboard.user.edit')
-            ->with([
-                'title'     => 'Edit User',
-                'active'    => 'User',
-                'subActive' => null,
-                'user'      => $user,
-            ]);
     }
 
     /**
@@ -117,7 +90,7 @@ class UsersController extends Controller
 
             toast('User berhasil diedit!', 'success');
         } catch (\Exception $e) {
-            toast('User gagal diedit!', 'warning');
+            toast('User gagal diedit.', 'warning');
         }
 
         return redirect()->back();

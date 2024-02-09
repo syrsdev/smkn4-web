@@ -20,21 +20,21 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">
-                        <a href="{{ route('guru.index') }}">Guru dan Staff</a>
+                        <a href="{{ route('guru.index') }}">Tenaga Pendidik</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Tambah Data</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat {{ $title }}.
+                    Di halaman ini Anda dapat membuat Data Tenaga Pendidik baru dengan mengisi semua kolom.
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Tulis Tenaga Pendidik</h4>
+                                <h4>Tambah Data</h4>
                             </div>
                             <div class="card-body">
                                 @if ($errors->any())
@@ -45,7 +45,7 @@
                                 <form action="{{ route('guru.store') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                                     @csrf
                                     <div class="form-group row mb-4">
-                                        <label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Pendidik</label>
+                                        <label for="nama" class="col-form-label text-md-right col-12 col-md-3">Nama Tenaga Pendidik</label>
                                         <div class="col-12 col-md-7">
                                             <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" autofocus>
                                         </div>

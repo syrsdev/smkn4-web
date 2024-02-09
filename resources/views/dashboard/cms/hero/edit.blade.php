@@ -17,9 +17,9 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">Pengaturan {{ $title }}</h2>
                 <p class="section-lead">
-                    Anda bisa mengedit informasi Hero Konten disini. Mulai dari selamat datang, nama sekolah, deskripsi, dan gambar.
+                    Sambut pengunjung dengan memberikan Teks Selamat Datang yang menyajikan informasi penting atau gambaran singkat tentang sekolah.
                 </p>
                 <form action="{{ route('hero.update') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf

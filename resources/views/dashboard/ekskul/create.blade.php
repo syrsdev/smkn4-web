@@ -13,7 +13,7 @@
                         <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
-                <h1>{{ $title }} Baru</h1>
+                <h1>{{ $title }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -22,19 +22,19 @@
                     <div class="breadcrumb-item">
                         <a href="{{ route('ekskul.index') }}">Ekstrakurikuler</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Tambah Data</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">{{ $title }} Baru</h2>
+                <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat {{ $title }}.
+                    Di halaman ini Anda dapat membuat Data Ekstrakurikuler baru dengan mengisi semua kolom.
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Tulis Ekstrakurikuler</h4>
+                                <h4>Tambah Data</h4>
                             </div>
                             <div class="card-body">
                                 @if ($errors->any())
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3">Logo Ekstrakurikuler</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Logo</label>
                                         <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>
