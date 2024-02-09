@@ -64,7 +64,7 @@ function Prestasi(props) {
                     listPost={props.mading.list}
                     href={props.mading.kategori}
                 >
-                    {props.post !== null ? (
+                    {props.prestasi !== null ? (
                         <>
                             <h1
                                 style={{
