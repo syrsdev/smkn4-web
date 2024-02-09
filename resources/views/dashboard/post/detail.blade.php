@@ -22,14 +22,11 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('post.index', $kategori) }}">{{ ucfirst($kategori) }}</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Detail data</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
-                <p class="section-lead">
-                    Di halaman ini Anda dapat melihat {{ $title }}.
-                </p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -51,7 +48,7 @@
                                                     <div class="ticket-desc">
                                                         <div>{{ $item->penulis->name }}</div>
                                                         <div class="bullet"></div>
-                                                        <div>{{ $item->created_at->format('j/n/Y') }}</div>
+                                                        <div>{{ $item->created_at->format('j-n-Y') }}</div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -69,7 +66,7 @@
                                                 <div class="ticket-info">
                                                     <div class="font-weight-600">{{ $post->penulis->name }}</div>
                                                     <div class="bullet"></div>
-                                                    <div class="text-primary font-weight-600">{{ $post->created_at->format('j/n/Y') }}</div>
+                                                    <div class="text-primary font-weight-600">{{ $post->created_at->format('j-n-Y') }}</div>
                                                     <div class="bullet"></div>
                                                     <div class="text-primary font-weight-600">{{ $post->views ? $post->views : 0 }} views</div>
                                                 </div>
@@ -79,20 +76,15 @@
                                             <div class="gallery gallery-fw" data-item-height="300">
                                                 <div class="gallery-item" data-image="{{ asset($post->gambar) }}" data-title="{{ $post->judul }}"></div>
                                             </div>
-
                                             {!! $post->konten !!}
-
-                                            <div class="ticket-divider"></div>
-                                            <div class="ticket-form">
-                                                <div class="form-group text-right">
-                                                    <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-primary">
-                                                        Edit {{ ucfirst($kategori) }}
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-footer bg-whitesmoke text-right">
+                                <a href="{{ route('post.edit', $post->slug) }}" class="btn btn-primary">
+                                    Edit {{ ucfirst($kategori) }}
+                                </a>
                             </div>
                         </div>
                     </div>

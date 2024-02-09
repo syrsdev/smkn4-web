@@ -22,19 +22,19 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('ekskul.index') }}">Ekstrakurikuler</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Edit Data</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat {{ $title }}.
+                    Di halaman ini Anda dapat mengedit Data Ekstrakurikuler dengan mengisi semua kolom.
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{ $title }}</h4>
+                                <h4>Edit Data</h4>
                             </div>
                             <div class="card-body">
                                 @if ($errors->any())
@@ -46,7 +46,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3">Gambar</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Logo</label>
                                         <div class="col-12 col-md-7">
                                             <img src="{{ asset($ekskul->gambar) }}" alt="{{ $ekskul->nama }}" style="width: 250px">
                                         </div>
@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3">Gambar Baru (Opsional)</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3">Logo Baru (Opsional)</label>
                                         <div class="col-12 col-md-7">
                                             <div id="image-preview" class="image-preview">
                                                 <label for="image-upload" id="image-label">Pilih File</label>

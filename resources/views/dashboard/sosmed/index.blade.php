@@ -16,10 +16,10 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">{{ $title }}</h2>
-                <p class="section-lead">
-                    Di halaman ini Anda dapat Edit {{ $title }}.
-                </p>
+                <h2 class="section-title">Kelola Data Sosial Media</h2>
+                <div class="section-lead">
+                    Anda bisa menyesuaikan link sesuai dengan Sosial Media Sekolah.
+                </div>
                 <div class="row sortable-card">
                     @foreach ($sosmed as $item)
                         <div class="col-12 col-md-6 col-lg-4">

@@ -18,13 +18,13 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
                     <div class="breadcrumb-item">Jurusan</div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Konsentrasi Keahlian</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     @foreach ($konsentrasi as $item)

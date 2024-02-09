@@ -22,19 +22,19 @@
 					<div class="breadcrumb-item active">
 						<a href="{{ route('konsentrasi.index') }}">Konsentrasi Keahlian</a>
 					</div>
-					<div class="breadcrumb-item">{{ $title }}</div>
+					<div class="breadcrumb-item">Edit Data</div>
 				</div>
 			</div>
 			<div class="section-body">
 				<h2 class="section-title">{{ $title }}</h2>
 				<p class="section-lead">
-					Di halaman ini Anda dapat {{ $title }}.
+					Di halaman ini Anda dapat mengedit Data Konsentrasi Keahlian dengan mengisi semua kolom.
 				</p>
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4>{{ $title }}</h4>
+								<h4>Edit Data</h4>
 							</div>
 							<div class="card-body">
 								@if ($errors->any())
@@ -62,7 +62,7 @@
 										</div>
 									</div>
 									<div class="form-group row mb-4">
-										<label for="deskripsi" class="col-form-label text-md-right col-12 col-md-3">Deskripsi Konsentrasi Keahlian</label>
+										<label for="deskripsi" class="col-form-label text-md-right col-12 col-md-3">Deskripsi</label>
 										<div class="col-12 col-md-7">
 											<textarea class="form-control" id="deskripsi" name="deskripsi" required>{{ $konsentrasi->deskripsi }}</textarea>
 										</div>

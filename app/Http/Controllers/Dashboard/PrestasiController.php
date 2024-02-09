@@ -19,7 +19,7 @@ class PrestasiController extends Controller
             ->latest()
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Prestasi?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Prestasi?');
 
         return view('dashboard.prestasi.index')
             ->with([
@@ -37,7 +37,7 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.create')
             ->with([
-                'title'     => 'Tambah Prestasi', 
+                'title'     => 'Tambah Data Prestasi', 
                 'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi'
             ]);
@@ -82,11 +82,11 @@ class PrestasiController extends Controller
         try {
             Prestasi::create($prestasi);
 
-            toast('Prestasi berhasil dibuat!', 'success');
+            toast('Data Prestasi berhasil dibuat!', 'success');
 
             return redirect()->route('prestasi.index');
         } catch (\Exception $e) {
-            toast('Prestasi gagal dibuat.', 'warning');
+            toast('Data Prestasi gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -105,7 +105,7 @@ class PrestasiController extends Controller
 
         return view('dashboard.prestasi.detail')
             ->with([
-                'title'     => 'Detail Prestasi', 
+                'title'     => 'Detail Data Prestasi', 
                 'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi', 
                 'prestasi'  => $prestasi,
@@ -120,7 +120,7 @@ class PrestasiController extends Controller
     {
         return view('dashboard.prestasi.edit')
             ->with([
-                'title'     => 'Edit Prestasi', 
+                'title'     => 'Edit Data Prestasi', 
                 'active'    => 'Kesiswaan', 
                 'subActive' => 'Prestasi', 
                 'prestasi'  => $prestasi,
@@ -170,11 +170,11 @@ class PrestasiController extends Controller
         try {
             $prestasi->update($updatedPrestasi);
     
-            toast('Prestasi berhasil diedit!', 'success');
+            toast('Data Prestasi berhasil diedit!', 'success');
 
             return redirect()->route('prestasi.index');
         } catch (\Exception $e) {
-            toast('Prestasi gagal diedit.', 'warning');
+            toast('Data Prestasi gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -191,7 +191,7 @@ class PrestasiController extends Controller
 
         $prestasi->delete();
 
-        toast('Prestasi berhasil dihapus.', 'success');
+        toast('Data Prestasi berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

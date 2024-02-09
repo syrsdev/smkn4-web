@@ -21,7 +21,7 @@ class GaleriKonsentrasiController extends Controller
 
         return view('dashboard.jurusan.galeri.create')
             ->with([
-                'title'       => 'Galeri Konsentrasi',
+                'title'       => 'Tambah Gambar ke Galeri',
                 'active'      => 'Jurusan',
                 'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
@@ -54,7 +54,7 @@ class GaleriKonsentrasiController extends Controller
             Galeri::create($galeri);
         }
 
-        toast('Galeri Konsentrasi berhasil ditambahkan!', 'success');
+        toast('Gambar berhasil ditambahkan!', 'success');
 
         return redirect()->route('konsentrasi.show', $konsentrasi->slug);
     }
@@ -69,7 +69,7 @@ class GaleriKonsentrasiController extends Controller
 
         return view('dashboard.jurusan.galeri.edit')
             ->with([
-                'title'       => 'Galeri Konsentrasi',
+                'title'       => 'Edit Gambar untuk Galeri',
                 'active'      => 'Jurusan',
                 'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
@@ -112,11 +112,11 @@ class GaleriKonsentrasiController extends Controller
         try {
             $galeri->update($update);
     
-            toast('Galeri Konsentrasi berhasil diedit!', 'success');
+            toast('Gambar berhasil diedit!', 'success');
     
             return redirect()->route('konsentrasi.show', $konsentrasi->slug);
         } catch (\Exception $e) {
-            toast('Galeri Konsentrasi gagal diedit.', 'warning');
+            toast('Gambar gagal diedit.', 'warning');
     
             return redirect()->back();
         }
@@ -131,7 +131,7 @@ class GaleriKonsentrasiController extends Controller
 
         $galeri->delete();
 
-        toast('Galeri Konsentrasi berhasil dihapus!', 'success');
+        toast('Gambar berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

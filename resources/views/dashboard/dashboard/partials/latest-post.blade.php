@@ -27,7 +27,7 @@
                                 <td>{{ $item->judul }}</td>
                                 <td>{{ ucfirst($item->kategori) }}</td>
                                 <td>{{ $item->penulis->name }}</td>
-                                <td>{{ $item->created_at->format('j/n/Y') }}</td>
+                                <td>{{ $item->created_at->format('j-n-Y') }}</td>
                                 <td>
                                     <a href="{{ route('post.show', $item->slug) }}" class="btn btn-primary">Detail</a>
                                 </td>

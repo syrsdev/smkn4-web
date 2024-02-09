@@ -18,13 +18,13 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Kelola User</div>
+                    <div class="breadcrumb-item">{{ $title }}</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">{{ $title }}</h2>
+                <h2 class="section-title">Kelola Data User</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
+                    Anda dapat mengelola semua Data User, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
