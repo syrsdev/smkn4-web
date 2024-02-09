@@ -3,12 +3,17 @@ import React from "react";
 import MadingTitle from "@/Components/Card/MadingTitle";
 
 function MadingLayout({ children, listPost, title, href = "#", theme }) {
-    // console.log(theme);
     return (
         <>
             <div className="flex flex-col items-start justify-between w-full lg:flex-row">
-                <div className="relative w-full lg:mr-7">{children}</div>
-                <div className="w-full mt-7 lg:w-4/12 lg:mt-0">
+                {children != false && (
+                    <div className="relative w-full lg:mr-7">{children}</div>
+                )}
+                <div
+                    className={`mt-7 ${
+                        children != false ? "w-full lg:w-4/12" : "w-full"
+                    } lg:mt-0`}
+                >
                     <MadingTitle
                         title={title}
                         href={href}
@@ -39,7 +44,7 @@ function MadingLayout({ children, listPost, title, href = "#", theme }) {
                                 ))}
                             </>
                         ) : (
-                            <div className="flex flex-col items-center justify-center">
+                            <div className="flex flex-col items-center justify-center w-full md:w-2/5 lg:w-full">
                                 <img
                                     src={`/images/default/no-data-mading.svg`}
                                     alt="thumbnail post"

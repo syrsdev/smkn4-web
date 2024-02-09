@@ -69,19 +69,19 @@ class LandingPageController extends Controller
 
         $agent = new Agent();
 
-        if ($agent->isMobile() || $agent->isTablet()) { 
+        if ($agent->isMobile() || $agent->isTablet()) {
             $berita = $berita->limit(2)
                 ->get();
 
             $prestasi = $prestasi->limit(4)
                 ->get();
-            
+
             $pendidik = $pendidik->limit(6)
                 ->get();
         } else {
             $berita = $berita->limit(3)
                 ->get();
-            
+
             $prestasi = $prestasi->limit(6)
                 ->get();
 

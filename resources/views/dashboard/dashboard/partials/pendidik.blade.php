@@ -12,8 +12,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="text-title mb-2">Tenaga Pendidik</div>
-                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                    <div class="mb-2 text-title">Tenaga Pendidik</div>
+                    <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['pendidik'] as $item)
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
@@ -25,9 +25,9 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-sm-6 mt-sm-0 mt-4">
-                    <div class="text-title mb-2">Tenaga Kependidikan</div>
-                    <ul class="list-unstyled list-unstyled-border list-unstyled-noborder mb-0">
+                <div class="mt-4 col-sm-6 mt-sm-0">
+                    <div class="mb-2 text-title">Tenaga Kependidikan</div>
+                    <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['kependidikan'] as $item)
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
