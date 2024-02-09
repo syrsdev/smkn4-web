@@ -23,7 +23,11 @@ function PegawaiCard({ item, carousel = true, theme }) {
                         </h5>
                     </div>
                     <div className="text-[12px]">
-                        <p className="capitalize">{item.sub_bagian}</p>
+                        <p className="capitalize">
+                            {item.sub_bagian == "Kepala Sekolah"
+                                ? ""
+                                : item.sub_bagian}
+                        </p>
                         <p className="line-clamp-2 ">
                             {item.mapel != null ? item.mapel.nama : ""}
                         </p>
@@ -54,7 +58,11 @@ function PegawaiCard({ item, carousel = true, theme }) {
                             </h5>
                         </div>
                         <div className="text-[12px]">
-                            <p className="capitalize">{item.sub_bagian}</p>
+                            <p className="capitalize">
+                                {item.sub_bagian == "Kepala Sekolah"
+                                    ? ""
+                                    : item.sub_bagian}
+                            </p>
                             <p>{item.mapel != null ? item.mapel.nama : ""}</p>
                         </div>
                     </div>

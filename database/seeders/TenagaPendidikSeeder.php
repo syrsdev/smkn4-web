@@ -16,8 +16,8 @@ class TenagaPendidikSeeder extends Seeder
     {
         Mapel::insert([
             [
-                'slug' => 'program-keahlian-rekayasa-perangkat-lunak', 
-                'nama' => 'Program Keahlian Rekayasa Perangkat Lunak'
+                'slug' => 'rekayasa-perangkat-lunak',
+                'nama' => 'Rekayasa Perangkat Lunak'
             ],
             ['slug' => 'ppkn', 'nama' => 'PPKN'],
             ['slug' => 'matematika', 'nama' => 'Matematika'],
