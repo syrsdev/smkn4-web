@@ -102,7 +102,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
+            $(document).on('change', '.custom-switch-input', function() {
                 let id = $(this).data('id');
                 let status = $(this).prop('checked') === true ? 1 : 0;
                 $.ajax({

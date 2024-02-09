@@ -51,13 +51,13 @@ class LandingPageController extends Controller
             ->latest();
 
         $kategoriPrestasi = [
-            'internasional' => Prestasi::where('kategori', 'internasional')->where('status', '1')
+            'internasional' => Prestasi::where('kategori', 'internasional')
                 ->count(),
-            'nasional' => Prestasi::where('kategori', 'nasional')->where('status', '1')
+            'nasional' => Prestasi::where('kategori', 'nasional')
                 ->count(),
-            'provinsi' => Prestasi::where('kategori', 'provinsi')->where('status', '1')
+            'provinsi' => Prestasi::where('kategori', 'provinsi')
                 ->count(),
-            'kota' => Prestasi::where('kategori', 'kota')->where('status', '1')
+            'kota' => Prestasi::where('kategori', 'kota')
                 ->count(),
         ];
 

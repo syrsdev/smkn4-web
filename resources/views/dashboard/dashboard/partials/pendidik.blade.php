@@ -16,20 +16,9 @@
                     <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['pendidik'] as $item)
                             <li class="media">
-                                <img class="mt-1 img-fluid img-shadow" src="{{ $item->gambar }}"
-                                    alt="{{ $item->nama }}" width="40">
-                                <div class="ml-3 media-body">
-                                    <div class="media-title">
-                                        @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.edit', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15) . '...' }}
-                                            </a>
-                                        @else
-                                            <a href="{{ route('guru.edit', $item->slug) }}">
-                                                {{ $item->nama }}
-                                            </a>
-                                        @endif
-                                    </div>
+                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
+                                <div class="media-body ml-3">
+                                    <div class="media-title">{{ $item->nama }}</div>
                                     <div class="text-small text-muted">Guru Produktif</div>
                                 </div>
                             </li>
@@ -41,20 +30,9 @@
                     <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
                         @foreach ($guru['kependidikan'] as $item)
                             <li class="media">
-                                <img class="mt-1 img-fluid img-shadow" src="{{ $item->gambar }}"
-                                    alt="{{ $item->nama }}" width="40">
-                                <div class="ml-3 media-body">
-                                    <div class="media-title">
-                                        @if (strlen($item->nama) > 15)
-                                            <a href="{{ route('guru.edit', $item->slug) }}">
-                                                {{ substr($item->nama, 0, 15) . '...' }}
-                                            </a>
-                                        @else
-                                            <a href="{{ route('guru.edit', $item->slug) }}">
-                                                {{ $item->nama }}
-                                            </a>
-                                        @endif
-                                    </div>
+                                <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
+                                <div class="media-body ml-3">
+                                    <div class="media-title">{{ $item->nama }}</div>
                                     <div class="text-small text-muted">
                                         @if ($item->sub_bagian === 'Kepala Sekolah')
                                             Kepala Sekolah

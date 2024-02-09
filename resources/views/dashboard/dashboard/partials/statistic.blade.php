@@ -1,63 +1,25 @@
-<script>
-    "use strict";
-
-    fetch('/api/dashboard')
-        .then(response => response.json())
-        .then(data => {
-            let dates = data.map(stat => stat.date);
-            let post = data.map(stat => stat.post);
-            let prestasi = data.map(stat => stat.prestasi);
-
-            let ctx = document.getElementById("postPrestasiStat").getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [
-                        {
-                            label: 'Post',
-                            data: post,
-                            borderWidth: 5,
-                            backgroundColor: 'transparent',
-                            borderColor: '#1A274D',
-                            pointBackgroundColor: '#1A274D',
-                            pointBorderColor: 'transparent',
-                            pointRadius: 5,
-                        },
-                        {
-                            label: 'Prestasi',
-                            data: prestasi,
-                            borderWidth: 5,
-                            backgroundColor: 'transparent',
-                            borderColor: '#FFD600',
-                            pointBackgroundColor: '#FFD600',
-                            pointBorderColor: 'transparent',
-                            pointRadius: 5,
-                        }
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                        yAxes: [{
-                            gridLines: {
-                                drawBorder: false,
-                                color: '#f2f2f2',
-                            },
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 5
-                            }
-                        }],
-                        xAxes: [{
-                            gridLines: {
-                                display: false
-                            }
-                        }]
-                    },
-                }
-            });
-        });
-</script>
+<div class="col-12 col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <h4>Statistik Post & Prestasi</h4>
+            <div class="card-header-action">
+                <a href="#week" data-tab="summary-tab" class="btn active">Minggu ini</a>
+                <a href="#month" data-tab="summary-tab" class="btn">Bulan ini</a>
+                <a href="#all" data-tab="summary-tab" class="btn">Semua</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="summary">
+                <div class="summary-chart active" data-tab-group="summary-tab" id="week">
+                    <canvas id="weekStat" height="150"></canvas>
+                </div>
+                <div class="summary-chart" data-tab-group="summary-tab" id="month">
+                    <canvas id="monthStat" height="150"></canvas>
+                </div>
+                <div class="summary-chart" data-tab-group="summary-tab" id="all">
+                    <canvas id="allStat" height="150"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
