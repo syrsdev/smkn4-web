@@ -45,7 +45,7 @@
                                                 <th>#</th>
                                                 <th>Judul</th>
                                                 <th>Kategori</th>
-                                                <th>Pesert</th>
+                                                <th>Peserta</th>
                                                 <th>Views</th>
                                                 <th>Publish</th>
                                                 <th>Status</th>

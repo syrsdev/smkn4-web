@@ -88,7 +88,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->judul }}</td>
                                                     <td>{{ $item->penulis->name }}</td>
-                                                    <td>{{ $item->created_at->format('j/n/Y') }}</td>
+                                                    <td>{{ $item->created_at->format('j-n-Y') }}</td>
                                                     <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
                                                         <label class="mt-1 custom-switch">
