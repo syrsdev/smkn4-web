@@ -23,7 +23,7 @@ class TenagaPendidikController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
             
-        confirmDelete('Hapus Tenaga Pendidik?', 'Yakin ingin hapus Data Tenaga Pendidik?');
+        confirmDelete('Hapus Tenaga Pendidik?', 'Anda yakin ingin hapus Data Tenaga Pendidik?');
 
         return view('dashboard.pendidik.index')
             ->with([
@@ -57,23 +57,23 @@ class TenagaPendidikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama', 'max:255'],
-            'bagian'     => ['required'],
-            'mapel'      => ['nullable'],
+            'nama'   => ['required', 'string', 'unique:tenaga_pendidik,nama', 'max:255'],
+            'bagian' => ['required'],
+            'mapel'  => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $guru = [
-            'slug'       => $slug,
-            'nama'       => $request->input('nama'),
-            'bagian'     => $request->input('bagian'),
+            'slug'   => $slug,
+            'nama'   => $request->input('nama'),
+            'bagian' => $request->input('bagian'),
         ];
 
         if ($request->input('bagian') === 'Pendidik') {
             $guru['sub_bagian'] = 'Guru';
             $guru['id_mapel'] = $request->input('mapel');
-        } else if ($request->input('bagian' === 'Kependidikan')) {
+        } else if ($request->input('bagian') === 'Kependidikan') {
             $guru['sub_bagian'] = 'Staff';
         }
 
@@ -126,23 +126,23 @@ class TenagaPendidikController extends Controller
     public function update(Request $request, Pendidik $guru)
     {
         $request->validate([
-            'nama'       => ['required', 'string', 'unique:tenaga_pendidik,nama,'.$guru->id, 'max:255'],
-            'bagian'     => ['required'],
-            'mapel'      => ['nullable'],
+            'nama'   => ['required', 'string', 'unique:tenaga_pendidik,nama,'.$guru->id, 'max:255'],
+            'bagian' => ['required'],
+            'mapel'  => ['nullable'],
         ]);
 
         $slug = Str::slug($request->input('nama'));
 
         $updateGuru = [
-            'slug'       => $slug,
-            'nama'       => $request->input('nama'),
-            'bagian'     => $request->input('bagian'),
+            'slug'   => $slug,
+            'nama'   => $request->input('nama'),
+            'bagian' => $request->input('bagian'),
         ];
 
         if ($request->input('bagian') === 'Pendidik') {
             $updateGuru['sub_bagian'] = 'Guru';
             $updateGuru['id_mapel'] = $request->input('mapel');
-        } else if ($request->input('bagian' === 'Kependidikan')) {
+        } else if ($request->input('bagian') === 'Kependidikan') {
             $updateGuru['sub_bagian'] = 'Staff';
             $updateGuru['id_mapel'] = null;
         }
