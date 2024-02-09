@@ -62,34 +62,24 @@
                                                     <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
                                                         <label class="mt-1 custom-switch">
-                                                            <input value="{{ $item->status }}" type="checkbox"
-                                                                class="custom-switch-input" data-slug="{{ $item->slug }}"
-                                                                {{ $item->status ? 'checked' : '' }}>
+                                                            <input value="{{ $item->status }}" type="checkbox" class="custom-switch-input" data-slug="{{ $item->slug }}" {{ $item->status ? 'checked' : '' }}>
                                                             <span class="custom-switch-indicator"></span>
                                                         </label>
                                                     </td>
                                                     <td>
-                                                        <div
-                                                            class="badge badge-{{ $item->slug }} {{ $item->status ? 'badge-success' : 'badge-warning' }}">
+                                                        <div class="badge badge-{{ $item->slug }} {{ $item->status ? 'badge-success' : 'badge-warning' }}">
                                                             {{ $item->status ? 'Published' : 'Draft' }}
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('prestasi.show', $item->slug) }}"
-                                                            class="btn btn-sm btn-info" data-toggle="tooltip"
-                                                            title="Lihat Prestasi">
+                                                        <a href="{{ route('prestasi.show', $item->slug) }}" class="btn btn-sm btn-info" data-toggle="tooltip" title="Lihat Prestasi">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.edit', $item->slug) }}"
-                                                            class="btn btn-sm btn-warning" data-toggle="tooltip"
-                                                            title="Edit Prestasi">
+                                                        <a href="{{ route('prestasi.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Prestasi">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}"
-                                                            class="btn btn-sm btn-danger" data-confirm-delete="true"
-                                                            data-toggle="tooltip" title="Hapus Prestasi">
-                                                            <i class="fas fa-trash"
-                                                                onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                        <a href="{{ route('prestasi.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Prestasi">
+                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -117,7 +107,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.custom-switch-input').change(function() {
+            $(document).on('change', '.custom-switch-input', function() {
                 let slug = $(this).data('slug');
                 let status = $(this).prop('checked') === true ? 1 : 0;
                 $.ajax({
