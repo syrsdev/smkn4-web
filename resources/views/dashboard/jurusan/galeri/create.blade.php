@@ -22,13 +22,13 @@
                     <div class="breadcrumb-item">
                         <a href="{{ route('konsentrasi.index') }}">Konsentrasi Keahlian</a>
                     </div>
-                    <div class="breadcrumb-item">{{ $title }}</div>
+                    <div class="breadcrumb-item">Tambah Gambar</div>
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Tambah {{ $title }}</h2>
+                <h2 class="section-title">{{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat menambahkan galeri {{ $konsentrasi->nama }}.
+                    Upload beberapa gambar untuk ditambahkan ke Galeri {{ $konsentrasi->nama }}
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -37,7 +37,8 @@
                                 <h4>Upload Gambar</h4>
                                 <div class="card-header-action">
                                     <button class="btn btn-sm btn-primary" id="upload-button">
-                                        Upload Gambar
+                                        <i class="fas fa-upload"></i>
+                                        Upload
                                     </button>
                                 </div>
                             </div>

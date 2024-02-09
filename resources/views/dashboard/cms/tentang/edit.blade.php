@@ -17,9 +17,9 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">Pengaturan {{ $title }}</h2>
                 <p class="section-lead">
-                    Anda bisa menambahkan informasi tentang sekolah disini. Mulai dari sejarah sekolah, visi, misi, dan tujuan sekolah.
+                    Sediakan informasi mendalam tentang Sejarah, Visi, Misi, dan Tujuan Sekolah untuk memberikan wawasan kepada pengunjung.
                 </p>
                 <form action="{{ route('tentang.update') }}" method="post" class="needs-validation" novalidate>
                     @csrf

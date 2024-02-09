@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Impor Data Guru</h5>
+                <h5 class="modal-title">Impor Data Tenaga Pendidik</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -10,9 +10,9 @@
             <form class="form form-vertical" action="{{ route('guru.import') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <div class="custom-file">
-                        <label class="custom-file-label" for="customFile">Pilih File</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="file">
+                    <div class="form-group">
+                        <label for="file">Pilih File</label>
+                        <input type="file" class="form-control" id="file" name="file">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">

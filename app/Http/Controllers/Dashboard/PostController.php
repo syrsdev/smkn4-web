@@ -34,7 +34,7 @@ class PostController extends Controller
             'event'   => $this->getPost('event')->count(), 
         ];
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data '. ucfirst($kategori) . '?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data '. ucfirst($kategori) . '?');
 
         return view('dashboard.post.index')
             ->with([
@@ -54,7 +54,7 @@ class PostController extends Controller
     {
         return view('dashboard.post.create')
             ->with([
-                'title'     => 'Tambah Post',
+                'title'     => 'Tambah Data Post',
                 'active'    => 'Post',
                 'subActive' => null,
             ]);
@@ -98,11 +98,11 @@ class PostController extends Controller
         try {
             Post::create($post);
 
-            toast(ucfirst($kategori) . ' berhasil dibuat!', 'success');
+            toast('Data ' . ucfirst($kategori) . ' berhasil dibuat!', 'success');
 
             return redirect()->route('post.index', $kategori);
         } catch (\Exception $e) {
-            toast(ucfirst($kategori) . ' gagal dibuat.', 'warning');
+            toast('Data ' . ucfirst($kategori) . ' gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -124,7 +124,7 @@ class PostController extends Controller
 
         return view('dashboard.post.detail')
             ->with([
-                'title'     => 'Detail ' . ucfirst($kategori),
+                'title'     => 'Detail Data ' . ucfirst($kategori),
                 'active'    => 'Post',
                 'subActive' => ucfirst($kategori),
                 'post'      => $post,
@@ -140,7 +140,7 @@ class PostController extends Controller
     {
         return view('dashboard.post.edit')
             ->with([
-                'title'     => 'Edit Post',
+                'title'     => 'Edit Data ' . ucfirst($post->kategori),
                 'active'    => 'Post',
                 'subActive' => ucfirst($post->kategori),
                 'post'      => $post,
@@ -190,11 +190,11 @@ class PostController extends Controller
         try {
             $post->update($updatedPost);
 
-            toast(ucfirst($kategori) . ' berhasil diedit!', 'success');
+            toast('Data ' . ucfirst($kategori) . ' berhasil diedit!', 'success');
 
             return redirect()->route('post.index', $kategori);
         } catch (\Exception $e) {
-            toast(ucfirst($kategori) . ' gagal diedit!', 'warning');
+            toast('Data ' . ucfirst($kategori) . ' gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -211,7 +211,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        toast(ucfirst($post->kategori) . ' berhasil dihapus.', 'success');
+        toast('Data ' . ucfirst($post->kategori) . ' berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

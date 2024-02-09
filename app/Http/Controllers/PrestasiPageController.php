@@ -25,8 +25,10 @@ class PrestasiPageController extends Controller
 
         $allPrestasi = Prestasi::with('penulis')
             ->where('status', '1')
-            ->where('slug', '!=', $prestasi->slug)
             ->orderBy('created_at', $order)
+            ->when(strlen($prestasi), function ($query) use ($prestasi) {
+                return $query->where('slug', '!=', $prestasi->slug);
+            })
             ->when($penulis !== 'all', function ($query) use ($penulis) {
                 return $query->whereHas('penulis', function ($query) use ($penulis) {
                     $query->where('slug', $penulis);

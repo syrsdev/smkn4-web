@@ -15,27 +15,27 @@
                     <div class="breadcrumb-item active">
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </div>
-                    <div class="breadcrumb-item">Guru dan Staff</div>
+                    <div class="breadcrumb-item">Tenaga Pendidik</div>
                 </div>
             </div>
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengelola dan melihat {{ $title }}
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{ $title }}</h4>
+                                <h4>Data Tenaga Pendidik</h4>
                                 <div class="card-header-action">
-                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Tambah Guru">
+                                    <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Tambah Data">
                                         <i class="fas fa-plus"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" title="Impor Data Guru">
+                                    <button class="btn btn-sm btn-info" id="btn-import" data-toggle="tooltip" title="Impor Data">
                                         <i class="fas fa-upload"></i>
                                     </button>
-                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Download Data Guru">
+                                    <a href="{{ route('guru.export') }}" class="btn btn-sm btn-success" data-toggle="tooltip" title="Download Data">
                                         <i class="fas fa-download"></i>
                                     </a>
                                     <a href="{{ route('mapel.index') }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Data Mata Pelajaran">
@@ -50,7 +50,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Foto</th>
-                                                <th>Nama Guru</th>
+                                                <th>Nama Tenaga Pendidik</th>
                                                 <th>Bagian</th>
                                                 <th>Sub-bagian</th>
                                                 <th>Mapel</th>
@@ -98,10 +98,10 @@
                                                         {{ $item->mapel !== null ? $item->mapel->nama : '-' }}
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Guru">
+                                                        <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Guru">
+                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

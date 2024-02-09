@@ -15,7 +15,7 @@ class SubNavbarController extends Controller
     {
         $subNavbar = SubNavbar::get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Sub Navbar?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Sub Navbar?');
 
         return view('dashboard.sub-navbar.index')
             ->with([

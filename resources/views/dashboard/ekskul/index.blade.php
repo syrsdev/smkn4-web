@@ -24,7 +24,7 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengelola dan melihat {{ $title }}
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     @foreach ($ekskul as $item)
@@ -36,10 +36,10 @@
                                         <a data-collapse="#{{ $item->slug }}-collapse" class="btn btn-icon btn-info" href="#">
                                             <i class="fas fa-minus"></i>
                                         </a>
-                                        <a href="{{ route('ekskul.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Ekstrakurikuler">
+                                        <a href="{{ route('ekskul.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-pen"></i>
                                         </a>
-                                        <a href="{{ route('ekskul.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Ekstrakurikuler">
+                                        <a href="{{ route('ekskul.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
                                             <i class="fas fa-times" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                         </a>
                                     </div>

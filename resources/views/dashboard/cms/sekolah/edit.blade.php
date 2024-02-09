@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">Pengaturan {{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengedit {{ $title }}
+                    Personalisasikan Identitas Sekolah dengan Nama Sekolah, Logo Sekolah, dan lainnya yang telah disediakan.
                 </p>
                 <form action="{{ route('sekolah.update') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf

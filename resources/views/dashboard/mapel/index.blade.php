@@ -26,7 +26,7 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengelola dan melihat {{ $title }}
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -36,7 +36,7 @@
                                 <div class="card-header-action">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#tambahMapel">
                                         <i class="fas fa-plus"></i>
-                                        Tambah Mapel
+                                        Tambah Data
                                     </button>
                                 </div>
                             </div>
@@ -58,10 +58,10 @@
                                                     <td>{{ $item->nama }}</td>
                                                     <td>{{ $item->pendidik_count }}</td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Mapel">
+                                                        <button class="btn btn-sm btn-warning btn-edit" data-slug="{{ $item->slug }}" data-toggle="tooltip" title="Edit Data">
                                                             <i class="fas fa-pen"></i>
                                                         </button>
-                                                        <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Mapel">
+                                                        <a href="{{ route('mapel.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
                                                             <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
                                                         </a>
                                                     </td>

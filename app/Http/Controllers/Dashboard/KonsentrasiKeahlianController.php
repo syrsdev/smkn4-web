@@ -20,11 +20,11 @@ class KonsentrasiKeahlianController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Konsentrasi Keahlian?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Konsentrasi Keahlian?');
 
         return view('dashboard.jurusan.konsentrasi.index')
             ->with([
-                'title'       => 'Konsentrasi Keahlian',
+                'title'       => 'Data Konsentrasi Keahlian',
                 'active'      => 'Jurusan',
                 'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
@@ -41,7 +41,7 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.create')
             ->with([
-                'title'     => 'Tambah Konsentrasi Keahlian',
+                'title'     => 'Tambah Data Konsentrasi Keahlian',
                 'active'    => 'Jurusan',
                 'subActive' => 'Konsentrasi',
                 'program'   => $program,
@@ -95,11 +95,11 @@ class KonsentrasiKeahlianController extends Controller
         try {
             KonsentrasiKeahlian::create($konsentrasi);
 
-            toast('Konsentrasi Keahlian berhasil dibuat!', 'success');
+            toast('Data Konsentrasi Keahlian berhasil dibuat!', 'success');
 
             return redirect()->route('konsentrasi.index');
         } catch (\Exception $e) {
-            toast('Konsentrasi Keahlian gagal dibuat!', 'warning');
+            toast('Data Konsentrasi Keahlian gagal dibuat.', 'warning');
 
             return redirect()->back();
         }
@@ -112,11 +112,11 @@ class KonsentrasiKeahlianController extends Controller
     {
         $konsentrasi->load(['program', 'program.bidang', 'galeri']);
 
-        confirmDelete('Hapus Gambar?', 'Yakin ingin hapus gambar dari galeri?');
+        confirmDelete('Hapus Gambar?', 'Anda yakin ingin hapus gambar dari Galeri ' . $konsentrasi->nama . '?');
 
         return view('dashboard.jurusan.konsentrasi.detail')
             ->with([
-                'title'       => 'Detail Konsentrasi Keahlian',   
+                'title'       => 'Detail Data Konsentrasi Keahlian',   
                 'active'      => 'Jurusan',
                 'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
@@ -133,7 +133,7 @@ class KonsentrasiKeahlianController extends Controller
 
         return view('dashboard.jurusan.konsentrasi.edit')
             ->with([
-                'title'       => 'Edit Konsentrasi Keahlian',
+                'title'       => 'Edit Data Konsentrasi Keahlian',
                 'active'      => 'Jurusan',
                 'subActive'   => 'Konsentrasi',
                 'konsentrasi' => $konsentrasi,
@@ -196,11 +196,11 @@ class KonsentrasiKeahlianController extends Controller
         try {
             $konsentrasi->update($newKonsentrasi);
 
-            toast('Konsentrasi Keahlian berhasil diedit!', 'success');
+            toast('Data Konsentrasi Keahlian berhasil diedit!', 'success');
 
             return redirect()->route('konsentrasi.index');
         } catch (\Exception $e) {
-            toast('Konsentrasi Keahlian gagal diedit!', 'warning');
+            toast('Data Konsentrasi Keahlian gagal diedit.', 'warning');
 
             return redirect()->back();
         }
@@ -221,7 +221,7 @@ class KonsentrasiKeahlianController extends Controller
 
         $konsentrasi->delete();
 
-        toast('Konsentrasi Keahlian berhasil dihapus!', 'success');
+        toast('Data Konsentrasi Keahlian berhasil dihapus.', 'success');
 
         return redirect()->back();
     }

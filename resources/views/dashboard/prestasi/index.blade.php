@@ -23,13 +23,13 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{ $title }}</h4>
+                                <h4>Data Prestasi</h4>
                                 <div class="card-header-action">
                                     <a href="{{ route('prestasi.create') }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-plus"></i>
@@ -45,7 +45,7 @@
                                                 <th>#</th>
                                                 <th>Judul</th>
                                                 <th>Kategori</th>
-                                                <th>Pesert</th>
+                                                <th>Peserta</th>
                                                 <th>Views</th>
                                                 <th>Publish</th>
                                                 <th>Status</th>

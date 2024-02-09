@@ -18,9 +18,9 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">Pengturan {{ $title }}</h2>
                 <p class="section-lead">
-                    Anda bisa menambahkan sambutan kepala sekolah disini
+                    Tampilkan sambutan langsung dari Kepala Sekolah untuk memberikan Pesan, Visi, dan Nilai-nilai Sekolah.
                 </p>
                 <form action="{{ route('sambutan.update', $sambutan->id) }}" method="post" class="needs-validation" novalidate>
                     @csrf

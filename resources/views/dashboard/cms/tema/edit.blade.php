@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Edit {{ $title }}</h2>
+                <h2 class="section-title">Pengaturan {{ $title }}</h2>
                 <p class="section-lead">
-                    Disini anda dapat mengedit {{ $title }}
+                    Personalisasikan Tema Website sesuai dengan Suasana dan Identitas Sekolah.
                 </p>
                 <form action="{{ route('tema.update') }}" method="post" class="needs-validation" novalidate>
                     @csrf

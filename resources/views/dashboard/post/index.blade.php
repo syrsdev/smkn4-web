@@ -23,7 +23,7 @@
             <div class="section-body">
                 <h2 class="section-title">Kelola {{ $title }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda bisa mengelola dan melihat {{ $title }}.
+                    Anda dapat mengelola semua {{ $title }}, seperti mengedit, menghapus, dan lainnya.
                 </p>
                 <div class="row">
                     <div class="col-12">
@@ -88,7 +88,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $item->judul }}</td>
                                                     <td>{{ $item->penulis->name }}</td>
-                                                    <td>{{ $item->created_at->format('j/n/Y') }}</td>
+                                                    <td>{{ $item->created_at->format('j-n-Y') }}</td>
                                                     <td>{{ $item->views ? $item->views : 0 }}</td>
                                                     <td>
                                                         <label class="mt-1 custom-switch">
