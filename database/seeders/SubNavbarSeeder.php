@@ -14,9 +14,8 @@ class SubNavbarSeeder extends Seeder
     public function run(): void
     {
         SubNavbar::insert([
-            ['name' => 'HUBIN', 'url' => 'https://smkn4-tng.sch.id/', 'status' => '1'],
-            ['name' => 'PENGADUAN ONLINE', 'url' => 'https://smkn4-tng.sch.id/', 'status' => '1'],
-            ['name' => 'PPDB', 'url' => 'https://smkn4-tng.sch.id/', 'status' => '0'],
+            ['name' => 'DISPRESS', 'url' => 'https://dispress.smkn4-tng.sch.id/', 'status' => '1'],
+            ['name' => 'PENGADUAN ONLINE', 'url' => 'https://confess.smkn4-tng.sch.id/', 'status' => '1'],
         ]);
     }
 }
