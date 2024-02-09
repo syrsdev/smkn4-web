@@ -26,12 +26,13 @@ class DashboardController extends Controller
         $post = [
             'trending' => Post::with('penulis')
                 ->orderBy('views', 'desc')
-                ->limit(5)
+                ->limit(3)
                 ->get(),
             'latest' => Post::with('penulis')
                 ->latest()
                 ->limit(5)
                 ->get(),
+            'views' => Post::sum('views') + Prestasi::sum('views'),
         ];
 
         $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
@@ -47,11 +48,6 @@ class DashboardController extends Controller
                 ->get(),
         ];
 
-        $donut = [
-            'post' => Post::sum('views'),
-            'prestasi' => Prestasi::sum('views'),
-        ];
-
         return view('dashboard.dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
@@ -61,7 +57,6 @@ class DashboardController extends Controller
                 'post' => $post,
                 'jurusan' => $jurusan,
                 'guru' => $guru,
-                'donut' => $donut,
             ]);
     }
 
