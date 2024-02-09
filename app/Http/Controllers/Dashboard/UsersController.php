@@ -29,7 +29,7 @@ class UsersController extends Controller
             ];
         });
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus User?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus User?');
 
         return view('dashboard.user.index')
             ->with([

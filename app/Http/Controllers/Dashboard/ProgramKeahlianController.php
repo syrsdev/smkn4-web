@@ -23,7 +23,7 @@ class ProgramKeahlianController extends Controller
         $bidang = BidangKeahlian::orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Program Keahlian?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Program Keahlian?');
 
         return view('dashboard.jurusan.program.index')
             ->with([

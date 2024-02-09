@@ -19,7 +19,7 @@ class PrestasiController extends Controller
             ->latest()
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Prestasi?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Prestasi?');
 
         return view('dashboard.prestasi.index')
             ->with([

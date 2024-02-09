@@ -18,7 +18,7 @@ class BidangKeahlianController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Bidang Keahlian?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Bidang Keahlian?');
 
         return view('dashboard.jurusan.bidang.index')
             ->with([

@@ -18,7 +18,7 @@ class EkskulController extends Controller
         $ekskul = Ekskul::orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Ekstrakurikuler?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Ekstrakurikuler?');
 
         return view('dashboard.ekskul.index')
             ->with([

@@ -20,7 +20,7 @@ class KonsentrasiKeahlianController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data Konsentrasi Keahlian?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data Konsentrasi Keahlian?');
 
         return view('dashboard.jurusan.konsentrasi.index')
             ->with([
@@ -112,7 +112,7 @@ class KonsentrasiKeahlianController extends Controller
     {
         $konsentrasi->load(['program', 'program.bidang', 'galeri']);
 
-        confirmDelete('Hapus Gambar?', 'Yakin ingin hapus gambar dari Galeri ' . $konsentrasi->nama . '?');
+        confirmDelete('Hapus Gambar?', 'Anda yakin ingin hapus gambar dari Galeri ' . $konsentrasi->nama . '?');
 
         return view('dashboard.jurusan.konsentrasi.detail')
             ->with([

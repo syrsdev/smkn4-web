@@ -34,7 +34,7 @@ class PostController extends Controller
             'event'   => $this->getPost('event')->count(), 
         ];
 
-        confirmDelete('Hapus Data?', 'Yakin ingin hapus Data '. ucfirst($kategori) . '?');
+        confirmDelete('Hapus Data?', 'Anda yakin ingin hapus Data '. ucfirst($kategori) . '?');
 
         return view('dashboard.post.index')
             ->with([
