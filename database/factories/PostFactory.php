@@ -25,6 +25,7 @@ class PostFactory extends Factory
             'konten' => $this->faker->paragraph,
             'status' => '1',
             'id_penulis' => User::inRandomOrder()->first()->id,
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }
