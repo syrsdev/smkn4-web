@@ -119,6 +119,13 @@ function Pagination({
                     )}
                 </div>
             )}
+
+            <p
+                style={{ color: `${theme.fontPrimer}` }}
+                className="mt-6 font-bold text-center"
+            >
+                Page {currentPage} of {lastPage}
+            </p>
         </>
     );
 }

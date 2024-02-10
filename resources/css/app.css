@@ -20,6 +20,11 @@
         font-size: revert;
         font-weight: revert;
     }
+
+    input {
+        --tw-ring-shadow: none !important;
+        box-shadow: none !important;
+    }
 }
 
 .hero-img {
