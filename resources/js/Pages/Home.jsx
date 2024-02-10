@@ -17,7 +17,6 @@ import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
 
 function Home(props) {
-    console.log(props);
     let webTheme = {
         primer: props.sekolah.warna_primer,
         sekunder: props.sekolah.warna_sekunder,

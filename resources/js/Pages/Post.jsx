@@ -12,7 +12,6 @@ import FilterPost from "@/Components/Modal/FilterPost";
 import Pagination from "@/Components/Pagination/Pagination";
 
 function Post(props) {
-    console.log(props);
     const [showModal, setShowModal] = useState(false);
     const [filter, setFilter] = useState(false);
     const [search, setSearch] = useState("");

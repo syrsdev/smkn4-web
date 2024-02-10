@@ -12,7 +12,6 @@ function Jurusan(props) {
         fontPrimer: props.sekolah.font_primer,
         fontSekunder: props.sekolah.font_sekunder,
     };
-    console.log(props.jurusan.length);
     return (
         <LandingLayout
             namaSekolah={props.sekolah.nama_sekolah}

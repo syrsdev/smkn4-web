@@ -14,8 +14,6 @@ export default function Navbar({ subnav, logo, theme }) {
         dropdown3: false,
     });
 
-    console.log(theme);
-
     return (
         <>
             <nav className="sticky top-0 z-50">
