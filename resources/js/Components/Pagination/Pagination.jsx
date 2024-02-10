@@ -1,7 +1,6 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     MdKeyboardArrowLeft,
     MdKeyboardArrowRight,
@@ -19,18 +18,9 @@ function Pagination({
     links,
     theme,
 }) {
-    const [numberPage, setNumberPage] = useState([]);
-    useEffect(() => {
-        let data = [];
-        for (let index = 1; index < links.length; index++) {
-            const element = links[index];
-            data.push(element);
-        }
-
-        setNumberPage(data.slice(0, data.length - 1));
-    }, []);
     let url = window.location.href.split(`&page=${currentPage}`).join("");
-    console.log(url);
+    let screen = window.screen.width >= 768 ? 2 : 1;
+
     return (
         <>
             {lastPage > 1 && (
@@ -66,25 +56,39 @@ function Pagination({
                     )}
 
                     <div className="flex items-center gap-5 mx-3 text-lg ">
-                        {numberPage.map((item, index) => (
-                            <Link
-                                key={index}
-                                href={
-                                    window.location.href.slice(-5) == "#post"
-                                        ? `${url.slice(0, -5)}&page=${
-                                              item.label
-                                          }#post`
-                                        : `${item.url}#paginate`
-                                }
-                                className={
-                                    item.active == true
-                                        ? "paginasi rounded-full font-medium px-3 py-1 border-2"
-                                        : "paginasi-false font-bold"
-                                }
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                        {links
+                            .slice(1, -1)
+                            .filter(
+                                (page) =>
+                                    page.label !== "..." &&
+                                    Math.abs(
+                                        currentPage - parseInt(page.label)
+                                    ) <= screen
+                            )
+                            .map((page, index) => (
+                                <Link
+                                    key={index}
+                                    href={
+                                        window.location.href.slice(-5) ===
+                                        "#post"
+                                            ? `${url.slice(0, -5)}&page=${
+                                                  page.label
+                                              }#post`
+                                            : `${page.url}#paginate`
+                                    }
+                                    className={
+                                        currentPage === parseInt(page.label)
+                                            ? `paginasi rounded-full  px-3 ${
+                                                  currentPage >= 10
+                                                      ? "py-2"
+                                                      : "py-1"
+                                              } border-2`
+                                            : "paginasi-false font-bold"
+                                    }
+                                >
+                                    {page.label}
+                                </Link>
+                            ))}
                     </div>
 
                     {lastPage != currentPage && (
