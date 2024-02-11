@@ -17,14 +17,14 @@
             </div>
             <div class="section-body">
                 <h2 class="section-title">Kelola Data Sosial Media</h2>
-                <div class="section-lead">
+                <p class="section-lead">
                     Anda bisa menyesuaikan link sesuai dengan Sosial Media Sekolah.
-                </div>
-                <div class="row sortable-card">
+                </p>
+                <div class="row">
                     @foreach ($sosmed as $item)
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <div class="card-header text-center">
+                                <div class="card-header">
                                     <h4>{{ $item->name }}</h4>
                                     <div class="card-header-action">
                                         <a data-collapse="#{{ $item->name }}-collapse" class="btn btn-icon btn-info" href="#">

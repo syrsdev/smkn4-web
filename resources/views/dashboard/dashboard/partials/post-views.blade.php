@@ -4,8 +4,8 @@
             <div class="card-icon">
                 <i class="fas fa-signal"></i>
             </div>
-            <h4>{{ $post['views'] }}</h4>
-            <div class="card-description">Post dan Prestasi dilihat</div>
+            <div class="card-description">Post dan Prestasi dilihat:</div>
+            <h4>{{ $post['views'] }} kali</h4>
         </div>
         <div class="card-body p-0">
             <div class="tickets-list">

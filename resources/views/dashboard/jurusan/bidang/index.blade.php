@@ -9,7 +9,7 @@
             <div class="section-header">
                 <h1>{{ $title }}</h1>
                 <div class="section-header-button">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBidang  ">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBidang">
                         Tambah Data
                     </button>
                 </div>
