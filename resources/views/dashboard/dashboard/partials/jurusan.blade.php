@@ -2,6 +2,12 @@
     <div class="card">
         <div class="card-header">
             <h4>Konsentrasi Keahlian</h4>
+            <div class="card-header-action">
+                <a href="{{ route('konsentrasi.index') }}" class="btn btn-sm btn-primary">
+                    Lihat Semua
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
         </div>
         <div class="card-body">
             <div class="owl-carousel owl-theme" id="products-carousel">
