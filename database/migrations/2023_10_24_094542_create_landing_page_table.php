@@ -22,7 +22,8 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('konten');
-            $table->unsignedBigInteger('id_kepsek');
+            $table->unsignedBigInteger('id_kepsek')
+                ->nullable();
             $table->foreign('id_kepsek')
                 ->references('id')
                 ->on('tenaga_pendidik')

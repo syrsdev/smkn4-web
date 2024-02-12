@@ -9,7 +9,7 @@
         </div>
         <div class="card-body p-0">
             <div class="tickets-list">
-                @foreach ($post['trending'] as $item)
+                @forelse ($post['trending'] as $item)
                     <a href="{{ route('post.show', $item->slug) }}" class="ticket-item">
                         <div class="ticket-title">
                             <h4>{{ $item->judul }}</h4>
@@ -20,8 +20,10 @@
                             <div class="text-primary">{{ $item->created_at->diffForHumans() }}</div>
                         </div>
                     </a>
-                @endforeach
-                <a href="{{ route('post.index', $post['trending'][0]->kategori) }}" class="ticket-item ticket-more">
+                @empty
+                    <p class="text-center mt-3">Belum ada data :(</p>
+                @endforelse
+                <a href="{{ route('post.index', $post['trending'][0]->kategori ?? 'berita') }}" class="ticket-item ticket-more">
                     Lihat Semua
                     <i class="fas fa-chevron-right"></i>
                 </a>

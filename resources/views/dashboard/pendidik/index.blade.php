@@ -101,9 +101,11 @@
                                                         <a href="{{ route('guru.edit', $item->slug) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit Data">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
-                                                        <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
-                                                            <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
-                                                        </a>
+                                                        @if ($item->bagian !== 'Kepala Sekolah')
+                                                            <a href="{{ route('guru.destroy', $item->slug) }}" class="btn btn-sm btn-danger" data-confirm-delete="true" data-toggle="tooltip" title="Hapus Data">
+                                                                <i class="fas fa-trash" onclick="event.preventDefault(); this.closest('a').click();"></i>
+                                                            </a>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

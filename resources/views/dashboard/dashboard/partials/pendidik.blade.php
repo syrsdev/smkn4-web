@@ -14,7 +14,7 @@
                 <div class="col-sm-6">
                     <div class="mb-2 text-title">Tenaga Pendidik</div>
                     <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
-                        @foreach ($guru['pendidik'] as $item)
+                        @forelse ($guru['pendidik'] as $item)
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
                                 <div class="media-body ml-3">
@@ -22,13 +22,15 @@
                                     <div class="text-small text-muted">Guru Produktif</div>
                                 </div>
                             </li>
-                        @endforeach
+                        @empty
+                            <p>Belum ada data :(</p>
+                        @endforelse
                     </ul>
                 </div>
                 <div class="mt-4 col-sm-6 mt-sm-0">
                     <div class="mb-2 text-title">Tenaga Kependidikan</div>
                     <ul class="mb-0 list-unstyled list-unstyled-border list-unstyled-noborder">
-                        @foreach ($guru['kependidikan'] as $item)
+                        @forelse ($guru['kependidikan'] as $item)
                             <li class="media">
                                 <img class="img-fluid mt-1 img-shadow" src="{{ $item->gambar }}" alt="{{ $item->nama }}" width="40">
                                 <div class="media-body ml-3">
@@ -42,7 +44,9 @@
                                     </div>
                                 </div>
                             </li>
-                        @endforeach
+                        @empty
+                            <p>Belum ada data :(</p>
+                        @endforelse
                     </ul>
                 </div>
             </div>
