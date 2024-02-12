@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\PendidikImport;
 use App\Models\Mapel;
 use App\Models\Pendidik;
+use App\Models\Sambutan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -183,6 +184,11 @@ class TenagaPendidikController extends Controller
     {
         if ($guru->gambar !== '/images/default/no-image-34.png') {
             File::delete(public_path($guru->gambar));
+        }
+
+        if ($guru->bagian === 'Kepala Sekolah') {
+            Sambutan::where('id_kepsek', $guru->id)
+                ->update(['id_kepsek' => null]);
         }
 
         $guru->delete();
