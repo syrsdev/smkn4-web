@@ -3,7 +3,7 @@
         <div class="card-header">
             <h4>Post Terbaru</h4>
             <div class="card-header-action">
-                <a href="{{ route('post.index', $post['latest'][0]->kategori) }}" class="btn btn-primary">
+                <a href="{{ route('post.index', $post['latest'][0]->kategori ?? 'berita') }}" class="btn btn-primary">
                     Lihat Semua
                     <i class="fas fa-chevron-right"></i>
                 </a>
@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($post['latest'] as $item)
+                        @forelse ($post['latest'] as $item)
                             <tr>
                                 <td>{{ $item->judul }}</td>
                                 <td>{{ ucfirst($item->kategori) }}</td>
@@ -32,7 +32,13 @@
                                     <a href="{{ route('post.show', $item->slug) }}" class="btn btn-primary">Detail</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    Belum ada data :(
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
