@@ -38,6 +38,9 @@
                                 <div class="form-group col-lg-6" style="z-index: 999">
                                     <label for="kepala_sekolah" class="form-control-label">Kepala Sekolah</label>
                                     <select class="form-control choices" name="kepala_sekolah" id="kepala_sekolah" required>
+                                        @if ($sambutan->id_kepsek === null)
+                                            <option disabled selected>Pilih Kepala Sekolah</option>
+                                        @endif
                                         @foreach ($guru as $item)
                                             <option value="{{ $item->id }}" {{ $sambutan->id_kepsek == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                                         @endforeach

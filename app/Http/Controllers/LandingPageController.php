@@ -27,6 +27,7 @@ class LandingPageController extends Controller
     public function index()
     {
         $sambutan = Sambutan::with('kepsek')
+            ->whereNotNull('id_kepsek')
             ->first();
 
         $berita = Post::with('penulis')
