@@ -78,9 +78,9 @@
                                             </div>
                                             <p>
                                                 @if (strlen(strip_tags($item->konten)) > 100)
-                                                   {!! '<p>' . substr(strip_tags($item->konten), 0, 100) . '...</p>' !!}
+                                                    {!! '<p>' . substr(strip_tags($item->konten), 0, 100) . '...</p>' !!}
                                                 @else
-                                                   {!! '<p>' . $item->konten . '</p>' !!}
+                                                    {!! '<p>' . $item->konten . '</p>' !!}
                                                 @endif
                                             </p>
                                             <div class="article-cta">

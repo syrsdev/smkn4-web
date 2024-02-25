@@ -12,12 +12,15 @@
             <div class="summary">
                 <div class="summary-chart active" data-tab-group="summary-tab" id="week">
                     <canvas id="weekStat" height="150"></canvas>
+                    <p id="weekStatMessage" style="display: none;" class="text-center">Belum ada data :(</p>
                 </div>
                 <div class="summary-chart" data-tab-group="summary-tab" id="month">
                     <canvas id="monthStat" height="150"></canvas>
+                    <p id="monthStatMessage" style="display: none;" class="text-center">Belum ada data :(</p>
                 </div>
                 <div class="summary-chart" data-tab-group="summary-tab" id="all">
                     <canvas id="allStat" height="150"></canvas>
+                    <p id="allStatMessage" style="display: none;" class="text-center">Belum ada data :(</p>
                 </div>
             </div>
         </div>
