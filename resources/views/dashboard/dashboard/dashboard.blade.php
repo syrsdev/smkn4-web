@@ -29,7 +29,7 @@
                 {{-- latest Table --}}
                 @include('dashboard.dashboard.partials.latest-post')
                 {{-- Donut Chart --}}
-                @include('dashboard.dashboard.partials.post-views')
+                @include('dashboard.dashboard.partials.donut')
             </div>
         </section>
     </div>
@@ -42,4 +42,5 @@
     <!-- Page Specific js File -->
     @include('dashboard.dashboard.partials.statistic-script')
     @include('dashboard.dashboard.partials.jurusan-script')
+    @include('dashboard.dashboard.partials.donut-script')
 @endsection

@@ -32,7 +32,6 @@ class DashboardController extends Controller
                 ->latest()
                 ->limit(5)
                 ->get(),
-            'views' => Post::sum('views') + Prestasi::sum('views'),
         ];
 
         $jurusan = KonsentrasiKeahlian::with(['program', 'program.bidang'])
@@ -48,6 +47,11 @@ class DashboardController extends Controller
                 ->get(),
         ];
 
+        $donut = [
+            'post' => Post::sum('views'),
+            'prestasi' => Prestasi::sum('views'),
+        ];
+
         return view('dashboard.dashboard.dashboard')
             ->with([
                 'title' => 'Dashboard',
@@ -57,9 +61,9 @@ class DashboardController extends Controller
                 'post' => $post,
                 'jurusan' => $jurusan,
                 'guru' => $guru,
+                'donut' => $donut,
             ]);
     }
-
 
     public function statistic()
     {
