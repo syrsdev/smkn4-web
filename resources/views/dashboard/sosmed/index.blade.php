@@ -42,7 +42,11 @@
                                             <div class="media-body">
                                                 <h5 class="mt-0">{{ $item->name }}</h5>
                                                 @if ($item->url !== null)
-                                                    <a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a>
+                                                    @if (strlen($item->url) > 25)
+                                                        <a href="{{ $item->url }}" target="_blank">{{ substr($item->url, 0, 25) . '...' }}</a>
+                                                    @else
+                                                        <a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a>
+                                                    @endif
                                                 @else
                                                     -
                                                 @endif
