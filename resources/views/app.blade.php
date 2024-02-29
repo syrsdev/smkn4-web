@@ -4,6 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="SMKN 4 Kota Tangerang adalah sekolah menengah kejuruan negeri yang berlokasi di Kota Tangerang, Banten. Didirikan pada tahun 1980, sekolah ini memiliki fokus pada pendidikan vokasi dan menawarkan berbagai jurusan yang relevan dengan kebutuhan industri">
+    <meta name="keywords"
+        content="Sekolah, SMK, smk, negeri, 4, tangerang, tng, sekolah, smkn, SMKN, SMK Negeri 4 Tangerang, Sekolah SMK Negeri, Kota Tangerang">
+    <meta name="author" content="KuliKoding04">
+    <meta name="robots" content="index, follow">
+    <!-- untuk mengizinkan mesin pencari untuk mengindeks dan mengikuti tautan -->
+    <meta name="googlebot" content="index, follow">
+    <!-- untuk mengizinkan Google untuk mengindeks dan mengikuti tautan -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- untuk mengontrol bagaimana referrer diatur saat mengklik tautan ke situs Anda -->
+    <meta property="og:title" content="SMK NEGERI 4 TANGERANG">
+    <meta property="og:description" content="Deskripsi halaman Anda yang akan muncul ketika dibagikan di media sosial.">
+    {{-- <meta property="og:image" content="URL gambar untuk ditampilkan ketika halaman dibagikan di media sosial."> --}}
+    <meta property="og:url" content="https://smkn4-tng.sch.id/">
+    <meta property="og:type" content="website"> <!-- jenis konten, bisa juga artikel, produk, dll. -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- tipe kartu Twitter yang akan digunakan saat tautan halaman Anda dibagikan -->
+    <meta name="twitter:title" content="SMK NEGERI 4 TANGERANG">
+    <meta name="twitter:description"
+        content="SMKN 4 Kota Tangerang adalah sekolah menengah kejuruan negeri yang berlokasi di Kota Tangerang, Banten. Didirikan pada tahun 1980, sekolah ini memiliki fokus pada pendidikan vokasi dan menawarkan berbagai jurusan yang relevan dengan kebutuhan industri">
+    {{-- <meta name="twitter:image" content="URL gambar untuk ditampilkan ketika halaman dibagikan di Twitter."> --}}
 
     <title inertia>{{ config('app.name', 'SMKN 4 Kota Tangerang') }}</title>
     <style>
