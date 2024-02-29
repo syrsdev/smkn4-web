@@ -93,7 +93,7 @@ function Pegawai(props) {
                 </div>
 
                 {props.pegawai.length > 0 ? (
-                    <div className="grid grid-cols-2 gap-5 md:gap-7 mb-14 md:grid-cols-3 xl:grid-cols-5">
+                    <div className="grid gap-5 card-pegawai-grid md:gap-7 mb-14 md:grid-cols-3 xl:grid-cols-5 w3xl">
                         {props.pegawai.map((item, index) => (
                             <PegawaiCard
                                 theme={webTheme}
