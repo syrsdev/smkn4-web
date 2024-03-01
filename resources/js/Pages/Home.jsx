@@ -15,6 +15,7 @@ import JurusanCard from "@/Components/Card/JurusanCard";
 import PegawaiCard from "@/Components/Card/PegawaiCard";
 import ButtonSecondary from "@/Components/Button/ButtonSecondary";
 import CardSumPrestasi from "@/Components/Card/CardSumPrestasi";
+import { Head } from "@inertiajs/react";
 
 function Home(props) {
     let webTheme = {
@@ -34,6 +35,33 @@ function Home(props) {
             sosmed={props.footer.socialMedia}
             theme={webTheme}
         >
+            <Head>
+                <meta
+                    name="description"
+                    content="SMKN 4 Kota Tangerang adalah sekolah menengah kejuruan negeri yang berlokasi di Kota Tangerang, Banten. Didirikan pada tahun 1980, sekolah ini memiliki fokus pada pendidikan vokasi dan menawarkan berbagai jurusan yang relevan dengan kebutuhan industri"
+                />
+                <meta
+                    name="keywords"
+                    content="Sekolah, SMK, smk, negeri, 4, tangerang, tng, sekolah, smkn, SMKN, SMK Negeri 4 Tangerang, Sekolah SMK Negeri, Kota Tangerang"
+                />
+                <meta name="author" content="KuliKoding04" />
+                <meta name="robots" content="index, follow" />
+                <meta name="googlebot" content="index, follow" />
+                <meta name="referrer" content="no-referrer-when-downgrade" />
+                <meta property="og:title" content="SMK NEGERI 4 TANGERANG" />
+                <meta
+                    property="og:description"
+                    content="Deskripsi halaman Anda yang akan muncul ketika dibagikan di media sosial."
+                />
+                <meta property="og:url" content="https://smkn4-tng.sch.id/" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="SMK NEGERI 4 TANGERANG" />
+                <meta
+                    name="twitter:description"
+                    content="SMKN 4 Kota Tangerang adalah sekolah menengah kejuruan negeri yang berlokasi di Kota Tangerang, Banten. Didirikan pada tahun 1980, sekolah ini memiliki fokus pada pendidikan vokasi dan menawarkan berbagai jurusan yang relevan dengan kebutuhan industri"
+                />
+            </Head>
             <Container
                 style={{
                     color: `${props.heroSection.text_color}`,
