@@ -51,7 +51,7 @@ function Home(props) {
                 <meta property="og:title" content="SMK NEGERI 4 TANGERANG" />
                 <meta
                     property="og:description"
-                    content="Deskripsi halaman Anda yang akan muncul ketika dibagikan di media sosial."
+                    content="SMKN 4 Kota Tangerang adalah sekolah menengah kejuruan negeri yang berlokasi di Kota Tangerang, Banten. Didirikan pada tahun 1980, sekolah ini memiliki fokus pada pendidikan vokasi dan menawarkan berbagai jurusan yang relevan dengan kebutuhan industri"
                 />
                 <meta property="og:url" content="https://smkn4-tng.sch.id/" />
                 <meta property="og:type" content="website" />
