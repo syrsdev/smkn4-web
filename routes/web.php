@@ -37,142 +37,163 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route untuk Landing Page
 Route::get('/', [LandingPageController::class, 'index'])
-    ->name('home');
+    ->name('home'); // Ke Landing Page
 
 Route::get('/post/{kategori}', [PostPageController::class, 'index'])
-    ->name('landing.post.index');
+    ->name('landing.post.index'); // Ke Halaman Posts
 
 Route::get('/post/{kategori}/{post}', [PostPageController::class, 'show'])
-    ->name('landing.post.show');
+    ->name('landing.post.show'); // Ke Datail Post
 
 Route::get('/pegawai', [GuruPageController::class, 'index'])
-    ->name('landing.pegawai');
+    ->name('landing.pegawai'); // Ke Halaman Guru/Tenaga Pendidik
 
 Route::get('/prestasi', [PrestasiPageController::class, 'index'])
-    ->name('landing.prestasi.index');
+    ->name('landing.prestasi.index'); // Ke Halaman Prestasi
 
 Route::get('/prestasi/{prestasi}', [PrestasiPageController::class, 'show'])
-    ->name('landing.prestasi.show');
+    ->name('landing.prestasi.show'); // Ke Halaman Detail Prestasi
 
 Route::get('/jurusan', [JurusanPageController::class, 'index'])
-    ->name('landing.jurusan.index');
+    ->name('landing.jurusan.index'); // Ke Halaman Jurusan/Konsentrasi Keahlian
 
 Route::get('/jurusan/{konsentrasi}', [JurusanPageController::class, 'show'])
-    ->name('landing.jurusan.show');
+    ->name('landing.jurusan.show'); // Ke Halaman Detail Jurusan/Konsentrasi Keahlian
 
 Route::get('/profil-sekolah', [TentangSekolahController::class, 'index'])
-    ->name('landing.sekolah');
+    ->name('landing.sekolah'); // Ke Halaman Tentang Sekolah
 
+// Route untuk Dashboard
+
+// Middleware - Auth
+// Route ini hanya bisa diakses oleh user yang sudah login
 Route::middleware('auth')->group(function () {
+
+    // Middleware - Check Level: Admin & Author
+    // Route ini bisa diakses oleh Admin maupun Author
     Route::middleware('checkLevel:admin,author')->group(function () {
+
+        // Prefix: Dashboard
         Route::prefix('dashboard')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])
-                ->name('dashboard');
+                ->name('dashboard'); // Ke Halaman Dashboard
 
+            Route::resource('/post', PostController::class)
+                ->except('index'); // Route Resource Post (pengecualian untuk index)
+
+            // Prefix: Post
             Route::prefix('post')->group(function () {
                 Route::get('/kategori/{kategori}', [PostController::class, 'index'])
-                    ->name('post.index');
-
-                Route::get('/create', [PostController::class, 'create'])
-                    ->name('post.create');
-
-                Route::post('/', [PostController::class, 'store'])
-                    ->name('post.store');
-
-                Route::get('/{post}', [PostController::class, 'show'])
-                    ->name('post.show');
-
-                Route::get('/{post}/edit', [PostController::class, 'edit'])
-                    ->name('post.edit');
-
-                Route::match(['put', 'patch'], '/{post}', [PostController::class, 'update'])
-                    ->name('post.update');
-
-                Route::delete('/{post}', [PostController::class, 'destroy'])
-                    ->name('post.destroy');
+                    ->name('post.index'); // Route Post: index dengan wildcard kategori
 
                 Route::get('/{post}/status', [PostController::class, 'update_status'])
-                    ->name('post.status');
+                    ->name('post.status'); // Update status Post (Publih/Unpublish)
 
                 Route::post('/upload/image', [PostController::class, 'upload_image'])
-                    ->name('post.upload.image');
+                    ->name('post.upload.image'); // Upload gambar di isi konten Post (Berlaku juga untuk Prestasi)
             });
 
+            // Prefix: Kesiswaan
             Route::prefix('kesiswaan')->group(function () {
-                Route::resource('/prestasi', PrestasiController::class);
+                Route::resource('/prestasi', PrestasiController::class); // Prestasi Route: Resource
 
                 Route::get('/prestasi/{prestasi}/status', [PrestasiController::class, 'update_status'])
-                    ->name('prestasi.status');
+                    ->name('prestasi.status'); // Update status Prestasi (Publih/Unpublish)
             });
 
-            Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-            Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-            Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+            // Profile User
+            Route::get('/profile', [ProfileController::class, 'index'])
+                ->name('profile.index'); // Ke Halaman Profile User
+
+            Route::patch('/profile', [ProfileController::class, 'update'])
+                ->name('profile.update'); // Update Profile
+
+            Route::delete('/profile', [ProfileController::class, 'destroy'])
+                ->name('profile.destroy'); // Delete Profile *belum bisa digunakan melalui frontend dashboard
         });
     });
 
+    // Middleware - Check Level: Admin
+    // Route ini hanya bisa diakses oleh Admin
     Route::middleware('checkLevel:admin')->group(function () {
+
+        // Prefix: Dashboard
         Route::prefix('dashboard')->group(function () {
+
+            // Prefix: Kesiswaan
             Route::prefix('kesiswaan')->group(function () {
-                Route::resource('/ekskul', EkskulController::class);
+                Route::resource('/ekskul', EkskulController::class); // Route Resource Ekskul
             });
 
-            Route::resource('/guru', TenagaPendidikController::class);
+            Route::resource('/guru', TenagaPendidikController::class); // Route Resource Guru/Tenaga Pendidik
 
+            // Prefix: Guru
             Route::prefix('guru')->group(function () {
                 Route::post('/import', [TenagaPendidikController::class, 'import'])
-                    ->name('guru.import');
+                    ->name('guru.import'); // Import/upload file excel ke data Guru
 
                 Route::get('/export/to-excel', [TenagaPendidikController::class, 'export'])
-                    ->name('guru.export');
+                    ->name('guru.export'); // Export/download file excel dari data Guru 
             });
 
-            Route::resource('/mapel', MapelController::class);
+            Route::resource('/mapel', MapelController::class); // Route Resource Mapel (Mata Pelajaran)
 
-            Route::resource('/user', UsersController::class);
+            Route::resource('/user', UsersController::class); // Route Resource User
 
-            Route::resource('/sosmed', SocialMediaController::class);
+            Route::resource('/sosmed', SocialMediaController::class); // Route Resource Social media
 
-            Route::resource('/sub-navbar', SubNavbarController::class);
+            Route::resource('/sub-navbar', SubNavbarController::class); // Route Resource Sub-Navbar
 
             Route::get('/sub-navbar/{sub_navbar}/status', [SubNavbarController::class, 'update_status'])
-                ->name('sub-navbar.status');
+                ->name('sub-navbar.status'); // Update status Sub-Navbar (Show/Hide)
 
+            // Prefix: Jurusan
             Route::prefix('jurusan')->group(function () {
-                Route::resource('/bidang', BidangKeahlianController::class);
+                Route::resource('/bidang', BidangKeahlianController::class); // Route Resource Bidang Keahlian
 
-                Route::resource('/program', ProgramKeahlianController::class);
+                Route::resource('/program', ProgramKeahlianController::class); // Route Resource Program Keahlian
 
-                Route::resource('/konsentrasi', KonsentrasiKeahlianController::class);
+                Route::resource('/konsentrasi', KonsentrasiKeahlianController::class); // Route Resource Konsentrasi Keahlian
 
+                // Route Resource Galeri Konsentrasi Keahlian
+                /* Isi konten Konsentrasi Keahlian tidak bisa ditambahkan (upload) gambar,
+                kami menggunakan route ini sebagai alternatifnya */
                 Route::resource('/galeri', GaleriKonsentrasiController::class);
             });
 
+            // Content Management System (CMS)
+
+            // Hero Section/Jumbotron
             Route::get('/hero', [HeroSectionController::class, 'edit'])
                 ->name('hero.edit');
 
             Route::patch('/hero', [HeroSectionController::class, 'update'])
                 ->name('hero.update');
 
+            // Sambutan Kepala Sekolah
             Route::get('/sambutan', [SambutanKepsekController::class, 'edit'])
                 ->name('sambutan.edit');
 
             Route::patch('/sambutan/{sambutan}', [SambutanKepsekController::class, 'update'])
                 ->name('sambutan.update');
 
+            // Tentang Sekolah
             Route::get('/tentang', [TentangSekolahController::class, 'edit'])
                 ->name('tentang.edit');
 
             Route::patch('/tentang', [TentangSekolahController::class, 'update'])
                 ->name('tentang.update');
 
+            // Profile Sekolah
             Route::get('/sekolah', [SekolahController::class, 'edit'])
                 ->name('sekolah.edit');
 
             Route::patch('/sekolah', [SekolahController::class, 'update'])
                 ->name('sekolah.update');
 
+            // Tema Website
             Route::get('/tema-website', [ThemeSettingController::class, 'edit'])
                 ->name('tema.edit');
 
