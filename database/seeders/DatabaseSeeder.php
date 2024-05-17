@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             // TenagaPendidikSeeder::class,
             SambutanSeeder::class,
             // PostSeeder::class,
-            // JurusanSeeder::class,
+            JurusanSeeder::class,
             // EkskulSeeder::class,
             SocialMediaSeeder::class,
         ]);
