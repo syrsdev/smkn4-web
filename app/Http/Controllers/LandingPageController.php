@@ -63,7 +63,7 @@ class LandingPageController extends Controller
         ];
 
         $pendidik = Pendidik::with('mapel')
-            ->latest();
+            ->orderBy('nama', 'asc');
 
         $ekskul = Ekskul::orderBy('nama', 'asc')
             ->get();
