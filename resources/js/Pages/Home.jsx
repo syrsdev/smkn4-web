@@ -127,7 +127,7 @@ function Home(props) {
                                         <p className="font-bold text-[16px] border-b-2 border-inherit">
                                             {props.sambutan.kepsek.nama}
                                         </p>
-                                        <p>Plt. Kepala Sekolah</p>
+                                        <p>Kepala Sekolah</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-col w-full text-center md:text-left">
